@@ -29,7 +29,7 @@ Trap}. Due to the fragility of the internal states of the ion (these are state
 of the art sensors after all), we must take great care in isolating the ion from
 any noisy environment. This neccesitates the use of ultra-high vacuum (UHV)
 systems, section~\ref{sec:Vacuum System}, vibration isolation, and magnetic
-shielding, section~\ref{sec:System Design}. To manipulate the internal electronic states of the ion, we create
+shielding, section~\ref{sec:Magnetic Field}. To manipulate the internal electronic states of the ion, we create
 local electric and magnetic fields using RF antennae and, in this work, lasers,
 sections~\ref{sec:Laser systems} and~\ref{sec:Narrow Line Width 729 Laser}.
 Finally, to interface with the apparatus we have built, at the time scales set by our interaction strengths, we require a sophisticated and custom control system which is discussed in section~\ref{sec:Sinara Hardware}.
@@ -50,33 +50,51 @@ Finally, to interface with the apparatus we have built, at the time scales set b
 \subsection{Trap RF Chain}
 \subsection{Trap DC Voltages}
 
-\section{Vacuum System and Beam access}
+\section{Beam Geometries and Vacuum System}
 \label{sec:Vacuum System}
 % figures for section
     % Technical drawing of beam geometries and magnetic field to ion chain.
     % Drawing of ion trap package with high NA lenses
+    % Standing waves at the ion
+\subsection{Vacuum System}
+\subsection{Atomic Source Oven}
+\subsection{Optical Access}
+\subsubsection{Beam Paths}
+\subsubsection{In Vacuum Prisms}
+\subsubsection{Dual High NA Objectives}
+\subsection{Imaging System}
+
+\section{Magnetic Field}
+\label{sec:Magnetic Field}
 
 \section{Laser systems}
 \label{sec:Laser systems}
 % figures for section
+    % Table of all AOMs and offset frequencies
+    % Table of laser powers in mW and with aimed saturation intensities for doppler idle, cooling, readout
+\subsection{Photoionisation}
+\subsection{Ca$^+$ Laser Systems}	
+\label{sec:Ca+ Laser Systems}
 
 % All frequencies and powers and how we control these. PDH lock, AOM etc.
 
-\section{Narrow Line Width 729 Laser}
+\subsection{Narrow Line Width 729 Laser}
 \label{sec:Narrow Line Width 729 Laser} 
 % figures for section
     % Solstis cavity
-    % Beam path and control loops
-
-% FNC
+    % Beam path and control loops (PDH, FNC)
 
 \subsection{Single Addressing System}
 \label{sec:Single Addressing System}
 % figures for section
+    % single addressing system creating standing waves
+    % render of single addressing system
 
 \section{Sinara Hardware and Artiq}
 \label{sec:Sinara Hardware}
 % figures for section
+    % Table of sinara hardware
+
 
 % ------------------------------------------------------------------------
 
@@ -86,6 +104,90 @@ Before we can dive into running novel experiments involving the motion and spin
 of the atoms, we need to characterise our apparatus. This allows us to both
 benchmark our system against state of the art results, and to reveal any
 current limitations of the apparatus which we may need to address.
+
+\section{Available Transitions}
+\label{sec:Transitions}
+% figures for section
+    % All visible motional modes on large detuning scan at $5$~G. Can compare when have all quadrupole transitions available or when we selectively omit transitions via polarisation.
+\subsection{Extracting Laser Offset and Magnetic Field}
+
+\section{Spin}
+\label{sec:Spin}
+
+\subsection{Rabi and Ramsey Scans}
+    % Mention changing polarisation to select certain transitions
+
+\subsection{Spin Coherence Times}
+
+\subsection{State Preparation and Measurement}
+    % State preparation via optical pumping
+    % Readout characterisation with NA 0.6 lens
+    % Compare readout histograms of fast 30 us readout to Doppler cold 100 us readout
+
+\subsection{Single Qubit Gates}
+    % Calibrating gate times
+    % Randomised bench marking of single qubit gates
+
+
+\section{Motion}
+\label{sec:Motion}
+
+\subsection{Finding Motional Mode Frequencies}
+
+\subsection{Motional Mode Stability}
+
+\subsection{Cooling}
+\label{sec:Cooling}
+    % Doppler cooling
+    % Sideband cooling
+    For any interaction involving the motion of the ion, we require both the
+    ability to prepare the motional state with high fidelity, and to
+    subsequently measure this motional state to verify correct preparation. For
+    entangling gates, and the creation of squeezed states which we are
+    considering in this chapter, we assume that we begin in the motional ground
+    state, or in other words, in Fock state zero.
+    Our initially trapped ions will be in some high temperature thermal state,
+    (*given by the oven temperature and the PI laser momenta kicks*). We first
+    doppler cool our ions, and then subsequently sideband cool them. We give a brief description of these two cooling processes here.\\
+    Doppler cooling exploits the fact that incident light onto a moving ion will appear frequency shifted in the rest frame of the
+    ion. For Doppler cooling of $^40$Ca$^+$, we apply both the 397~nm and 866~nm lasers. We initially red detune the 397~nm laser by around 100~MHz. This results in the preferential absorption of a quanta of 397~nm light by ions with a velocity vector antiparallel photon k-vector. After this absorption, the ion will be in the excited $4P_{3/2}$ state and spontaneously decay to either the $4S_{1/2}$, or the $3D_{3/2}$ emitting a photon of either 397~nm or of 866~nm respectively into a random direction. These two decay paths have a branching ratio of XX. The two photon recoil leads to a net reduction in the ions motional energy. As we desire many photon kicks to cool our ions, we repump the electron out of this metastable $3D_{3/2}$ level by applying an on resonant 866~nm beam. 
+    limit to doppler cooling is given by,
+    \begin{equation}
+    \Gamma_{Doppler} =
+        \frac{\hbar k^2}{2 m \gamma}
+    \end{equation}
+    where $\hbar$ is the reduced Planck constant, $k$ is the wavevector of the
+    light, $m$ is the mass of the ion, and $\gamma$ is the natural linewidth of the transition.
+    
+    , and then use pulses sideband cooling to prepare the ground
+    state.
+
+
+\subsection{Heating Rates}
+
+\subsection{Motional Coherence Times}
+
+\section{Experimental Control}
+\label{sec:Experimental Control}
+% figures for section
+    % Recrystallisation routines
+    % Autoload routines
+    % Morningly calibrations
+
+\section{Spin-Dependent Forces}
+\label{sec:Spin-Dependent Forces}
+\subsection{Calibrating the SDF}
+\section{Two-Qubit Entangling Gates}
+\label{sec:Two-Qubit Entangling Gates}
+\subsection{Collective Motion of Two Ions}
+\subsection{Mølmer-Sørensen Gate}
+\subsubsection{Theoretical Background to the MS Gate}
+\subsubsection{Experimental Implementation of the MS Gate}
+    % Discuss likely limitations being nearby hot motional modes, no pulse ramping
+
+\section{Creating Squeezed States}
+\label{sec:Squeezed States}
+\subsection{Calibrations}
 
 % ------------------------------------------------------------------------
 
