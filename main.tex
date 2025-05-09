@@ -1,0 +1,105 @@
+\documentclass[12pt]{report}
+\usepackage{graphicx}
+
+\begin{document}
+
+% ------------------------------------------------------------------------
+
+\chapter{Introduction}
+
+% Here I would like a brief motivation for the work.
+% Perhaps also a bit of theory goes here?
+
+% ------------------------------------------------------------------------
+
+\chapter{Ion Trap Apparatus}
+
+A vast effort is spent on the initial build-up of the an ion trap system, but
+throughout the life of the experiment, a greater effort is spent on its daily
+maintenance.  I hope that this chapter will serve as a resource for future
+members of the FastGates team, as well as provide a useful recipe for anyone
+building a similar system. \\
+
+Due to the size and complexity of the system, we introduce an inital overview of
+the design, motivated by the desired functions.  As the name suggests, an ion
+trap experiment aims to confine arrays of single ions, this is achieved by
+static and dynamic electric fields which, due to the ions possesing non-zero
+electric charge, can provide trapping potentials, section~\ref{sec:The Ion
+Trap}. Due to the fragility of the internal states of the ion (these are state
+of the art sensors after all), we must take great care in isolating the ion from
+any noisy environment. This neccesitates the use of ultra-high vacuum (UHV)
+systems, section~\ref{sec:Vacuum System}, vibration isolation, and magnetic
+shielding, section~\ref{sec:System Design}. To manipulate the internal electronic states of the ion, we create
+local electric and magnetic fields using RF antennae and, in this work, lasers,
+sections~\ref{sec:Laser systems} and~\ref{sec:Narrow Line Width 729 Laser}.
+Finally, to interface with the apparatus we have built, at the time scales set by our interaction strengths, we require a sophisticated and custom control system which is discussed in section~\ref{sec:Sinara Hardware}.
+
+\section{System Design}
+\label{sec:System Design}
+% figures for section
+    % Block diagram of the system
+    % Calcium level structure 
+    % Solidworks models
+
+\section{The Ion Trap}
+\label{sec:The Ion Trap}
+% figures for section
+    % NPL trap with relevant size scales
+
+% Potentially this lives in characterisation?
+\subsection{Trap RF Chain}
+\subsection{Trap DC Voltages}
+
+\section{Vacuum System and Beam access}
+\label{sec:Vacuum System}
+% figures for section
+    % Technical drawing of beam geometries and magnetic field to ion chain.
+    % Drawing of ion trap package with high NA lenses
+
+\section{Laser systems}
+\label{sec:Laser systems}
+% figures for section
+
+% All frequencies and powers and how we control these. PDH lock, AOM etc.
+
+\section{Narrow Line Width 729 Laser}
+\label{sec:Narrow Line Width 729 Laser} 
+% figures for section
+    % Solstis cavity
+    % Beam path and control loops
+
+% FNC
+
+\subsection{Single Addressing System}
+\label{sec:Single Addressing System}
+% figures for section
+
+\section{Sinara Hardware and Artiq}
+\label{sec:Sinara Hardware}
+% figures for section
+
+% ------------------------------------------------------------------------
+
+\chapter{Experiment Characterisation}
+
+Before we can dive into running novel experiments involving the motion and spin
+of the atoms, we need to characterise our apparatus. This allows us to both
+benchmark our system against state of the art results, and to reveal any
+current limitations of the apparatus which we may need to address.
+
+% ------------------------------------------------------------------------
+
+\chapter{Outlook}
+
+% Here I would like to briefly describe the next steps in the project, as well
+% as the future expeiments we want to demonstrate.
+
+% ------------------------------------------------------------------------
+
+\clearpage
+
+
+\clearpage
+\section{Appendix}
+
+\end{document}
