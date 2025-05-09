@@ -145,22 +145,36 @@ current limitations of the apparatus which we may need to address.
     subsequently measure this motional state to verify correct preparation. For
     entangling gates, and the creation of squeezed states which we are
     considering in this chapter, we assume that we begin in the motional ground
-    state, or in other words, in Fock state zero.
-    Our initially trapped ions will be in some high temperature thermal state,
-    (*given by the oven temperature and the PI laser momenta kicks*). We first
-    doppler cool our ions, and then subsequently sideband cool them. We give a brief description of these two cooling processes here.\\
-    Doppler cooling exploits the fact that incident light onto a moving ion will appear frequency shifted in the rest frame of the
-    ion. For Doppler cooling of $^40$Ca$^+$, we apply both the 397~nm and 866~nm lasers. We initially red detune the 397~nm laser by around 100~MHz. This results in the preferential absorption of a quanta of 397~nm light by ions with a velocity vector antiparallel photon k-vector. After this absorption, the ion will be in the excited $4P_{3/2}$ state and spontaneously decay to either the $4S_{1/2}$, or the $3D_{3/2}$ emitting a photon of either 397~nm or of 866~nm respectively into a random direction. These two decay paths have a branching ratio of XX. The two photon recoil leads to a net reduction in the ions motional energy. As we desire many photon kicks to cool our ions, we repump the electron out of this metastable $3D_{3/2}$ level by applying an on resonant 866~nm beam. 
-    limit to doppler cooling is given by,
+    state, or in other words, Fock state zero.  Our initially trapped ions will
+    be in some high temperature thermal state, (*given by the oven temperature
+    and the PI laser momenta kicks*). We first doppler cool our ions, and then
+    subsequently sideband cool them. We give a brief description of these two
+    cooling processes here.\\
+    Doppler cooling exploits the fact that incident light onto a moving ion will
+    appear frequency shifted in the rest frame of the ion. For Doppler cooling
+    of $^40$Ca$^+$, we apply both the 397~nm and 866~nm lasers. We initially red
+    detune the 397~nm laser by around 100~MHz. This results in the preferential
+    absorption of a quanta of 397~nm light by ions with a velocity vector
+    antiparallel photon k-vector. After this absorption, the ion will be in the
+    excited $4P_{3/2}$ state and spontaneously decay to either the $4S_{1/2}$,
+    or the $3D_{3/2}$ emitting a photon of either 397~nm or of 866~nm
+    respectively into a random direction. These two decay paths have a branching
+    ratio of XX.  As we desire many photon kicks to cool our ions, we repump the
+    electron out of this metastable $3D_{3/2}$ level by applying an on resonant
+    866~nm beam.  The absorption and sequential emission of this 397~nm photon
+    will lead to a net reduction in the motional energy of the ion if the photon
+    is emitted at a higher energy than when absorbed. The equilibrium
+    temperature is given by the condition where the doppler cooling rate is
+    equal to photon recoil heating of the ion. Assuming a Lorentzian absorption
+    profile, the minimum temperature is given by,
     \begin{equation}
-    \Gamma_{Doppler} =
-        \frac{\hbar k^2}{2 m \gamma}
+    T_{Doppler} \approx \frac{\hbar\gamma}{2k_B}
     \end{equation}
-    where $\hbar$ is the reduced Planck constant, $k$ is the wavevector of the
-    light, $m$ is the mass of the ion, and $\gamma$ is the natural linewidth of the transition.
-    
-    , and then use pulses sideband cooling to prepare the ground
-    state.
+    where $\hbar$ is the reduced Planck constant, $\gamma$ is the natural
+    linewidth of the transition, and $k_B$ is Boltzmann's constant.\\ For
+    $^{40}$Ca$^+$, the natural linewidth of the 397|nm transition is $\gamma =
+    2\pi 21$~MHz, leading to a Doppler temperature of approximately 0.5~mK.
+    %[ref NIST https://www.physics.nist.gov/PhysRefData/Handbook/Tables/calciumtable4.htm] 
 
 
 \subsection{Heating Rates}
