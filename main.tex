@@ -115,6 +115,7 @@
 \subsection{Rabi and Ramsey Scans}
     % Mention changing polarisation to select certain transitions
     Here we briefly describe the method in which we extract Rabi frequencies and single qubit gate durations.
+    % 1 mW 729~nm laser -> Fit out pi/2, pi, 2pi pulses. We are using square pulses.
 
 \subsection{Extracting Laser Offset and Magnetic Field}
 
@@ -148,7 +149,7 @@
     factor of XX, which is XXconsisitent with the expected attenuation factor of
     the mu-metal shielding.\\
     With the shiedling in place, we compare the coherence times of the
-    $4S_{-1/2} \leftrightarrow 3D_{-5/2}$ with fibre noise cancellation (see
+    $4S_{1/2}, m_j = -1/2 \leftrightarrow 3D_{5/2}, m_j = -5/2$ with fibre noise cancellation (see
     section~\ref{sec:Narrow Line Width 729 Laser}) and without, figure~\ref{fig:coherence_times}. We find that the
     coherence time is improved by a factor of XX, with FNC enabled. Our current
     spin coherence time of XX~ms is limited by the laser phase noise, and we
@@ -161,8 +162,42 @@
     % State preparation via optical pumping
     % Readout characterisation with NA 0.6 lens
     % Compare readout histograms of fast 30 us readout to Doppler cold 100 us readout
-
-\subsection{Single Qubit Gates}
+    To utilise two levels of the ion as a qubit, we need to be able to
+    selectively prepare the ion into one of the Zeeman levels of the ground
+    state. As mentioned in section~\ref{sec:Magnetic Field}, we are operating at
+    a low magnetic field of 5~G, leading to a splitting between the Zeeman
+    levels of less than 21~MHz, the natural linewidth of the 397~nm transition.
+    This means we cannot optically pump using 397~nm frequency selectivity.
+    Further, due to the constraint of beam geometry from the in vacuum optics,
+    we can not use polarisation selectivity of the 397~nm transition. Instead,
+    we use the narrow line width 729~nm laser on resonance with the $4S_{1/2},
+    m_j = +1/2 \leftrightarrow 3D_{5/2}, m_j = -3/2$ transition, and the 854~nm
+    deshelving laser on resonance, to optically pump into the $m_j = -1/2$
+    Zeeman level we define as our qubit ground state. \\
+    To measure the qubit state of the ion, we apply the 397~nm and 866~nm lasers
+    and count 397~nm photons scattered. From the level diagram shown in
+    figure~\ref{fig:level_diagram}, we can see that upon turning on the 397~nm
+    laser, if we are in $|0\rangle$, photons will be scattered, and if we are in
+    $|1\rangle$, then no photons will be scattered. To optimise the fidelity of
+    measurement we ensure that the signal is discernible with low error from any
+    background counts on the camera. In general, improving the number of signal
+    counts can be achieved by tuning the 397~nm laser near to the transition
+    resonance, by increasing the readout duration, or by increasing the
+    percentage of scattered photons captured by the imaging system. Practically
+    we desire that the readout step does not heat the motion of the ion and so
+    we red detune the 397~nm laser to a similar setting as for Doppler cooling
+    (see section~\ref{sec:Cooling}). The parameters we use for readout are
+    summarised in table~\ref{tab:readout_parameters}, and a typical histogram of
+    readout counts for one and two ions can be seen in
+    figure~\ref{fig:readout_histogram}. We find that the readout fidelity is
+    XXX.\\
+    To measure the effect of state preparation and measurement error on longer
+    experimental sequences, we will discuss randomised benchmarking in
+    section~\ref{sec:Randomised Benchmarking}. Due to the relevance here, we
+    quote the measured state-preparation and measurement error (SPAM) of XXX.\\
+    
+\subsection{Randomised Benchmarking}
+\label{sec:Randomised Benchmarking}
     % Calibrating gate times
     % Randomised bench marking of single qubit gates
 
