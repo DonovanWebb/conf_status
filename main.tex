@@ -13,26 +13,25 @@
 % ------------------------------------------------------------------------
 
 \chapter{Ion Trap Apparatus}
+    A vast effort is spent on the initial build-up of the an ion trap system, but
+    throughout the life of the experiment, a greater effort is spent on its daily
+    maintenance.  I hope that this chapter will serve as a resource for future
+    members of the FastGates team, as well as provide a useful recipe for anyone
+    building a similar system. \\
 
-A vast effort is spent on the initial build-up of the an ion trap system, but
-throughout the life of the experiment, a greater effort is spent on its daily
-maintenance.  I hope that this chapter will serve as a resource for future
-members of the FastGates team, as well as provide a useful recipe for anyone
-building a similar system. \\
-
-Due to the size and complexity of the system, we introduce an inital overview of
-the design, motivated by the desired functions.  As the name suggests, an ion
-trap experiment aims to confine arrays of single ions, this is achieved by
-static and dynamic electric fields which, due to the ions possesing non-zero
-electric charge, can provide trapping potentials, section~\ref{sec:The Ion
-Trap}. Due to the fragility of the internal states of the ion (these are state
-of the art sensors after all), we must take great care in isolating the ion from
-any noisy environment. This neccesitates the use of ultra-high vacuum (UHV)
-systems, section~\ref{sec:Vacuum System}, vibration isolation, and magnetic
-shielding, section~\ref{sec:Magnetic Field}. To manipulate the internal electronic states of the ion, we create
-local electric and magnetic fields using RF antennae and, in this work, lasers,
-sections~\ref{sec:Laser systems} and~\ref{sec:Narrow Line Width 729 Laser}.
-Finally, to interface with the apparatus we have built, at the time scales set by our interaction strengths, we require a sophisticated and custom control system which is discussed in section~\ref{sec:Sinara Hardware}.
+    Due to the size and complexity of the system, we introduce an inital overview of
+    the design, motivated by the desired functions.  As the name suggests, an ion
+    trap experiment aims to confine arrays of single ions, this is achieved by
+    static and dynamic electric fields which, due to the ions possesing non-zero
+    electric charge, can provide trapping potentials, section~\ref{sec:The Ion
+    Trap}. Due to the fragility of the internal states of the ion (these are state
+    of the art sensors after all), we must take great care in isolating the ion from
+    any noisy environment. This neccesitates the use of ultra-high vacuum (UHV)
+    systems, section~\ref{sec:Vacuum System}, vibration isolation, and magnetic
+    shielding, section~\ref{sec:Magnetic Field}. To manipulate the internal electronic states of the ion, we create
+    local electric and magnetic fields using RF antennae and, in this work, lasers,
+    sections~\ref{sec:Laser systems} and~\ref{sec:Narrow Line Width 729 Laser}.
+    Finally, to interface with the apparatus we have built, at the time scales set by our interaction strengths, we require a sophisticated and custom control system which is discussed in section~\ref{sec:Sinara Hardware}.
 
 \section{System Design}
 \label{sec:System Design}
@@ -100,24 +99,63 @@ Finally, to interface with the apparatus we have built, at the time scales set b
 
 \chapter{Experiment Characterisation}
 
-Before we can dive into running novel experiments involving the motion and spin
-of the atoms, we need to characterise our apparatus. This allows us to both
-benchmark our system against state of the art results, and to reveal any
-current limitations of the apparatus which we may need to address.
+    Before we can dive into running novel experiments involving the motion and spin
+    of the atoms, we need to characterise our apparatus. This allows us to both
+    benchmark our system against state of the art results, and to reveal any
+    current limitations of the apparatus which we may need to address.
 
 \section{Available Transitions}
 \label{sec:Transitions}
 % figures for section
     % All visible motional modes on large detuning scan at $5$~G. Can compare when have all quadrupole transitions available or when we selectively omit transitions via polarisation.
-\subsection{Extracting Laser Offset and Magnetic Field}
 
 \section{Spin}
 \label{sec:Spin}
 
 \subsection{Rabi and Ramsey Scans}
     % Mention changing polarisation to select certain transitions
+    Here we briefly describe the method in which we extract Rabi frequencies and single qubit gate durations.
+
+\subsection{Extracting Laser Offset and Magnetic Field}
 
 \subsection{Spin Coherence Times}
+    Individual gate fidelities are ultimately limited by loss of coherences of
+    the two qubit states due to either dephasing or by the natural lifetime of the upper level. By our choice of ion and qubit levels, defined between
+    the ground $4S_{1/2}$ state and the metastable $3D_{5/2}$ state, we can
+    expect a lifetime limited coherence time of $\tau = 1.1$~s~\cite{}. 
+    %Barton, P. A. et al. Measurement of the lifetime of the 3d 2D5/2 state in
+    %40Ca+.Physical Review A 62, 032503 (2000).
+    In practise, mainly due to imperfect tracking of laser frequency and
+    magnetic field drifts (as mentioned above), we see coherence times dominated
+    by dephasing. To discern between these two noise sources, we may exploit the
+    fact that we have multiple Zeeman levels within our $3D_{5/2}$ state with
+    varying magnetic field sensitivities. We also have the ability to define our
+    qubit on the Zeeman split ground state, which decouples dephasing due to the
+    laser from measured coherence times. We perform Ramsey scans with varying
+    mid-sequence delay durations to extract the coherence times, an example of
+    which can be seen in figure~\ref{fig:coherence_times}. In characterising the
+    spin coherence times, we hope to explore both the efficacy of the magnetic
+    shielding surrounding the ion trap, as well as the stability of the 729~nm
+    laser. \\
+    Figure~\ref{fig:coherence_times} shows how the magnetic shielding effect
+    coherence times of three transitions, XX, YY and ZZ, with magnetic field
+    sensitivities of XX, YY and ZZ respectively.  From this we find that without
+    the shielding, we are strongly limited by external magnetic field noise, and
+    with full sheilding we suppress this noise to where we are dominated by
+    laser phase noise. To find the factor by which the magnetic field noise is
+    attenuated, we can compare the coherence times of the laser phase
+    insensitive transition with and without the box. We find an attenuation
+    factor of XX, which is XXconsisitent with the expected attenuation factor of
+    the mu-metal shielding.\\
+    With the shiedling in place, we compare the coherence times of the
+    $4S_{-1/2} \leftrightarrow 3D_{-5/2}$ with fibre noise cancellation (see
+    section~\ref{sec:Narrow Line Width 729 Laser}) and without, figure~\ref{fig:coherence_times}. We find that the
+    coherence time is improved by a factor of XX, with FNC enabled. Our current
+    spin coherence time of XX~ms is limited by the laser phase noise, and we
+    expect to be able to push this to [ref R. Oswald] by improving the laser PDH
+    stability. However, for the immediate planned experiments (see
+    section~\ref{Outlook}), these improvements will be a low priority due to
+    other likely dominating error sources in the motion of our ions.\\
 
 \subsection{State Preparation and Measurement}
     % State preparation via optical pumping
@@ -150,9 +188,11 @@ current limitations of the apparatus which we may need to address.
     and the PI laser momenta kicks*). We first doppler cool our ions, and then
     subsequently sideband cool them. We give a brief description of these two
     cooling processes here.\\
+
+    \subsubsection{Doppler Cooling}
     Doppler cooling exploits the fact that incident light onto a moving ion will
     appear frequency shifted in the rest frame of the ion. For Doppler cooling
-    of $^40$Ca$^+$, we apply both the 397~nm and 866~nm lasers. We initially red
+    of $^{40}$Ca$^+$, we apply both the 397~nm and 866~nm lasers. We initially red
     detune the 397~nm laser by around 100~MHz. This results in the preferential
     absorption of a quanta of 397~nm light by ions with a velocity vector
     antiparallel photon k-vector. After this absorption, the ion will be in the
@@ -168,16 +208,81 @@ current limitations of the apparatus which we may need to address.
     equal to photon recoil heating of the ion. Assuming a Lorentzian absorption
     profile, the minimum temperature is given by,
     \begin{equation}
-    T_{Doppler} \approx \frac{\hbar\gamma}{2k_B}
+    T_{Doppler} \approx \frac{\hbar\gamma}{2k_B},
     \end{equation}
     where $\hbar$ is the reduced Planck constant, $\gamma$ is the natural
     linewidth of the transition, and $k_B$ is Boltzmann's constant.\\ For
-    $^{40}$Ca$^+$, the natural linewidth of the 397|nm transition is $\gamma =
-    2\pi 21$~MHz, leading to a Doppler temperature of approximately 0.5~mK.
+    $^{40}$Ca$^+$, the natural linewidth of the 397~nm transition is $\frac{\gamma}{2\pi} =
+    21$~MHz, leading to a Doppler temperature of approximately 0.5~mK. Given a radial mode frequency of $\frac{\omega}{2\pi} = 4$~MHz, and the mean occupation number of the oscillator being given by,
     %[ref NIST https://www.physics.nist.gov/PhysRefData/Handbook/Tables/calciumtable4.htm] 
+    \begin{equation}
+        \bar{n} = \frac{1}{e^{\hbar\omega/k_B T}-1},
+    \end{equation}
+    we find the final thermal distribution to have an expected Fock state of $\bar{n} = 2.3$.
+    Using parameters summarised in table~\ref{tab:cooling_parameters}, we find practically the final temperature after Doppler cooling to be around XXX~mK.\\
 
+    \subsubsection{Sideband Cooling}
+
+    To further cool the ions toward their motional ground state, we use resolved
+    sideband cooling. The motion of the ion, described by a harmonic oscillator,
+    modulates the transition frequencies of the ion, leading to sidebands at
+    multiples of the motional frequency. For the $4S_{1/2} \leftrightarrow
+    3D_{5/2}$ transition, at appropriate laser intensity and motional mode
+    frequencies, these sidebands can be resolved spectroscopically. The pulsed
+    sideband technique we employ consists of red sideband pulses, followed by
+    deshelving, and repumping pulses on the 854~nm and 866~nm transitions
+    respectively. An example pulse sequence can be seen in
+    figure~\ref{fig:sideband_cooling_sequence}, and experimental parameters we use are summarised in table~\ref{tab:cooling_parameters}.\\
+    To verify the efficacy of our sideband cooling, we perform thermometry
+    experiments by driving on resonance red sideband (RSB) and pi-RSB-pi pulse
+    sequences. We record the time dynamics of population flopping as we vary RSB
+    pulse length. In the case of Fock state zero, we expect to see a strong
+    signal on the RSB, and no signal on the pi-RSB-pi pulses. We fit a thermal
+    Fock state distribution (with truncation at Fock state = 100) to these
+    signals to extract the mean occupation number, and $\eta\Omega$, the carrier
+    Rabi frequency multiplied by the Lamb-Dicke parameter. A typical thermometry
+    scan after Doppler and sideband cooling can be seen in
+    figure~\ref{fig:sideband_cooling_results}. We find that the mean occupation
+    number after sideband cooling is $\bar{n} = 0.03()$, and $\eta\Omega =
+    XX$~MHz.\\
+    Optimisation of the cooling parameters can be roughly performed by fitting
+    temperature while scanning RSB pi-pulse durations, total number of pulses,
+    repumping and deshelving times. One can optimise for minimum temperature,
+    however it is also important to optimise for total cooling duration. For
+    single ion, single mode experiments, this duration is often a non-issue,
+    however for multi-ion crystals, any interaction involving the motion, may
+    require the sequential sideband cooling of multiple motional modes. This can
+    not be easily parallalised due to the requirement that the RSB pi-pulse is
+    performed near resonance to one of the motional sidebands. This sequential
+    cooling strategy can be either limiting when heating and cooling rates are
+    comparable, or in the best case, painful due to long data collection times.\\
+    To mitigate this issue, other sub-Doppler cooling techniques with larger
+    accepted frequency bandwidths may be employed. Examples are dark-resonance
+    cooling[], and electromagnetically induced transparency (EIT) cooling[], and
+    Sisyphus cooling[]. These techniques are not yet implemented in our system,
+    but will be likely additions once we move to larger ion crystals.\\
 
 \subsection{Heating Rates}
+    As mentioned, the cooling of our ions is only relevant if we have acceptable
+    heating rates. Heating of the motion is predominantly caused by the ion trap
+    itself. This can be due to imperfections in the surface of exposed
+    dielectric and metals causing stray fields, or can be due to noise on the DC
+    and RF drive voltages[]. Noise due to the surface of the trap can be
+    mitigated by increasing ion-electrode distances, or by using traps with
+    smaller surface area direclty exposed to the ion. In our case, as mentioned
+    in sections~\ref{sec:The Ion Trap}, the NPL trap has an electrode ion
+    distance somewhat larger than most surface traps, but less than that of a
+    macroscope blade or rod style trap. To verify the heating rate of our
+    system, we performed a series of thermometry scans whilst varying some delay
+    time between cooling and thermometry pulses. A typical plot can be seen in
+    figure~\ref{fig:heating_rate}. We find that the heating rate of our system
+    is approximately $30$XX quanta per second on the upper radial 4~MHz mode on
+    one ion.\\
+    It is expected that the heating rate will be larger for lower frequency
+    motional modes if we assume uniform electric field noise. We also verify
+    this by looking at heating rate on the radial mode while varying the axial
+    mode frequency. This is a useful diagnostic to check for unexpected heating
+    at certain frequencies, perhaps due to RF noise in the lab. We find....\\
 
 \subsection{Motional Coherence Times}
 
