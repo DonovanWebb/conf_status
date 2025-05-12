@@ -330,7 +330,42 @@
 
 \section{Spin-Dependent Forces}
 \label{sec:Spin-Dependent Forces}
+    The spin-dependent force (SDF) is (planned to be) heavily used throughout
+    this thesis. We use the Mølmer-Sørensen (MS) scheme~\cite{}, to generate the
+    SDF via a bichromatic laser field. Bichromatic refers to the simultaneous
+    application of two tones symmetrically detuned around the qubit carrier
+    frequency, with absolute detuning approximately equal to the motional mode
+    frequency, $\delta \approx \omega_{m}$. The resulting interaction, when
+    ignoring off resonant and higher order couplings, is given by,
+    \begin{equation}
+        \hat{H}_{MS} = \hbar \eta\Omega~\hat{\sigma}_\phi\cos(\delta t) \left( a e^{-i\omega_{m} t} + a^\dagger e^{i\omega_{m} t} \right),
+    \end{equation}
+    where $\eta$ is the Lamb-Dicke parameter, $\Omega$ is the carrier Rabi
+    frequency, $a(a^\dagger)$ is the lowering (raising) operator, and
+    $\sigma_\phi$ is the Pauli operator with $\phi$ being in the $x,~y~$-plane.
+    Applying the rotating wave approximation, and defining $\delta_g = \delta -
+    \omega_{m}$, we find that the interaction Hamiltonian can be approximated
+    to,
+    \begin{equation}
+        \hat{H}_{MS} = \frac{\hbar \eta\Omega}{2}~\hat{\sigma}_\phi \left( a e^{-i\delta_g t} + a^\dagger e^{i\delta_g t} \right).
+    \end{equation}
+    The SDF realises a displacement of the motional state in phase space. We may
+    control the trajectory of this displacement by varying $\delta_g$: on
+    resonance, $\delta_g = 0$, we see linear trajectories, whilst off resonance,
+    $\delta_g \neq 0$, we see cyclic trajectories where after some time $t =
+    2\pi/\delta_g$, the motion returns to the initial state. We shall exploit
+    this control in both the two-qubit entangling gate experiments, as well as
+    in the creation of squeezed states.\\
+
 \subsection{Calibrating the SDF}
+    The MS interaction is widely used in ion trap experiments due to it being robust against varying intial motional states, and to the effects of heating during the pulse sequence. However, in our use case, the SDF is sensitive to miscalibration of the central qubit frequency, the balancing of power in the two tones, and to motional mode drifts. The first two miscalibrations appear as the SDF having..
+    % Here describe what error sources "look like"
+    % Describe detuning and duration scans
+    We use both ``detuning'' and ``duration'' scans to calibrate the SDF. The
+    ``detuning'' scan is performed by varying the detuning, $delta_g$, of the interaction, whilst the keeping the SDF duration constant, whilst the ``duration'' scan keeps detuning constant and varies the SDF duration.
+    % Describe how we can detect these errors via the above strategy. Refer to OB thesis.
+    % Fit an SDF with the errors?
+
 \section{Two-Qubit Entangling Gates}
 \label{sec:Two-Qubit Entangling Gates}
 \subsection{Collective Motion of Two Ions}
