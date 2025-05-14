@@ -158,5 +158,7 @@ ax1.bar(
     width=0.5,
     alpha=0.7,
 )
+ax1.set_xlabel("Fock state")
+ax1.set_ylabel("Probability")
 # ax1.set_yscale("log")
 plt.savefig("fock_state_distribution.pdf")
