@@ -4,6 +4,9 @@ Graph style settings for matplotlib figures.
 
 import matplotlib.pyplot as plt
 import numpy as np
+from oitg.results import load_result
+from oitg import uncertainty_to_string
+from oitg.fitting import sinusoid, exponential_decay, gaussian
 
 
 def set_graph_style():
@@ -33,6 +36,37 @@ def set_graph_style():
         }
     )
 
+
+def load_data(rid, date):
+    f = load_result(day=date, rid=rid, experiment="fastgates")
+    return f
+
+
+def get_contrasts(f, rid):
+    axis0 = np.array(f["datasets"][f"ndscan.rid_{rid}.points.axis_0"])
+    contrast = np.array(
+        f["datasets"][f"ndscan.rid_{rid}.points.channel_scan_ion_phase_contrast"]
+    )
+    contrast_err = np.array(
+        f["datasets"][f"ndscan.rid_{rid}.points.channel_scan_ion_phase_contrast_err"]
+    )
+    return axis0 * 1e6, contrast, contrast_err
+
+
+############### Fit types ###############
+def gaussian_func(x, a, sigma):
+    return a * np.exp(-((x) ** 2) / (sigma**2))
+
+
+def exp_func(x, a, sigma):
+    return a * np.exp(-(x) / (sigma))
+
+
+def linear_func(x, a, b):
+    return a * x + b
+
+
+#########################################
 
 if __name__ == "__main__":
     # Example usage
