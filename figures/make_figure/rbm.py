@@ -88,6 +88,7 @@ plt.hist(
 )
 plt.xlabel("Sequence Fidelity")
 plt.ylabel("Occurrence")
+plt.savefig("rbm100hist.png")
 
 
 plt.figure("rbm")
@@ -103,6 +104,6 @@ print("SPAM error std: ", (fit_errs[0]))
 
 plt.errorbar(num_cliff, survivals, yerr=survivals_err, fmt="o")
 plt.plot(num_cliff, rbm_fit(num_cliff, popt[0], popt[1]), label="RBM fit")
-plt.xlabel("Number of Cliffords")
-plt.ylabel("Average Sequence Fidelity")
-plt.show()
+plt.xlabel("Number of Cliffords / $m$")
+plt.ylabel("Average Sequence Fidelity / $F(m)$")
+plt.savefig("rbm_fit.png")

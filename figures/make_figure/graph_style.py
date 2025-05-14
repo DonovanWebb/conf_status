@@ -18,14 +18,15 @@ def set_graph_style():
     plt.style.use("seaborn-v0_8-muted")
     plt.rcParams.update(
         {
-            "font.size": 12,
-            "axes.titlesize": 12,
-            "axes.labelsize": 9,
-            "xtick.labelsize": 10,
-            "ytick.labelsize": 10,
-            "legend.fontsize": 10,
-            "figure.titlesize": 16,
+            "font.size": 9,
+            "axes.titlesize": 9,
+            "axes.labelsize": 7,
+            "xtick.labelsize": 7,
+            "ytick.labelsize": 7,
+            "legend.fontsize": 9,
+            "figure.titlesize": 12,
             "figure.figsize": (fig_width, fig_height),
+            "figure.autolayout": True,
             "lines.linewidth": 2.5,
             "lines.markersize": 5,
             "lines.linestyle": "--",
