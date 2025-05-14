@@ -9,11 +9,27 @@ from oitg import uncertainty_to_string
 from oitg.fitting import sinusoid, exponential_decay, gaussian
 
 
-def set_graph_style():
+def get_fig_width():
+    """
+    Get the figure width in inches.
+    """
     line_width_pt = 246  # latex linewidth in points
     line_width_in = 1 / 72 * line_width_pt  # latex linewidth in points
     fig_width = 0.95 * line_width_in
-    phi = (1 + 5**0.5) / 2  # golden ratio
+    return fig_width
+
+
+def get_phi():
+    """
+    Get the golden ratio.
+    """
+    phi = (1 + 5**0.5) / 2
+    return phi
+
+
+def set_graph_style():
+    fig_width = get_fig_width()
+    phi = get_phi()
     fig_height = fig_width / phi
     plt.style.use("seaborn-v0_8-muted")
     plt.rcParams.update(
