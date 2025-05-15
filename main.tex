@@ -409,6 +409,16 @@
     ``detuning'' scan is performed by varying the detuning, $delta_g$, of the interaction, whilst the keeping the SDF duration constant, whilst the ``duration'' scan keeps detuning constant and varies the SDF duration.
     % Describe how we can detect these errors via the above strategy. Refer to OB thesis.
     % Fit an SDF with the errors?
+    Duration scan fit given by,
+    \begin{equation}
+        P_{\downarrow,\mathrm{th}} = \frac{1}{2} \left[ 1 + e^{-4\left( \bar{n} + \frac{1}{2} \right) |\alpha(t)|^2} \right],
+    \end{equation}
+    from Burd thesis, equation 3.30.
+    $|\alpha(t)| = \Omega_{sdf} t/2$, fit find $\Omega_{SDF} = 2\pi\times 6.6(2)$~kHz, fitted with $\bar{n} = 0.03$
+    Fitting detuning scan using
+    $|\alpha(t)| = \Omega_{sdf} \sin(\delta t/2)/\delta$, find $\Omega_{SDF} = 2\pi\times 6.3(2)$~kHz, fitted with $\bar{n} = 0.03$.
+
+
 
 \section{Two-Qubit Entangling Gates}
 \label{sec:Two-Qubit Entangling Gates}
