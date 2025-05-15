@@ -115,6 +115,12 @@
 \subsection{Rabi and Ramsey Scans}
     % Mention changing polarisation to select certain transitions
     Here we briefly describe the method in which we extract Rabi frequencies and single qubit gate durations.
+    Long Rabi flop (100 us), fit out carrier frequency of 2*pi*0.0716(1) MHz and
+    Decay rate of $0.0107(7)$ 1 / us. See long flop. This is 1 mW of power on m1\_m3
+    transition before we changed polarization. Fit with decaying cos function 
+    \begin{equation}
+        \frac{1 + e^{-\lambda t} \cos(2 \Omega t)}{2},
+    \end{equation}
     % 1 mW 729~nm laser -> Fit out pi/2, pi, 2pi pulses. We are using square pulses.
 
 \subsection{Extracting Laser Offset and Magnetic Field}
