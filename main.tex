@@ -5,7 +5,18 @@
 
 % ------------------------------------------------------------------------
 
-\chapter{Introduction}
+%\begin{figure}
+    %\begin{center}
+    %\noindent\includegraphics[width=\linewidth]{
+        %figures/pdf_figure/.pdf
+        %}
+    %\end{center}
+    %\caption{
+        %}
+    %\label{fig:Long Flop}
+%\end{figure}
+
+%\chapter{Introduction}
 
 % Here I would like a brief motivation for the work.
 % Perhaps also a bit of theory goes here?
@@ -40,11 +51,38 @@
     % Calcium level structure 
     % Solidworks models
 
+    \begin{figure}[ht]
+    \begin{center}
+    \noindent\includegraphics[width=0.4\linewidth]{figures/pdf_figure/Ca40.pdf}
+    \end{center}
+    \caption{
+    Electronic energy levels of \textsuperscript{40}Ca\textsuperscript{+},
+    which will be used in this thesis. The levels are
+    split by the Zeeman effect due to a $5$~G external magnetic field (they are shown explicitely only for the ground state). The
+    transitions marked are required for cooling and control over the
+    ion. We shall use the optical-qubit with a quadrupole transition at
+    729-nm. XXX TODO: Add zeeman levels for D5/2.
+    }
+
+  \label{fig:ion}
+\end{figure}
+
 \section{The Ion Trap}
 \label{sec:The Ion Trap}
 % This first section should be an overview of what we need for ion trapping, the NPL trap geometry. Then in RF and DC sections we have the experimental parameters.
 % figures for section
     % NPL trap with relevant size scales
+    \begin{figure}
+    \begin{center}
+    \noindent\includegraphics[width=\linewidth]{figures/png_figure/trap_comp.png}
+    \end{center}
+    \caption{\textbf{a)} XX Place holder figure. \textbf{b)} The NPL trap in use in this thesis. This is a microfabricated,
+    segmented, multilayer trap. \textbf{c)} A cross sectional view of
+    the NPL trap showing the RF and DC electrode positions.  Figures
+    from~\cite{choonee_silicon_2017}.
+    \label{fig:trap}}
+    \end{figure}
+
     To create trapping potentials we use linear Paul traps, a schematic of such
     is shown in Figure~\ref{fig:trap}~(a). As explained by Earnshaw's theorem,
     $(\nabla^2 V = 0),$ a stable stationary point in 3D can not be realized
@@ -123,12 +161,43 @@
     % Technical drawing of beam geometries and magnetic field to ion chain.
     % Drawing of ion trap package with high NA lenses
     % Standing waves at the ion
+
+\begin{figure}
+  \begin{center}
+   \noindent\includegraphics[width=0.9\linewidth]{figures/pdf_figure/vacuum_can-crop.pdf}
+  \end{center}
+  \caption{
+    \textbf{a)} XXX Place holder figure. A schematic of the vacuum chamber.
+    Wavelengths apart from 729-nm enter through the side CF40 viewports and are
+    directed onto the ions by in vacuum prisms. The 729-nm light enters through
+    the larger CF100 viewports.  \textbf{b)} A photograph of the assembled
+    system prior to baking.
+  }
+  \label{fig:can}
+\end{figure}
+
 \subsection{Vacuum System}
 \subsection{Atomic Source Oven}
 \subsection{Optical Access}
 \subsubsection{Beam Paths}
 \subsubsection{In Vacuum Prisms}
 \subsubsection{Dual High NA Objectives}
+
+\begin{figure}
+  \begin{center}
+   \noindent\includegraphics[width=\linewidth]{figures/pdf_figure/vac_can_AOD_small.pdf}
+  \end{center}
+  \caption{XXX Place holder figure. The standing wave single addressing system. Dual high NA
+    objectives focus the light to a tight waist at the ions
+    location. AODs are used to steer the light to only selected
+    ions. The left hand side of the figure shows the Gaussian profile
+    of the light, whilst the right hand side shows a ray
+    representation of how two singly addressing spots are formed at
+    the ions. L1 is a telecentric scanning lens and in combination
+    with L2 form a beam expander.}
+  \label{fig:AOD}
+\end{figure}
+
 \subsection{Imaging System}
 
 \section{Magnetic Field}
@@ -191,6 +260,26 @@
     with our ion via composite pulse experiments, however it is currently not
     expected to be a limiting source of error in any of our desired interactions
     we study.\\
+    \begin{figure}
+    \begin{center}
+    \noindent\includegraphics[width=0.9\linewidth]{figures/pdf_figure/729_path_small.pdf}
+    \end{center}
+    \caption{The 729-nm system. A Ti:Saph laser tuned to 729-nm is
+        pumped by a 532-nm source. Light is picked off at the first beam
+        sampler to stabilise by PDH locking to a cavity.}
+    \label{fig:729}
+    \end{figure}
+    \begin{figure}
+        \begin{center}
+        \noindent\includegraphics[width=\linewidth]{
+            figures/pdf_figure/cavity_drift.pdf
+            }
+        \end{center}
+        \caption{
+            Cavity drift over 125 days. Extracted by reference to ion transition.
+            }
+        \label{fig:Cavity Drift}
+    \end{figure}
     As mentioned, the \emph{Solstis} alone can operate with linewidths of
     $<50kHz$, however we push this further by referencing the Ti:Saph output
     with an ulta high finesse cavity by \emph{Stable Laser Systems} and applying
@@ -269,6 +358,18 @@
 
 \subsection{Rabi and Ramsey Scans}
     % Mention changing polarisation to select certain transitions
+
+    \begin{figure}
+        \begin{center}
+        \noindent\includegraphics[width=\linewidth]{
+            figures/pdf_figure/long_flop.pdf
+            }
+        \end{center}
+        \caption{Long duration Rabi Flop with fitted decaying flop.
+            }
+        \label{fig:Long Flop}
+    \end{figure}
+
     Here we briefly describe the method in which we extract Rabi frequencies and single qubit gate durations.
     Long Rabi flop (100 us), fit out carrier frequency of 2*pi*0.0716(1) MHz and
     Decay rate of $0.0107(7)$ 1 / us. See long flop. This is 1 mW of power on m1\_m3
@@ -363,6 +464,19 @@
 \label{sec:Randomised Benchmarking}
     % Calibrating gate times
     % Randomised bench marking of single qubit gates
+
+    \begin{figure}
+        \begin{center}
+        \noindent\includegraphics[width=\linewidth]{
+            figures/pdf_figure/rbm_fit.pdf
+            }
+        \end{center}
+        \caption{
+            RBM fit
+            }
+        \label{fig:rbm}
+    \end{figure}
+
     High fidelity unitary operations (gates) are essential for both near
     intermediate scale quantum computing and for reducing overheads in required
     physical qubits and operations in fault-tolerant
@@ -415,6 +529,17 @@
 \subsection{Finding Motional Mode Frequencies}
 
 \subsection{Motional Mode Stability}
+    \begin{figure}
+        \begin{center}
+        \noindent\includegraphics[width=\linewidth]{
+            figures/pdf_figure/mode_drift.pdf
+            }
+        \end{center}
+        \caption{
+            Motional mode frequency drift.
+            }
+        \label{fig:mode drift}
+    \end{figure}
 
 \subsection{Cooling}
 \label{sec:Cooling}
@@ -465,6 +590,31 @@
 
     \subsubsection{Sideband Cooling}
 
+    \begin{figure}
+        \begin{center}
+        \noindent\includegraphics[width=\linewidth]{
+            figures/pdf_figure/sideband_thermometry.pdf
+            }
+        \end{center}
+        \caption{
+            Thermometry after sideband cooling.
+            }
+        \label{fig:SBC}
+    \end{figure}
+
+    \begin{figure}
+        \begin{center}
+        \noindent\includegraphics[width=\linewidth]{
+            figures/pdf_figure/fock_state_distribution.pdf
+            }
+        \end{center}
+        \caption{
+            Fock state distribution
+            }
+        \label{fig:fock state}
+    \end{figure}
+
+
     To further cool the ions toward their motional ground state, we use resolved
     sideband cooling. The motion of the ion, described by a harmonic oscillator,
     modulates the transition frequencies of the ion, leading to sidebands at
@@ -506,6 +656,18 @@
 
 \subsection{Heating Rates}
 \label{sec:Heating}
+    \begin{figure}
+        \begin{center}
+        \noindent\includegraphics[width=\linewidth]{
+            figures/pdf_figure/heating_rate.pdf
+            }
+        \end{center}
+        \caption{
+            Heating rates of upper radial mode.
+            }
+        \label{fig:heating rates}
+    \end{figure}
+
     As mentioned, the cooling of our ions is only relevant if we have acceptable
     heating rates. Heating of the motion is predominantly caused by the ion trap
     itself. This can be due to imperfections in the surface of exposed
@@ -538,6 +700,17 @@
 
 \section{Spin-Dependent Forces}
 \label{sec:Spin-Dependent Forces}
+    \begin{figure}
+        \begin{center}
+        \noindent\includegraphics[width=\linewidth]{
+            figures/pdf_figure/sdf.pdf
+            }
+        \end{center}
+        \caption{
+            SDF traces.
+            }
+        \label{fig:SDF}
+    \end{figure}
     The spin-dependent force (SDF) is (planned to be) heavily used throughout
     this thesis. We use the Mølmer-Sørensen (MS) scheme~\cite{}, to generate the
     SDF via a bichromatic laser field. Bichromatic refers to the simultaneous
@@ -591,6 +764,17 @@
 
 \subsection{Collective Motion of Two Ions}
 \subsection{Mølmer-Sørensen Gate}
+    \begin{figure}
+        \begin{center}
+        \noindent\includegraphics[width=\linewidth]{
+            figures/pdf_figure/ms_gate.pdf
+            }
+        \end{center}
+        \caption{
+            MS Gate.
+            }
+        \label{fig:ms_gate}
+    \end{figure}
 \subsubsection{Theoretical Background to the MS Gate}
 \subsubsection{Experimental Implementation of the MS Gate}
     % Discuss likely limitations being nearby hot motional modes, no pulse ramping
