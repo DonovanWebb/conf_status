@@ -5,6 +5,7 @@
 
 % ------------------------------------------------------------------------
 
+% Figure template
 %\begin{figure}
     %\begin{center}
     %\noindent\includegraphics[width=\linewidth]{
@@ -16,14 +17,27 @@
     %\label{fig:Long Flop}
 %\end{figure}
 
-%\chapter{Introduction}
+\chapter{Motivation}
+% Main points:
+    % High overview of work.
+    % Building a system with spin and motion control.
+    % Here characterisation
+    % But we want to use this experiment for...
+    % E.g. Feynman diagram simulation
 
-% Here I would like a brief motivation for the work.
-% Perhaps also a bit of theory goes here?
 
 % ------------------------------------------------------------------------
 
 \chapter{Ion Trap Apparatus}
+% Main points:
+    % Give a working overview of the apparatus.
+    % The desired audience here is 
+        %   i) Future members of FastGates, 
+        %  ii) Anyone building a similar experiment, 
+        % iii) Readers of other chapters who want technical detail of the apparatus.
+% Pre reqs:
+    % Motivation for why we want this apparatus!
+
     A vast effort is spent on the initial build-up of the an ion trap system, but
     throughout the life of the experiment, a greater effort is spent on its daily
     maintenance.  I hope that this chapter will serve as a resource for future
@@ -46,41 +60,56 @@
 
 \section{System Design}
 \label{sec:System Design}
-% figures for section
+% Main points:
+    % List of unique requirements for the system
+        % Motional control
+        % Single addressing
+        % Standing waves
+    % Solidworks models of CAD with labels
     % Block diagram of the system
     % Calcium level structure 
-    % Solidworks models
+    % Trap package
+    % High NA sandwich
+    % Permanent magnets
+    % MUMetal box
+% Pre reqs:
 
     \begin{figure}[ht]
-    \begin{center}
-    \noindent\includegraphics[width=0.4\linewidth]{figures/pdf_figure/Ca40.pdf}
-    \end{center}
-    \caption{
-    Electronic energy levels of \textsuperscript{40}Ca\textsuperscript{+},
-    which will be used in this thesis. The levels are
-    split by the Zeeman effect due to a $5$~G external magnetic field (they are shown explicitely only for the ground state). The
-    transitions marked are required for cooling and control over the
-    ion. We shall use the optical-qubit with a quadrupole transition at
-    729-nm. XXX TODO: Add zeeman levels for D5/2.
-    }
+        \begin{center}
+        \noindent\includegraphics[width=0.4\linewidth]{figures/pdf_figure/Ca40.pdf}
+        \end{center}
+        \caption{
+        Electronic energy levels of \textsuperscript{40}Ca\textsuperscript{+},
+        which will be used in this thesis. The levels are
+        split by the Zeeman effect due to a $5$~G external magnetic field (they are shown explicitely only for the ground state). The
+        transitions marked are required for cooling and control over the
+        ion. We shall use the optical-qubit with a quadrupole transition at
+        729-nm. XXX TODO: Add zeeman levels for D5/2.
+        }
 
-  \label{fig:ion}
-\end{figure}
+    \label{fig:ion}
+    \end{figure}
 
 \section{The Ion Trap}
 \label{sec:The Ion Trap}
-% This first section should be an overview of what we need for ion trapping, the NPL trap geometry. Then in RF and DC sections we have the experimental parameters.
-% figures for section
-    % NPL trap with relevant size scales
+% Main points:
+    % Introduce the NPL trap chip and its advantages
+    % Short intro into the parts of the ion trap DC/RF fields.
+    % Fastino channels
+    % Experimental parameters for stable trapping
+    % Quote the values we use for trapping/experiment
+% Pre reqs:
+    % Motivation for trapping an ion!
+
     \begin{figure}
-    \begin{center}
-    \noindent\includegraphics[width=\linewidth]{figures/png_figure/trap_comp.png}
-    \end{center}
-    \caption{\textbf{a)} XX Place holder figure. \textbf{b)} The NPL trap in use in this thesis. This is a microfabricated,
-    segmented, multilayer trap. \textbf{c)} A cross sectional view of
-    the NPL trap showing the RF and DC electrode positions.  Figures
-    from~\cite{choonee_silicon_2017}.
-    \label{fig:trap}}
+        \begin{center}
+        \noindent\includegraphics[width=\linewidth]{figures/png_figure/trap_comp.png}
+        \end{center}
+        \caption{\textbf{a)} XX Place holder figure. \textbf{b)} The NPL trap in use in this thesis. This is a microfabricated,
+        segmented, multilayer trap. \textbf{c)} A cross sectional view of
+        the NPL trap showing the RF and DC electrode positions.  Figures
+        from~\cite{choonee_silicon_2017}.
+        \label{fig:trap}}
     \end{figure}
 
     To create trapping potentials we use linear Paul traps, a schematic of such
@@ -116,21 +145,47 @@
     demonstrated heating rates of $ 33(3)$~q/s on a 4~MHz radial mode (see
     section~\ref{sec:Heating}).
 
-    We aim for an axial ion separation of around $5$~$\mu$m which, for $^{40}$Ca$^{+}$ ions means a trapping potential of $\omega_z \approx 2\pi \cdot 1.6$~MHz. This ion separation was chosen to reduce the cross talk between ions when singly addressed (see section~\ref{sec:Single Addressing System}).\\ 
-    We are targeting approximately $5$~MHz for our radial frequencies, as we shall use radial addressing for two-qubit entangling gates. The choice of this higher frequency is motivated by several factors. The Doppler cooling limit ($\overline{n} = \Gamma/\omega$, where $\Gamma$ is the transition linewidth and $\omega$ is the frequency of the cooled mode) inversely scales with the mode frequency. Consequently, higher mode frequencies result in lower temperatures following initial cooling. Additionally, a higher center-of-mass radial mode enables greater frequency separation of radial modes in a multi-ion crystal, which allow for greater selectivity of participating modes. \\ 
-    Using the pseudopotential approximation~\cite{madsen_planar_2004} for the confining field, we can find a trapping frequency in one radial direction $\omega_p$
+    We aim for an axial ion separation of around $5$~$\mu$m which, for
+    $^{40}$Ca$^{+}$ ions means a trapping potential of $\omega_z \approx 2\pi
+    \cdot 1.6$~MHz. This ion separation was chosen to reduce the cross talk
+    between ions when singly addressed (see section~\ref{sec:Single Addressing
+    System}).\\ 
+    We are targeting approximately $5$~MHz for our radial frequencies, as we
+    shall use radial addressing for two-qubit entangling gates. The choice of
+    this higher frequency is motivated by several factors. The Doppler cooling
+    limit ($\overline{n} = \Gamma/\omega$, where $\Gamma$ is the transition
+    linewidth and $\omega$ is the frequency of the cooled mode) inversely scales
+    with the mode frequency. Consequently, higher mode frequencies result in
+    lower temperatures following initial cooling. Additionally, a higher
+    center-of-mass radial mode enables greater frequency separation of radial
+    modes in a multi-ion crystal, which allow for greater selectivity of
+    participating modes. \\ 
+    Using the pseudopotential approximation~\cite{madsen_planar_2004} for the
+    confining field, we can find a trapping frequency in one radial direction
+    $\omega_p$
     \begin{equation}
     \omega_p = \frac{e\alpha V_{RF}}{\sqrt{2}\Omega_{RF}M\rho^2},
     \end{equation}
-    where $\alpha$ is a factor of order unity given by the geometry of the trap, $V_{RF}$ and $\Omega_{RF}$ are the voltage and frequency provided to the RF-electrode, $M$ is the mass of the ion, and $\rho$ is the ion-RF electrode separation.  Applying some DC voltage on the axial electrodes leads to axial confinement with frequency $\omega_{ax}$, but must defocus the radial confinements as the total curvature of the pseudopotential must remain constant,
+    where $\alpha$ is a factor of order unity given by the geometry of the trap,
+    $V_{RF}$ and $\Omega_{RF}$ are the voltage and frequency provided to the
+    RF-electrode, $M$ is the mass of the ion, and $\rho$ is the ion-RF electrode
+    separation.  Applying some DC voltage on the axial electrodes leads to axial
+    confinement with frequency $\omega_{ax}$, but must defocus the radial
+    confinements as the total curvature of the pseudopotential must remain
+    constant,
     \begin{equation}
     \omega_{rad} = \sqrt{\omega_p^2 - \omega_{ax}^2/2}.
     \end{equation}
-    Due to the geometry of the DC electrodes with respect to the ion chain, the \emph{NPL} trap focuses one of the radial modes and defocuses the other when the DC electrodes are increased,
+    Due to the geometry of the DC electrodes with respect to the ion chain, the
+    \emph{NPL} trap focuses one of the radial modes and defocuses the other when
+    the DC electrodes are increased,
     \begin{equation}
     \omega_{rad\pm} = \sqrt{\omega_p^2 - (1\mp\beta)\omega_{ax}^2/2},
     \end{equation}
-    where $\beta$ is some factor due to the geometry of this geometry. From simulation $\beta > 1$ for $\Omega_{RF} = 2\pi\cdot 23$~MHz and $V_{RF} = 200$~V and so one radial mode increases with DC voltage applied and one decreases.
+    where $\beta$ is some factor due to the geometry of this geometry. From
+    simulation $\beta > 1$ for $\Omega_{RF} = 2\pi\cdot 23$~MHz and $V_{RF} =
+    200$~V and so one radial mode increases with DC voltage applied and one
+    decreases.
 
     \begin{table}[h!]
     \begin{center}
@@ -145,22 +200,45 @@
     \end{center}
     \end{table}
 
-    A possible set of parameters to achieve $\omega_{ax} = 2\pi \cdot 1.6$~MHz and $\omega_{rad+} = 2\pi \cdot 4.9$~MHz can be seen in the ``Experiment'' trapping in Table~\ref{table:freqs}.
+    A possible set of parameters to achieve $\omega_{ax} = 2\pi \cdot 1.6$~MHz
+    and $\omega_{rad+} = 2\pi \cdot 4.9$~MHz can be seen in the ``Experiment''
+    trapping in Table~\ref{table:freqs}.
 
-    From the Mathieu equations, the areas of stability depend upon a factor $q$~\cite{berkeland_minimization_1998}, where $q=2\sqrt(2)\omega/\Omega_{RF}$.  Generally, we require $q$ to be as low ($q<0.3$) for convenient trapping.  To satisfy this requirement a ``Loading'' setting (with parameters in table~\ref{table:freqs}) may be used with $q = 0.25$ and then the $V_{RF}$ ramped to the ``Experiment'' trapping for high radial mode frequencies.
+    From the Mathieu equations, the areas of stability depend upon a factor
+    $q$~\cite{berkeland_minimization_1998}, where
+    $q=2\sqrt(2)\omega/\Omega_{RF}$.  Generally, we require $q$ to be as low
+    ($q<0.3$) for convenient trapping.  To satisfy this requirement a
+    ``Loading'' setting (with parameters in table~\ref{table:freqs}) may be used
+    with $q = 0.25$ and then the $V_{RF}$ ramped to the ``Experiment'' trapping
+    for high radial mode frequencies.
 
-% Potentially this lives in characterisation?
 \subsection{Trap RF Chain}
-% Experimental details and measurements
+% Main points:
+    % Maybe a figure describing the elements within the RF chain
+        % Frequency source (Urukul)
+        % Resonator
+        % RF rails
+    % Quote values we use.
+% Pre reqs:
+    % NPL trap geometry
+
 \subsection{Trap DC Voltages}
-% Experimental details and measurements
+% Main points:
+    % Describe Fastino DAC and the available electrodes on the NPL trap
+    % Quote values we use.
+% Pre reqs:
+    % NPL trap geometry
 
 \section{Beam Geometries and Vacuum System}
 \label{sec:Vacuum System}
-% figures for section
+% Main points:
     % Technical drawing of beam geometries and magnetic field to ion chain.
     % Drawing of ion trap package with high NA lenses
     % Standing waves at the ion
+% Pre reqs:
+    % NPL trap
+    % Why we have Dual high NA lenses
+    % Magnetic field giving Zeeman shift
 
 \begin{figure}
   \begin{center}
@@ -177,11 +255,21 @@
 \end{figure}
 
 \subsection{Vacuum System}
-\subsection{Atomic Source Oven}
+% Main points:
+    % List of used parts
+    % What is inside the system and what is its contruction/materials
+    % Operation of ion pump/Ti:Sub
+% Pre reqs:
+
 \subsection{Optical Access}
-\subsubsection{Beam Paths}
-\subsubsection{In Vacuum Prisms}
-\subsubsection{Dual High NA Objectives}
+% Main points:
+    % Dual High NA repeat?
+    % NA for readout
+    % NA for single addressing?
+    % In vacuum prisms spec and design
+% Pre reqs:
+    % Trap package
+    % Vacuum system
 
 \begin{figure}
   \begin{center}
@@ -198,27 +286,27 @@
   \label{fig:AOD}
 \end{figure}
 
-\subsection{Imaging System}
-
-\section{Magnetic Field}
-\label{sec:Magnetic Field}
-
-\section{Laser systems}
+\section{Ca$^+$ Laser Systems}	
 \label{sec:Laser systems}
-% figures for section
+% Main points:
+    % State which lasers we need access to
+    % What frequency control do we need on each? PDH lock, AOM etc.
     % Table of all AOMs and offset frequencies
-    % Table of laser powers in mW and with aimed saturation intensities for doppler idle, cooling, readout
-\subsection{Photoionisation}
-\subsection{Ca$^+$ Laser Systems}	
-\label{sec:Ca+ Laser Systems}
-
-% All frequencies and powers and how we control these. PDH lock, AOM etc.
+    % Table of laser powers in mW and with aimed saturation intensities for doppler idle, cooling, readout, and laser linewidths.
+% Pre reqs:
+    % Calcium level structure
+    % 5 G field
 
 \subsection{Narrow Line Width 729 Laser}
 \label{sec:Narrow Line Width 729 Laser} 
-% figures for section
+% Main points:
+    % What equipment does the 729 consist of.
     % Solstis cavity
     % Beam path and control loops (PDH, FNC)
+    % Frequency shifting, pulse carving via urukul
+    % Amplitude stabilisation with SUServo
+% Pre reqs:
+    % Calcium level structure
 
     Lasers are a key tool for creating the highly localised, strong electric
     field amplitudes and gradients needed to drive both carrier and sideband
@@ -329,15 +417,18 @@
 
 \subsection{Single Addressing System}
 \label{sec:Single Addressing System}
-% figures for section
+% This section is not used in any characterisation - could be left for outlook!
+% Main points:
+    % The advantages of single addressing using AODs
+        % Ion selectivity
+        % High intensity electric field
     % single addressing system creating standing waves
     % render of single addressing system
-
-\section{Sinara Hardware and Artiq}
-\label{sec:Sinara Hardware}
-% figures for section
-    % Table of sinara hardware
-
+% Pre reqs:
+    % 729 system
+    % High NA
+    % Trap package
+    % Motivation for future experiments
 
 % ------------------------------------------------------------------------
 
@@ -348,16 +439,28 @@
     benchmark our system against state of the art results, and to reveal any
     current limitations of the apparatus which we may need to address.
 
-\section{Available Transitions}
+\section{Quadrupole Transitions}
 \label{sec:Transitions}
-% figures for section
-    % All visible motional modes on large detuning scan at $5$~G. Can compare when have all quadrupole transitions available or when we selectively omit transitions via polarisation.
+% Main points:
+    % All visible motional modes on large detuning scan at $5$~G. 
+    % Can compare when have all quadrupole transitions available or when we selectively omit transitions via polarisation.
+% Pre reqs:
+    % 5 G field
 
 \section{Spin}
 \label{sec:Spin}
 
 \subsection{Rabi and Ramsey Scans}
+% Main points:
+    % The ion is a sensor!
+    % Method for Rabi and Ramsey scans
     % Mention changing polarisation to select certain transitions
+    % Long Rabi flop
+    % Likely reason for flop damping
+    % Measuring detuning using Ramsey scan
+% Pre reqs:
+    % 729 system
+    % Available Quadrupole transitions
 
     \begin{figure}
         \begin{center}
@@ -379,11 +482,19 @@
     \end{equation}
     % 1 mW 729~nm laser -> Fit out pi/2, pi, 2pi pulses. We are using square pulses.
 
-\subsection{Extracting Laser Offset and Magnetic Field}
-\label{sec:Laser Offset}
 
 \subsection{Spin Coherence Times}
 \label{sec:Coherence}
+% Main points:
+    % Quote coherence times comparing:
+        % Mumetal box panels
+        % Transitions with diff mag sensitivity
+        % FNC/ no-FNC
+% Pre reqs:
+    % MuMetal box
+    % Available transitions
+    % 729 laser system
+
     Individual gate fidelities are ultimately limited by loss of coherences of
     the two qubit states due to either dephasing or by the natural lifetime of the upper level. By our choice of ion and qubit levels, defined between
     the ground $4S_{1/2}$ state and the metastable $3D_{5/2}$ state, we can
@@ -423,9 +534,17 @@
     other likely dominating error sources in the motion of our ions.\\
 
 \subsection{State Preparation and Measurement}
-    % State preparation via optical pumping
+% Main points:
+    % Method of preparation via optical pumping
     % Readout characterisation with NA 0.6 lens
     % Compare readout histograms of fast 30 us readout to Doppler cold 100 us readout
+    % Quote state prep error (back this from RBM + measurement histograms)
+% Pre reqs:
+    % Laser systems powers
+    % 729 system
+    % Available transitions
+    % pi-pulses
+
     To utilise two levels of the ion as a qubit, we need to be able to
     selectively prepare the ion into one of the Zeeman levels of the ground
     state. As mentioned in section~\ref{sec:Magnetic Field}, we are operating at
@@ -462,8 +581,18 @@
     
 \subsection{Randomised Benchmarking}
 \label{sec:Randomised Benchmarking}
+% Main points:
+    % Here is a characterisation of single qubit gates.
+    % Explain RBM method
+    % Quote values measured
+    % What is likely error source
+    % Are we limited by this error?
+    % What is state of the art (for optical quadrupole transition)
+    % What contribution is the spin coherence time?
+% Pre reqs:
+    % Spin coherence times
+    % Possible transitions
     % Calibrating gate times
-    % Randomised bench marking of single qubit gates
 
     \begin{figure}
         \begin{center}
@@ -518,33 +647,30 @@
     while the SPAM error is $\epsilon_{SPAM} = 1.46(6) \times 10^{-3}$. The decay plot for
     this RBM sequence can be seen in figure~\ref{fig:RBM_decay}. The error bars
     are given by the standard deviation of the survival populations. There are on average 3.50 $\pi/2$ pulses per Clifford, with a typical $\pi/2$ duration of $1.3~\mu$s.\\
-    % Are we limited by this error?
-    % What is state of the art?
-    % What contribution is the spin coherence time?
 
 
 \section{Motion}
 \label{sec:Motion}
-
-\subsection{Finding Motional Mode Frequencies}
-
-\subsection{Motional Mode Stability}
-    \begin{figure}
-        \begin{center}
-        \noindent\includegraphics[width=\linewidth]{
-            figures/pdf_figure/mode_drift.pdf
-            }
-        \end{center}
-        \caption{
-            Motional mode frequency drift.
-            }
-        \label{fig:mode drift}
-    \end{figure}
+% Main points:
+    % Quote characterisation method and values for various motional measurements.
+    % Highlight where we are not yet at the capability we need.
+    % State what improvements we plan to add.
+% Pre reqs:
+    % Motivation for control of motion of ion
+    % Trap RF DC
+    % Laser systems
 
 \subsection{Cooling}
 \label{sec:Cooling}
+% Main points:
+    % Introduce why we want to cool
     % Doppler cooling
     % Sideband cooling
+% Pre reqs:
+    % Motional mode and beam geometry
+    % Laser systems 
+    % Trapping
+
     For any interaction involving the motion of the ion, we require both the
     ability to prepare the motional state with high fidelity, and to
     subsequently measure this motional state to verify correct preparation. For
@@ -556,7 +682,14 @@
     subsequently sideband cool them. We give a brief description of these two
     cooling processes here.\\
 
-    \subsubsection{Doppler Cooling}
+\subsubsection{Doppler Cooling}
+% Main points:
+    % Quote final temperature reached (theory?)
+    % Describe cooling parameters
+% Pre reqs:
+    % Motional mode and beam geometry
+    % Laser systems 
+
     Doppler cooling exploits the fact that incident light onto a moving ion will
     appear frequency shifted in the rest frame of the ion. For Doppler cooling
     of $^{40}$Ca$^+$, we apply both the 397~nm and 866~nm lasers. We initially red
@@ -588,7 +721,15 @@
     we find the final thermal distribution to have an expected Fock state of $\bar{n} = 2.3$.
     Using parameters summarised in table~\ref{tab:cooling_parameters}, we find practically the final temperature after Doppler cooling to be around XXX~mK.\\
 
-    \subsubsection{Sideband Cooling}
+\subsubsection{Sideband Cooling}
+% Main points:
+    % Quote final temperature reached
+    % Describe SBC pulse sequence
+    % We use a closed transition
+% Pre reqs:
+    % Motional mode spectra
+    % Laser systems 
+    % Rabi flopping
 
     \begin{figure}
         \begin{center}
@@ -656,6 +797,14 @@
 
 \subsection{Heating Rates}
 \label{sec:Heating}
+% Main points:
+    % Quote motional heating rates for mode we use (have access to).
+    % Describe heating model?
+% Pre reqs:
+    % Thermometry
+    % Motional modes
+    % Trap
+
     \begin{figure}
         \begin{center}
         \noindent\includegraphics[width=\linewidth]{
@@ -689,17 +838,49 @@
     mode frequency. This is a useful diagnostic to check for unexpected heating
     at certain frequencies, perhaps due to RF noise in the lab. We find....\\
 
-\subsection{Motional Coherence Times}
+\subsection{Motional Mode Stability}
+% Main points:
+    % Quote motional mode drift 
+    % Explain why it is currently drifty
+    % Outline how this will be improved with the squareatron
+% Pre reqs:
+    % Trap
 
-\section{Experimental Control}
-\label{sec:Experimental Control}
-% figures for section
-    % Recrystallisation routines
-    % Autoload routines
-    % Morningly calibrations
+    \begin{figure}
+        \begin{center}
+        \noindent\includegraphics[width=\linewidth]{
+            figures/pdf_figure/mode_drift.pdf
+            }
+        \end{center}
+        \caption{
+            Motional mode frequency drift.
+            }
+        \label{fig:mode drift}
+    \end{figure}
+
+\subsection{Motional Coherence Times}
+% Main points:
+    % Quote measured result for motional coherence time
+    % Give estimate for what times we need for future experiments
+    % Give estimate contributions from motional heating and from mode instability
+    % What fix will we do for improving this - squareatron from prev section, resonator.
+% Pre reqs:
+    % Trap RF
+    % Trap Resonator
+    % Motional mode stability
+    % SBC
 
 \section{Spin-Dependent Forces}
 \label{sec:Spin-Dependent Forces}
+% Main points:
+    % This is a primitive for motional control
+    % This (we will see), is functionally a primitive for two qubit spin entanglement
+    % Show equation as quite key to future work
+% Pre reqs:
+    % Motional mode spectra
+    % 729 system
+    % AOM control of 729
+
     \begin{figure}
         \begin{center}
         \noindent\includegraphics[width=\linewidth]{
@@ -739,13 +920,19 @@
     in the creation of squeezed states.\\
 
 \subsection{Calibrating the SDF}
-    The MS interaction is widely used in ion trap experiments due to it being robust against varying intial motional states, and to the effects of heating during the pulse sequence. However, in our use case, the SDF is sensitive to miscalibration of the central qubit frequency, the balancing of power in the two tones, and to motional mode drifts. The first two miscalibrations appear as the SDF having..
+% Main points:
     % Here describe what error sources "look like"
     % Describe detuning and duration scans
-    We use both ``detuning'' and ``duration'' scans to calibrate the SDF. The
-    ``detuning'' scan is performed by varying the detuning, $delta_g$, of the interaction, whilst the keeping the SDF duration constant, whilst the ``duration'' scan keeps detuning constant and varies the SDF duration.
     % Describe how we can detect these errors via the above strategy. Refer to OB thesis.
     % Fit an SDF with the errors?
+% Pre reqs
+    % Motional mode spectra
+    % 729 system
+    % AOM control of 729
+
+    The MS interaction is widely used in ion trap experiments due to it being robust against varying intial motional states, and to the effects of heating during the pulse sequence. However, in our use case, the SDF is sensitive to miscalibration of the central qubit frequency, the balancing of power in the two tones, and to motional mode drifts. The first two miscalibrations appear as the SDF having..
+    We use both ``detuning'' and ``duration'' scans to calibrate the SDF. The
+    ``detuning'' scan is performed by varying the detuning, $delta_g$, of the interaction, whilst the keeping the SDF duration constant, whilst the ``duration'' scan keeps detuning constant and varies the SDF duration.
     Duration scan fit given by,
     \begin{equation}
         P_{\downarrow,\mathrm{th}} = \frac{1}{2} \left[ 1 + e^{-4\left( \bar{n} + \frac{1}{2} \right) |\alpha(t)|^2} \right],
@@ -759,11 +946,20 @@
 
 \section{Two-Qubit Entangling Gates}
 \label{sec:Two-Qubit Entangling Gates}
+% Main points:
+    % Intro/brief outline of goal of two-qubit gate. Truth table? Preparing in Bell state. This is tool kit for spin control of our system.
+    % Discuss likely limitations being nearby hot motional modes, no pulse ramping
+    % Current error vs what we expect we need for future experiments.
+    % Here empasise that the SDF we discuss previously can be used to generate entanglement.
+    % Showing phase coherence between operations is nice here.
+% Prereqs:
+    % SDFs
+    % Single qubit gates
+    % What available transitions we have
+    % Motional mode spectra
     Parity contrast = 0.90(2)
     Population 01 10 = 0.05(2)
 
-\subsection{Collective Motion of Two Ions}
-\subsection{Mølmer-Sørensen Gate}
     \begin{figure}
         \begin{center}
         \noindent\includegraphics[width=\linewidth]{
@@ -775,20 +971,26 @@
             }
         \label{fig:ms_gate}
     \end{figure}
-\subsubsection{Theoretical Background to the MS Gate}
-\subsubsection{Experimental Implementation of the MS Gate}
-    % Discuss likely limitations being nearby hot motional modes, no pulse ramping
 
 \section{Creating Squeezed States}
 \label{sec:Squeezed States}
-\subsection{Calibrations}
+% Main points:
+    % Creating two simultaneous SDFs (requires section on SDFs!)
+    % Four tones on one AOM
+    % Phase relationships between SDFs (requires description of urukul?)
+    % Limitations due to motional mode stability
+
+% Prereqs:
+    % SDFs
+    % Motional characterisations
 
 % ------------------------------------------------------------------------
 
 \chapter{Outlook}
 
 % Here I would like to briefly describe the next steps in the project, as well
-% as the future expeiments we want to demonstrate.
+% as the future experiments we want to demonstrate.
+% Discussion of single addressing could be here.
 
 % ------------------------------------------------------------------------
 
@@ -797,5 +999,33 @@
 
 \clearpage
 \section{Appendix}
+
+\subsection{Generating Ions}
+% Main points:
+    % Atomic oven 
+        % Really this is just for future members.
+        % What temperature/current we go to
+    % PI lasers
+        % What powers/ saturation/ frequencies we use for trapping
+        % Concerns of charging the trap with the UV lasers
+% Pre reqs:
+    % Atomic source
+
+\subsection{Extracting Laser Offset and Magnetic Field}
+\label{sec:Laser Offset}
+% Main points:
+    % How we fit out laser offset and field using multiple transitions
+    % We have cavity and magnetic field drift.
+    % We are on a magnetically sensitive transition
+% Pre reqs:
+    % The MUMetal box
+    % 5 G field
+
+\section{Experimental Control}
+\label{sec:Experimental Control}
+% figures for section
+    % Recrystallisation routines
+    % Autoload routines
+    % Morningly calibrations
 
 \end{document}
