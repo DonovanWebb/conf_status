@@ -9,3 +9,9 @@ outline.fls
 outline.log
 outline.synctex.gz
 figures/make_figure/__pycache__/graph_style.cpython-312.pyc
+chapters/appendix.aux
+chapters/ch0-motivation.aux
+chapters/ch1-apparatus.aux
+chapters/ch2-characterisation.aux
+chapters/ch3-outlook.aux
+text/appendix.aux
