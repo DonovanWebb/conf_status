@@ -957,8 +957,66 @@
     % Single qubit gates
     % What available transitions we have
     % Motional mode spectra
-    Parity contrast = 0.90(2)
-    Population 01 10 = 0.05(2)
+
+    We perform two-qubit entangling gates using the Mølmer-Sørensen (MS)
+    interaction~\cite{}. This interaction is the same described SDF from the
+    previous section, but applied globally to two ions. The MS interaction
+    relies on the spin dependent geometric phase accumulated during the motional
+    displacement. To create a two-qubit entangled state, a differential
+    geometric phase of $\pi/2$ must be accumulated between the two-qubit basis
+    states. To ensure there is no residual motional entanglement, the final
+    motional state must return to the initial state. In practise, using an SDF
+    detuned by $\delta_g$, this is achieved by applying the MS interaction for a
+    time $t = 2\pi/\delta_g$. The MS gate is a universal two-qubit gate, and
+    along with only single qubit gates, constitutes a universal gate set for
+    discrete quantum algorithms.\\  
+
+    Here we quote the fidelity of experimentally demonstrated two-qubit gates on
+    our system. The fidelity serves to quantify the ``closeness" or similarity of
+    two density matrices.  For the use case of quantum information processing, what we
+    care about is that the experimental unitary applied in the gate sequence closely resembles the unitary we desire theoretically. In general this
+    means that we should measure the fidelity of the applied unitary in an input
+    state agnostic way. Unfortunately this is often not practical as the input
+    state space can be unwieldly, and the act of preparing the input state can
+    also be error prone. As a compromise we can apply the test unitary to either
+    one, or to a set of input states, and measure the fidelity of the output state
+    with respect to the known target state. If the error mechansisms of the test
+    unitary are well understood, arguments can be made that this measured
+    fidelity for a set of input state is representative (or not representative)
+    of the average fidelity over the input state space.\\
+    Here for a two-qubit entangling gate, we target the creation of the Bell
+    state $|\Phi^+\rangle = 1/\sqrt{2} \left( |00\rangle +
+    e^{i\phi_0}|11\rangle \right)$, from an initial state of $|11\rangle$.
+    The fidelity between our mixed state $\rho$, and the pure Bell state may be
+    given by,
+    \begin{equation}
+        \mathcal{F} = \langle \Phi^+ | \rho | \Phi^+ \rangle = \frac{1}{2} \left( \rho_{00,00} + \rho_{11,11} \right) + \frac{1}{2}\left( e^{i\phi_0}\rho_{11,00}+e^{-i\phi_0}\rho_{00,11}\right),
+        \label{eq:Fidelity}
+    \end{equation}
+    To extract the fidelity experimentally we follow the popular
+    protocol~\cite{XXX}, where the first bracketted term of
+    equation~\ref{eq:Fidelity} is measured by performing projective measurements
+    of the two ions after the gate sequence to extract populations, and the second bracketted term,
+    known as the coherence terms, are measured by applying a global analysis
+    $\pi/2|_\phi$ pulse to the two ions and applying parity measurements. The
+    contrast of the parity oscillations when varying the phase $\phi$ of the
+    $\pi/2$ pulse yields the desired coherence term magnitude and phase. We require the creation of a Bell state for two qubit entangling, however do not care what basis this state is in, and so float the target Bell state phase and take only the magnitude of the fitted parity oscillations for calculating the final fidelity.\\
+
+    The best two-qubit entangling gate fidelity currently achieved on our system is $\mathcal{F}=92(2)\%$. As shown in figure~\ref{fig:ms_gate}, the magnitude of the parity scan was measured to be 0.90(2), while the populations $\left( \rho_{00,00} + \rho_{11,11} \right) = 0.95(2)$. Each population point in these figures are found by taking the average of 200 shots of the gate sequence.\\
+
+    These results serve as both a proof of principle for full spin control on
+    our system, but also as a benchmark to which we can compare future system
+    improvements.  For future work, we will require the use of this entangling
+    gate either as Bell state preparation for input to analogue simulation
+    experiments~\cite{}, or as a primitive gate for the spin component of hybrid
+    algorithms~\cite{}.  In both these cases, especially any use that requires
+    multiple concatenated entangling gates, we will likely require improved gate
+    fidelities. It is suspected that we are currenlty limited by nearby hot
+    motional modes, and the lack of pulse ramping in our gate sequence. We
+    expect that with the addition of pulse shaping we will be able to suppress
+    the effect of nearby off-resonant transitions, and by sideband cooling of
+    nearby motional modes we will futher suppress contributions from unwanted
+    spin-motion couplings.\\
 
     \begin{figure}
         \begin{center}
