@@ -435,6 +435,51 @@
     % Trap Resonator
     % Motional mode stability
     % SBC
+    We will utilise the motional modes of the ion to store quantum information.
+    As with the section on spin coherence times~\ref{sec:Coherence}, the
+    fidelity of operations, and success probability of algorithms will be
+    limited by the coherence time of the motional state.  To measure motional
+    coherence, we perform a Ramsey sequence between states $|\downarrow, 0
+    \rangle$ and $|\downarrow, 1 \rangle$, where the first element is the qubit
+    state, and the second element is the motional Fock state. To prepare these
+    states we apply the following pulse sequence:
+    \begin{itemize}
+    \item State prep system to $|\downarrow, 0\rangle$ via optical pumping and SBC.
+    \item Apply $\pi/2|_y$-pulse on carrier transition to prepare the qubit in $|+, 0\rangle$.
+    \item Apply $\pi$-pulse on the RSB to prepare the motional state in $|\downarrow, 0\rangle + |\downarrow, 1\rangle$.
+    \end{itemize}
+    The full Ramsey sequence is then completed by delaying for some time $t$,
+    and then reversing the above state prep and measuring spin population in
+    $|\downarrow\rangle$. \\
+    
+    There are two main mechanisms for motional decoherence: motional heating, as
+    characterised in section~\ref{sec:Heating}, and motional dephasing due to
+    mode frequency instability, as discussed above. \\
+    A heating rate dominated coherence time is given by, $\tau_{\rm HEAT} =
+    (\sqrt{e}-1)/\dot{\bar{n}}$~\cite{XXX}, where $\dot{\bar{n}}$ is the heating
+    rate. A dephasing dominated coherence time, consisting of the
+    motional mode frequency drifting shot-to-shot with a standard deviation
+    $\sigma$, is characterised by a Gaussian decay profile with a coherence time
+    of $\tau_{DEPH} = \sqrt{2}/\sigma$.\\
+    Evaluating both of these models with $\dot{\bar{n}}=33(3)$~q/s, and
+    $\sigma/(2\pi) = 750$~Hz, we find expected motional coherence times of $\tau_{\rm
+    HEAT} \approx 20$~ms and $\tau_{\rm DEPH} \approx 0.3$~ms respectively. From these auxiliary characterisations of the motional modes, we then
+    expect to be in the dephasing dominated regime.  However, as can be
+    seen in figure~\ref{fig:motional_coherence}, we experimentally find a
+    motional coherence time of XX(X)~ms by fitting a Gaussian decay. \\
+    Assuming this was dominated by motional mode drifts between shots, we can
+    estimate the motional mode drift standard deviation, $\sigma/(2\pi) =
+    225$~Hz. Comparing this to the previously measured long-term motional mode
+    stability, we see a discrepancy. This is likely due to the issue of time
+    scales. The motional mode stability in the described Ramsey experiment is
+    only relevant over the time it takes to collect enough statistics for one
+    fringe scan, around 1 second. However, the above motional mode stability is
+    probed only every 20 seconds and so may overestimate the instability over
+    shorter time scales.\\ Work must be done to estimate the fast motional
+    noise, however, first there may be simple improvements that can be made to
+    the RF chain to improve both short and long term motional mode stability.
+    These improvements are described in section~\ref{sec:Trap RF Chain}.\\
+
 
 \section{Spin-Dependent Forces}
 \label{sec:Spin-Dependent Forces}
