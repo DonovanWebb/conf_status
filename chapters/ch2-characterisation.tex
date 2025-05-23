@@ -446,20 +446,21 @@
     % Motional mode spectra
     % 729 system
     % AOM control of 729
-
-    \begin{figure}
-        \begin{center}
-        \noindent\includegraphics[width=\linewidth]{
-            figures/pdf_figure/sdf.pdf
-            }
-        \end{center}
-        \caption{
-            SDF traces.
-            }
-        \label{fig:SDF}
-    \end{figure}
-    The spin-dependent force (SDF) is (planned to be) heavily used throughout
-    this thesis. We use the Mølmer-Sørensen (MS) scheme~\cite{}, to generate the
+    For full control of the spin-motion hybrid system, we require interactions
+    that couple the two. Perhaps the simplest of this class of interactions
+    are the red- and blue-sidebands (RSB and BSB respectively). The  RSB
+    interaction was used previously in the thermometry and sideband cooling
+    sections~\ref{sec:Cooling}. The RSB (BSB) consists of a single frequency
+    laser tuned at the carrier frequency minus (plus) the motional mode frequency,
+    $\omega_m$. The interaction is well described by the (Anti-) Jaynes-Cummings
+    Hamiltonian, and effectively couples spin flips with the addition or
+    subtraction of a motional quanta depending on the initial spin state. Here
+    we introduce another such interaction coupling spin and motion, known as the
+    spin-dependent force. If the RSB and BSB interactions couple spin-motion in
+    the motional Fock basis, then the SDF couples the two in a
+    motional coherent basis. The SDF displaces the motional state in phase
+    space, with a direction dependent on the spin state and an effective detuning parameter.\\
+    We use the optical Mølmer-Sørensen (MS) scheme~\cite{}, to generate the
     SDF via a bichromatic laser field. Bichromatic refers to the simultaneous
     application of two tones symmetrically detuned around the qubit carrier
     frequency, with absolute detuning approximately equal to the motional mode
@@ -477,11 +478,11 @@
     \begin{equation}
         \hat{H}_{MS} = \frac{\hbar \eta\Omega}{2}~\hat{\sigma}_\phi \left( a e^{-i\delta_g t} + a^\dagger e^{i\delta_g t} \right).
     \end{equation}
-    The SDF realises a displacement of the motional state in phase space. We may
+    We may
     control the trajectory of this displacement by varying $\delta_g$: on
     resonance, $\delta_g = 0$, we see linear trajectories, whilst off resonance,
     $\delta_g \neq 0$, we see cyclic trajectories where after some time $t =
-    2\pi/\delta_g$, the motion returns to the initial state. We shall exploit
+    2\pi/\delta_g$, the motion returns to the initial state (with perhaps some phase shift). We shall exploit
     this control in both the two-qubit entangling gate experiments, as well as
     in the creation of squeezed states.\\
 
@@ -496,18 +497,70 @@
     % 729 system
     % AOM control of 729
 
-    The MS interaction is widely used in ion trap experiments due to it being robust against varying intial motional states, and to the effects of heating during the pulse sequence. However, in our use case, the SDF is sensitive to miscalibration of the central qubit frequency, the balancing of power in the two tones, and to motional mode drifts. The first two miscalibrations appear as the SDF having..
-    We use both ``detuning'' and ``duration'' scans to calibrate the SDF. The
-    ``detuning'' scan is performed by varying the detuning, $delta_g$, of the interaction, whilst the keeping the SDF duration constant, whilst the ``duration'' scan keeps detuning constant and varies the SDF duration.
-    Duration scan fit given by,
+    \begin{figure}
+        \begin{center}
+        \noindent\includegraphics[width=\linewidth]{
+            figures/pdf_figure/sdf.pdf
+            }
+        \end{center}
+        \caption{
+            SDF traces.
+            }
+        \label{fig:SDF}
+    \end{figure}
+
+    The MS interaction is widely used in ion trap experiments due to it being robust against varying intial motional states, and to the effects of heating during the pulse sequence. However, in our use case, the SDF is sensitive to various frequency and power miscalibrations and drifts of these between calibrations.  Here we describe briefly the work flow for calibrating and optimising the SDF behaviour.\\
+    In honesty, there are not many moving parts in the SDF interaction, we must know the central qubit frequency, the motional mode frequency, the power in each tone, and the durations of the pulses. Complications come from the reality that we have a multi-level system, multiple motional modes, and that experimentally each parameter can only be controlled to a certain precision.\\
+    We negate the effect of nearby motional modes by either selecting our
+    interaction mode to be well seperated from the others either in frequency or geometrically, by
+    operating the SDF near to resonance of the desired mode, or by using pulse
+    shaping to ramp the power of the SDF and suppress the off-resonant
+    excitation of these other modes. There are many tricks to either mitigate or
+    exploit the effects of these other modes, and we will not go into detail
+    here. \\
+    The power balance of the SDF tones is complicated due to our use of AOMs.
+    AOMs generate frequency shifts in the laser beam at the expense of small
+    frequency-dependent angular shifts. We couple the beam after the AOM into a
+    single mode fibre (see figure~\ref{fig:729}), and so the AOMs effectively introduce a
+    frequency-dependent loss. To calibrate the power balance we look at a pick
+    off of the bichromatic beam before the ion on a high bandwidth photodiode.
+    We measure the beatnote contrast of the two tones and optimise the power
+    balance to maximise this contrast.\\
+    The far off-resonant levels of our ion lead to light-shifts of our qubit
+    frequency. Practically to account for the light-shift we must calibrate this central frequency at the
+    optical power we use in the interaction. We do this with the SDF interaction
+    itself. When the qubit frequency is set incorrectly, the two tones will no
+    longer have the same absolute detuning from their respective RSB or BSB.
+    This manifests as a ``skewness'' of the SDF detuning trace, an example of
+    such can be seen in figure~\ref{fig:SDF}. By varying the qubit frequency and
+    inspecting these detuning scans, the desired SDF behaviour can be found. \\
+    To verify the behaviour of our calibrated SDF with theory, we use both
+    ``detuning'' and ``duration'' scans. The ``detuning'' scan is performed by
+    varying the detuning, $\delta_g$, of the interaction, whilst the keeping the
+    SDF duration, $t$, constant, and vice-versa for the ``duration'' scan. \\
+    Figure~\ref{fig:SDF} shows the measured duration scan with a fit given by,
     \begin{equation}
         P_{\downarrow,\mathrm{th}} = \frac{1}{2} \left[ 1 + e^{-4\left( \bar{n} + \frac{1}{2} \right) |\alpha(t)|^2} \right],
     \end{equation}
-    from Burd thesis, equation 3.30.
-    $|\alpha(t)| = \Omega_{sdf} t/2$, fit find $\Omega_{SDF} = 2\pi\times 6.6(2)$~kHz, fitted with $\bar{n} = 0.03$
-    Fitting detuning scan using
-    $|\alpha(t)| = \Omega_{sdf} \sin(\delta t/2)/\delta$, find $\Omega_{SDF} = 2\pi\times 6.3(2)$~kHz, fitted with $\bar{n} = 0.03$.
-
+    %from Burd thesis, equation 3.30.
+    where we assume we begin in a thermal state with average Fock state $\bar{n}
+    = 0.03$ which we found previously from thermometry measurements. Here the
+    displacement, $|\alpha(t)| = \Omega_{\rm SDF} t/2$, where $\Omega_{\rm SDF}$ is the
+    SDF amplitude. 
+    These measurements were performed with a duration of XX~ms, total power of xx~mW, $\delta_{\rm LS}=2\pi\times XX$~kHz.
+    We find $\Omega_{\rm SDF} = 2\pi\times 6.6(2)$~kHz, from the
+    measured fit, which is in good agreement with the expected value of
+    $\Omega_{\rm SDF} = \eta\Omega_{\rm CAR}$, where Lamb-Dicke parameter $\eta =
+    0.05$XXX and $\Omega_{\rm CAR} = 2\pi \times 132$~kHz XXX measured from Rabi
+    flopping at 15XXX mW.\\
+    The detuning scan, shown in figure~\ref{fig:SDF}, is fitted by taking the
+    displacement to be $|\alpha(t)| = \Omega_{\rm SDF} \sin(\delta t/2)/\delta$. Here
+    we qualitatively see a good agreement between the measured data and the
+    expected behaviour, with the main important features being the ``closure''
+    at $\delta = 2\pi/t$ where the motional state returns to the initial state,
+    and the central flat region around $P_{\downarrow, \mathrm{th}} =0.5$ where
+    the two motional wave packets are non-overlapping.\\
+    % find $\Omega_{SDF} = 2\pi\times 6.3(2)$~kHz, fitted with $\bar{n} = 0.03$.
 
 
 \section{Two-Qubit Entangling Gates}
