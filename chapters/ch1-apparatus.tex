@@ -302,7 +302,7 @@
     mirrors. These fuse-silica mirrors are UHV rated and coated for 372-nm, 397-nm,
     422-nm, 729-nm, 854-nm and 866-nm, with reflectivities of >99\% for both s-
     and p-polarised light. Figure~\ref{fig:can} shows a schematic of the beam
-    geometries via the side ports.\\
+    geometries via the side ports. A limitation of this beam geometry is that due to the permanent B-field direction, we are unable to apply pure $\pi$ or $\sigma_{\pm}$ light to the ion. However for applications where strict polarisation control is needed, the beams can be incident through the CF100 viewport.\\
     We use an electrical feedthrough on a CF40 flange\footnote{Allectra custom}
     to supply our trap chip and atomic source oven with DC and RF voltages. As
     the DC cables run within close proximity to the RF supply, electrical pick
@@ -310,26 +310,13 @@
     will create unwanted pseudopotential which can lead to unexpected mode
     geometries, or required compensation field. We mitigate this leakage through
     an in-vacuum RC low pass filter board within close proximity of the trap
-    chip with a cutoff frequency of 17~kHz. The trap chip is mounted onto this filter board via a custom Polyether ether ketone (PEEK) interposer with electric feedthroughs via embedded \emph{Fuzz buttons}\footnote{Custom Interconnects}. \\
-
+    chip with a cutoff frequency of 17~kHz. The trap chip is mounted onto this
+    filter board via a custom Polyether ether ketone (PEEK) interposer with
+    electric feedthroughs via embedded \emph{Fuzz buttons}\footnote{Custom
+    Interconnects}. \\
 
 \section{Ca$^+$ Laser Systems}	
 \label{sec:Laser systems}
-    \begin{figure}[ht]
-        \begin{center}
-        \noindent\includegraphics[width=0.4\linewidth]{figures/pdf_figure/Ca40.pdf}
-        \end{center}
-        \caption{
-        Electronic energy levels of \textsuperscript{40}Ca\textsuperscript{+},
-        which will be used in this thesis. The levels are
-        split by the Zeeman effect due to a $5$~G external magnetic field (they are shown explicitely only for the ground state). The
-        transitions marked are required for cooling and control over the
-        ion. We shall use the optical-qubit with a quadrupole transition at
-        729-nm. XXX TODO: Add zeeman levels for D5/2.
-        }
-
-    \label{fig:ion}
-    \end{figure}
 % Main points:
     % State which lasers we need access to
     % Calcium level structure 
@@ -339,7 +326,44 @@
 % Pre reqs:
     % Calcium level structure
     % 5 G field
+    \begin{figure}[ht]
+        \begin{center}
+        \noindent\includegraphics[width=0.4\linewidth]{figures/pdf_figure/Ca40.pdf}
+        \end{center}
+        \caption{
+        Electronic energy levels of \textsuperscript{40}Ca\textsuperscript{+},
+        which will be used in this thesis. The levels are
+        split by the Zeeman effect due to a $5.4$~G external magnetic field (they are shown explicitely only for the ground state). The
+        transitions marked are required for cooling and control over the
+        ion. We shall use the optical-qubit with a quadrupole transition at
+        729-nm. XXX TODO: Add zeeman levels for D5/2.
+        }
 
+    \label{fig:ion}
+    \end{figure}
+
+    Singly-charged group 2 elements are popular in ion trap
+    experiments due to their single outer electron resulting in Hydrogen-like
+    energy levels. In this thesis we use \ca.\\
+    \ca has
+    no nuclear spin giving the
+    (relatively) simple level structure shown in figure~\ref{fig:ion}. The external
+    magnetic field of $5.4$~G is applied to split the levels via the Zeeman
+    effect. The relevant laser transitions for our planned ion trap
+    experiment are indicated.\\
+    A zero nuclear spin isotope of calcium was chosen due to this simple level
+    structure without hyperfine splitting. The greater number of levels due to
+    hyperfine splitting lead to more decay paths and therefore greater
+    complications in both cooling and gate schemes. However, this does come at
+    the cost of no available magnetic field insensitive transitions, which are
+    often used in ion trap experiments to further decouple the ion from a noisy
+    environment~\cite{}. \\
+    We define our qubit by the quadrupole transition at 729-nm, which we describe in the following section.\\
+    Access to other excited levels, outside of our defined two level system, are crucial for ion trap quantum logic so that we can readout the qubit with state selective fluorescence (397-nm, and 866-nm transitions) and optically pump for state preparation (397-nm, 866-nm, and 854-nm transitions). Details on these schemes are given in chapter~\ref{chap:Characterisation}. We also require access to two additional transitions in neutral calcium for isotope selective ionisation, 422-nm and 372-nm.\\
+    These transitions (apart from the 729-nm) are all driven by diode lasers\footnote{All Toptica diodes. Red lasers: MDL DL pro; Blue lasers: MDL DL pro HP; 372-nm: iBEAM-SMART-375-S}, which are frequency stabilised to a reference cavity\footnote{Stable Laser Systems SLS-6010 4-Bore Cylindrical Cavity} via Pound-Drever-Hall (PDH) locking. We require PDH locking to ensure that laser frequencies are stable to <1~MHz level, well below the natural line widths of all the dipole transitions listed above. We continuosly monitor the laser frequencies with a wavemeter\footnote{HighFinesse WS7}.\\
+    Frequency and amplitude control for all lasers is achieved via acousto-optic modulators (AOMs) which are driven by Artiq integrated DDS chips, \emph{Urukuls}. We use AOMs in a double pass configuration to allow shifts of the laser frequency by +/- ~100~MHz, with no signicant angular shifts or loss of fibre coupling. 
+    
+    
 \subsection{Narrow Line Width 729 Laser}
 \label{sec:Narrow Line Width 729 Laser} 
 % Main points:
@@ -472,3 +496,21 @@
     % High NA
     % Trap package
     % Motivation for future experiments
+    A unique feature of our system is the ability to produce standing wave
+    single ion addressing. The design of this system is shown in
+    figure~\ref{fig:AOD}.  A single ion addressing system must be able to
+    illuminate selected ions in the crystal whilst the others remain
+    unperturbed. The advantage of single addressing, other than ion selectivity,
+    is the increased intensity of light due to the tight waist at the ion
+    location. \\
+    Our ions will be separated by a distance $d\approx 5~\mu$m.  Focussing a
+    collimated 729-nm beam with an objective lens of NA = 0.6 onto the ion
+    provides $\omega_0 = 386$~nm.  Abberations present in real optical
+    components will cause the addressed spot to be increasingly non-gaussian and
+    lead to unfavourable cross talk at the neighbouring ions. Therefore care is
+    taken in the optical design.\\
+    To produce more than one addressed spot and to steer the spots along the ion
+    crystal, we use Acousto-Optical-Deflectors\footnote{ISOMET OAD1343-XY-T70S}
+    (AODs)~\cite{nagourney_quantum_2014, li_low-crosstalk_2023,
+    pogorelov_compact_2021}. The beam deflection angle is proportional to the
+    drive frequency supplied to the AOD. \\
