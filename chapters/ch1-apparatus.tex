@@ -1,31 +1,26 @@
-%\begin{savequote}[8cm]
-%\textlatin{Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...}
-
-%There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
-  %\qauthor{--- Cicero's \textit{de Finibus Bonorum et Malorum}}
-%\end{savequote}
-
-%\minitoc
-
 \chapter{Ion Trap Apparatus}
+\minitoc
 % Main points:
     % Give a working overview of the apparatus.
     % The desired audience here is 
         %   i) Future members of FastGates, 
         %  ii) Anyone building a similar experiment, 
         % iii) Readers of other chapters who want technical detail of the apparatus.
+    % Block diagram of the system
 % Pre reqs:
     % Motivation for why we want this apparatus!
 
     A vast effort is spent on the initial build-up of the an ion trap system, but
     throughout the life of the experiment, a greater effort is spent on its daily
-    maintenance.  I hope that this chapter will serve as a resource for future
-    members of the FastGates team, as well as provide a useful recipe for anyone
+    maintenance.  I hope that this chapter will serve as a useful debugging-resource for future
+    members of the FastGates team, and as a detailed recipe for anyone
     building a similar system. \\
 
     Due to the size and complexity of the system, we introduce an inital overview of
-    the design, motivated by the desired functions.  As the name suggests, an ion
-    trap experiment aims to confine arrays of single ions, this is achieved by
+    the design, motivated by the desired functions.  
+    Many such  ion trap experiment overviews exist in the theses of previous PhD generations, and so we will attempt to limit the discussion here to the unique features and capabilities of our system.\\
+    
+    However, as a short introduction we state the aim of an ion trap is of course to trap ions! This is achieved by
     static and dynamic electric fields which, due to the ions possesing non-zero
     electric charge, can provide trapping potentials, section~\ref{sec:The Ion
     Trap}. Due to the fragility of the internal states of the ion (these are state
@@ -37,43 +32,15 @@
     sections~\ref{sec:Laser systems} and~\ref{sec:Narrow Line Width 729 Laser}.
     Finally, to interface with the apparatus we have built, at the time scales set by our interaction strengths, we require a sophisticated and custom control system which is discussed in section~\ref{sec:Sinara Hardware}.
 
-\section{System Design}
-\label{sec:System Design}
-% Main points:
-    % List of unique requirements for the system
-        % Motional control
-        % Single addressing
-        % Standing waves
-    % Solidworks models of CAD with labels
-    % Block diagram of the system
-    % Calcium level structure 
-    % Trap package
-    % High NA sandwich
-    % Permanent magnets
-    % MUMetal box
-% Pre reqs:
 
-    \begin{figure}[ht]
-        \begin{center}
-        \noindent\includegraphics[width=0.4\linewidth]{figures/pdf_figure/Ca40.pdf}
-        \end{center}
-        \caption{
-        Electronic energy levels of \textsuperscript{40}Ca\textsuperscript{+},
-        which will be used in this thesis. The levels are
-        split by the Zeeman effect due to a $5$~G external magnetic field (they are shown explicitely only for the ground state). The
-        transitions marked are required for cooling and control over the
-        ion. We shall use the optical-qubit with a quadrupole transition at
-        729-nm. XXX TODO: Add zeeman levels for D5/2.
-        }
-
-    \label{fig:ion}
-    \end{figure}
 
 \section{The Ion Trap}
 \label{sec:The Ion Trap}
 % Main points:
     % Introduce the NPL trap chip and its advantages
     % Short intro into the parts of the ion trap DC/RF fields.
+    % Trap package CAD
+    % Solidworks models of CAD with labels
     % Fastino channels
     % Experimental parameters for stable trapping
     % Quote the values we use for trapping/experiment
@@ -144,6 +111,7 @@
     $\omega_p$
     \begin{equation}
     \omega_p = \frac{e\alpha V_{RF}}{\sqrt{2}\Omega_{RF}M\rho^2},
+    \label{eq:pseudopotential}
     \end{equation}
     where $\alpha$ is a factor of order unity given by the geometry of the trap,
     $V_{RF}$ and $\Omega_{RF}$ are the voltage and frequency provided to the
@@ -201,24 +169,68 @@
     % Quote values we use.
 % Pre reqs:
     % NPL trap geometry
+    To utilise radial motional modes for low error quantum gates, we require the
+    radio frequency (RF) field that produces the desired trapping
+    pseudopotential to be both frequency and amplitude stable. Our \emph{NPL}
+    trap is rated for a max peak-to-peak voltage of 400~Vpp on the RF
+    electrodes. Here we describe the elements of the ``RF chain'' that supplies
+    this voltage, as shown in figure~\ref{fig:RF Chain}. \\
+    Our frequency source is a DDS-based synthesiser, named \emph{Urukul}, part
+    of the \emph{Artiq Sinara}~\cite{XXX} hardware ecosystem. We operate the
+    \emph{Urukul} at max output power, +10~dBm and with a frequency around $27.8$~MHz. This
+    signal is then fed to an ``ultra-low noise limiting amplifier" named
+    \emph{Squareatron}~\cite{XXX}. The purpose of \emph{Squareatron} is to
+    greatly reduce the amplitude noise of the RF signal, $V_{\rm RF}$, which is
+    key to low radial mode frequency drifts as can be seen by the linear
+    relationship between trapping frequency and $V_{\rm RF}$ in
+    equation~\ref{eq:pseudopotential}. The \emph{Squareatron} outputs +17.4~dBm,
+    which we subsequently attenuate by 19.5~dB. We then amplify the signal by a
+    further 33.7~dB using a \emph{Mini-Circuits ZHL-1-2W-S+}, high power
+    amplifier. We now have +32 dBm RF power to drive the trap
+    electrodes, however we need to match the current 50~$\Omega$ impedance to
+    the small capacitance of the trap electrodes. To do this, we use an LC
+    impedance matching circuit with tuned resonant frequency of 27.84~MHz, and a
+    measured Q factor of 43.8 (found by fitting S11 impedance measurements).
+    This resonant circuit has three main effects: it ensures good power transfer
+    between RF input and trap electrodes via impedance matching, it steps up the
+    voltage to the required 400~Vpp, and it filters out unwated harmonics due to
+    the bandpass nature of the LC circuit. \\
+    If components are chosen correctly, and adequately protected from
+    environmental noise, this chain can produce the desired frequency and
+    amplitude stable RF we require. Characterisations of the motional mode
+    stability are discussed in section~\ref{sec:Motional Mode Stability}. We are
+    still yet to fully quantify and debug the motional stability against thermal
+    and mechanical noise, however it should be noted that other groups do opt
+    for active stabilisation of RF amplitude through closed feedback loops~\cite{XXX}.\\
+    % Milne sydney trap RF chain 
 
-\subsection{Trap DC Voltages}
+%\subsection{Trap DC Voltages}
 % Main points:
     % Describe Fastino DAC and the available electrodes on the NPL trap
     % Quote values we use.
 % Pre reqs:
     % NPL trap geometry
 
-\section{Beam Geometries and Vacuum System}
+\section{Magnetic Field}
+\label{sec:Magnetic Field}
+% Main points:
+    % Permanent magnets
+    % MUMetal box
+    Stable Zeeman shifts of the ion energy levels are required for long spin coherence times (see section~\ref{sec:Coherence}), and for low error single and two qubit gates. We use a permanent magnet array of Samarium Cobalt, Sm$_2$Co$_17$, in a Helmholtz configuration to create a stable magnetic field of 5.4~G. Samarium Cobalt was chosen for its low temperature coefficient of remenance, -0.03\%/K.\\
+    The ion is shielded from unwanted external magnetic fields by two layers of 3~mm thick MuMetal shielding from \emph{MagneticShields}. The factory quoted shielding factor is 546 for DC fields. Spin coherence time comparisons for the ion with and without magnetic shielding are shown in section~\ref{sec:Coherence}.\\
+
+\section{Vacuum System and Beam Geometry}
 \label{sec:Vacuum System}
 % Main points:
     % Technical drawing of beam geometries and magnetic field to ion chain.
     % Drawing of ion trap package with high NA lenses
+        % High NA sandwich
     % Standing waves at the ion
 % Pre reqs:
     % NPL trap
     % Why we have Dual high NA lenses
     % Magnetic field giving Zeeman shift
+
 
 \begin{figure}
   \begin{center}
@@ -234,22 +246,6 @@
   \label{fig:can}
 \end{figure}
 
-\subsection{Vacuum System}
-% Main points:
-    % List of used parts
-    % What is inside the system and what is its contruction/materials
-    % Operation of ion pump/Ti:Sub
-% Pre reqs:
-
-\subsection{Optical Access}
-% Main points:
-    % Dual High NA repeat?
-    % NA for readout
-    % NA for single addressing?
-    % In vacuum prisms spec and design
-% Pre reqs:
-    % Trap package
-    % Vacuum system
 
 \begin{figure}
   \begin{center}
@@ -266,10 +262,77 @@
   \label{fig:AOD}
 \end{figure}
 
+    Ultra High Vacuum (UHV) is required to extend the ion storage lifetime.
+    However, UHV equipment is often bulky, and puts constraints on the access
+    and visibility of the ion chain. Here we describe the designed vacuum
+    system, and beam access.  The vacuum system and beam geometries were
+    designed by Sebastian Saner and Mariella Minder, and constructed by
+    Sebastian Saner, Fabian Pokorny, and myself.\\
+    
+    We aim for a residual pressure of $<10^{-11}$ mbar. For this strict
+    requirement, we must take care in selecting in-vacuum materials, and follow
+    thorough cleaning and baking procedures. A summary of tactics that were
+    useful in the construction of the vacuum system can be found
+    in~\cite{birnbaum_ultra-high_2005, wolf_cryogenic_2019}.\\
+    A schematic and photograph of the vacuum system can be seen in
+    Figure~\ref{fig:can}. The system consists of a 6" spherical-octagonal
+    experimental chamber\footnote{Kimball MCF600-SphOct-F2C8} connected to a
+    spherical chamber with ion pump\footnote{Agilent VacIon Plus 20 Pump}, ion
+    gauge\footnote{Agilent UHV-24P Ion gauge} and Titanium sublimator pump
+    (TSP)\footnote{Scanwel custom housing} attached. The ion pump and TSP
+    maintain the UHV to the desired $<10^{-11}$~mbar. We find that on the ion
+    pump alone we cannot maintain UHV indefinitely, however, firing the TSP
+    every 4 weeks with 41~A for 60 seconds provides a sufficient pumping rate.
+    At the time of system baking, we performed a He leak test, but did not find
+    any external leaks. We suspect the gradual pressure increase is either due
+    to our use of in-vacuum optics, optics epoxy adhesive\footnote{EPO-TEK
+    353ND}, or our use of soldered PCB components.\\
+    For optical access we have two recessed CF100 viewports\footnote{UK Atomic
+    Energy Authority P/N VPR100015} on the two large faces of the experiment
+    can. We require recessed viewports due to our chosen main
+    objectives\footnote{Photon Gear custom Atom Imager}. These custom objectives
+    have an effective focal length of 33~mm, a working distance of 24.4~mm, and
+    a numerical aperture of 0.6. They are coated for 397-nm and 729-nm.
+    The consideration for dual high NA objectives is relatively unique in ion trap experiments, and was mainly motivated by previous work on fast entangling gates via standing waves~\cite{saner_breaking_2023}. \\
+    There is further optical access via
+    two CF40 side viewports\footnote{LewVac ZFSVP-DUV-40CF-OUM} coated
+    for 397-nm, 422-nm, 729-nm, 854-nm and 866-nm.  Due to the spatial
+    constraints from the trap assembly and high NA objectives, we require
+    multiple of our beam to enter the vacuum can through these side ports. For the ion chain to be visible from these side ports we use in vacuum dielectric
+    mirrors. These fuse-silica mirrors are UHV rated and coated for 372-nm, 397-nm,
+    422-nm, 729-nm, 854-nm and 866-nm, with reflectivities of >99\% for both s-
+    and p-polarised light. Figure~\ref{fig:can} shows a schematic of the beam
+    geometries via the side ports.\\
+    We use an electrical feedthrough on a CF40 flange\footnote{Allectra custom}
+    to supply our trap chip and atomic source oven with DC and RF voltages. As
+    the DC cables run within close proximity to the RF supply, electrical pick
+    up is a potential issue for our DC lines. RF leaked onto our DC electrodes
+    will create unwanted pseudopotential which can lead to unexpected mode
+    geometries, or required compensation field. We mitigate this leakage through
+    an in-vacuum RC low pass filter board within close proximity of the trap
+    chip with a cutoff frequency of 17~kHz. The trap chip is mounted onto this filter board via a custom Polyether ether ketone (PEEK) interposer with electric feedthroughs via embedded \emph{Fuzz buttons}\footnote{Custom Interconnects}. \\
+
+
 \section{Ca$^+$ Laser Systems}	
 \label{sec:Laser systems}
+    \begin{figure}[ht]
+        \begin{center}
+        \noindent\includegraphics[width=0.4\linewidth]{figures/pdf_figure/Ca40.pdf}
+        \end{center}
+        \caption{
+        Electronic energy levels of \textsuperscript{40}Ca\textsuperscript{+},
+        which will be used in this thesis. The levels are
+        split by the Zeeman effect due to a $5$~G external magnetic field (they are shown explicitely only for the ground state). The
+        transitions marked are required for cooling and control over the
+        ion. We shall use the optical-qubit with a quadrupole transition at
+        729-nm. XXX TODO: Add zeeman levels for D5/2.
+        }
+
+    \label{fig:ion}
+    \end{figure}
 % Main points:
     % State which lasers we need access to
+    % Calcium level structure 
     % What frequency control do we need on each? PDH lock, AOM etc.
     % Table of all AOMs and offset frequencies
     % Table of laser powers in mW and with aimed saturation intensities for doppler idle, cooling, readout, and laser linewidths.
