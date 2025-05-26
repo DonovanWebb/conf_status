@@ -7,7 +7,9 @@
 %\documentclass[a4paper]{ociamthesis}
 % This one will format for PDF output (ie equal margins, no extra blank pages):
 \documentclass[a4paper,nobind]{ociamthesis} 
-
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{tikz}
 
 %%%%% SELECT YOUR DRAFT OPTIONS
 % Three options going on here; use in any combination.  But remember to turn the first two off before
@@ -49,8 +51,7 @@
 
 
 %%%%% THESIS / TITLE PAGE INFORMATION
-% Everybody needs to complete the following:
-\title{Suitably impressive thesis title}
+\title{Experimental apparatus for universal spin-motion control in trapped multi-ion crystals}
 \author{Donovan Webb}
 \college{St Peter's College}
 
@@ -71,7 +72,6 @@
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
-
 
 
 %%%%% CHOOSE YOUR LINE SPACING HERE

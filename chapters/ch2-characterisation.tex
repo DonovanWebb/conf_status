@@ -1,4 +1,5 @@
 \chapter{Experiment Characterisation}
+\label{ch:Characterisation}
 \minitoc
 
     Before we can dive into running novel experiments involving the motion and spin
@@ -13,6 +14,28 @@
     % Can compare when have all quadrupole transitions available or when we selectively omit transitions via polarisation.
 % Pre reqs:
     % 5 G field
+    \begin{figure}
+        \begin{center}
+        \noindent\includegraphics[width=\linewidth]{
+            figures/pdf_figure/qp_transition_spectrum.pdf
+            }
+        \end{center}
+        \caption{
+            }
+        \label{fig:Long Flop}
+    \end{figure}
+
+
+    Zeeman splitting of the $4S_{1/2}$ and $3D_{5/2}$ states leads to 2 and 6
+    metastable levels respectively. Due to the magnetic field strength of 5.4~G,
+    the $S$-levels are split by $\sim$15~MHz, and the $D$-levels by $\sim$9~MHz.
+    This splitting is considerably larger than both the natural linewidth of the
+    729-nm transition, and the Ti:Saph laser linewidth, meaning we can
+    selectively address each of these levels via frequency tuning of the laser. There is some freedom in choosing which of these 10 possible quadrupole transitions we define as our qubit. They have varying coupling strengths, $\Omega$, depending on the polarisation and $k$-vector of the interacting light. Here is the rational for our choice of $4S_{1/2}, m = -1/2 \leftrightarrow 3D_{5/2}, m' = -5/2$.\\
+    First, we decide what polarisation we will use for the addressing 729-nm laser. It is beneficial to use a polarisation that limits the number of addressable transitions to reduce the effect of unwanted off-resonant interactions. Figure~\ref{fig:quadrupole} shows the normalised Rabi frequencies of transitions between $m=-1/2$ and all available $m'$ levels.
+    % Cite Gulde Thesis
+    
+    we see a tot
 
 \section{Spin}
 \label{sec:Spin}
@@ -406,6 +429,7 @@
     at certain frequencies, perhaps due to RF noise in the lab. We find....\\
 
 \subsection{Motional Mode Stability}
+\label{sec:Motional Mode Stability}
 % Main points:
     % Quote motional mode drift 
     % Explain why it is currently drifty

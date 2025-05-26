@@ -13,7 +13,7 @@ def get_fig_width():
     """
     Get the figure width in inches.
     """
-    line_width_pt = 246  # latex linewidth in points
+    line_width_pt = 421.10046  # latex linewidth in points
     line_width_in = 1 / 72.27 * line_width_pt  # latex linewidth in points
     fig_width = line_width_in
     return fig_width
@@ -36,16 +36,16 @@ def set_graph_style():
         {
             "text.usetex": True,
             "font.family": "serif",
-            "axes.labelsize": 10,
-            "font.size": 10,
-            "legend.fontsize": 10,
-            "xtick.labelsize": 8,
-            "ytick.labelsize": 8,
-            "axes.titlesize": 9,
+            "axes.labelsize": 12,
+            "font.size": 12,
+            "legend.fontsize": 12,
+            "xtick.labelsize": 10,
+            "ytick.labelsize": 10,
+            "axes.titlesize": 12,
             "figure.titlesize": 12,
             "figure.figsize": (fig_width, fig_height),
             "figure.autolayout": True,
-            "lines.linewidth": 1,
+            "lines.linewidth": 2,
             "lines.markersize": 3,
             "lines.linestyle": "-",
             "axes.grid": True,

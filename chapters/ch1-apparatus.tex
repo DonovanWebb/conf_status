@@ -193,8 +193,8 @@
     measured Q factor of 43.8 (found by fitting S11 impedance measurements).
     This resonant circuit has three main effects: it ensures good power transfer
     between RF input and trap electrodes via impedance matching, it steps up the
-    voltage to the required 400~Vpp, and it filters out unwated harmonics due to
-    the bandpass nature of the LC circuit. \\
+    voltage to the required 400~Vpp, and it filters out RF noise and unwated harmonics due to
+    the narrow bandpass nature of the LC circuit. \\
     If components are chosen correctly, and adequately protected from
     environmental noise, this chain can produce the desired frequency and
     amplitude stable RF we require. Characterisations of the motional mode
@@ -216,8 +216,17 @@
 % Main points:
     % Permanent magnets
     % MUMetal box
-    Stable Zeeman shifts of the ion energy levels are required for long spin coherence times (see section~\ref{sec:Coherence}), and for low error single and two qubit gates. We use a permanent magnet array of Samarium Cobalt, Sm$_2$Co$_17$, in a Helmholtz configuration to create a stable magnetic field of 5.4~G. Samarium Cobalt was chosen for its low temperature coefficient of remenance, -0.03\%/K.\\
-    The ion is shielded from unwanted external magnetic fields by two layers of 3~mm thick MuMetal shielding from \emph{MagneticShields}. The factory quoted shielding factor is 546 for DC fields. Spin coherence time comparisons for the ion with and without magnetic shielding are shown in section~\ref{sec:Coherence}.\\
+    Stable Zeeman shifts of the ion energy levels are required for long spin
+    coherence times (see section~\ref{sec:Coherence}), and for low error single
+    and two qubit gates. We use a permanent magnet array of Samarium Cobalt,
+    Sm$_2$Co$_17$, in a Helmholtz configuration to create a stable magnetic
+    field of 5.4~G. Samarium Cobalt was chosen for its low temperature
+    coefficient of remenance, -0.03\%/K.\\
+    The ion is shielded from unwanted external magnetic fields by two layers of
+    3~mm thick MuMetal shielding from \emph{MagneticShields}. The factory quoted
+    shielding factor is 546 for DC fields. Spin coherence time comparisons for
+    the ion with and without magnetic shielding are shown in
+    section~\ref{sec:Coherence}.\\
 
 \section{Vacuum System and Beam Geometry}
 \label{sec:Vacuum System}
@@ -299,7 +308,7 @@
     for 397-nm, 422-nm, 729-nm, 854-nm and 866-nm.  Due to the spatial
     constraints from the trap assembly and high NA objectives, we require
     multiple of our beam to enter the vacuum can through these side ports. For the ion chain to be visible from these side ports we use in vacuum dielectric
-    mirrors. These fuse-silica mirrors are UHV rated and coated for 372-nm, 397-nm,
+    mirrors. These fused-silica mirrors are UHV rated and coated for 372-nm, 397-nm,
     422-nm, 729-nm, 854-nm and 866-nm, with reflectivities of >99\% for both s-
     and p-polarised light. Figure~\ref{fig:can} shows a schematic of the beam
     geometries via the side ports. A limitation of this beam geometry is that due to the permanent B-field direction, we are unable to apply pure $\pi$ or $\sigma_{\pm}$ light to the ion. However for applications where strict polarisation control is needed, the beams can be incident through the CF100 viewport.\\
@@ -359,7 +368,7 @@
     often used in ion trap experiments to further decouple the ion from a noisy
     environment~\cite{}. \\
     We define our qubit by the quadrupole transition at 729-nm, which we describe in the following section.\\
-    Access to other excited levels, outside of our defined two level system, are crucial for ion trap quantum logic so that we can readout the qubit with state selective fluorescence (397-nm, and 866-nm transitions) and optically pump for state preparation (397-nm, 866-nm, and 854-nm transitions). Details on these schemes are given in chapter~\ref{chap:Characterisation}. We also require access to two additional transitions in neutral calcium for isotope selective ionisation, 422-nm and 372-nm.\\
+    Access to other excited levels, outside of our defined two level system, are crucial for ion trap quantum logic so that we can readout the qubit with state selective fluorescence (397-nm, and 866-nm transitions) and optically pump for state preparation (397-nm, 866-nm, and 854-nm transitions). Details on these schemes are given in chapter~\ref{ch:Characterisation}. We also require access to two additional transitions in neutral calcium for isotope selective ionisation, 422-nm and 372-nm.\\
     These transitions (apart from the 729-nm) are all driven by diode lasers\footnote{All Toptica diodes. Red lasers: MDL DL pro; Blue lasers: MDL DL pro HP; 372-nm: iBEAM-SMART-375-S}, which are frequency stabilised to a reference cavity\footnote{Stable Laser Systems SLS-6010 4-Bore Cylindrical Cavity} via Pound-Drever-Hall (PDH) locking. We require PDH locking to ensure that laser frequencies are stable to <1~MHz level, well below the natural line widths of all the dipole transitions listed above. We continuosly monitor the laser frequencies with a wavemeter\footnote{HighFinesse WS7}.\\
     Frequency and amplitude control for all lasers is achieved via acousto-optic modulators (AOMs) which are driven by Artiq integrated DDS chips, \emph{Urukuls}. We use AOMs in a double pass configuration to allow shifts of the laser frequency by +/- ~100~MHz, with no signicant angular shifts or loss of fibre coupling. 
     

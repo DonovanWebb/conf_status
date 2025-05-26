@@ -1,0 +1,178 @@
+from atomic_physics.ions.ca40 import Ca40
+import numpy as np
+import matplotlib.pyplot as plt
+import graph_style
+
+graph_style.set_graph_style()
+
+B_experiment = 5.4e-4  ## 5.4 G measured in the lab
+ion = Ca40(B=B_experiment)
+transition = ion.transitions["729"]
+
+
+def get_rabi_frequency(lower_, upper_, gamma_):
+    """Calculates Rabi frequency for transition lower_ <--> upper_
+    for angle gamma_ between B-field and polarisation.
+    I assume k is perpendicular to both B and polarisation.
+    gamma: angle between B-field and polarisation vector
+    phi_: angle between k-vector and B-field
+    Full angular dependence can be found in link:
+    https://quantumoptics.at/images/publications/dissertation/gulde_diss.pdf
+    """
+
+    I0 = ion.I0("729")
+    I = 1.0
+    phi_ = np.pi / 2
+
+    q = ion.M[upper_] - ion.M[lower_]
+
+    if np.abs(q) == 1:
+        g = (
+            1
+            / np.sqrt(6)
+            * np.abs(
+                (np.cos(gamma_) * np.cos(2 * phi_))
+                + 1j * (np.sin(gamma_) * np.cos(phi_))
+            )
+        )
+    elif np.abs(q) == 2:
+        g = (
+            1
+            / np.sqrt(6)
+            * np.abs(
+                1 / 2 * np.cos(gamma_) * np.sin(2 * phi_)
+                + 1j * np.sin(gamma_) * np.sin(phi_)
+            )
+        )
+    elif np.abs(q) == 0:
+        g = 1 / 2 * np.abs(np.cos(gamma_) * np.sin(2 * phi_))
+    else:
+        raise ValueError("q must be 0, 1 or 2, but is {}".format(q))
+
+    # Extracting Rabi frequency using definition in the atomic physics docs
+    # https://github.com/OxfordIonTrapGroup/atomic_physics/pull/10 (could contain mistakes)
+    Rabi_peak_sqrd = ion.GammaJ[upper_] * ion.Gamma[lower_, upper_] * I / I0 / 4
+
+    Rabi = np.sqrt(Rabi_peak_sqrd) * g
+    return Rabi
+
+
+def get_zeeman_spliting(lower_, upper_, B_):
+    """Calculates energy splitting of  lower_ and upper_ for non-zero
+    magnetic field strength, relative to splitting at B=0
+    """
+    dfreq = (Ca40(B=B_).E[upper_] - Ca40(B=B_).E[lower_]) / (2 * np.pi)  # [Hz]
+    return dfreq
+
+
+def plot_QP_transition_spectrum(gamma):
+    """ " Plots spectrum of QP transitions (S12 <--> D52) with heights proportional
+    to the Rabi frequency of the transition for a given angle between B and polarisation
+    """
+    # Find largest Rabi frequency to normalise against
+    max_rabi = 0
+    for M_l_sign in [1, -1]:
+        M_l = M_l_sign * 1 / 2
+        lower = ion.index(transition.lower, M_l)
+        for M_u in M_l_sign * np.array([5 / 2, 3 / 2, 1 / 2, -1 / 2, -3 / 2]):
+            upper = ion.index(transition.upper, M_u)
+            if get_rabi_frequency(lower, upper, gamma) > max_rabi:
+                max_rabi = get_rabi_frequency(lower, upper, gamma)
+
+    plt.figure("Freq spectrum")
+    for M_l_sign in [1, -1]:
+        M_l = M_l_sign * 1 / 2
+        lower = ion.index(transition.lower, M_l)
+
+        if M_l_sign == -1:
+            ls = "solid"
+        else:
+            ls = "dashed"
+
+        for M_u in M_l_sign * np.array([5 / 2, 3 / 2, 1 / 2, -1 / 2, -3 / 2]):
+            upper = ion.index(transition.upper, M_u)
+
+            relative_splitting = (
+                get_zeeman_spliting(lower, upper, B_=B_experiment) * 1e-6
+            )  # MHz
+
+            normalized_rabi = get_rabi_frequency(lower, upper, gamma) / max_rabi
+
+            plt.plot(
+                relative_splitting * np.ones(2),
+                [0, normalized_rabi],
+                ls=ls,
+                label="S({:.0f}/2)$\leftrightarrow$D({:.0f}/2)".format(
+                    2 * M_l, 2 * M_u
+                ),
+            )
+            plt.scatter(relative_splitting, [0])
+
+    plt.ylim([0, 1.0])
+    plt.legend(ncols=4)
+    plt.xlabel("Relative splitting (MHz)")
+    plt.ylabel("Normalized Rabi frequency")
+    plt.show()
+    return
+
+
+# plot_QP_transition_spectrum(gamma=np.pi / 4)
+
+fig = plt.figure("angle scan")
+ax = plt.subplot(111)
+
+
+lower = ion.index(transition.lower, -1 / 2)
+upper = ion.index(transition.upper, -5 / 2)
+max_rabi = get_rabi_frequency(lower, upper, np.pi / 2)
+
+for M_l_sign in [-1]:
+    M_l = M_l_sign * 1 / 2
+    lower = ion.index(transition.lower, M_l)
+
+    if M_l_sign == -1:
+        ls = "solid"
+    else:
+        ls = "dashed"
+
+    for M_u in M_l_sign * np.array([5 / 2, 3 / 2, 1 / 2, -1 / 2, -3 / 2]):
+        upper = ion.index(transition.upper, M_u)
+
+        relative_splitting = (
+            get_zeeman_spliting(lower, upper, B_=B_experiment) * 1e-6
+        )  # MHz
+
+        gamma_scan = np.linspace(0, np.pi, 100)
+        rabi_arr = []
+
+        for gamma in gamma_scan:
+            rabi = get_rabi_frequency(lower, upper, gamma) / max_rabi
+            rabi_arr.append(rabi)
+        plt.plot(
+            gamma_scan,
+            rabi_arr,
+            ls=ls,
+            label="S({:.0f}/2)$\leftrightarrow$D({:.0f}/2)".format(2 * M_l, 2 * M_u),
+        )
+
+
+# Shrink current axis's height by 20% on the bottom
+box = ax.get_position()
+ax.set_position([box.x0, box.y0 - box.height * 0.05, box.width, box.height * 0.55])
+
+# Put a legend below current axis
+ax.legend(
+    loc="upper center", bbox_to_anchor=(0.5, -0.35), fancybox=True, ncol=3, fontsize=9
+)
+# change x ticks to radians in pi
+plt.xticks(
+    np.linspace(0, np.pi, 5),
+    [r"$0$", r"$\frac{\pi}{4}$", r"$\frac{\pi}{2}$", r"$\frac{3\pi}{4}$", r"$\pi$"],
+)
+plt.xlabel("Angle $\gamma$ (rad)")
+plt.ylabel("Normalized Rabi frequency")
+plt.ylim([0, 1.0])
+plt.xlim([0, np.pi])
+
+plt.savefig("qp_transition_spectrum.pdf")
+# plt.show()
