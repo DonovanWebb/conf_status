@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import graph_style
 
-graph_style.set_graph_style()
+graph_style.set_graph_style(0.75)
 
 B_experiment = 5.4e-4  ## 5.4 G measured in the lab
 ion = Ca40(B=B_experiment)
@@ -79,15 +79,19 @@ def plot_QP_transition_spectrum(gamma):
             if get_rabi_frequency(lower, upper, gamma) > max_rabi:
                 max_rabi = get_rabi_frequency(lower, upper, gamma)
 
-    plt.figure("Freq spectrum")
+    fig = plt.figure("Freq spectrum")
+    cycle = plt.rcParams["axes.prop_cycle"].by_key()["color"]
+    ax = plt.subplot(111)
     for M_l_sign in [1, -1]:
         M_l = M_l_sign * 1 / 2
         lower = ion.index(transition.lower, M_l)
 
         if M_l_sign == -1:
             ls = "solid"
+            fl = True
         else:
             ls = "dashed"
+            fl = False
 
         for M_u in M_l_sign * np.array([5 / 2, 3 / 2, 1 / 2, -1 / 2, -3 / 2]):
             upper = ion.index(transition.upper, M_u)
@@ -98,25 +102,44 @@ def plot_QP_transition_spectrum(gamma):
 
             normalized_rabi = get_rabi_frequency(lower, upper, gamma) / max_rabi
 
-            plt.plot(
-                relative_splitting * np.ones(2),
-                [0, normalized_rabi],
-                ls=ls,
-                label="S({:.0f}/2)$\leftrightarrow$D({:.0f}/2)".format(
-                    2 * M_l, 2 * M_u
-                ),
-            )
-            plt.scatter(relative_splitting, [0])
+            # set color based on the index in the array
+            if M_u != M_l:
+                c = cycle[int(M_u * M_l_sign - 5 / 2)]
+                ax.bar(
+                    relative_splitting * np.ones(2),
+                    [0, normalized_rabi],
+                    width=1.5,
+                    fill=fl,
+                    color=c,
+                    edgecolor=c,
+                    label="S({:.0f}/2)$\leftrightarrow$D({:.0f}/2)".format(
+                        2 * M_l, 2 * M_u
+                    ),
+                )
+    # Shrink current axis's height by 20% on the bottom
+    box = ax.get_position()
+    ax.set_position([box.x0, box.y0 - box.height * 0.05, box.width, box.height * 0.55])
 
-    plt.ylim([0, 1.0])
-    plt.legend(ncols=4)
+    # Put a legend below current axis
+    """
+    ax.legend(
+        loc="upper center",
+        bbox_to_anchor=(0.5, -0.35),
+        fancybox=True,
+        ncol=4,
+        fontsize=9,
+    )
+    """
+
+    ax.set_ylim([0, 1.0])
     plt.xlabel("Relative splitting (MHz)")
     plt.ylabel("Normalized Rabi frequency")
-    plt.show()
+    plt.savefig(f"qp_transition_spectrum_{gamma/np.pi:.2f}.pdf")
     return
 
 
-# plot_QP_transition_spectrum(gamma=np.pi / 4)
+plot_QP_transition_spectrum(gamma=np.pi / 2)
+plot_QP_transition_spectrum(gamma=np.pi / 4)
 
 fig = plt.figure("angle scan")
 ax = plt.subplot(111)
@@ -126,6 +149,7 @@ lower = ion.index(transition.lower, -1 / 2)
 upper = ion.index(transition.upper, -5 / 2)
 max_rabi = get_rabi_frequency(lower, upper, np.pi / 2)
 
+cycle = plt.rcParams["axes.prop_cycle"].by_key()["color"]
 for M_l_sign in [-1]:
     M_l = M_l_sign * 1 / 2
     lower = ion.index(transition.lower, M_l)
@@ -148,9 +172,11 @@ for M_l_sign in [-1]:
         for gamma in gamma_scan:
             rabi = get_rabi_frequency(lower, upper, gamma) / max_rabi
             rabi_arr.append(rabi)
+        c = cycle[int(M_u * M_l_sign - 5 / 2)]
         plt.plot(
             gamma_scan,
             rabi_arr,
+            color=c,
             ls=ls,
             label="S({:.0f}/2)$\leftrightarrow$D({:.0f}/2)".format(2 * M_l, 2 * M_u),
         )
@@ -158,11 +184,11 @@ for M_l_sign in [-1]:
 
 # Shrink current axis's height by 20% on the bottom
 box = ax.get_position()
-ax.set_position([box.x0, box.y0 - box.height * 0.05, box.width, box.height * 0.55])
+# ax.set_position([box.x0, box.y0 - box.height * 0.05, box.width, box.height * 0.55])
 
 # Put a legend below current axis
 ax.legend(
-    loc="upper center", bbox_to_anchor=(0.5, -0.35), fancybox=True, ncol=3, fontsize=9
+    loc="upper center", bbox_to_anchor=(0.5, 0.25), fancybox=True, ncol=2, fontsize=9
 )
 # change x ticks to radians in pi
 plt.xticks(
@@ -174,5 +200,4 @@ plt.ylabel("Normalized Rabi frequency")
 plt.ylim([0, 1.0])
 plt.xlim([0, np.pi])
 
-plt.savefig("qp_transition_spectrum.pdf")
-# plt.show()
+plt.savefig("qp_gamma.pdf")

@@ -27,8 +27,8 @@ def get_phi():
     return phi
 
 
-def set_graph_style():
-    fig_width = get_fig_width()
+def set_graph_style(scale):
+    fig_width = get_fig_width() * scale
     phi = get_phi()
     fig_height = fig_width / phi
     plt.style.use("seaborn-v0_8-muted")
