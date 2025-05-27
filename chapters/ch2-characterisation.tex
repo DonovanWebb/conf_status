@@ -117,43 +117,20 @@
     % Available transitions
     % 729 laser system
 
-    Individual gate fidelities are ultimately limited by loss of coherences of
-    the two qubit states due to either dephasing or by the natural lifetime of the upper level. By our choice of ion and qubit levels, defined between
-    the ground $4S_{1/2}$ state and the metastable $3D_{5/2}$ state, we can
-    expect a lifetime limited coherence time of $\tau = 1.1$~s~\cite{}. 
+    Individual gate fidelities are ultimately limited by the loss of coherence between the the two qubit states. This can be caused either by dephasing or the natural lifetime of the upper level. By our choice of ion and qubit levels, defined between the ground $4S_{1/2}$ state and the metastable $3D_{5/2}$ state, we can expect a lifetime limited coherence time of $\tau = 1.1$~s~\cite{}. 
     %Barton, P. A. et al. Measurement of the lifetime of the 3d 2D5/2 state in
     %40Ca+.Physical Review A 62, 032503 (2000).
-    In practise, mainly due to imperfect tracking of laser frequency and
-    magnetic field drifts (as mentioned above), we see coherence times dominated
-    by dephasing. To discern between these two noise sources, we may exploit the
-    fact that we have multiple Zeeman levels within our $3D_{5/2}$ state with
-    varying magnetic field sensitivities. We also have the ability to define our
-    qubit on the Zeeman split ground state, which decouples dephasing due to the
-    laser from measured coherence times. We perform Ramsey scans with varying
-    mid-sequence delay durations to extract the coherence times, an example of
-    which can be seen in figure~\ref{fig:coherence_times}. In characterising the
+    In practise we see coherence times dominated by dephasing, due to imperfect tracking of laser frequency and magnetic field drifts. 
+    In characterising the
     spin coherence times, we hope to explore both the efficacy of the magnetic
     shielding surrounding the ion trap, as well as the stability of the 729~nm
     laser. \\
-    Figure~\ref{fig:coherence_times} shows how the magnetic shielding effect
-    coherence times of three transitions, XX, YY and ZZ, with magnetic field
-    sensitivities of XX, YY and ZZ respectively.  From this we find that without
-    the shielding, we are strongly limited by external magnetic field noise, and
-    with full sheilding we suppress this noise to where we are dominated by
-    laser phase noise. To find the factor by which the magnetic field noise is
-    attenuated, we can compare the coherence times of the laser phase
-    insensitive transition with and without the box. We find an attenuation
-    factor of XX, which is XXconsisitent with the expected attenuation factor of
-    the mu-metal shielding.\\
-    With the shiedling in place, we compare the coherence times of the
-    $4S_{1/2}, m_j = -1/2 \leftrightarrow 3D_{5/2}, m_j = -5/2$ with fibre noise cancellation (see
-    section~\ref{sec:Narrow Line Width 729 Laser}) and without, figure~\ref{fig:coherence_times}. We find that the
-    coherence time is improved by a factor of XX, with FNC enabled. Our current
-    spin coherence time of XX~ms is limited by the laser phase noise, and we
-    expect to be able to push this to [ref R. Oswald] by improving the laser PDH
-    stability. However, for the immediate planned experiments (see
-    section~\ref{Outlook}), these improvements will be a low priority due to
-    other likely dominating error sources in the motion of our ions.\\
+    Practically we measure spin coherence times by performing Ramsey scans. Contrary to the Ramsey scans described in section~\ref{sec:Rabi and Ramsey Scans}, we are not interested in measuring phase accumulated over time, $t$. Instead we are interested in measuring decay in contrast as the Ramsey duration is increased. As such, we scan the phase $\phi$, of the final $\pi/2|_\phi$-pulse, and fit the contrast of the resulting fringe. Figures~\ref{fig:coherence_times} show examples of such a scan.\\
+    To find the cause of the decaying contrast, we may discern between laser and magnetic field noise. This is done by redefining the quadrupole qubit with varying magnetic field sensitivity transitions. Any difference in coherence times measured between these transitions will be due to magnetic field sensitivity differences exclusively. \\
+    
+    Figure~\ref{fig:coherence_times} shows the suppression of magnetic field noise due to the MuMetal shielding. 
+    [I dont have the data I want for this story yet.]
+
 
 \subsection{State Preparation and Measurement}
 % Main points:
