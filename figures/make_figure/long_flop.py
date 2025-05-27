@@ -9,7 +9,7 @@ def decaying_sine(t, A, lambda_, W):
     return 1 / 2 + A * np.exp(-lambda_ * t) * np.cos(2 * W * t) / 2
 
 
-graph_style.set_graph_style()
+graph_style.set_graph_style(1.0)
 
 date = "2025-02-04"
 rid = 16238

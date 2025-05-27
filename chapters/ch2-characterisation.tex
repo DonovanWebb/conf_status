@@ -28,23 +28,35 @@
         \end{center}
         \caption{
             }
-        \label{fig:Long Flop}
+        \label{fig:quadrupole}
     \end{figure}
 
 
     Zeeman splitting of the $4S_{1/2}$ and $3D_{5/2}$ states leads to 2 and 6
-    metastable levels respectively. Due to the magnetic field strength of 5.4~G,
+    levels respectively. Due to the magnetic field strength of 5.4~G,
     the $S$-levels are split by $\sim$15~MHz, and the $D$-levels by $\sim$9~MHz.
     This splitting is considerably larger than both the natural linewidth of the
-    729-nm transition, and the Ti:Saph laser linewidth, meaning we can
-    selectively address each of these levels via frequency tuning of the laser. There is some freedom in choosing which of these 10 possible quadrupole transitions we define as our qubit. They have varying coupling strengths, $\Omega$, depending on the polarisation and $k$-vector of the interacting light. Here is the rational for our choice of $4S_{1/2}, m = -1/2 \leftrightarrow 3D_{5/2}, m' = -5/2$.\\
-    First, we decide what polarisation we will use for the addressing 729-nm laser. It is beneficial to use a polarisation that limits the number of addressable transitions to reduce the effect of unwanted off-resonant interactions. Figure~\ref{fig:quadrupole} shows the normalised Rabi frequencies of transitions between $m=-1/2$ and all available $m'$ levels.
+    729-nm transition, and the Ti:Sapph laser linewidth, meaning the transitions can be 
+    selectively address by frequency tuning of the laser. There is some freedom in choosing which of these 10 possible (as $\Delta m_j \leq 2$) quadrupole transitions we define as our qubit. They have varying coupling strengths, $\Omega$, depending on the polarisation and $k$-vector of the interacting light. Here is the rational for our qubit choice of $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2}, ~m' = -5/2$.\\
     % Cite Gulde Thesis
+    We want excellent sideband cooling efficiency as we plan to use our motional modes considerably. For time-efficient sideband cooling~\ref{sec:Cooling}, we require a ``closed-cycle'' transition. ``Closed-cycle'' here means that after one cycle of sideband cooling, we return with high probability back to the initial electronic state. If this is true, we can immediately run the next sideband pulse, and do not have to re-state prep the ion. If we aim to initially prepare the $4S_{1/2},~m = -1/2$ state, then the only closed-cycle transition is $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = -5/2$. We therefore want access to this transition, however it does not neccessarily need to be our qubit defined transition. \\
+    To further narrow down our choice, we recognise the benefit in limiting the number of addressable transitions to reduce the effect of unwanted off-resonant interactions. Figure~\ref{fig:quadrupole} $a$, shows the normalised Rabi frequencies of each transition as the angle $\gamma$ between polarisation vector and B-field is varied, while figure~\ref{fig:quadrupole} $b$, shows the relevant frequency splitting of the transitions at $\gamma = \pi/4$. These plots are for light with k-vector perpendicular to B-field, as we have for 729-nm through the main objective lens (see section~\ref{sec:Vacuum System}). This geometry suppresses transitions with $\Delta m_j = 0$.\\
+     We can see that at $\gamma = \pi/2$, we maximise the Rabi frequency of the
+     $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = -5/2$ transition, while
+     minimising the Rabi frequencies of all other transitions, apart from
+     $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = +3/2$.
+     Figure~\ref{fig:quadrupole} shows the relative splitting and Rabi
+     frequencies for the available transitions at $\gamma = \pi/2$. 
+     It is worth noting that access to transition $4S_{1/2},~m = +1/2 \leftrightarrow 3D_{5/2},~m' = -3/2$ is useful for state preparation, as it allows us to optically pump into the $m = -1/2$ state. \\
+     If we select polarisation $\gamma = \pi/2$, we now have only two transitions to choose between. We want both high Rabi frequency and low magnetic field sensitivity. This makes the choice simple as $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = -5/2$ has both the larger Rabi frequency, and the lower magnetic field sensitivity, $-2.80$~MHz/G, compared to the $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = +3/2$ transition, which has a magnetic field sensitivity of $+3.92$~MHz/G.\\
     
-    we see a tot
 
 \section{Spin}
 \label{sec:Spin}
+    Discrete variable quantum computing consists of manipulating many two-level
+    systems, which we refer to either as spins, or qubits. In this section we
+    describe the methods we use to maniplate these spins, and we benchmark their
+    performance.\\
 
 \subsection{Rabi and Ramsey Scans}
 % Main points:
@@ -69,13 +81,27 @@
         \label{fig:Long Flop}
     \end{figure}
 
-    Here we briefly describe the method in which we extract Rabi frequencies and single qubit gate durations.
-    Long Rabi flop (100 us), fit out carrier frequency of 2*pi*0.0716(1) MHz and
-    Decay rate of $0.0107(7)$ 1 / us. See long flop. This is 1 mW of power on m1\_m3
-    transition before we changed polarization. Fit with decaying cos function 
+    Here we briefly describe the method in which we extract Rabi frequencies and single qubit gate durations, which we (will have) described in the theory section.\\
+    We need access to $\pi/2|_x$-pulses for constructing our universal spin gate set. This single qubit gate is achieved by square pulses of 729-nm light. To roughly calibrate the required pulse length we may fit extended oscillations to find the Rabi frequency using a damped oscillation model,
     \begin{equation}
         \frac{1 + e^{-\lambda t} \cos(2 \Omega t)}{2},
     \end{equation}
+    where $\lambda$ is the decay rate, and $\Omega$ is the Rabi frequency.\\
+    Figure~\ref{fig:Long Flop}, shows one such ``flop" with 1~mW of power stabilised light. We find a Rabi frequency of $\Omega/2\pi = 0.0716(1)$~MHz and
+    decay rate $\lambda = 0.0107(7)~1/\mu$s. From this we can estimate a $\pi/2$ time of 1.7~$\mu$s (note, this is on the $4S_{1/2},~m_j = -1/2 \leftrightarrow 3D_{5/2},~m_j = -3/2$ transition, which we used prior to optimising the 729-nm polarisation, see section~\ref{sec:Transitions} for more details).\\
+    The damping is likely due to a combination of out-of-Lamb-Dicke effects, and laser phase noise. The out-of-Lamb-Dicke effects are due to on-resonant terms proportional to $O(\eta^2 n)$ in the full Lamb-Dicke expansion, which may not be negligible when we do not side band cool all modes of the ion. As we are unsure of all the mode temperatures after Doppler cooling, and we have not yet characterised the laser phase noise, we do not know their relative contributions to the observed decay.\\
+    To further improve our estimate for the $\pi/2$ pulse length, we must take into account any ramping time due to electronic control and AOM rise times. This is done by applying odd multiples of the roughly calibrated $\pi/2$ pulses consecutively and optimising pulse durations such that the final population measurement is the Z-basis superposition state, $P_{\downarrow}= 0.5$. \\
+
+    To measure the detuning of the 729-nm laser, we perform Ramsey scans.
+    We prepare in $P_\downarrow = 1$, apply a $\pi/2|_x$-pulse, wait for some time $t$, and then apply a second
+    $\pi/2|_x$-pulse. If we are on resonance, then we have effectively performed a $\pi$-pulse, and the final population in $P_\downarrow$ will be 0. If we are off-resonance, then the final population will be given by,
+    \begin{equation}
+        P_{\downarrow} = \frac{1+\cos(\Delta t)}{2},
+    \end{equation}
+    where $\Delta$ is the detuning of the laser from resonance.
+    The time $t$ can be varied to increase the sensitivity to frequency offsets, and we may iterate feeding back $\Delta$ to the set laser frequency to ensure we are on resonance.\\
+
+
     % 1 mW 729~nm laser -> Fit out pi/2, pi, 2pi pulses. We are using square pulses.
 
 

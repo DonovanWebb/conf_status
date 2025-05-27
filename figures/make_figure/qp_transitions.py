@@ -65,7 +65,7 @@ def get_zeeman_spliting(lower_, upper_, B_):
     return dfreq
 
 
-def plot_QP_transition_spectrum(gamma):
+def plot_QP_transition_spectrum(gamma, label=""):
     """ " Plots spectrum of QP transitions (S12 <--> D52) with heights proportional
     to the Rabi frequency of the transition for a given angle between B and polarisation
     """
@@ -79,9 +79,8 @@ def plot_QP_transition_spectrum(gamma):
             if get_rabi_frequency(lower, upper, gamma) > max_rabi:
                 max_rabi = get_rabi_frequency(lower, upper, gamma)
 
-    fig = plt.figure("Freq spectrum")
+    fig, ax = plt.subplots(1, 1)
     cycle = plt.rcParams["axes.prop_cycle"].by_key()["color"]
-    ax = plt.subplot(111)
     for M_l_sign in [1, -1]:
         M_l = M_l_sign * 1 / 2
         lower = ion.index(transition.lower, M_l)
@@ -119,6 +118,7 @@ def plot_QP_transition_spectrum(gamma):
     # Shrink current axis's height by 20% on the bottom
     box = ax.get_position()
     ax.set_position([box.x0, box.y0 - box.height * 0.05, box.width, box.height * 0.55])
+    plt.text(-0.15, 1.01, label, transform=ax.transAxes, size=16, fontweight="bold")
 
     # Put a legend below current axis
     """
@@ -133,17 +133,19 @@ def plot_QP_transition_spectrum(gamma):
 
     ax.set_ylim([0, 1.0])
     plt.xlabel("Relative splitting (MHz)")
-    plt.ylabel("Normalized Rabi frequency")
+    plt.ylabel("Rabi frequency $\Omega$")
     plt.savefig(f"qp_transition_spectrum_{gamma/np.pi:.2f}.pdf")
     return
 
 
-plot_QP_transition_spectrum(gamma=np.pi / 2)
-plot_QP_transition_spectrum(gamma=np.pi / 4)
+plot_QP_transition_spectrum(gamma=np.pi / 2, label="c")
+plot_QP_transition_spectrum(gamma=np.pi / 4, label="b")
 
-fig = plt.figure("angle scan")
-ax = plt.subplot(111)
-
+width = 0.75 * graph_style.get_fig_width()
+figsize = (width, width * 0.75)
+fig, (axu, ax) = plt.subplots(
+    2, 1, gridspec_kw={"height_ratios": [1, 3]}, figsize=figsize
+)
 
 lower = ion.index(transition.lower, -1 / 2)
 upper = ion.index(transition.upper, -5 / 2)
@@ -173,7 +175,14 @@ for M_l_sign in [-1]:
             rabi = get_rabi_frequency(lower, upper, gamma) / max_rabi
             rabi_arr.append(rabi)
         c = cycle[int(M_u * M_l_sign - 5 / 2)]
-        plt.plot(
+        axu.plot(
+            0,
+            0,
+            color=c,
+            ls=ls,
+            label="S({:.0f}/2)$\leftrightarrow$D({:.0f}/2)".format(2 * M_l, 2 * M_u),
+        )
+        ax.plot(
             gamma_scan,
             rabi_arr,
             color=c,
@@ -186,18 +195,32 @@ for M_l_sign in [-1]:
 box = ax.get_position()
 # ax.set_position([box.x0, box.y0 - box.height * 0.05, box.width, box.height * 0.55])
 
-# Put a legend below current axis
-ax.legend(
-    loc="upper center", bbox_to_anchor=(0.5, 0.25), fancybox=True, ncol=2, fontsize=9
+# Put a legend above grid
+axu.legend(
+    loc="upper center",
+    fancybox=True,
+    ncol=2,
+    fontsize=9,
 )
+# Hide everything from upper plot apart from the legend
+axu.set_xticks([])
+axu.set_yticks([])
+axu.spines["top"].set_visible(False)
+axu.spines["right"].set_visible(False)
+axu.spines["left"].set_visible(False)
+axu.spines["bottom"].set_visible(False)
+axu.tick_params(axis="both", which="both", length=0, labelsize=0, labelcolor="none")
+
+
 # change x ticks to radians in pi
 plt.xticks(
     np.linspace(0, np.pi, 5),
     [r"$0$", r"$\frac{\pi}{4}$", r"$\frac{\pi}{2}$", r"$\frac{3\pi}{4}$", r"$\pi$"],
 )
 plt.xlabel("Angle $\gamma$ (rad)")
-plt.ylabel("Normalized Rabi frequency")
+plt.ylabel("Rabi frequency $\Omega$")
 plt.ylim([0, 1.0])
 plt.xlim([0, np.pi])
+plt.text(-0.15, 1.03, "a", transform=ax.transAxes, size=16, fontweight="bold")
 
 plt.savefig("qp_gamma.pdf")
