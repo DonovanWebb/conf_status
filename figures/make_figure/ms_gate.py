@@ -9,7 +9,7 @@ def sinusoid_func(x, a, b, c, d):
     return a * np.sin(b * x + c) + d
 
 
-graph_style.set_graph_style()
+graph_style.set_graph_style(1.0)
 
 date = "2025-01-31"
 rid_pop = 15960
@@ -88,43 +88,47 @@ ax2.yaxis.tick_right()
 ax0.errorbar(
     duration,
     p00,
-    label="p00",
-    fmt="o",
+    label="$P_{00}$",
+    fmt="^",
     yerr=p_err_00,
 )
 ax0.errorbar(
     duration,
     p11,
-    label="p11",
-    fmt="o",
+    label="$P_{11}$",
+    fmt="^",
     yerr=p_err_11,
 )
 ax0.errorbar(
     duration,
     p0110,
-    label="p0110",
-    fmt="o",
+    label="$(P_{01} + P_{10})/2$",
+    fmt="^",
     yerr=p_err_0110,
 )
-ax0.legend()
+ax0.legend(loc="upper right", fontsize=8)
+ax0.set_ylabel("Populations")
+ax0.set_xlabel("Duration $t$ (us)")
+ax0.set_ylim(0.0, 1.0)
+ax0.set_xlim(0.0, 300.0)
 
-ax2.errorbar(70, p00f, label="p00 final", fmt="x", yerr=p_err_00f, alpha=0.8, capsize=3)
-ax2.errorbar(70, p11f, label="p11 final", fmt="x", yerr=p_err_11f, alpha=0.8, capsize=3)
-ax2.errorbar(70, p0110f, label="p01_10 final", fmt="x", yerr=p_err_0110f, capsize=3)
+ax2.errorbar(70, p00f, label="p00 final", fmt="^", yerr=p_err_00f, alpha=0.8, capsize=3)
+ax2.errorbar(70, p11f, label="p11 final", fmt="^", yerr=p_err_11f, alpha=0.8, capsize=3)
+ax2.errorbar(70, p0110f, label="p01_10 final", fmt="^", yerr=p_err_0110f, capsize=3)
 ax2.set_ylabel("Populations")
 ax2.set_ylim(0.0, 0.5)
 ax2.set_xticks([])
 ax2.set_yticks(np.arange(0.0, 0.7, 0.1))
 
-ax0.set_ylabel("Populations")
-ax0.set_xlabel("Duration (us)")
-ax0.set_ylim(0.0, 1.0)
 
+c = graph_style.get_color(0)
 ax1.errorbar(
     phase,
     parity,
     yerr=parity_err,
-    fmt="o",
+    color=c,
+    zorder=11,
+    fmt="^",
 )
 linrange = np.linspace(
     np.min(phase),
@@ -134,15 +138,18 @@ linrange = np.linspace(
 ax1.plot(
     linrange,
     sinusoid_func(linrange, *p_fit),
+    color=c,
+    alpha=graph_style.get_alpha(),
+    zorder=10,
     label="Parity fit",
 )
 ax1.set_ylim(-1.0, 1.0)
 ax1.set_ylabel("Parity")
-ax1.set_xlabel("Phase turns")
+ax1.set_xlabel("Phase turns $\\phi$")
 
 ax0.yaxis.set_major_formatter(FormatStrFormatter("%.1f"))
 ax1.yaxis.set_major_formatter(FormatStrFormatter("%.1f"))
 ax2.yaxis.set_major_formatter(FormatStrFormatter("%.1f"))
 plt.tight_layout()
 
-plt.savefig("ms_gate.png")
+plt.savefig("ms_gate.pdf")

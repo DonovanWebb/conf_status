@@ -3,7 +3,7 @@ import numpy as np
 import graph_style
 from scipy.optimize import curve_fit
 
-graph_style.set_graph_style()
+graph_style.set_graph_style(0.75)
 
 
 def get_seq_length(seq):
@@ -91,19 +91,42 @@ plt.ylabel("Occurrence")
 plt.savefig("rbm100hist.png")
 
 
-plt.figure("rbm")
+fig, ax = plt.subplots()
+c = graph_style.get_color(0)
 # Fit decay model to the data:
 popt, pcov = curve_fit(
     rbm_fit, num_cliff, survivals, p0=[0.499, 0.999], bounds=([0, 0], [0.5, 1.0])
 )
-print("Stateprep error: ", (1 / 2 - popt[0]))
-print("Clifford error: ", (1 - popt[1]) / 2)
 fit_errs = np.sqrt(np.diag(pcov))
-print("Clifford error std: ", (fit_errs[1]) / 2)
-print("SPAM error std: ", (fit_errs[0]))
 
-plt.errorbar(num_cliff, survivals, yerr=survivals_err, fmt="o")
-plt.plot(num_cliff, rbm_fit(num_cliff, popt[0], popt[1]), label="RBM fit")
-plt.xlabel("Number of Cliffords / $m$")
-plt.ylabel("Average Sequence Fidelity / $F(m)$")
-plt.savefig("rbm_fit.png")
+ax.errorbar(num_cliff, survivals, yerr=survivals_err, fmt="^", color=c, zorder=11)
+ax.plot(
+    num_cliff,
+    rbm_fit(num_cliff, popt[0], popt[1]),
+    label="RBM fit",
+    color=c,
+    zorder=10,
+    alpha=graph_style.get_alpha(),
+)
+ax.set_xlabel("Number of Cliffords $m$")
+ax.set_ylabel("Avg. Sequence Fidelity $F(m)$")
+
+sp_err = 1 / 2 - popt[0]
+clf_err = (1 - popt[1]) / 2
+sp_std = (fit_errs[1]) / 2
+clf_std = (fit_errs[1]) / 2
+textstr = (
+    f"SPAM error: {sp_err*1000:.2f}({6})$\\times 10$$^-$$^3$\n"
+    + f"Clifford error: {clf_err*10000:.1f}({3})$\\times 10$$^-$$^4$"
+)
+
+ax.text(
+    0.05,
+    0.05,
+    textstr,
+    transform=ax.transAxes,
+    verticalalignment="bottom",
+    horizontalalignment="left",
+    fontsize=12,
+)
+plt.savefig("rbm_fit.pdf")

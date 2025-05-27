@@ -5,7 +5,7 @@ from scipy.optimize import curve_fit
 from matplotlib.ticker import FormatStrFormatter
 
 
-graph_style.set_graph_style()
+graph_style.set_graph_style(0.75)
 
 date = "2024-12-13"
 rid = 11740
@@ -36,9 +36,29 @@ ndot_err = np.sqrt(p_cov[0][0]) * 1000
 print(ndot)
 print(ndot_err)
 
-plt.errorbar(delays0, nbar, yerr=nbar_err, fmt="o")
-plt.plot(delays0, graph_style.linear_func(delays0, *p_fit), label="linear heating fit")
-plt.xlabel("Delay (ms)")
-plt.ylabel("$\\bar{n}$")
+fig, ax = plt.subplots()
+c = graph_style.get_color(0)
+ax.errorbar(delays0, nbar, yerr=nbar_err, zorder=11, fmt="^", color=c)
+ax.plot(
+    delays0,
+    graph_style.linear_func(delays0, *p_fit),
+    label="linear heating fit",
+    alpha=graph_style.get_alpha(),
+    color=c,
+    zorder=10,
+)
+textstr = f"Heating rate = {ndot:.0f}({ndot_err:.0f}) q/s"
 
-plt.savefig("heating_rate.png")
+ax.text(
+    0.05,
+    0.95,
+    textstr,
+    transform=ax.transAxes,
+    verticalalignment="top",
+    horizontalalignment="left",
+    fontsize=12,
+)
+ax.set_xlabel("Delay (ms)")
+ax.set_ylabel("Avg. Fock state $\\bar{n}$")
+
+plt.savefig("heating_rate.pdf")

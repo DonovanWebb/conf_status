@@ -54,7 +54,8 @@ fig_width = graph_style.get_fig_width()
 fig_height = fig_width / graph_style.get_phi() / 2
 fig.set_size_inches(fig_width, fig_height)
 
-plt.errorbar(duration * 1e6, pop, yerr=pop_err, fmt="^", elinewidth=1)
+c = graph_style.get_color(0)
+plt.errorbar(duration * 1e6, pop, yerr=pop_err, fmt="^", color=c, zorder=11)
 linrange = np.linspace(
     0,
     np.max(duration * 1e6),
@@ -63,8 +64,11 @@ linrange = np.linspace(
 plt.plot(
     duration * 1e6,
     decaying_sine(duration, *p_fit),
+    color=c,
+    zorder=10,
+    alpha=graph_style.get_alpha(),
     label="Fit: A=%.2f, lambda=%.2f, W=%.2f" % tuple(p_fit),
 )
-plt.xlabel("Duration (us)")
-plt.ylabel("Pop.")
+plt.xlabel("Duration $t$ (us)")
+plt.ylabel("Pop. $P_\\downarrow$")
 plt.savefig("long_flop.pdf")

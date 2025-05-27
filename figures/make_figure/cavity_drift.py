@@ -5,7 +5,7 @@ from scipy import stats
 from scipy.optimize import curve_fit
 import graph_style
 
-graph_style.set_graph_style()
+graph_style.set_graph_style(0.75)
 
 
 def unpack_data(path):
@@ -36,8 +36,8 @@ p_errs = np.sqrt(np.diag(p_cov))
 
 fig, ax = plt.subplots()
 
-ax.scatter(t, f)
-ax.plot(t, lin_fit(t, *p_fit))
+ax.scatter(t, f, zorder=11)
+ax.plot(t, lin_fit(t, *p_fit), ls="--", zorder=10, alpha=graph_style.get_alpha())
 ax.set_xlabel("Time stamp (Hours)")
 ax.set_ylabel("Laser Offset (MHz)")
 ax.set_xlim(0, max(t))
@@ -54,7 +54,7 @@ ax.text(
     transform=ax.transAxes,
     verticalalignment="top",
     horizontalalignment="right",
-    fontsize=7,
+    fontsize=12,
 )
 
-plt.savefig("cavity_drift.pdf")
+plt.savefig("../pdf_figure/cavity_drift.pdf")

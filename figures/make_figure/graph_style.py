@@ -27,6 +27,10 @@ def get_phi():
     return phi
 
 
+def get_alpha():
+    return 0.8
+
+
 def set_graph_style(scale):
     fig_width = get_fig_width() * scale
     phi = get_phi()
@@ -45,9 +49,11 @@ def set_graph_style(scale):
             "figure.titlesize": 12,
             "figure.figsize": (fig_width, fig_height),
             "figure.autolayout": True,
+            "legend.fancybox": True,
             "lines.linewidth": 2,
             "lines.markersize": 3,
-            "lines.linestyle": "-",
+            "lines.linestyle": "--",
+            "scatter.marker": "^",
             "axes.grid": True,
             "grid.alpha": 1.0,
             "grid.linestyle": ":",
@@ -55,6 +61,17 @@ def set_graph_style(scale):
             "errorbar.capsize": 0,
         }
     )
+
+
+def get_color(index=0):
+    """
+    Get a color from the current color cycle.
+    """
+    cycle = plt.rcParams["axes.prop_cycle"].by_key()["color"]
+    return cycle[index % len(cycle)]
+
+
+cycle = plt.rcParams["axes.prop_cycle"].by_key()["color"]
 
 
 def load_data(rid, date):
@@ -91,7 +108,7 @@ def linear_func(x, a, b):
 if __name__ == "__main__":
     # Example usage
     print(plt.rcParams.keys())
-    set_graph_style()
+    set_graph_style(1.0)
     data_x = np.random.randn(50)
     data_y = np.random.randn(50)
     plt.plot(data_x)

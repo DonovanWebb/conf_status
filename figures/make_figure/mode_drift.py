@@ -5,7 +5,7 @@ from scipy import stats
 from scipy.optimize import curve_fit
 import graph_style
 
-graph_style.set_graph_style()
+graph_style.set_graph_style(1.0)
 
 
 def unpack_data(path):
@@ -40,7 +40,7 @@ def format_with_uncertainty(value, error):
     return f"{value_rounded:.{precision}f}({error_display})"
 
 
-path = r"Tickle mode frequency-data-2025-05-15 19_19_54.csv"
+path = r"../make_figure/Tickle mode frequency-data-2025-05-15 19_19_54.csv"
 date_reference = "2025-05-10"
 
 t, f = unpack_data(path)
@@ -84,11 +84,12 @@ ax2 = plt.subplot2grid(shape=(100, 100), loc=(56, 57), colspan=40, rowspan=40)
 
 ax = [ax0, ax1, ax2]
 
-ax[0].plot(t, f * 1e-6, label="Data", alpha=0.8)
-ax[0].plot(t, f_lowpass * 1e-6, label="Low passed")
-ax[0].plot(t, pfit * 1e-6, alpha=0.8, label="10 min calibration")
+ax[0].plot(t, f * 1e-6, label="Data", alpha=0.9, ls="-")
+ax[0].plot(t, f_lowpass * 1e-6, label="Low passed", alpha=graph_style.get_alpha())
+ax[0].plot(t, pfit * 1e-6, alpha=graph_style.get_alpha(), label="10 min calibration")
 ax[0].set_xlabel("Time stamp (s)")
 ax[0].set_ylabel("Frequency (MHz)")
+ax[0].legend(fontsize=8, loc="upper left")
 
 
 #  residues

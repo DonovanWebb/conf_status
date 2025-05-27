@@ -27,7 +27,7 @@ def detune_sdf(x, W):
     return 1 / 2 * (1 + np.exp(-4 * (nbar + 1 / 2) * a**2))
 
 
-graph_style.set_graph_style()
+graph_style.set_graph_style(1.0)
 
 date = "2025-05-03"
 rid_det = 23502  # detune
@@ -137,15 +137,16 @@ ax0.errorbar(
     pop_det,
     yerr=pop_err_det,
     fmt="^",
-    elinewidth=1,
     label="Detuning",
+    zorder=11,
+    alpha=graph_style.get_alpha(),
 )
-ax0.set_xlabel("Detuning (kHz)")
+ax0.set_xlabel("Detuning $\\delta_g$ (kHz)")
 ax0.set_xlim(-20, 20)
 ax0.set_xticks(
     np.arange(-20, 21, 10),
 )
-ax0.set_ylabel("Population")
+ax0.set_ylabel("Pop. $P_\\downarrow$")
 ax0.set_ylim(0.25, 1.0)
 ax0.set_yticks(
     np.arange(0.25, 1.25, 0.25),
@@ -154,23 +155,28 @@ ax0.plot(
     detuning / 1000,
     detune_sdf(detuning * 2 * np.pi, *p_fit_det),
     label="Fit",
-    zorder=3,
+    zorder=10,
+    alpha=graph_style.get_alpha(),
+    ls="-",
 )
 ax1.errorbar(
     detuning_tb / 1000,
     pop_tb,
     yerr=pop_err_tb,
     fmt="^",
-    elinewidth=1,
+    zorder=11,
     label="Detuning Tone Balance",
+    alpha=graph_style.get_alpha(),
 )
 ax1.plot(
     detuning / 1000,
     detune_sdf(detuning * 2 * np.pi, *p_fit_det),
     label="Fit",
-    zorder=3,
+    zorder=11,
+    alpha=graph_style.get_alpha(),
+    ls="-",
 )
-ax1.set_xlabel("Detuning (kHz)")
+ax1.set_xlabel("Detuning $\\delta_g$ (kHz)")
 ax1.set_xlim(-20, 20)
 ax1.set_xticks(
     np.arange(-20, 21, 10),
@@ -186,20 +192,38 @@ ax2.errorbar(
     pop_dur,
     yerr=pop_err_dur,
     fmt="^",
-    elinewidth=1,
+    zorder=11,
     label="Duration",
+    alpha=graph_style.get_alpha(),
 )
 ax2.set_ylim(0.25, 1.0)
 ax2.set_yticks(
     np.arange(0.25, 1.25, 0.25),
 )
-ax2.set_xlabel("Duration (us)")
 ax2.set_xlim(0, 200)
-ax2.set_ylabel("Population")
+ax2.set_xlabel("Duration $t$ (us)")
+ax2.set_ylabel("Pop. $P_\\downarrow$")
 ax2.plot(
     duration * 1e6,
     thermal_split(duration, *p_fit),
     label="Fit",
-    zorder=3,
+    zorder=10,
+    alpha=graph_style.get_alpha(),
 )
-plt.savefig("sdf.png")
+
+textstr = (
+    "$\Omega_{\\rm sdf}$ = 2$\pi \\times $ "
+    + f"{Wsdf / (2 * np.pi):.1f} ({10*Wsdf_err / (2 * np.pi):.0f}) kHz"
+)
+
+ax2.text(
+    0.95,
+    0.95,
+    textstr,
+    transform=ax2.transAxes,
+    verticalalignment="top",
+    horizontalalignment="right",
+    fontsize=12,
+)
+
+plt.savefig("sdf.pdf")
