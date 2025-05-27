@@ -59,6 +59,7 @@
     performance.\\
 
 \subsection{Rabi and Ramsey Scans}
+\label{sec:Rabi and Ramsey Scans}
 % Main points:
     % The ion is a sensor!
     % Method for Rabi and Ramsey scans
@@ -102,7 +103,7 @@
     The time $t$ can be varied to increase the sensitivity to frequency offsets, and we may iterate feeding back $\Delta$ to the set laser frequency to ensure we are on resonance.\\
 
 
-    % 1 mW 729~nm laser -> Fit out pi/2, pi, 2pi pulses. We are using square pulses.
+    % 1 mW 729-nm laser -> Fit out pi/2, pi, 2pi pulses. We are using square pulses.
 
 
 \subsection{Spin Coherence Times}
@@ -117,19 +118,31 @@
     % Available transitions
     % 729 laser system
 
-    Individual gate fidelities are ultimately limited by the loss of coherence between the the two qubit states. This can be caused either by dephasing or the natural lifetime of the upper level. By our choice of ion and qubit levels, defined between the ground $4S_{1/2}$ state and the metastable $3D_{5/2}$ state, we can expect a lifetime limited coherence time of $\tau = 1.1$~s~\cite{}. 
-    %Barton, P. A. et al. Measurement of the lifetime of the 3d 2D5/2 state in
-    %40Ca+.Physical Review A 62, 032503 (2000).
-    In practise we see coherence times dominated by dephasing, due to imperfect tracking of laser frequency and magnetic field drifts. 
-    In characterising the
-    spin coherence times, we hope to explore both the efficacy of the magnetic
-    shielding surrounding the ion trap, as well as the stability of the 729~nm
-    laser. \\
-    Practically we measure spin coherence times by performing Ramsey scans. Contrary to the Ramsey scans described in section~\ref{sec:Rabi and Ramsey Scans}, we are not interested in measuring phase accumulated over time, $t$. Instead we are interested in measuring decay in contrast as the Ramsey duration is increased. As such, we scan the phase $\phi$, of the final $\pi/2|_\phi$-pulse, and fit the contrast of the resulting fringe. Figures~\ref{fig:coherence_times} show examples of such a scan.\\
-    To find the cause of the decaying contrast, we may discern between laser and magnetic field noise. This is done by redefining the quadrupole qubit with varying magnetic field sensitivity transitions. Any difference in coherence times measured between these transitions will be due to magnetic field sensitivity differences exclusively. \\
-    
-    Figure~\ref{fig:coherence_times} shows the suppression of magnetic field noise due to the MuMetal shielding. 
-    [I dont have the data I want for this story yet.]
+    Individual gate fidelities are ultimately limited by the loss of coherence
+    between the the two qubit states. This can be caused either by dephasing or
+    the natural lifetime of the upper level. By our choice of ion and qubit
+    levels, defined between the ground $4S_{1/2}$ state and the metastable
+    $3D_{5/2}$ state, we can expect a lifetime limited coherence time of $\tau =
+    1.1$~s~\cite{barton_measurement_2000}. 
+    In practise we see coherence times dominated by dephasing, due to imperfect
+    tracking of laser frequency and magnetic field drifts.  In characterising
+    the spin coherence times, we hope to explore both the efficacy of the
+    magnetic shielding surrounding the ion trap, as well as the stability of the
+    729-nm laser. \\
+    Practically we measure spin coherence times by performing Ramsey scans.
+    Contrary to the Ramsey scans described in section~\ref{sec:Rabi and Ramsey
+    Scans}, we are not interested in measuring phase accumulated over time, $t$.
+    Instead we are interested in measuring decay in contrast as the Ramsey
+    duration is increased. As such, we scan the phase $\phi$, of the final
+    $\pi/2|_\phi$-pulse, and fit the contrast of the resulting fringe.
+    Figures~\ref{fig:coherence_times} show examples of such a scan.\\
+    To find the cause of the decaying contrast, we may discern between laser and
+    magnetic field noise. This is done by redefining the quadrupole qubit with
+    varying magnetic field sensitivity transitions. Any difference in coherence
+    times measured between these transitions will be due to magnetic field
+    sensitivity differences exclusively. \\
+    Figure~\ref{fig:coherence_times} shows the suppression of magnetic field noise due to the MuMetal shielding. \\
+    (I dont have the data I want for this story yet.)
 
 
 \subsection{State Preparation and Measurement}
@@ -143,40 +156,47 @@
     % 729 system
     % Available transitions
     % pi-pulses
+    \begin{figure}
+        \begin{center}
+        \noindent\includegraphics[width=0.75\linewidth]{
+            figures/pdf_figure/readout_hist.pdf
+            }
+        \end{center}
+        \caption{
+            Readout histogram with 100,000 counts. Here measured zero false positives, zero false negatives, expected error of $6\times 10^{-9}$ given fitted Gaussians. Gaussian dark: mean = 62, $\sigma$ = 13. Gaussian bright: mean = 341, $\sigma$ = 36.
+            }
+        \label{fig:readout_histogram}
+    \end{figure}
 
     To utilise two levels of the ion as a qubit, we need to be able to
     selectively prepare the ion into one of the Zeeman levels of the ground
     state. As mentioned in section~\ref{sec:Magnetic Field}, we are operating at
     a low magnetic field of 5~G, leading to a splitting between the Zeeman
-    levels of less than 21~MHz, the natural linewidth of the 397~nm transition.
-    This means we cannot optically pump using 397~nm frequency selectivity.
+    levels of less than 21~MHz, the natural linewidth of the 397-nm transition.
+    This means we cannot optically pump using 397-nm frequency selectivity.
     Further, due to the constraint of beam geometry from the in vacuum optics,
-    we can not use polarisation selectivity of the 397~nm transition. Instead,
-    we use the narrow line width 729~nm laser on resonance with the $4S_{1/2},
-    m_j = +1/2 \leftrightarrow 3D_{5/2}, m_j = -3/2$ transition, and the 854~nm
+    we can not use polarisation selectivity of the 397-nm transition. Instead,
+    we use the narrow line width 729-nm laser on resonance with the $4S_{1/2},~ m_j = +1/2 \leftrightarrow 3D_{5/2},~m_j = -3/2$ transition, and the 854-nm
     deshelving laser on resonance, to optically pump into the $m_j = -1/2$
     Zeeman level we define as our qubit ground state. \\
-    To measure the qubit state of the ion, we apply the 397~nm and 866~nm lasers
-    and count 397~nm photons scattered. From the level diagram shown in
-    figure~\ref{fig:level_diagram}, we can see that upon turning on the 397~nm
+    To measure the qubit state of the ion, we apply the 397-nm and 866-nm lasers
+    and count 397-nm photons scattered. From the level diagram shown in
+    figure~\ref{fig:ion}, we can see that upon turning on the 397-nm
     laser, if we are in $|0\rangle$, photons will be scattered, and if we are in
     $|1\rangle$, then no photons will be scattered. To optimise the fidelity of
     measurement we ensure that the signal is discernible with low error from any
     background counts on the camera. In general, improving the number of signal
-    counts can be achieved by tuning the 397~nm laser near to the transition
+    counts can be achieved by tuning the 397-nm laser near to the transition
     resonance, by increasing the readout duration, or by increasing the
     percentage of scattered photons captured by the imaging system. Practically
     we desire that the readout step does not heat the motion of the ion and so
-    we red detune the 397~nm laser to a similar setting as for Doppler cooling
+    we red detune the 397-nm laser to a similar setting as for Doppler cooling
     (see section~\ref{sec:Cooling}). The parameters we use for readout are
     summarised in table~\ref{tab:readout_parameters}, and a typical histogram of
-    readout counts for one and two ions can be seen in
-    figure~\ref{fig:readout_histogram}. We find that the readout fidelity is
-    XXX.\\
-    To measure the effect of state preparation and measurement error on longer
-    experimental sequences, we will discuss randomised benchmarking in the following
-    section~\ref{sec:Randomised Benchmarking}. Due to the relevance here, we
-    quote the measured state-preparation and measurement error (SPAM) of $\epsilon_{SPAM} = 1.46(6) \times 10^{-3}$.\\
+    readout counts for one ion can be seen in
+    figure~\ref{fig:readout_histogram}. With statistics from 100,000 bright and dark measurements we find an expected readout error of $6\times10^{-9}$ given a threshold of 137 counts and Gaussian fitted distributions. In the data presented here, there were no false bright or dark counts.\\
+
+    This readout error is well below the measured state-preparation and measurement (SPAM) error of $\epsilon_{SPAM} = 1.46(6) \times 10^{-3}$, which we measure in section~\ref{sec:Randomised Benchmarking}, suggesting that this error is dominated by state preparation.
     
 \subsection{Randomised Benchmarking}
 \label{sec:Randomised Benchmarking}
@@ -291,16 +311,16 @@
 
     Doppler cooling exploits the fact that incident light onto a moving ion will
     appear frequency shifted in the rest frame of the ion. For Doppler cooling
-    of $^{40}$Ca$^+$, we apply both the 397~nm and 866~nm lasers. We initially red
-    detune the 397~nm laser by around 100~MHz. This results in the preferential
-    absorption of a quanta of 397~nm light by ions with a velocity vector
+    of $^{40}$Ca$^+$, we apply both the 397-nm and 866-nm lasers. We initially red
+    detune the 397-nm laser by around 100~MHz. This results in the preferential
+    absorption of a quanta of 397-nm light by ions with a velocity vector
     antiparallel photon k-vector. After this absorption, the ion will be in the
     excited $4P_{3/2}$ state and spontaneously decay to either the $4S_{1/2}$,
-    or the $3D_{3/2}$ emitting a photon of either 397~nm or of 866~nm
+    or the $3D_{3/2}$ emitting a photon of either 397-nm or of 866-nm
     respectively into a random direction. These two decay paths have a branching
     ratio of XX.  As we desire many photon kicks to cool our ions, we repump the
     electron out of this metastable $3D_{3/2}$ level by applying an on resonant
-    866~nm beam.  The absorption and sequential emission of this 397~nm photon
+    866-nm beam.  The absorption and sequential emission of this 397-nm photon
     will lead to a net reduction in the motional energy of the ion if the photon
     is emitted at a higher energy than when absorbed. The equilibrium
     temperature is given by the condition where the doppler cooling rate is
@@ -311,7 +331,7 @@
     \end{equation}
     where $\hbar$ is the reduced Planck constant, $\gamma$ is the natural
     linewidth of the transition, and $k_B$ is Boltzmann's constant.\\ For
-    $^{40}$Ca$^+$, the natural linewidth of the 397~nm transition is $\frac{\gamma}{2\pi} =
+    $^{40}$Ca$^+$, the natural linewidth of the 397-nm transition is $\frac{\gamma}{2\pi} =
     21$~MHz, leading to a Doppler temperature of approximately 0.5~mK. Given a radial mode frequency of $\frac{\omega}{2\pi} = 4$~MHz, and the mean occupation number of the oscillator being given by,
     %[ref NIST https://www.physics.nist.gov/PhysRefData/Handbook/Tables/calciumtable4.htm] 
     \begin{equation}
@@ -332,7 +352,7 @@
 
     \begin{figure}
         \begin{center}
-        \noindent\includegraphics[width=\linewidth]{
+        \noindent\includegraphics[width=0.75\linewidth]{
             figures/pdf_figure/sideband_thermometry.pdf
             }
         \end{center}
@@ -342,17 +362,8 @@
         \label{fig:SBC}
     \end{figure}
 
-    \begin{figure}
-        \begin{center}
-        \noindent\includegraphics[width=\linewidth]{
-            figures/pdf_figure/fock_state_distribution.pdf
-            }
-        \end{center}
-        \caption{
-            Fock state distribution
-            }
-        \label{fig:fock state}
-    \end{figure}
+    %\noindent\includegraphics[width=0.75\linewidth]{
+        %figures/pdf_figure/fock_state_distribution.pdf}
 
 
     To further cool the ions toward their motional ground state, we use resolved
@@ -362,7 +373,7 @@
     3D_{5/2}$ transition, at appropriate laser intensity and motional mode
     frequencies, these sidebands can be resolved spectroscopically. The pulsed
     sideband technique we employ consists of red sideband pulses, followed by
-    deshelving, and repumping pulses on the 854~nm and 866~nm transitions
+    deshelving, and repumping pulses on the 854-nm and 866-nm transitions
     respectively. An example pulse sequence can be seen in
     figure~\ref{fig:sideband_cooling_sequence}, and experimental parameters we use are summarised in table~\ref{tab:cooling_parameters}.\\
     To verify the efficacy of our sideband cooling, we perform thermometry
