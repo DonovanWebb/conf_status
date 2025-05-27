@@ -46,7 +46,7 @@ def thermal_dist(n_bar, n_max=100):
     return weights
 
 
-graph_style.set_graph_style()
+graph_style.set_graph_style(0.75)
 
 date = "2025-04-29"
 rid = 22922
@@ -111,41 +111,58 @@ n_bar = p_fit[1]
 
 fock_state = thermal_dist(n_bar, n_max=10)
 
-fig_width = graph_style.get_fig_width()
+fig_width = graph_style.get_fig_width() * 0.75
 fig_height = 1.5 * fig_width / graph_style.get_phi()
 fig, ax = plt.subplots(2, 1, sharex=True, figsize=(fig_width, fig_height))
+cb = graph_style.get_color(0)
+cr = graph_style.get_color(2)
 
 linspace = np.linspace(0, np.max(duration), 1000)
 ax[0].plot(
     linspace,
     thermal_sideband_flop(make_data(linspace, 1), *p_fit),
     label="Thermal $\pi$-RSB-$\pi$ fit",
+    zorder=10,
+    color=cb,
+    alpha=graph_style.get_alpha(),
 )
 
 ax[0].errorbar(
     duration,
     y_b,
     yerr=y_b_err,
-    fmt="o",
+    fmt="^",
     label="pi_rsb_pi_p",
+    color=cb,
+    zorder=11,
 )
-ax[0].set_ylabel("Population $\pi$-RSB-$\pi$")
+ax[0].set_ylabel("Pop. $P_\downarrow$ $\pi$-RSB-$\pi$")
+ax[0].set_ylim([0, 1.0])
+ax[0].set_xlim([0, np.max(duration)])
+ax[1].set_ylim([0.92, 1.0])
+ax[1].set_xlim([0, np.max(duration)])
+
 
 ax[1].plot(
     linspace,
     thermal_sideband_flop(make_data(linspace, -1), *p_fit),
     label="Thermal RSB fit",
+    color=cr,
+    zorder=10,
+    alpha=graph_style.get_alpha(),
 )
 
 ax[1].errorbar(
     duration,
     y_r,
     yerr=y_r_err,
-    fmt="o",
+    fmt="^",
     label="rsb_p",
+    zorder=11,
+    color=cr,
 )
-ax[1].set_xlabel("Duration ($\mu$s)")
-ax[1].set_ylabel("Population RSB")
+ax[1].set_xlabel("Duration $t$ ($\mu$s)")
+ax[1].set_ylabel("Pop. $P_\downarrow$ RSB")
 
 ax[0].yaxis.set_major_formatter(FormatStrFormatter("%.2f"))
 ax[1].yaxis.set_major_formatter(FormatStrFormatter("%.2f"))

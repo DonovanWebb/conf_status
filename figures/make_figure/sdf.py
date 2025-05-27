@@ -187,6 +187,7 @@ ax1.set_yticks(
 )
 ax1.yaxis.tick_right()
 
+c = graph_style.get_color(0)
 ax2.errorbar(
     duration * 1e6,
     pop_dur,
@@ -195,6 +196,7 @@ ax2.errorbar(
     zorder=11,
     label="Duration",
     alpha=graph_style.get_alpha(),
+    color=c,
 )
 ax2.set_ylim(0.25, 1.0)
 ax2.set_yticks(
@@ -209,10 +211,11 @@ ax2.plot(
     label="Fit",
     zorder=10,
     alpha=graph_style.get_alpha(),
+    color=c,
 )
 
 textstr = (
-    "$\Omega_{\\rm sdf}$ = 2$\pi \\times $ "
+    "$\Omega_{\\rm SDF}$ = 2$\pi \\times $ "
     + f"{Wsdf / (2 * np.pi):.1f} ({10*Wsdf_err / (2 * np.pi):.0f}) kHz"
 )
 
@@ -225,5 +228,8 @@ ax2.text(
     horizontalalignment="right",
     fontsize=12,
 )
+ax0.text(-0.25, 1.01, "a", transform=ax0.transAxes, size=16, fontweight="bold")
+ax1.text(-0.12, 1.01, "b", transform=ax1.transAxes, size=16, fontweight="bold")
+ax2.text(-0.11, 1.01, "c", transform=ax2.transAxes, size=16, fontweight="bold")
 
 plt.savefig("sdf.pdf")
