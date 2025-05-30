@@ -42,12 +42,19 @@ def format_with_uncertainty(value, error):
 
 path = r"../make_figure/Tickle mode frequency-data-2025-05-15 19_19_54.csv"
 date_reference = "2025-05-10"
+t_scale = 15
+
+# path = r"../make_figure/Tickle mode frequency-data-2025-05-28 21_01_20.csv"
+# date_reference = "2025-05-28"
+# t_scale = 10
 
 t, f = unpack_data(path)
+# t = t[50:]
+# f = f[50:]
 
 
-"""Each point takes 15 seconds. Assume we calibrate every 10 minutes"""
-calib_time = 600 / 15
+"""Each point takes t_scale seconds. Assume we calibrate every 10 minutes"""
+calib_time = 600 / t_scale
 pfit = np.array([f[int(x // calib_time * calib_time)] for x in range(len(t))])
 
 """Fourier transform to see spectrum"""
@@ -66,7 +73,7 @@ plt.xlabel("Frequency / Hz")
 """
 
 # Low-pass filter: zero out frequencies above cutoff
-cutoff = 2e-3  # Hz # Need an estimate of thermal frequency cutoff
+cutoff = 1.67e-3  # Hz # Need an estimate of thermal frequency cutoff
 F_lowpass = F.copy()
 F_lowpass[np.abs(freqs) > cutoff] = 0
 
@@ -138,7 +145,36 @@ ax[1].set_ylabel("Density")
 residue_calib = f - pfit
 residue_thermal = f - f_lowpass
 
+ax2.set_title("Calibration every 10 min")
+ax1.set_title("Thermal drift (10 min cutoff)")
+# add text to the top right corner with residual width
+textstr = f"$\sigma =$ {format_with_uncertainty(np.std(residue_calib), np.std(residue_calib) / np.sqrt(len(residue_calib)))} Hz"
+ax2.text(
+    0.95,
+    0.95,
+    textstr,
+    transform=ax2.transAxes,
+    verticalalignment="top",
+    horizontalalignment="right",
+    fontsize=12,
+)
+
+textstr = f"$\sigma =$ {format_with_uncertainty(np.std(residue_thermal), np.std(residue_thermal) / np.sqrt(len(residue_thermal)))} Hz"
+ax1.text(
+    0.95,
+    0.95,
+    textstr,
+    transform=ax1.transAxes,
+    verticalalignment="top",
+    horizontalalignment="right",
+    fontsize=12,
+)
+
+
+print("Thermal mode residuals:")
 get_residue(residue_thermal, 1)
+print("Calibration mode residuals:")
 get_residue(residue_calib, 2)
 
-plt.savefig("mode_drift.pdf")
+plt.show()
+# plt.savefig("mode_drift.pdf")
