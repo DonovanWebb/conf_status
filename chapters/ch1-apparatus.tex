@@ -10,7 +10,7 @@
 % Pre reqs:
     % Motivation for why we want this apparatus!
 
-    A vast effort is spent on the initial build-up of the an ion trap system, but
+    A vast effort is spent on the initial build-up of the ion trap system, but
     throughout the life of the experiment, a greater effort is spent on its daily
     maintenance.  I hope that this chapter will serve as a useful debugging-resource for future
     members of the FastGates team, and as a detailed recipe for anyone
@@ -18,19 +18,22 @@
 
     Due to the size and complexity of the system, we introduce an inital overview of
     the design, motivated by the desired functions.  
-    Many such  ion trap experiment overviews exist in the theses of previous PhD generations, and so we will attempt to limit the discussion here to the unique features and capabilities of our system.\\
+    Many such  ion trap experiment overviews exist in the theses of previous PhD generations, and so we will limit the discussion here to the unique features and capabilities of our system.\\
     
-    However, as a short introduction we state the aim of an ion trap is of course to trap ions! This is achieved by
-    static and dynamic electric fields which, due to the ions possesing non-zero
-    electric charge, can provide trapping potentials, section~\ref{sec:The Ion
-    Trap}. Due to the fragility of the internal states of the ion (these are state
-    of the art sensors after all), we must take great care in isolating the ion from
-    any noisy environment. This neccesitates the use of ultra-high vacuum (UHV)
-    systems, section~\ref{sec:Vacuum System}, vibration isolation, and magnetic
-    shielding, section~\ref{sec:Magnetic Field}. To manipulate the internal electronic states of the ion, we create
-    local electric and magnetic fields using RF antennae and, in this work, lasers,
-    sections~\ref{sec:Laser systems} and~\ref{sec:Narrow Line Width 729 Laser}.
-    Finally, to interface with the apparatus we have built, at the time scales set by our interaction strengths, we require a sophisticated and custom control system which is discussed in section~\ref{sec:Sinara Hardware}.
+    As a map for this section we state the landmark features of an ``ion trap''
+    experiment. First, to confine the ions static and dynamic electric fields
+    are used which, due to ions possesing non-zero electric charge, can provide
+    trapping potentials, section~\ref{sec:The Ion Trap}. Due to the fragility of
+    the internal states of the ion (these are state -of-the-art sensors after
+    all), we must take great care in isolating the ion from any noisy
+    environment. This neccesitates the use of ultra-high vacuum (UHV) systems,
+    section~\ref{sec:Vacuum System}, vibration isolation, and magnetic
+    shielding, section~\ref{sec:Magnetic Field}. To manipulate the internal
+    electronic states of the ion, we create local electric and magnetic fields
+    using RF antennae and, in this work, lasers, sections~\ref{sec:Laser
+    systems} and~\ref{sec:Narrow Line Width 729 Laser}.  Finally, to interface
+    with the apparatus we have built, at the time scales set by our interaction
+    strengths, we require a sophisticated and custom control system.
 
 
 
@@ -49,30 +52,31 @@
 
     \begin{figure}
         \begin{center}
-        \noindent\includegraphics[width=\linewidth]{figures/png_figure/trap_comp.png}
+        \noindent\includegraphics[width=\linewidth]{figures/pdf_figure/NPL_trap.pdf}
         \end{center}
-        \caption{\textbf{a)} XX Place holder figure. \textbf{b)} The NPL trap in use in this thesis. This is a microfabricated,
-        segmented, multilayer trap. \textbf{c)} A cross sectional view of
-        the NPL trap showing the RF and DC electrode positions.  Figures
-        from~\cite{choonee_silicon_2017}.
+        \caption{
+            Schematics of the \emph{NPL} trap chip used in this experiment.
+            \textbf{a)} A front view of the trap chip. Axial confinement is provided by a subset of the segmented DC electrodes. Radial confinement is provided by the RF rails. 
+            \textbf{b)} A slice view of the trap. The red point here represents the ions, the gold are the RF and DC electrodes, and the grey is the silica substrate. It can be seen that the ion is $\sim 250 \mu$m away from the nearest electrode. The numerical aperture of the ion due to the electrodes is $\sim 0.71$.
+            \textbf{c)} A schematic of the electrode geometries and labelling for the front-face of the trap chip. A similar arrangement exists for the back-face. 
+            Figures from~\cite{choonee_silicon_2017}.
         \label{fig:trap}}
     \end{figure}
 
-    To create trapping potentials we use linear Paul traps, a schematic of such
-    is shown in Figure~\ref{fig:trap}~(a). As explained by Earnshaw's theorem,
+    From Earnshaw's theorem,
     $(\nabla^2 V = 0),$ a stable stationary point in 3D can not be realized
     using only static electric potentials, $V$, as if the potential is confining
     in two dimensions, it will be anticonfining in the third. Therefore, to
-    achieve stable trapping either an oscillating electric field (Paul
-    trap~\cite{XXX}), or a static magnetic field (Penning traps~\cite{XXX}) must
-    be utilized to create a confining pseudopotential.\\
+    achieve stable trapping, either an oscillating electric field (Paul
+    trap~\cite{XXX}), or a static magnetic field (Penning traps~\cite{XXX}) is
+    used to create 3D confining pseudopotentials.\\
     Recently, the microfabricated surface style linear Paul trap has gained
     popularity due to the maturity of chip fabrication
     technologies~\cite{allcock_surface-electrode_2011} and the potential route
-    to scalability this offers. In the surface trap, the 3D radial and axial
+    to scalability this offers~\cite{kielpinski_architecture_2002}. In the surface trap, the 3D radial and axial
     electrodes of a ``macro'' trap are effectively projected onto a 2D surface.
-    The stable point of such a trap is typically on the order of $50$ $\mu$m
-    from the chip surface. The ease of fabrication of surface traps has allowed
+    The stable confining point of such a trap is typically on the order of $50-100$ $\mu$m
+    above the chip surface. The ease of fabrication of surface traps has allowed
     the creation of complex multizone devices with many DC electrodes.  These
     multizone traps enable the shuttling of ions, a requirement for Quantum CCD
     type architectures~\cite{kielpinski_architecture_2002}. However, this
@@ -80,84 +84,82 @@
     trapping potential is often greatly reduced, and the close proximity of the
     surface to the ion can be a large contributor to motional heating
     rates~\cite{turchette_heating_2000}. \\
-    The \emph{NPL} microfabricated 3D trap~\cite{see_fabrication_2013,
-    wilpers_monolithic_2012}, as is used in our experiment, brings together the
+    Our trap is provided by the \emph{National Physical Laboratory} in the UK. This is a microfabricated 3D trap, which brings together the
     advantages of chip fabrication as well as the low heating rates and high
-    trapping depths of a 3D style trap with greater ion-surface distances. This
-    is achieved by a multilayer chip as shown in Figure~\ref{fig:trap}~(b, c).
-    The radial trapping is provided by RF rails on opposite diagonals of the
-    slit whilst axial trapping may be realized by the numerous DC electrodes.
+    trapping depths of a 3D style trap with greater ion-surface distances. Details on its design and characterisations can be found in~\cite{see_fabrication_2013,
+    wilpers_monolithic_2012}. Figure~\ref{fig:trap} shows the electrode geometry of the trap and the relevant length scales.
     The ion-surface distance is now of the order $250$ $\mu$m and we have
     demonstrated heating rates of $ 33(3)$~q/s on a 4~MHz radial mode (see
-    section~\ref{sec:Heating}).
+    section~\ref{sec:Heating}).\\
 
     We aim for an axial ion separation of around $5$~$\mu$m which, for
     $^{40}$Ca$^{+}$ ions means a trapping potential of $\omega_z \approx 2\pi
-    \cdot 1.6$~MHz. This ion separation was chosen to reduce the cross talk
-    between ions when singly addressed (see section~\ref{sec:Single Addressing
-    System}).\\ 
-    We are targeting approximately $5$~MHz for our radial frequencies, as we
-    shall use radial addressing for two-qubit entangling gates. The choice of
-    this higher frequency is motivated by several factors. The Doppler cooling
-    limit ($\overline{n} = \Gamma/\omega$, where $\Gamma$ is the transition
-    linewidth and $\omega$ is the frequency of the cooled mode) inversely scales
-    with the mode frequency. Consequently, higher mode frequencies result in
-    lower temperatures following initial cooling. Additionally, a higher
-    center-of-mass radial mode enables greater frequency separation of radial
-    modes in a multi-ion crystal, which allow for greater selectivity of
-    participating modes. \\ 
-    Using the pseudopotential approximation~\cite{madsen_planar_2004} for the
-    confining field, we can find a trapping frequency in one radial direction
-    $\omega_p$
-    \begin{equation}
-    \omega_p = \frac{e\alpha V_{RF}}{\sqrt{2}\Omega_{RF}M\rho^2},
-    \label{eq:pseudopotential}
-    \end{equation}
-    where $\alpha$ is a factor of order unity given by the geometry of the trap,
-    $V_{RF}$ and $\Omega_{RF}$ are the voltage and frequency provided to the
-    RF-electrode, $M$ is the mass of the ion, and $\rho$ is the ion-RF electrode
-    separation.  Applying some DC voltage on the axial electrodes leads to axial
-    confinement with frequency $\omega_{ax}$, but must defocus the radial
-    confinements as the total curvature of the pseudopotential must remain
-    constant,
-    \begin{equation}
-    \omega_{rad} = \sqrt{\omega_p^2 - \omega_{ax}^2/2}.
-    \end{equation}
-    Due to the geometry of the DC electrodes with respect to the ion chain, the
-    \emph{NPL} trap focuses one of the radial modes and defocuses the other when
-    the DC electrodes are increased,
-    \begin{equation}
-    \omega_{rad\pm} = \sqrt{\omega_p^2 - (1\mp\beta)\omega_{ax}^2/2},
-    \end{equation}
-    where $\beta$ is some factor due to the geometry of this geometry. From
-    simulation $\beta > 1$ for $\Omega_{RF} = 2\pi\cdot 23$~MHz and $V_{RF} =
-    200$~V and so one radial mode increases with DC voltage applied and one
-    decreases.
+    \cdot 1.6$~MHz. This ion separation was chosen as a balance between the
+    desire for high mode frequencies while keeping cross talk due to
+    laser-addressing negligible.\\ The mode frequencies that can be achieved are
+    ultimately limited by the breakdown voltage of the trap electrodes, $V_{\rm
+    MAX} = 400$~Vpp.\\ Within this constraint, we are targeting $\sim 4$~MHz for
+    our radial frequencies. The choice of this higher frequency is motivated by
+    several factors: the Doppler cooling limit is reduced, and the frequency
+    separation between modes can be increased, which is useful for simplifying
+    interactions involving motion.\\ 
+    In the following two sections we describe the experimental parameters used
+    in our apparatus to achieve these mode frequencies.\\
 
-    \begin{table}[h!]
-    \begin{center}
-    \begin{tabular}{ c|c c c c c }
-    & $V_{RF}$/V &  $V_{DC}$/V &$\Omega_{RF}$/($2\pi\cdot$MHz)& $\omega$/($2\pi\cdot$MHz)   & q \\ 
-    &  &  & & $\omega_{ax}$\quad   $\omega_{rad}$ &  \\ 
-    \hline
-    Experiment  & 200 & -7 &  23 & 1.6 \quad 4.9 & 0.61 \\
-    Loading  & 100 & -2 &  23 & 0.8 \quad 2.0 & 0.25 \\
-    \end{tabular}
-    \caption{ Simulated trapping parameters for both ``Experiment'' and ``Loading'' settings \textsuperscript{40}Ca\textsuperscript{+} with the NPL trap. The ``Experiment'' setting is optimized for high axial mode frequencies whilst the ``Loading'' setting maintains a lower q factor for practical loading.  \label{table:freqs}}
-    \end{center}
-    \end{table}
+    %Figure like Milne would be nice here - but showing zig-zag for 5 ions is hard...
 
-    A possible set of parameters to achieve $\omega_{ax} = 2\pi \cdot 1.6$~MHz
-    and $\omega_{rad+} = 2\pi \cdot 4.9$~MHz can be seen in the ``Experiment''
-    trapping in Table~\ref{table:freqs}.
+    %Using the pseudopotential approximation~\cite{madsen_planar_2004} for the
+    %confining field, we can find a trapping frequency in one radial direction
+    %$\omega_p$
+    %\begin{equation}
+    %\omega_p = \frac{e\alpha V_{RF}}{\sqrt{2}\Omega_{RF}M\rho^2},
+    %\label{eq:pseudopotential}
+    %\end{equation}
+    %where $\alpha$ is a factor of order unity given by the geometry of the trap,
+    %$V_{RF}$ and $\Omega_{RF}$ are the voltage and frequency provided to the
+    %RF-electrode, $M$ is the mass of the ion, and $\rho$ is the ion-RF electrode
+    %separation.  Applying some DC voltage on the axial electrodes leads to axial
+    %confinement with frequency $\omega_{ax}$, but must defocus the radial
+    %confinements as the total curvature of the pseudopotential must remain
+    %constant,
+    %\begin{equation}
+    %\omega_{rad} = \sqrt{\omega_p^2 - \omega_{ax}^2/2}.
+    %\end{equation}
+    %Due to the geometry of the DC electrodes with respect to the ion chain, the
+    %\emph{NPL} trap focuses one of the radial modes and defocuses the other when
+    %the DC electrodes are increased,
+    %\begin{equation}
+    %\omega_{rad\pm} = \sqrt{\omega_p^2 - (1\mp\beta)\omega_{ax}^2/2},
+    %\end{equation}
+    %where $\beta$ is some factor due to the geometry of this geometry. From
+    %simulation $\beta > 1$ for $\Omega_{RF} = 2\pi\cdot 23$~MHz and $V_{RF} =
+    %200$~V and so one radial mode increases with DC voltage applied and one
+    %decreases.
 
-    From the Mathieu equations, the areas of stability depend upon a factor
-    $q$~\cite{berkeland_minimization_1998}, where
-    $q=2\sqrt(2)\omega/\Omega_{RF}$.  Generally, we require $q$ to be as low
-    ($q<0.3$) for convenient trapping.  To satisfy this requirement a
-    ``Loading'' setting (with parameters in table~\ref{table:freqs}) may be used
-    with $q = 0.25$ and then the $V_{RF}$ ramped to the ``Experiment'' trapping
-    for high radial mode frequencies.
+    %\begin{table}[h!]
+    %\begin{center}
+    %\begin{tabular}{ c|c c c c c }
+    %& $V_{RF}$/V &  $V_{DC}$/V &$\Omega_{RF}$/($2\pi\cdot$MHz)& $\omega$/($2\pi\cdot$MHz)   & q \\ 
+    %&  &  & & $\omega_{ax}$\quad   $\omega_{rad}$ &  \\ 
+    %\hline
+    %Experiment  & 200 & -7 &  23 & 1.6 \quad 4.9 & 0.61 \\
+    %Loading  & 100 & -2 &  23 & 0.8 \quad 2.0 & 0.25 \\
+    %\end{tabular}
+    %\caption{ Simulated trapping parameters for both ``Experiment'' and ``Loading'' settings \textsuperscript{40}Ca\textsuperscript{+} with the NPL trap. The ``Experiment'' setting is optimized for high axial mode frequencies whilst the ``Loading'' setting maintains a lower q factor for practical loading.  \label{table:freqs}}
+    %\end{center}
+    %\end{table}
+
+    %A possible set of parameters to achieve $\omega_{ax} = 2\pi \cdot 1.6$~MHz
+    %and $\omega_{rad+} = 2\pi \cdot 4.9$~MHz can be seen in the ``Experiment''
+    %trapping in Table~\ref{table:freqs}.
+
+    %From the Mathieu equations, the areas of stability depend upon a factor
+    %$q$~\cite{berkeland_minimization_1998}, where
+    %$q=2\sqrt(2)\omega/\Omega_{RF}$.  Generally, we require $q$ to be as low
+    %($q<0.3$) for convenient trapping.  To satisfy this requirement a
+    %``Loading'' setting (with parameters in table~\ref{table:freqs}) may be used
+    %with $q = 0.25$ and then the $V_{RF}$ ramped to the ``Experiment'' trapping
+    %for high radial mode frequencies.
 
 \subsection{Trap RF Chain}
 \label{sec:Trap RF Chain}
@@ -174,16 +176,15 @@
     pseudopotential to be both frequency and amplitude stable. Our \emph{NPL}
     trap is rated for a max peak-to-peak voltage of 400~Vpp on the RF
     electrodes. Here we describe the elements of the ``RF chain'' that supplies
-    this voltage, as shown in figure~\ref{fig:RF Chain}. \\
+    this voltage. \\
     Our frequency source is a DDS-based synthesiser, named \emph{Urukul}, part
     of the \emph{Artiq Sinara}~\cite{XXX} hardware ecosystem. We operate the
     \emph{Urukul} at max output power, +10~dBm and with a frequency around $27.8$~MHz. This
     signal is then fed to an ``ultra-low noise limiting amplifier" named
     \emph{Squareatron}~\cite{XXX}. The purpose of \emph{Squareatron} is to
     greatly reduce the amplitude noise of the RF signal, $V_{\rm RF}$, which is
-    key to low radial mode frequency drifts as can be seen by the linear
-    relationship between trapping frequency and $V_{\rm RF}$ in
-    equation~\ref{eq:pseudopotential}. The \emph{Squareatron} outputs +17.4~dBm,
+    key to low radial mode frequency drifts due to the linear
+    relationship between radial trapping frequency and $V_{\rm RF}$. The \emph{Squareatron} outputs +17.4~dBm,
     which we subsequently attenuate by 19.5~dB. We then amplify the signal by a
     further 33.7~dB using a \emph{Mini-Circuits ZHL-1-2W-S+}, high power
     amplifier. We now have +32 dBm RF power to drive the trap
@@ -204,21 +205,28 @@
     for active stabilisation of RF amplitude through closed feedback loops~\cite{XXX}.\\
     % Milne sydney trap RF chain 
 
-%\subsection{Trap DC Voltages}
+\subsection{Trap DC Voltages}
 % Main points:
     % Describe Fastino DAC and the available electrodes on the NPL trap
     % Quote values we use.
 % Pre reqs:
     % NPL trap geometry
-
+    Voltage is supplied to the DC electrodes using \emph{Fastino}, a
+    multi-channel DAC part of the \emph{Artiq Sinara} hardware
+    ecosystem~\cite{}.\\
+    The ion is confined in the ``operation" zone, seen in
+    figure~\ref{fig:trap}c. The axial trapping is provided by electrodes
+    DC-b5 and DC-f5, where b and f correspond to the back and front plane of the trap. 
+    The DAC provides $\sim 10$~V to these electrodes to produce an axial frequency of 1.6~MHz.
+    
 \section{Magnetic Field}
 \label{sec:Magnetic Field}
 % Main points:
     % Permanent magnets
     % MUMetal box
     Stable Zeeman shifts of the ion energy levels are required for long spin
-    coherence times (see section~\ref{sec:Coherence}), and for low error single
-    and two qubit gates. We use a permanent magnet array of Samarium Cobalt,
+    coherence times (see section~\ref{sec:Coherence}), and for low error single-
+    and two-qubit gates. We use a permanent magnet array of Samarium Cobalt,
     Sm$_2$Co$_17$, in a Helmholtz configuration to create a stable magnetic
     field of 5.4~G. Samarium Cobalt was chosen for its low temperature
     coefficient of remenance, -0.03\%/K.\\
@@ -370,7 +378,7 @@
     We define our qubit by the quadrupole transition at 729-nm, which we describe in the following section.\\
     Access to other excited levels, outside of our defined two level system, are crucial for ion trap quantum logic so that we can readout the qubit with state selective fluorescence (397-nm, and 866-nm transitions) and optically pump for state preparation (397-nm, 866-nm, and 854-nm transitions). Details on these schemes are given in chapter~\ref{ch:Characterisation}. We also require access to two additional transitions in neutral calcium for isotope selective ionisation, 422-nm and 372-nm.\\
     These transitions (apart from the 729-nm) are all driven by diode lasers\footnote{All Toptica diodes. Red lasers: MDL DL pro; Blue lasers: MDL DL pro HP; 372-nm: iBEAM-SMART-375-S}, which are frequency stabilised to a reference cavity\footnote{Stable Laser Systems SLS-6010 4-Bore Cylindrical Cavity} via Pound-Drever-Hall (PDH) locking. We require PDH locking to ensure that laser frequencies are stable to <1~MHz level, well below the natural line widths of all the dipole transitions listed above. We continuosly monitor the laser frequencies with a wavemeter\footnote{HighFinesse WS7}.\\
-    Frequency and amplitude control for all lasers is achieved via acousto-optic modulators (AOMs) which are driven by Artiq integrated DDS chips, \emph{Urukuls}. We use AOMs in a double pass configuration to allow shifts of the laser frequency by +/- ~100~MHz, with no signicant angular shifts or loss of fibre coupling. 
+    Frequency and amplitude control for all lasers is achieved via acousto-optic modulators (AOMs) which are driven by Artiq integrated DDS chips, \emph{Urukuls}. We use AOMs in a double pass configuration to allow shifts of the laser frequency by $\pm \sim 100$~MHz, with no signicant angular shifts or loss of fibre coupling. 
     
     
 \subsection{Narrow Line Width 729 Laser}
@@ -475,7 +483,7 @@
     frequency. However, the majority is coupled to two output fibres for our
     experiment and another within the group. We transport the 729-nm light from
     a dedicated laser lab to a room containing the trap apparatus by a 10~m
-    single mode polarization maintaining fibre (\emph{SKXXX}).  The fibre is
+    single mode polarization maintaining fibre.  The fibre is
     beneficial in cleaning up the mode from the Ti:Sapph, however it can
     introduce phase noise due to mechanical and thermal effects along the 10~m
     length. To remove this introduced noise we utilise passive stabilisation in
