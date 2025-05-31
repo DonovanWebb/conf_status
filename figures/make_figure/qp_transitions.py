@@ -114,6 +114,7 @@ def plot_QP_transition_spectrum(gamma, label=""):
                     label="S({:.0f}/2)$\leftrightarrow$D({:.0f}/2)".format(
                         2 * M_l, 2 * M_u
                     ),
+                    zorder=10,
                 )
     # Shrink current axis's height by 20% on the bottom
     box = ax.get_position()
@@ -133,7 +134,7 @@ def plot_QP_transition_spectrum(gamma, label=""):
 
     ax.set_ylim([0, 1.0])
     plt.xlabel("Relative splitting (MHz)")
-    plt.ylabel("Rabi freq. $\Omega$")
+    plt.ylabel("Normalised \n Rabi freq. $\Omega$")
     plt.savefig(f"qp_transition_spectrum_{gamma/np.pi:.2f}.pdf")
     return
 
@@ -218,9 +219,9 @@ plt.xticks(
     [r"$0$", r"$\frac{\pi}{4}$", r"$\frac{\pi}{2}$", r"$\frac{3\pi}{4}$", r"$\pi$"],
 )
 plt.xlabel("Angle $\gamma$ (rad)")
-plt.ylabel("Rabi freq. $\Omega$")
+plt.ylabel("Normalised \n Rabi freq. $\Omega$")
 plt.ylim([0, 1.0])
 plt.xlim([0, np.pi])
-plt.text(-0.15, 1.06, "a", transform=ax.transAxes, size=16, fontweight="bold")
+plt.text(-0.15, 1.03, "a", transform=ax.transAxes, size=16, fontweight="bold")
 
 plt.savefig("qp_gamma.pdf")

@@ -58,18 +58,20 @@ c_bright = graph_style.get_color(2)
 ax.hist(
     counts_dark,
     bins=bins,
+    density=True,
     color=c_dark,
     label="dark counts",
-    zorder=11,
+    zorder=3,
     alpha=graph_style.get_alpha(),
 )
 
 ax.hist(
     counts_bright,
     bins=bins,
+    density=True,
     color=c_bright,
     label="bright counts",
-    zorder=11,
+    zorder=3,
     alpha=graph_style.get_alpha(),
 )
 
@@ -84,7 +86,7 @@ ax.axvline(
 textstr = f""
 
 ax.legend(
-    loc="upper right",
+    loc="lower right",
 )
 
 ax.text(
@@ -98,9 +100,9 @@ ax.text(
 )
 
 ax.set_xlabel("Camera Counts")
-ax.set_ylabel("Occurrences")
+ax.set_ylabel("Probability")
 ax.set_xlim(0, max_tot)
-ax.set_ylim(0, None)
+ax.set_yscale("log")
 # plt.show()
 plt.savefig("readout_hist.pdf")
 

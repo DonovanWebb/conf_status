@@ -112,11 +112,17 @@ ax0.set_xlabel("Duration $t$ (us)")
 ax0.set_ylim(0.0, 1.0)
 ax0.set_xlim(0.0, 300.0)
 
-ax2.errorbar(70, p00f, label="p00 final", fmt="^", yerr=p_err_00f, alpha=0.8, capsize=3)
-ax2.errorbar(70, p11f, label="p11 final", fmt="^", yerr=p_err_11f, alpha=0.8, capsize=3)
+ofs = 0.01
+ax2.errorbar(
+    70 - ofs, p00f, label="p00 final", fmt="^", yerr=p_err_00f, alpha=0.8, capsize=3
+)
+ax2.errorbar(
+    70 + ofs, p11f, label="p11 final", fmt="^", yerr=p_err_11f, alpha=0.8, capsize=3
+)
 ax2.errorbar(70, p0110f, label="p01_10 final", fmt="^", yerr=p_err_0110f, capsize=3)
 ax2.set_ylabel("Populations")
 ax2.set_ylim(0.0, 0.5)
+ax2.set_xlim(70 - 2 * ofs, 70 + 2 * ofs)
 ax2.set_xticks([])
 ax2.set_yticks(np.arange(0.0, 0.7, 0.1))
 
