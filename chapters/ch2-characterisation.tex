@@ -3,9 +3,9 @@
 \minitoc
 
     Before we can dive into running novel experiments involving the motion and spin
-    of the atoms, we need to characterise our apparatus. This allows us to both
+    of the atoms, the apparatus must be characterised. This allows us to both
     benchmark our system against state of the art results, and to reveal any
-    current limitations of the apparatus which we may need to address.
+    current limitations of the apparatus which need to be addressed.
 
 \section{Quadrupole Transitions}
 \label{sec:Transitions}
@@ -15,18 +15,26 @@
 % Pre reqs:
     % 5 G field
     \begin{figure}
+        \vspace*{-0.5cm}
         \begin{center}
-        \noindent\includegraphics[width=0.75\linewidth]{
+        \noindent\includegraphics[width=0.65\linewidth]{
             figures/pdf_figure/qp_gamma.pdf
             }
-        \noindent\includegraphics[width=0.75\linewidth]{
+        \vspace*{-0.5cm}
+        \noindent\includegraphics[width=0.65\linewidth]{
             figures/pdf_figure/qp_transition_spectrum_0.25.pdf
             }
-        \noindent\includegraphics[width=0.75\linewidth]{
+        \vspace*{-0.5cm}
+        \noindent\includegraphics[width=0.65\linewidth]{
             figures/pdf_figure/qp_transition_spectrum_0.50.pdf
             }
         \end{center}
+        \vspace*{-0.5cm}
         \caption{
+            Relative quadrupole transition strengths and frequency splittings for the $4S_{1/2} \leftrightarrow 3D_{5/2}$ Zeeman sublevels in \ca.
+            \textbf{a)} Relative Rabi frequencies of the quadrupole transitions as a function of the angle $\gamma$ between the polarisation vector and the magnetic field. The k-vector of the light is assumed to be perpendicular to the B-field, which is required by the geometry of our vacuum and addressing system.
+            \textbf{b)} Relative frequency splittings and strengths when $\gamma = \pi/4$. At this angle, all transitions are accessible apart from those with $\Delta m_j = 0$. This is the polarisation chosen for our initial experiments to allow access to all transitions for characterisation.
+            \textbf{c)} Relative frequency splittings and strengths when $\gamma = \pi/2$. This is the polarisation chosen for the current and future experiments to reduce the number of transitions which can cause off-resonant interactions when the qubit defined by $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = -5/2$ is used.
             }
         \label{fig:quadrupole}
     \end{figure}
@@ -39,24 +47,24 @@
     729-nm transition, and the Ti:Sapph laser linewidth, meaning the transitions can be 
     selectively address by frequency tuning of the laser. There is some freedom in choosing which of these 10 possible (as $\Delta m_j \leq 2$) quadrupole transitions we define as our qubit. They have varying coupling strengths, $\Omega$, depending on the polarisation and $k$-vector of the interacting light. Here is the rational for our qubit choice of $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2}, ~m' = -5/2$.\\
     % Cite Gulde Thesis
-    We want excellent sideband cooling efficiency as we plan to use our motional modes considerably. For time-efficient sideband cooling~\ref{sec:Cooling}, we require a ``closed-cycle'' transition. ``Closed-cycle'' here means that after one cycle of sideband cooling, we return with high probability back to the initial electronic state. If this is true, we can immediately run the next sideband pulse, and do not have to re-state prep the ion. If we aim to initially prepare the $4S_{1/2},~m = -1/2$ state, then the only closed-cycle transition is $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = -5/2$. We therefore want access to this transition, however it does not neccessarily need to be our qubit defined transition. \\
-    To further narrow down our choice, we recognise the benefit in limiting the number of addressable transitions to reduce the effect of unwanted off-resonant interactions. Figure~\ref{fig:quadrupole} $a$, shows the normalised Rabi frequencies of each transition as the angle $\gamma$ between polarisation vector and B-field is varied, while figure~\ref{fig:quadrupole} $b$, shows the relevant frequency splitting of the transitions at $\gamma = \pi/4$. These plots are for light with k-vector perpendicular to B-field, as we have for 729-nm through the main objective lens (see section~\ref{sec:Vacuum System}). This geometry suppresses transitions with $\Delta m_j = 0$.\\
-     We can see that at $\gamma = \pi/2$, we maximise the Rabi frequency of the
-     $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = -5/2$ transition, while
-     minimising the Rabi frequencies of all other transitions, apart from
-     $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = +3/2$.
-     Figure~\ref{fig:quadrupole} shows the relative splitting and Rabi
-     frequencies for the available transitions at $\gamma = \pi/2$. 
-     It is worth noting that access to transition $4S_{1/2},~m = +1/2 \leftrightarrow 3D_{5/2},~m' = -3/2$ is useful for state preparation, as it allows us to optically pump into the $m = -1/2$ state. \\
-     If we select polarisation $\gamma = \pi/2$, we now have only two transitions to choose between. We want both high Rabi frequency and low magnetic field sensitivity. This makes the choice simple as $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = -5/2$ has both the larger Rabi frequency, and the lower magnetic field sensitivity, $-2.80$~MHz/G, compared to the $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = +3/2$ transition, which has a magnetic field sensitivity of $+3.92$~MHz/G.\\
+    We want excellent sideband cooling efficiency as we plan to use our motional modes considerably. For time-efficient sideband cooling~\ref{sec:Cooling}, a ``closed-cycle'' transition is required. ``Closed-cycle'' here means that after one cycle of sideband cooling, the final electronic state returns with high probability back to the initial electronic state. If this is true, the next sideband pulse can be run immediately, and the electronic state does not need to be state prepped again. If the $4S_{1/2},~m = -1/2$ state is initially prepared, then the only closed-cycle transition is $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = -5/2$. Therefore this transition must be accessible, however it does not neccessarily need to be the defined qubit transition. \\
+    To further narrow down our choice, we recognise the benefit in limiting the number of addressable transitions to reduce the effect of unwanted off-resonant interactions. Figure~\ref{fig:quadrupole} $a$, shows the normalised Rabi frequencies of each transition as the angle $\gamma$ between polarisation vector and B-field is varied, while figure~\ref{fig:quadrupole} $b$, shows the relevant frequency splitting of the transitions at $\gamma = \pi/4$. These plots are for light with k-vector perpendicular to B-field, as the 729-nm addresses the ion through the main objective lens (see section~\ref{sec:Vacuum System}). This geometry suppresses transitions with $\Delta m_j = 0$.\\
+    It can be seen that at $\gamma = \pi/2$, the normalised Rabi frequency of the
+    $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = -5/2$ transition is maximised, while
+    minimising the Rabi frequencies of all other transitions, apart from
+    $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = +3/2$.
+    Figure~\ref{fig:quadrupole} shows the relative splitting and Rabi
+    frequencies for the available transitions at $\gamma = \pi/2$. 
+    It is worth noting that access to transition $4S_{1/2},~m = +1/2 \leftrightarrow 3D_{5/2},~m' = -3/2$ is useful for state preparation, as it allows us to optically pump into the $m = -1/2$ state. \\
+    If polarisation $\gamma = \pi/2$ is selected, now there are only two choices for qubit transition. Both high Rabi frequency and low magnetic field sensitivity is desirable. This makes the choice simple as $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = -5/2$ has both the larger Rabi frequency, and the lower magnetic field sensitivity, $-2.80$~MHz/G, compared to the $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = +3/2$ transition, which has a magnetic field sensitivity of $+3.92$~MHz/G.\\
     
 
 \section{Spin}
 \label{sec:Spin}
     Discrete variable quantum computing consists of manipulating many two-level
-    systems, which we refer to either as spins, or qubits. In this section we
-    describe the methods we use to maniplate these spins, and we benchmark their
-    performance.\\
+    systems, which we refer to either as spins, or qubits. In this section 
+    the methods used to maniplate these spins are described, and their
+    performances are benchmarked.\\
 
 \subsection{Rabi and Ramsey Scans}
 \label{sec:Rabi and Ramsey Scans}
@@ -77,30 +85,30 @@
             figures/pdf_figure/long_flop.pdf
             }
         \end{center}
-        \caption{Long duration Rabi Flop with fitted decaying flop.
+        \caption{Long duration, $t$, Rabi flop on the qubit transition. Estimated probability of being in $|\downarrow\rangle$, $P_\downarrow$, at each time step using 200 individual experimental shots. Fitted dotted line using decaying oscillations model. Extracted Rabi frequency $\Omega/2\pi = 0.0716(1)$~MHz, and decay rate $\lambda = 0.0107(7)~1/\mu$s. 
             }
         \label{fig:Long Flop}
     \end{figure}
 
-    Here we briefly describe the method in which we extract Rabi frequencies and single qubit gate durations, which we (will have) described in the theory section.\\
-    We need access to $\pi/2|_x$-pulses for constructing our universal spin gate set. This single qubit gate is achieved by square pulses of 729-nm light. To roughly calibrate the required pulse length we may fit extended oscillations to find the Rabi frequency using a damped oscillation model,
+    Here we briefly describe the method in which the Rabi frequencies and single qubit gate durations are extracted.\\
+    Access to $\pi/2|_x$-pulses is required for constructing the universal spin gate set. This single qubit gate is achieved by square pulses of 729-nm light. To roughly calibrate the required pulse length, extended oscillations are fitted using a damped oscillation model,
     \begin{equation}
         \frac{1 + e^{-\lambda t} \cos(2 \Omega t)}{2},
     \end{equation}
     where $\lambda$ is the decay rate, and $\Omega$ is the Rabi frequency.\\
-    Figure~\ref{fig:Long Flop}, shows one such ``flop" with 1~mW of power stabilised light. We find a Rabi frequency of $\Omega/2\pi = 0.0716(1)$~MHz and
-    decay rate $\lambda = 0.0107(7)~1/\mu$s. From this we can estimate a $\pi/2$ time of 1.7~$\mu$s (note, this is on the $4S_{1/2},~m_j = -1/2 \leftrightarrow 3D_{5/2},~m_j = -3/2$ transition, which we used prior to optimising the 729-nm polarisation, see section~\ref{sec:Transitions} for more details).\\
-    The damping is likely due to a combination of out-of-Lamb-Dicke effects, and laser phase noise. The out-of-Lamb-Dicke effects are due to on-resonant terms proportional to $O(\eta^2 n)$ in the full Lamb-Dicke expansion, which may not be negligible when we do not side band cool all modes of the ion. As we are unsure of all the mode temperatures after Doppler cooling, and we have not yet characterised the laser phase noise, we do not know their relative contributions to the observed decay.\\
-    To further improve our estimate for the $\pi/2$ pulse length, we must take into account any ramping time due to electronic control and AOM rise times. This is done by applying odd multiples of the roughly calibrated $\pi/2$ pulses consecutively and optimising pulse durations such that the final population measurement is the Z-basis superposition state, $P_{\downarrow}= 0.5$. \\
+    Figure~\ref{fig:Long Flop}, shows one such ``flop'' with 1~mW of power stabilised light. A Rabi frequency of $\Omega/2\pi = 0.0716(1)$~MHz and
+    decay rate $\lambda = 0.0107(7)~1/\mu$s is found. From this a $\pi/2$ time of 1.7~$\mu$s can be estimated (note, this is on the $4S_{1/2},~m_j = -1/2 \leftrightarrow 3D_{5/2},~m_j = -3/2$ transition, which was used prior to optimising the 729-nm polarisation, see section~\ref{sec:Transitions} for more details).\\
+    The damping is likely due to a combination of out-of-Lamb-Dicke effects, and laser phase noise. The out-of-Lamb-Dicke effects are due to on-resonant terms proportional to $O(\eta^2 n)$ in the full Lamb-Dicke expansion, which may not be negligible when all modes are not cooled to their ground state. As we are unsure of all the mode temperatures after Doppler cooling, and we have not yet characterised the laser phase noise, we do not know their relative contributions to the observed decay.\\
+    To further improve the estimate for the $\pi/2$ pulse length, the ramping time due to electronic control and AOM rise times must be accounted for. This is done by applying odd multiples of the roughly calibrated $\pi/2$ pulses consecutively and optimising pulse durations such that the final population measurement is the Z-basis superposition state, $P_{\downarrow}= 0.5$. \\
 
-    To measure the detuning of the 729-nm laser, we perform Ramsey scans.
-    We prepare in $P_\downarrow = 1$, apply a $\pi/2|_x$-pulse, wait for some time $t$, and then apply a second
-    $\pi/2|_x$-pulse. If we are on resonance, then we have effectively performed a $\pi$-pulse, and the final population in $P_\downarrow$ will be 0. If we are off-resonance, then the final population will be given by,
+    To measure the detuning of the 729-nm laser, Ramsey scans are performed.
+    The qubit is first prepared in $P_\downarrow = 1$, next a $\pi/2|_y$-pulse applied to prepare the $|+\rangle$ superposition. There is some delay for time $t$, and then a second
+    $\pi/2|_y$-pulse is applied. If the 729-nm is on resonance with the qubit transition, then effectively a $\pi$-pulse is performed, and the final population in $P_\downarrow$ will be 0. If the 729-nm is off-resonance, then the final population will be given by,
     \begin{equation}
         P_{\downarrow} = \frac{1+\cos(\Delta t)}{2},
     \end{equation}
     where $\Delta$ is the detuning of the laser from resonance.
-    The time $t$ can be varied to increase the sensitivity to frequency offsets, and we may iterate feeding back $\Delta$ to the set laser frequency to ensure we are on resonance.\\
+    The time $t$ can be varied to increase the sensitivity to frequency offsets, and the $\Delta$ offset can be fed back to calibrate the set laser frequency. \\
 
 
     % 1 mW 729-nm laser -> Fit out pi/2, pi, 2pi pulses. We are using square pulses.
@@ -120,24 +128,24 @@
 
     Individual gate fidelities are ultimately limited by the loss of coherence
     between the the two qubit states. This can be caused either by dephasing or
-    the natural lifetime of the upper level. By our choice of ion and qubit
+    the natural lifetime of the upper level. By the choice of ion and qubit
     levels, defined between the ground $4S_{1/2}$ state and the metastable
-    $3D_{5/2}$ state, we can expect a lifetime limited coherence time of $\tau =
-    1.1$~s~\cite{barton_measurement_2000}. 
-    In practise we see coherence times dominated by dephasing, due to imperfect
+    $3D_{5/2}$ state, a lifetime limited coherence time of $\tau =
+    1.1$~s~\cite{barton_measurement_2000} is expected. 
+    In practise coherence times are dominated by dephasing, due to imperfect
     tracking of laser frequency and magnetic field drifts.  In characterising
     the spin coherence times, we hope to explore both the efficacy of the
     magnetic shielding surrounding the ion trap, as well as the stability of the
     729-nm laser. \\
-    Practically we measure spin coherence times by performing Ramsey scans.
+    Practically the spin coherence times are measured by performing Ramsey scans.
     Contrary to the Ramsey scans described in section~\ref{sec:Rabi and Ramsey
     Scans}, we are not interested in measuring phase accumulated over time, $t$.
-    Instead we are interested in measuring decay in contrast as the Ramsey
-    duration is increased. As such, we scan the phase $\phi$, of the final
-    $\pi/2|_\phi$-pulse, and fit the contrast of the resulting fringe.
+    Instead, the decay in contrast as the Ramsey
+    duration is increased is measured. As such, the phase $\phi$ of the final
+    $\pi/2|_\phi$-pulse is scanned, and the contrast of the resulting fringe is measured.
     Figures~\ref{fig:coherence_times} show examples of such a scan.\\
-    To find the cause of the decaying contrast, we may discern between laser and
-    magnetic field noise. This is done by redefining the quadrupole qubit with
+    To find the cause of the decaying contrast, the laser and
+    magnetic field noise contributions can be isolated. This is done by redefining the quadrupole qubit with
     varying magnetic field sensitivity transitions. Any difference in coherence
     times measured between these transitions will be due to magnetic field
     sensitivity differences exclusively. \\
@@ -163,40 +171,61 @@
             }
         \end{center}
         \caption{
-            Readout histogram with 100,000 counts. Here measured zero false positives, zero false negatives, expected error of $6\times 10^{-9}$ given fitted Gaussians. Gaussian dark: mean = 62, $\sigma$ = 13. Gaussian bright: mean = 341, $\sigma$ = 36.
+            Readout histogram with 100,000 individual measurements for bright (red) and dark (blue) populations. The camera counts are presented as a histogram and fitted to Gaussian distributions to calibrate a threshold for discerning if ion is bright or dark with the lowest probability for false measurement. Dark counts are mainly due to 397-nm light scattered from the nearest trap electrodes. With 100~$\mu$s readout time, and laser parameters set to Doppler cooling parameters, a threshold count of 137 photons is found, giving an expected statistical error of $6\times 10^{-9}$ given the fitted Gaussians. %Gaussian dark: mean = 62, $\sigma$ = 13. Gaussian bright: mean = 341, $\sigma$ = 36.
             }
         \label{fig:readout_histogram}
     \end{figure}
 
-    To utilise two levels of the ion as a qubit, we need to be able to
-    selectively prepare the ion into one of the Zeeman levels of the ground
-    state. As mentioned in section~\ref{sec:Magnetic Field}, we are operating at
-    a low magnetic field of 5~G, leading to a splitting between the Zeeman
+    To utilise two levels of the ion as a qubit, the ion must be able to be 
+    selectively prepared into one of the Zeeman levels of the ground
+    state. As mentioned in section~\ref{sec:Magnetic Field}, the fixed B-field is 5.4~G, leading to a splitting between the Zeeman
     levels of less than 21~MHz, the natural linewidth of the 397-nm transition.
-    This means we cannot optically pump using 397-nm frequency selectivity.
+    This means the state cannot be optically pumped using the 397-nm frequency selectivly.
     Further, due to the constraint of beam geometry from the in vacuum optics,
-    we can not use polarisation selectivity of the 397-nm transition. Instead,
-    we use the narrow line width 729-nm laser on resonance with the $4S_{1/2},~ m_j = +1/2 \leftrightarrow 3D_{5/2},~m_j = -3/2$ transition, and the 854-nm
+    the state cannot be prepared using polarisation selectivity of the 397-nm transition. Instead,
+    the narrow line width 729-nm laser may be used on resonance with the $4S_{1/2},~ m_j = +1/2 \leftrightarrow 3D_{5/2},~m_j = -3/2$ transition, and the 854-nm
     deshelving laser on resonance, to optically pump into the $m_j = -1/2$
-    Zeeman level we define as our qubit ground state. \\
-    To measure the qubit state of the ion, we apply the 397-nm and 866-nm lasers
-    and count 397-nm photons scattered. From the level diagram shown in
-    figure~\ref{fig:ion}, we can see that upon turning on the 397-nm
-    laser, if we are in $|0\rangle$, photons will be scattered, and if we are in
-    $|1\rangle$, then no photons will be scattered. To optimise the fidelity of
-    measurement we ensure that the signal is discernible with low error from any
+    Zeeman level define as the qubit ground state. \\
+    \begin{table}
+        \begin{center}
+        \begin{tabular}{|c|l|}
+            \hline
+            Parameter & Value \\
+            \hline
+            397-nm laser power & 3~$\mu$W, $1\times I_{\rm SAT}$ \\
+            397-nm laser detuning & -17.5~MHz\\
+            866-nm laser power & 15~$\mu$W, $\sim 70\times I_{\rm SAT}$\\
+            866-nm laser detuning & 0~MHz \\
+            Doppler cooling duration & 1~ms\\
+            Readout duration & 100~$\mu$s \\
+            Camera threshold & 137 counts \\
+            \hline
+        \end{tabular}
+        \end{center}
+        \caption{
+            Experimental parameters used for Doppler cooling and state-selective fluorescence of the ion. 
+            }
+        \label{tab:397_parameters}
+    \end{table}
+    To measure the qubit state of the ion, the 397-nm and 866-nm lasers
+    are applied for some readout duration, and the scattered 397-nm photons are counted using a camera. From the level diagram shown in
+    figure~\ref{fig:ion}, it can be seen that upon turning on the 397-nm
+    laser, if the qubit is in $|\downarrow\rangle$, photons will be scattered, and if the qubit is in
+    $|\uparrow\rangle$, then no photons will be scattered. To optimise the fidelity of
+    measurement, it is ensured that the signal is discernible with low error from any
     background counts on the camera. In general, improving the number of signal
     counts can be achieved by tuning the 397-nm laser near to the transition
     resonance, by increasing the readout duration, or by increasing the
     percentage of scattered photons captured by the imaging system. Practically
-    we desire that the readout step does not heat the motion of the ion and so
-    we red detune the 397-nm laser to a similar setting as for Doppler cooling
-    (see section~\ref{sec:Cooling}). The parameters we use for readout are
-    summarised in table~\ref{tab:readout_parameters}, and a typical histogram of
+    it is desirable that the readout step does not heat the motion of the ion and so
+    the 397-nm laser is red detuned to the same setting as for Doppler cooling
+    (see section~\ref{sec:Cooling}). The parameters used for readout are
+    summarised in table~\ref{tab:397_parameters}, and a typical histogram of
     readout counts for one ion can be seen in
-    figure~\ref{fig:readout_histogram}. With statistics from 100,000 bright and dark measurements we find an expected readout error of $6\times10^{-9}$ given a threshold of 137 counts and Gaussian fitted distributions. In the data presented here, there were no false bright or dark counts.\\
+    figure~\ref{fig:readout_histogram}. This is calibrated by taking bright counts with the 397-nm and 866-nm lasers on, and dark counts with the 397-nm laser on and the 866-nm laser off --- breaking the cycling fluorescence condition. This takes the assumption that our dark counts are predominanly due to the 397-nm scattering off of nearby trap electrodes, and the 866-nm laser having a negligible contribution.
+    With statistics from 100,000 bright and dark measurements, an expected readout error of $6\times10^{-9}$ is found, given a threshold of 137 counts and Gaussian fitted distributions. In the data presented here, there were no false bright or dark counts.\\
 
-    This readout error is well below the measured state-preparation and measurement (SPAM) error of $\epsilon_{SPAM} = 1.46(6) \times 10^{-3}$, which we measure in section~\ref{sec:Randomised Benchmarking}, suggesting that this error is dominated by state preparation.
+    This readout error is well below the measured state-preparation and measurement (SPAM) error of $\epsilon_{SPAM} = 1.46(6) \times 10^{-3}$, which is measured in section~\ref{sec:Randomised Benchmarking}, suggesting that this error is dominated by state preparation.
     
 \subsection{Randomised Benchmarking}
 \label{sec:Randomised Benchmarking}
@@ -220,7 +249,8 @@
             }
         \end{center}
         \caption{
-            RBM fit
+            Estimating single qubit Clifford fidelities, $F$, and SPAM errors using randomised benchmarking. 
+            The data points are the average survival population after applying a sequence of $m$ random Clifford gates, and a final inverting Clifford gate. The dashed line is the fit to the decay model given by equation~\ref{eq:RBM_decay}. The error bars are given by the standard deviation of the survival populations.
             }
         \label{fig:rbm}
     \end{figure}
@@ -229,18 +259,18 @@
     intermediate scale quantum computing and for reducing overheads in required
     physical qubits and operations in fault-tolerant
     schemes~\cite{steane_overhead_2003}. To evaluate the quality of both our
-    state-prep and single qubit rotations, we employ randomized benchmarking
-    (RBM)~\cite{knill_randomized_2008, magesan_scalable_2011}.  RBM consists of
+    state-prep and single qubit rotations, randomized benchmarking
+    (RBM)~\cite{knill_randomized_2008, magesan_scalable_2011} is employed.  RBM consists of
     applying random combinations of a pre-chosen discrete set of gates to
-    estimate an average error per gate.  We chose the single-qubit Clifford
-    group as our set of gates to evaluate. The single-qubit Clifford group is
+    estimate an average error per gate.  The single-qubit Clifford
+    group is chosen as the set of gates to evaluate. The single-qubit Clifford group is
     the set of unitaries which map the Pauli matrices to one another through
     conjugation. This can be thought of as the complete set of rotations of the
     Bloch sphere such that all valid combinations of the axis $(x \rightarrow
     \{\pm x,~\pm y,~\pm z\}),~(y \rightarrow \{\pm x,~\pm y,~\pm z\}),~(z
     \rightarrow \{\pm x,~\pm y,~\pm z\})$ are realized. There are 24 unitaries
-    in this set. We followed the RBM protocol described in the
-    Thesis~\cite{hughes_benchmarking_2021} to evaluate our single-qubit gates.
+    in this set. The RBM protocol is described in the
+    thesis~\cite{hughes_benchmarking_2021}.
     First the qubit is prepared in some known initial state, i.e. prepared in
     some chosen basis. A gate sequence is then applied which consists of
     multiple random Clifford gates followed by a final `inverting' Clifford,
@@ -250,19 +280,19 @@
     errors. This is repeated with the same preparation and sequence multiple
     times to calculate the probability that the Identity was performed - thus
     giving the sequence fidelity. These steps are repeated for many different
-    random sequences with a range of sequence lengths. The decay model we fit to
+    random sequences with a range of sequence lengths. The decay model used to find 
     the fidelity versus number of Clifford gates is given by,
 
     \begin{equation}
+    \label{eq:RBM_decay}
         F(m) = \frac{1}{2}\left( 1+(1-2\epsilon_{SPAM})(1-2\epsilon_c)^m\right),
     \end{equation}
 
     \noindent where $F(m)$ is the fidelity of the sequence of length $m$,
     $\epsilon_{SPAM}$ is the state-preparation and measurement error, and
-    $\epsilon_c$ is the average error per Clifford gate.  We use this method to
-    bench mark our qubit transition. The Clifford gates are decomposed into
-    sequences of $\pi/2$ and $\pi$ pulses about either the $x-$ or $y-$axes. We probe up to $m=100$ Clifford gates, and fit the decay of the fidelity to the above model.
-    We measure the error per Clifford to be $\epsilon_c = 9.5(3) \times 10^{-4}$,
+    $\epsilon_c$ is the average error per Clifford gate.  The Clifford gates are decomposed into
+    sequences of $\pi/2$ and $\pi$ pulses about either the $x-$ or $y-$axes. Up to $m=100$ Clifford gates are probed, and the decay of the fidelity, $\mathcal{F}(m)$, is fitted using the above model.
+    The error per Clifford is found to be $\epsilon_c = 9.5(3) \times 10^{-4}$,
     while the SPAM error is $\epsilon_{SPAM} = 1.46(6) \times 10^{-3}$. The decay plot for
     this RBM sequence can be seen in figure~\ref{fig:RBM_decay}. The error bars
     are given by the standard deviation of the survival populations. There are on average 3.50 $\pi/2$ pulses per Clifford, with a typical $\pi/2$ duration of $1.3~\mu$s.\\
@@ -293,12 +323,10 @@
     For any interaction involving the motion of the ion, we require both the
     ability to prepare the motional state with high fidelity, and to
     subsequently measure this motional state to verify correct preparation. For
-    entangling gates, and the creation of squeezed states which we are
-    considering in this chapter, we assume that we begin in the motional ground
-    state, or in other words, Fock state zero.  Our initially trapped ions will
-    be in some high temperature thermal state, (*given by the oven temperature
-    and the PI laser momenta kicks*). We first doppler cool our ions, and then
-    subsequently sideband cool them. We give a brief description of these two
+    entangling gates, and the creation of squeezed states, which we 
+    consider in this thesis (although as yet unwritten), it is assumed that the motional state is prepared in Fock state zero. The initially trapped ions will
+    be in some unknown high temperature thermal state. To motionally prepare these ions, first Doppler cooling is applied, and then
+    subsequently, pulsed sideband cooling. We give a brief description of these two
     cooling processes here.\\
 
 \subsubsection{Doppler Cooling}
@@ -311,16 +339,14 @@
 
     Doppler cooling exploits the fact that incident light onto a moving ion will
     appear frequency shifted in the rest frame of the ion. For Doppler cooling
-    of $^{40}$Ca$^+$, we apply both the 397-nm and 866-nm lasers. We initially red
-    detune the 397-nm laser by around 100~MHz. This results in the preferential
+    of $^{40}$Ca$^+$, both the 397-nm and 866-nm lasers are applied. Initially the 397-nm laser is red
+    detuned by $\sim$100~MHz. This results in the preferential
     absorption of a quanta of 397-nm light by ions with a velocity vector
     antiparallel photon k-vector. After this absorption, the ion will be in the
     excited $4P_{3/2}$ state and spontaneously decay to either the $4S_{1/2}$,
     or the $3D_{3/2}$ emitting a photon of either 397-nm or of 866-nm
     respectively into a random direction. These two decay paths have a branching
-    ratio of XX.  As we desire many photon kicks to cool our ions, we repump the
-    electron out of this metastable $3D_{3/2}$ level by applying an on resonant
-    866-nm beam.  The absorption and sequential emission of this 397-nm photon
+    ratio of XX.  As many photon kicks are required to cool the ions, the fluorescence cycle must be ``closed''. To prevent the electron from becomming trapped in the metastable $3D_{3/2}$ level, the 866-nm laser is applied on resonance.  The absorption and sequential emission of this 397-nm photon
     will lead to a net reduction in the motional energy of the ion if the photon
     is emitted at a higher energy than when absorbed. The equilibrium
     temperature is given by the condition where the doppler cooling rate is
@@ -337,8 +363,8 @@
     \begin{equation}
         \bar{n} = \frac{1}{e^{\hbar\omega/k_B T}-1},
     \end{equation}
-    we find the final thermal distribution to have an expected Fock state of $\bar{n} = 2.3$.
-    Using parameters summarised in table~\ref{tab:cooling_parameters}, we find practically the final temperature after Doppler cooling to be around XXX~mK.\\
+    the final thermal distribution is expected to have average phonon occupation of $\bar{n} = 2.3$.
+    Using parameters summarised in table~\ref{tab:397_parameters}, we find practically the final temperature after Doppler cooling to be $\bar{n} \sim 5$, although further exploration into this discrepancy is needed.\\
 
 \subsubsection{Sideband Cooling}
 % Main points:
@@ -357,7 +383,7 @@
             }
         \end{center}
         \caption{
-            Thermometry after sideband cooling.
+            Thermometry scan after Doppler and sideband cooling. The red points are the populations measured via on-resonance red sideband, RSB, pulses, and the blue points are the populations after a sequence of $\pi$-RSB-$\pi$ with varying RSB lengths. The solid lines are fits to a thermal Fock state distribution, with truncation at Fock state = 100. The extracted mean occupation number is $\bar{n} = 0.03(1)$, and $\eta\Omega/(2\pi) = 73.1(4)$~kHz (XXX think this number is somehow wrong).
             }
         \label{fig:SBC}
     \end{figure}
@@ -366,27 +392,27 @@
         %figures/pdf_figure/fock_state_distribution.pdf}
 
 
-    To further cool the ions toward their motional ground state, we use resolved
-    sideband cooling. The motion of the ion, described by a harmonic oscillator,
+    To further cool the ions toward their motional ground state, resolved
+    sideband cooling is used. The motion of the ion, described by a harmonic oscillator,
     modulates the transition frequencies of the ion, leading to sidebands at
     multiples of the motional frequency. For the $4S_{1/2} \leftrightarrow
     3D_{5/2}$ transition, at appropriate laser intensity and motional mode
     frequencies, these sidebands can be resolved spectroscopically. The pulsed
-    sideband technique we employ consists of red sideband pulses, followed by
+    sideband technique employed consists of red sideband pulses, followed by
     deshelving, and repumping pulses on the 854-nm and 866-nm transitions
     respectively. An example pulse sequence can be seen in
-    figure~\ref{fig:sideband_cooling_sequence}, and experimental parameters we use are summarised in table~\ref{tab:cooling_parameters}.\\
-    To verify the efficacy of our sideband cooling, we perform thermometry
-    experiments by driving on resonance red sideband (RSB) and pi-RSB-pi pulse
-    sequences. We record the time dynamics of population flopping as we vary RSB
-    pulse length. In the case of Fock state zero, we expect to see a strong
-    signal on the RSB, and no signal on the pi-RSB-pi pulses. We fit a thermal
-    Fock state distribution (with truncation at Fock state = 100) to these
+    figure~\ref{fig:sideband_cooling_sequence}, and experimental parameters used are summarised in table~\ref{tab:sbc_parameters}.\\
+    To verify the efficacy of our sideband cooling, thermometry
+    experiments are performed by driving on resonance red sideband (RSB) and pi-RSB-pi pulse
+    sequences. The time dynamics of population flopping is measured as RSB
+    pulse length is varied. In the case of Fock state zero, there should be full contrast 
+    RSB oscillations, and no visible oscillations on the pi-RSB-pi pulse. A thermal
+    Fock state distribution (with truncation at Fock state = 100) is fitted to these
     signals to extract the mean occupation number, and $\eta\Omega$, the carrier
     Rabi frequency multiplied by the Lamb-Dicke parameter. A typical thermometry
     scan after Doppler and sideband cooling can be seen in
-    figure~\ref{fig:sideband_cooling_results}. We find that the mean occupation
-    number after sideband cooling is $\bar{n} = 0.03()$, and $\eta\Omega =
+    figure~\ref{fig:sideband_cooling_results}. The mean occupation
+    number after sideband cooling is found to be $\bar{n} = 0.03()$, and $\eta\Omega =
     XX$~MHz.\\
     Optimisation of the cooling parameters can be roughly performed by fitting
     temperature while scanning RSB pi-pulse durations, total number of pulses,
@@ -422,13 +448,12 @@
             }
         \end{center}
         \caption{
-            Heating rates of upper radial mode.
+            Heating rates of upper radial mode, measured by varying the delay between cooling and thermometry pulses. The dashed line is a linear fit to the data, with slope $33(3)$~quanta/s. The error bars are given by the standard deviation of the fitted $\bar{n}$.
             }
         \label{fig:heating rates}
     \end{figure}
 
-    As mentioned, the cooling of our ions is only relevant if we have acceptable
-    heating rates. Heating of the motion is predominantly caused by the ion trap
+    As mentioned, the cooling of the ions is only relevant if heating rates are acceptably low. Heating of the motion is predominantly caused by the ion trap
     itself. This can be due to imperfections in the surface of exposed
     dielectric and metals causing stray fields, or can be due to noise on the DC
     and RF drive voltages[]. Noise due to the surface of the trap can be
@@ -436,17 +461,19 @@
     smaller surface area direclty exposed to the ion. In our case, as mentioned
     in sections~\ref{sec:The Ion Trap}, the NPL trap has an electrode ion
     distance somewhat larger than most surface traps, but less than that of a
-    macroscope blade or rod style trap. To verify the heating rate of our
-    system, we performed a series of thermometry scans whilst varying some delay
+    macroscope blade or rod style trap. To verify the heating rate of the
+    system, a series of thermometry scans were performed whilst varying some delay
     time between cooling and thermometry pulses. A typical plot can be seen in
-    figure~\ref{fig:heating_rate}. We find that the heating rate of our system
-    is approximately $33(3)$~quanta per second on the upper radial 4~MHz mode on
+    figure~\ref{fig:heating_rate}. The heating rate of the system
+    was found to be $33(3)$~quanta per second on the upper radial 4~MHz mode on
     one ion.\\
     It is expected that the heating rate will be larger for lower frequency
-    motional modes if we assume uniform electric field noise. We also verify
-    this by looking at heating rate on the radial mode while varying the axial
-    mode frequency. This is a useful diagnostic to check for unexpected heating
-    at certain frequencies, perhaps due to RF noise in the lab. We find....\\
+    motional modes if electric field noise is assumed to be uniform over its spectrum. 
+    
+    %We also verify
+    %this by looking at heating rate on the radial mode while varying the axial
+    %mode frequency. This is a useful diagnostic to check for unexpected heating
+    %at certain frequencies, perhaps due to RF noise in the lab. We find....\\
 
 \subsection{Motional Mode Stability}
 \label{sec:Motional Mode Stability}
@@ -464,12 +491,26 @@
             }
         \end{center}
         \caption{
-            Motional mode frequency drift.
+            \textbf{a)} Motional mode frequency drift over time. The radial motional mode frequency is measured by performing a ``tickle'' experiment. The resulting frequency trace is shown in blue. The green line shows a low pass filter of the data, with cut-off frequency of 1.67~mHz, corresponding to an assumed 10 minutes slow thermal drift. The motional mode frequency is typically calibrated every 10 minutes, which is indicated by the red line. 
+            \textbf{b)} Residuals from the measured data and the low passed trace. The standard deviation of these residuals are due to ``fast'' noise which will likely not be elimated by either adding a slow active feedback loop on the RF amplitude or further isolating the resonator from temperature fluctuations. XXX (replace with box data).
+            \textbf{c)} Residuals from the measured data and expected calibrated mode frequencies. The standard deviation of these residuals suggests the typical misset detuning of the mode frequency in current experiments.
             }
         \label{fig:mode drift}
     \end{figure}
 
+    Due to thermal drifts and microphonics introducing amplitude and frequency noise on the RF chain, drifts of the radial motional mode frequencies are seen over time. As will be discussed in the following section~\ref{sec:Motional Coherence}, this can lead to dephasing of the motional state. Here the current motional mode stability is characterised, possible causes are suggested, and improvements are suggested. \\
+    To measure the motional mode frequency an RF ``tickle'' experiment~\cite{} is performed. A short pulse of RF is applied to one of the trap DC electrodes which has a non-zero electric field projection to the mode we wish to probe. The tickle RF is scanned around the expected motional mode frequency, and when resonant, causes motional heating. This resonance is measured by observing an increase in fluorescence counts on a far red-detuned 397-nm transition. This measurement is repeated every 20 seconds, and the mode frequency is plotted over multiple hours. A typical plot can be seen in figure~\ref{fig:mode drift}. Assuming that in normal operating conditions the mode frequency is calibrated every 10 minutes, a standard deviation of $\sigma/(2\pi) = 870$~Hz is found. As the frequency drift cannot currently be probed over shorter time scales, we can not yet estimate the contributions of fast noise, such as microphonics, versus slower noise on thermal drift time scales. 
+    
+    % Tracking noise source
+    % Show resonator scan
+    % Explain we sit either on peak or edge
+    % show mode drift of +- edge of resonator.
+    % This suggests amplitude drift
+    However, we can distinguish between amplitude or resonator frequency drifts by changing the trap RF frequency. Figure~\ref{fig: mode drift} shows the motional mode frequency versus the trap RF frequency. The quadratic responce seen is due to the bandwidth of the resonator. By probing two points If the central frequency of the resonator drifts over time
+    
+
 \subsection{Motional Coherence Times}
+\label{sec:Motional Coherence}
 % Main points:
     % Quote measured result for motional coherence time
     % Give estimate for what times we need for future experiments
@@ -484,10 +525,10 @@
     As with the section on spin coherence times~\ref{sec:Coherence}, the
     fidelity of operations, and success probability of algorithms will be
     limited by the coherence time of the motional state.  To measure motional
-    coherence, we perform a Ramsey sequence between states $|\downarrow, 0
+    coherence, a Ramsey sequence is performed between states $|\downarrow, 0
     \rangle$ and $|\downarrow, 1 \rangle$, where the first element is the qubit
     state, and the second element is the motional Fock state. To prepare these
-    states we apply the following pulse sequence:
+    states the following pulse sequence is applied:
     \begin{itemize}
     \item State prep system to $|\downarrow, 0\rangle$ via optical pumping and SBC.
     \item Apply $\pi/2|_y$-pulse on carrier transition to prepare the qubit in $|+, 0\rangle$.
@@ -507,13 +548,11 @@
     $\sigma$, is characterised by a Gaussian decay profile with a coherence time
     of $\tau_{DEPH} = \sqrt{2}/\sigma$.\\
     Evaluating both of these models with $\dot{\bar{n}}=33(3)$~q/s, and
-    $\sigma/(2\pi) = 750$~Hz, we find expected motional coherence times of $\tau_{\rm
-    HEAT} \approx 20$~ms and $\tau_{\rm DEPH} \approx 0.3$~ms respectively. From these auxiliary characterisations of the motional modes, we then
-    expect to be in the dephasing dominated regime.  However, as can be
-    seen in figure~\ref{fig:motional_coherence}, we experimentally find a
-    motional coherence time of XX(X)~ms by fitting a Gaussian decay. \\
-    Assuming this was dominated by motional mode drifts between shots, we can
-    estimate the motional mode drift standard deviation, $\sigma/(2\pi) =
+    $\sigma/(2\pi) = 750$~Hz, the expected motional coherence times of $\tau_{\rm
+    HEAT} \approx 20$~ms and $\tau_{\rm DEPH} \approx 0.3$~ms respectively, are found. From these auxiliary characterisations of the motional modes, it is expected that the coherence time will be limited by motional dephasing.  However, as can be
+    seen in figure~\ref{fig:motional_coherence}, a
+    motional coherence time of XX(X)~ms is found experimentally by fitting a Gaussian decay. \\
+    Assuming this was dominated by motional mode drifts between shots, the motional mode drift can be estimated to have a standard deviation, $\sigma/(2\pi) =
     225$~Hz. Comparing this to the previously measured long-term motional mode
     stability, we see a discrepancy. This is likely due to the issue of time
     scales. The motional mode stability in the described Ramsey experiment is
@@ -544,13 +583,13 @@
     laser tuned at the carrier frequency minus (plus) the motional mode frequency,
     $\omega_m$. The interaction is well described by the (Anti-) Jaynes-Cummings
     Hamiltonian, and effectively couples spin flips with the addition or
-    subtraction of a motional quanta depending on the initial spin state. Here
-    we introduce another such interaction coupling spin and motion, known as the
-    spin-dependent force. If the RSB and BSB interactions couple spin-motion in
+    subtraction of a motional quanta depending on the initial spin state. Here,
+    another such interaction coupling spin and motion, known as the
+    spin-dependent force, is introduced. If the RSB and BSB interactions couple spin-motion in
     the motional Fock basis, then the SDF couples the two in a
     motional coherent basis. The SDF displaces the motional state in phase
     space, with a direction dependent on the spin state and an effective detuning parameter.\\
-    We use the optical Mølmer-Sørensen (MS) scheme~\cite{}, to generate the
+    The optical Mølmer-Sørensen (MS) scheme~\cite{} is used to generate the
     SDF via a bichromatic laser field. Bichromatic refers to the simultaneous
     application of two tones symmetrically detuned around the qubit carrier
     frequency, with absolute detuning approximately equal to the motional mode
@@ -563,17 +602,16 @@
     frequency, $a(a^\dagger)$ is the lowering (raising) operator, and
     $\sigma_\phi$ is the Pauli operator with $\phi$ being in the $x,~y~$-plane.
     Applying the rotating wave approximation, and defining $\delta_g = \delta -
-    \omega_{m}$, we find that the interaction Hamiltonian can be approximated
+    \omega_{m}$, the interaction Hamiltonian can be approximated
     to,
     \begin{equation}
         \hat{H}_{MS} = \frac{\hbar \eta\Omega}{2}~\hat{\sigma}_\phi \left( a e^{-i\delta_g t} + a^\dagger e^{i\delta_g t} \right).
     \end{equation}
-    We may
-    control the trajectory of this displacement by varying $\delta_g$: on
-    resonance, $\delta_g = 0$, we see linear trajectories, whilst off resonance,
-    $\delta_g \neq 0$, we see cyclic trajectories where after some time $t =
-    2\pi/\delta_g$, the motion returns to the initial state (with perhaps some phase shift). We shall exploit
-    this control in both the two-qubit entangling gate experiments, as well as
+    The trajectory of this displacement can be controlled by varying $\delta_g$: on
+    resonance, $\delta_g = 0$, corresponds to linear trajectories, whilst off resonance,
+    $\delta_g \neq 0$, corresponds to cyclic trajectories where after some time $t =
+    2\pi/\delta_g$, the motion returns to the initial state (with perhaps some phase shift). 
+    This control is exploited in both two-qubit entangling gate experiments, as well as
     in the creation of squeezed states.\\
 
 \subsection{Calibrating the SDF}
@@ -600,8 +638,8 @@
     \end{figure}
 
     The MS interaction is widely used in ion trap experiments due to it being robust against varying intial motional states, and to the effects of heating during the pulse sequence. However, in our use case, the SDF is sensitive to various frequency and power miscalibrations and drifts of these between calibrations.  Here we describe briefly the work flow for calibrating and optimising the SDF behaviour.\\
-    In honesty, there are not many moving parts in the SDF interaction, we must know the central qubit frequency, the motional mode frequency, the power in each tone, and the durations of the pulses. Complications come from the reality that we have a multi-level system, multiple motional modes, and that experimentally each parameter can only be controlled to a certain precision.\\
-    We negate the effect of nearby motional modes by either selecting our
+    In honesty, there are not many moving parts in the SDF interaction, we must calibrate the central qubit frequency, the motional mode frequency, the power in each tone, and the durations of the pulses. Complications come from the reality that the ion is a multi-level system, posseses multiple motional modes, and that experimentally each parameter can only be controlled to a certain precision.\\
+    The effect of nearby motional modes is negated by either selecting the
     interaction mode to be well seperated from the others either in frequency or geometrically, by
     operating the SDF near to resonance of the desired mode, or by using pulse
     shaping to ramp the power of the SDF and suppress the off-resonant
@@ -610,22 +648,22 @@
     here. \\
     The power balance of the SDF tones is complicated due to our use of AOMs.
     AOMs generate frequency shifts in the laser beam at the expense of small
-    frequency-dependent angular shifts. We couple the beam after the AOM into a
+    frequency-dependent angular shifts. After the AOM, the beam is coupled into a
     single mode fibre (see figure~\ref{fig:729}), and so the AOMs effectively introduce a
-    frequency-dependent loss. To calibrate the power balance we look at a pick
-    off of the bichromatic beam before the ion on a high bandwidth photodiode.
-    We measure the beatnote contrast of the two tones and optimise the power
-    balance to maximise this contrast.\\
+    frequency-dependent loss. To calibrate the power balance, a pick
+    off of the bichromatic beam before the ion is monitored on a high bandwidth photodiode.
+    The beatnote contrast is measured for the two tones and the power
+    balance is optimised by maximising this contrast.\\
     The far off-resonant levels of our ion lead to light-shifts of our qubit
-    frequency. Practically to account for the light-shift we must calibrate this central frequency at the
-    optical power we use in the interaction. We do this with the SDF interaction
+    frequency. Practically to account for the light-shift the central qubit frequency must be calibrated at the
+    optical power used for the interaction. This is done with the SDF interaction
     itself. When the qubit frequency is set incorrectly, the two tones will no
     longer have the same absolute detuning from their respective RSB or BSB.
     This manifests as a ``skewness'' of the SDF detuning trace, an example of
     such can be seen in figure~\ref{fig:SDF}. By varying the qubit frequency and
     inspecting these detuning scans, the desired SDF behaviour can be found. \\
-    To verify the behaviour of our calibrated SDF with theory, we use both
-    ``detuning'' and ``duration'' scans. The ``detuning'' scan is performed by
+    To verify the behaviour of the calibrated SDF, the experimental data is compared with theory. Both
+    ``detuning'' and ``duration'' scans are used. The ``detuning'' scan is performed by
     varying the detuning, $\delta_g$, of the interaction, whilst the keeping the
     SDF duration, $t$, constant, and vice-versa for the ``duration'' scan. \\
     Figure~\ref{fig:SDF} shows the measured duration scan with a fit given by,
@@ -633,8 +671,8 @@
         P_{\downarrow,\mathrm{th}} = \frac{1}{2} \left[ 1 + e^{-4\left( \bar{n} + \frac{1}{2} \right) |\alpha(t)|^2} \right],
     \end{equation}
     %from Burd thesis, equation 3.30.
-    where we assume we begin in a thermal state with average Fock state $\bar{n}
-    = 0.03$ which we found previously from thermometry measurements. Here the
+    where it is assumed that the motional state is thermal with average Fock state $\bar{n}
+    = 0.03$ which is found previously from thermometry measurements. Here the
     displacement, $|\alpha(t)| = \Omega_{\rm SDF} t/2$, where $\Omega_{\rm SDF}$ is the
     SDF amplitude. 
     These measurements were performed with a duration of XX~ms, total power of xx~mW, $\delta_{\rm LS}=2\pi\times XX$~kHz.
@@ -644,9 +682,9 @@
     0.05$XXX and $\Omega_{\rm CAR} = 2\pi \times 132$~kHz XXX measured from Rabi
     flopping at 15XXX mW.\\
     The detuning scan, shown in figure~\ref{fig:SDF}, is fitted by taking the
-    displacement to be $|\alpha(t)| = \Omega_{\rm SDF} \sin(\delta t/2)/\delta$. Here
-    we qualitatively see a good agreement between the measured data and the
-    expected behaviour, with the main important features being the ``closure''
+    displacement to be $|\alpha(t)| = \Omega_{\rm SDF} \sin(\delta t/2)/\delta$. Here,
+    a qualitatively good agreement between the measured data and the
+    expected behaviour is seen, with the main features being the ``closure''
     at $\delta = 2\pi/t$ where the motional state returns to the initial state,
     and the central flat region around $P_{\downarrow, \mathrm{th}} =0.5$ where
     the two motional wave packets are non-overlapping.\\
@@ -674,7 +712,20 @@
             }
         \end{center}
         \caption{
-            MS Gate.
+            Experimental data for $\mathcal{F}=92(2)$\% Mølmer-Sørensen (MS) two-qubit entangling gate.
+            \textbf{a)} Populations versus duration scan of the MS interaction.
+            Each point corresponds to the average of 200 shots, and the error
+            bars are given by the standard deviation of these averages. The blue
+            points are the populations of both ions being in the $|0\rangle$
+            state, $P_{00}$, the green points are the populations of both ions
+            being in the $|1\rangle$ state, $P_{11}$, and the red points are the
+            ions being the the opposite states, $(P_{01}+P_{10})/2$. The desired
+            entangling gate corresponds here to $t =  75~\mu$s. 
+            \textbf{b)} Parity oscillations after the MS interaction. The parity
+            is defined as $P_{00} + P_{11} - P_{01} - P_{10}$. The fitted
+            contrast here is $0.90(2)$.
+            \textbf{c)} Populations at the desired entangling gate time, $t =
+            75~\mu$s.  
             }
         \label{fig:ms_gate}
     \end{figure}
@@ -693,15 +744,15 @@
     discrete quantum algorithms.\\  
 
     Here we quote the fidelity of experimentally demonstrated two-qubit gates on
-    our system. The fidelity serves to quantify the ``closeness" or similarity of
+    our system. The fidelity serves to quantify the ``closeness'' or similarity of
     two density matrices.  For the use case of quantum information processing, what we
     care about is that the experimental unitary applied in the gate sequence closely resembles the unitary we desire theoretically. In general this
-    means that we should measure the fidelity of the applied unitary in an input
-    state agnostic way. Unfortunately this is often not practical as the input
+    means that the fidelity of the applied unitary should be measured in an input
+    state agnostic way. Unfortunately, this is often not practical as the input
     state space can be unwieldly, and the act of preparing the input state can
-    also be error prone. As a compromise we can apply the test unitary to either
-    one, or to a set of input states, and measure the fidelity of the output state
-    with respect to the known target state. If the error mechansisms of the test
+    also be error prone. As a compromise, the unitary is tested with either
+    one, or a set of input states, and the fidelity of the output state
+    is measured with respect to the known target state. If the error mechansisms of the 
     unitary are well understood, arguments can be made that this measured
     fidelity for a set of input state is representative (or not representative)
     of the average fidelity over the input state space.\\
@@ -714,15 +765,14 @@
         \mathcal{F} = \langle \Phi^+ | \rho | \Phi^+ \rangle = \frac{1}{2} \left( \rho_{00,00} + \rho_{11,11} \right) + \frac{1}{2}\left( e^{i\phi_0}\rho_{11,00}+e^{-i\phi_0}\rho_{00,11}\right),
         \label{eq:Fidelity}
     \end{equation}
-    To extract the fidelity experimentally we follow the popular
-    protocol~\cite{XXX}, where the first bracketted term of
+    To extract the fidelity experimentally, the popular
+    protocol~\cite{XXX}, is followed where the first bracketted term of
     equation~\ref{eq:Fidelity} is measured by performing projective measurements
     of the two ions after the gate sequence to extract populations, and the second bracketted term,
     known as the coherence terms, are measured by applying a global analysis
     $\pi/2|_\phi$ pulse to the two ions and applying parity measurements. The
     contrast of the parity oscillations when varying the phase $\phi$ of the
-    $\pi/2$ pulse yields the desired coherence term magnitude and phase. We require the creation of a Bell state for two qubit entangling, however do not care what basis this state is in, and so float the target Bell state phase and take only the magnitude of the fitted parity oscillations for calculating the final fidelity.\\
-
+    $\pi/2$ pulse yields the desired coherence term magnitude and phase. The creation of a Bell state is required for two qubit entangling, however, it does not matter what basis this Bell state is in, and so the target Bell state phase may be floated. Practically this is equivalent to taking only the magnitude of the fitted parity oscillations for calculating the final fidelity, and ignoring the phase offset.\\
     The best two-qubit entangling gate fidelity currently achieved on our system is $\mathcal{F}=92(2)\%$. As shown in figure~\ref{fig:ms_gate}, the magnitude of the parity scan was measured to be 0.90(2), while the populations $\left( \rho_{00,00} + \rho_{11,11} \right) = 0.95(2)$. Each population point in these figures are found by taking the average of 200 shots of the gate sequence.\\
 
     These results serve as both a proof of principle for full spin control on
@@ -732,9 +782,9 @@
     experiments~\cite{}, or as a primitive gate for the spin component of hybrid
     algorithms~\cite{}.  In both these cases, especially any use that requires
     multiple concatenated entangling gates, we will likely require improved gate
-    fidelities. It is suspected that we are currenlty limited by nearby hot
-    motional modes, and the lack of pulse ramping in our gate sequence. We
-    expect that with the addition of pulse shaping we will be able to suppress
-    the effect of nearby off-resonant transitions, and by sideband cooling of
-    nearby motional modes we will futher suppress contributions from unwanted
-    spin-motion couplings.\\
+    fidelities. It is suspected that the current fidelities are limited by nearby hot
+    motional modes, and the lack of pulse ramping in the gate sequence. We
+    expect that with the addition of pulse shaping, 
+    the effect of nearby off-resonant transitions will be greatly suppressed, and by sideband cooling of
+    nearby motional modes, contributions from unwanted
+    spin-motion couplings will be negated.\\

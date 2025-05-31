@@ -109,7 +109,7 @@ ax.plot(
     alpha=graph_style.get_alpha(),
 )
 ax.set_xlabel("Number of Cliffords $m$")
-ax.set_ylabel("Avg. Sequence Fidelity $F(m)$")
+ax.set_ylabel("Avg. Sequence Fidelity $\mathcal{F}(m)$")
 
 sp_err = 1 / 2 - popt[0]
 clf_err = (1 - popt[1]) / 2

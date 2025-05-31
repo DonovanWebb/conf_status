@@ -36,6 +36,7 @@ mean_dark = mean_dark - min_tot  # shift mean dark to match counts
 
 print(f"Mean bright: {mean_bright[0]:.0f}, Mean dark: {mean_dark[0]:.0f}")
 print(f"Width bright: {width_bright[0]:.0f}, Width dark: {width_dark[0]:.0f}")
+print(f"Threshold: {thresh:.0f}")
 
 counts_dark = counts[1::2]
 counts_bright = counts[0::2]
