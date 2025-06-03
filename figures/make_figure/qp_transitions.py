@@ -114,7 +114,7 @@ def plot_QP_transition_spectrum(gamma, label=""):
                     label="S({:.0f}/2)$\leftrightarrow$D({:.0f}/2)".format(
                         2 * M_l, 2 * M_u
                     ),
-                    zorder=10,
+                    zorder=2,
                 )
     # Shrink current axis's height by 20% on the bottom
     box = ax.get_position()
