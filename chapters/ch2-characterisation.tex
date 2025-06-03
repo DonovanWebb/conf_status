@@ -2,10 +2,12 @@
 \label{ch:Characterisation}
 \minitoc
 
-    Before we can dive into running novel experiments involving the motion and spin
-    of the atoms, the apparatus must be characterised. This allows us to both
-    benchmark our system against state-of-the-art results, and to reveal any
-    current limitations of the apparatus which need to be addressed.
+
+    Before we can proceed with our planned experiments involving the motion and
+    spin of the atoms, the apparatus must be characterised. This characterisation
+    serves two purposes: it allows us to benchmark the performance of our system
+    against state-of-the-art results, and it reveals any current limitations
+    that must be addressed before we can successfully carry out the experiments.
 
 \section{Quadrupole Transitions}
 \label{sec:Transitions}
@@ -39,15 +41,15 @@
         \label{fig:quadrupole}
     \end{figure}
 
-
+    The \ca ion has a rich level structure, shown in figure~\ref{fig:ion}, with many accessible quadrupole transitions $4S_{1/2}\leftrightarrow 3D_{5/2}$. The quadrupole transition is ideal for use as a qubit due to the long-lived metastable level~\cite{barton_measurement_2000}, and the ability to optically couple the transition via a laser. As mentioned in section~\ref{sec:Narrow Line Width 729 Laser}, the 729-nm beam is used for this purpose. By selecting the appropriate frequency of the 729-nm beam, qubit operations such as state preparation (section~\ref{sec:SPAM}) and single qubit gates (section~\ref{sec:Randomised Benchmarking}) may be driven, or by setting the detuning such that a motional sideband is near resonance, to couple the spin and motional degrees of freedom (section~\ref{sec:Spin-Dependent Forces}). Here, we discuss which quadrupole transitions are used, and the rationale behind their choice.\\ 
     Zeeman splitting of the $4S_{1/2}$ and $3D_{5/2}$ states leads to 2 and 6
-    non-degenerate sublevels, respectively. Due to the magnetic field strength of 5.4~G,
+    non-degenerate sublevels, respectively. Due to the magnetic field strength of 5.4~G (section~\ref{sec:Magnetic Field}),
     the $S$-levels are split by $\sim$15~MHz, and the $D$-levels by $\sim$9~MHz.
     This splitting is considerably larger than both the natural linewidth of the
     729-nm transition ($\sim$Hz), and the Ti:Sapph laser linewidth (<1~kHz), meaning the transitions can be 
-    selectively addressed by frequency tuning of the laser. There is some freedom in choosing which of these 10 possible (with $\Delta m_j \leq 2$) quadrupole transitions we define as our qubit. Each transition has a varying coupling strength, $\Omega$, depending on the polarisation and $k$-vector of the interacting light. Here, we describe the rationale for our qubit choice of $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2}, ~m' = -5/2$.\\
+    selectively addressed by frequency tuning of the laser. There is some freedom in choosing which of these 10 possible (with $\Delta m_j \leq 2$) quadrupole transitions we define as our qubit. Each transition has a varying coupling strength, here denoted by the relative Rabi frequency, $\Omega$, depending on the polarisation and $k$-vector of the interacting light. Here, we describe the rationale for our qubit choice of $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2}, ~m' = -5/2$.\\
     % Cite Gulde Thesis
-    We want excellent sideband cooling efficiency as we plan to use our motional modes considerably. For time-efficient sideband cooling, section~\ref{sec:Cooling}, a ``closed-cycle'' transition is required. ``Closed-cycle'' here means that after one cycle of sideband cooling, the final electronic state returns with high probability back to the initial electronic state. When using such a closed-cycle transition, the next sideband pulse can be run immediately, without having to state prepare the spin again. If the $4S_{1/2},~m = -1/2$ state is initially prepared, then the only closed-cycle transition is $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = -5/2$. Therefore this transition must be accessible, however it does not neccessarily need to be the defined qubit transition. \\
+    \mccorrect{XXX here change to bullet points of requirements for ``good qubit'' and do not go into details on cooling} We want excellent sideband cooling efficiency as we plan to use our motional modes considerably. For time-efficient sideband cooling, section~\ref{sec:Cooling}, a ``closed-cycle'' transition is required. ``Closed-cycle'' here means that after one cycle of sideband cooling, the final electronic state returns with high probability back to the initial electronic state. When using such a closed-cycle transition, the next sideband pulse can be run immediately, without having to state prepare the spin again. If the $4S_{1/2},~m = -1/2$ state is initially prepared, then the only closed-cycle transition is $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = -5/2$. Therefore this transition must be accessible, however it does not neccessarily need to be the defined qubit transition. \\
     To further narrow down our choice, we recognise the benefit in limiting the number of addressable transitions to reduce the effect of unwanted off-resonant interactions. Figure~\ref{fig:quadrupole} $a$, shows the normalised Rabi frequencies of each transition as the angle $\gamma$ between polarisation vector and B-field is varied, while figure~\ref{fig:quadrupole} $b$, shows the relevant frequency splitting of the transitions at $\gamma = \pi/4$. These plots are for light with k-vector perpendicular to B-field, as the 729-nm addresses the ion through the main objective lens (see section~\ref{sec:Vacuum System}). This geometry suppresses transitions with $\Delta m_j = 0$. In figure~\ref{fig:quadrupole} $c$, it can be seen that at $\gamma = \pi/2$, the normalised Rabi frequency of the
     $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = -5/2$ transition is maximised, while
     minimising the Rabi frequencies of all other transitions, apart from
@@ -62,6 +64,8 @@
     systems, which we refer to either as spins, or qubits. In this section 
     the methods used to maniplate these spins are described, and their
     performances are benchmarked.\\
+    XXX We are interested in state prep, gates, measurement.
+    Tools are Rabi, Ramsey.
 
 \subsection{Rabi and Ramsey Scans}
 \label{sec:Rabi and Ramsey Scans}
@@ -76,13 +80,15 @@
     % 729 system
     % Available Quadrupole transitions
 
+% XXX read Christa's description here. Use equations, bullet points, and pulse sequence diagrams to simplify the descriptions.
+
     \begin{figure}
         \begin{center}
         \noindent\includegraphics[width=\linewidth]{
             figures/pdf_figure/long_flop.pdf
             }
         \end{center}
-        \caption{Long duration, $t$, Rabi flop on the qubit transition. Estimated probability of being in $|\downarrow\rangle$, $P_\downarrow$, at each time step using 200 individual experimental shots. Fitted dotted line using decaying oscillations model. Extracted Rabi frequency $\Omega/2\pi = 0.0716(1)$~MHz, and decay rate $\lambda = 0.0107(7)~1/\mu$s. 
+        \caption{Long duration, $t$, Rabi flop on the qubit transition. Estimated probability of being in \mccorrect{XXX change all bra and kets to remove odd space}$|\downarrow\rangle$, $P_\downarrow$, at each time step using 200 individual experimental shots. Fitted dotted line using decaying oscillations model. Extracted Rabi frequency $\Omega/2\pi = 0.0716(1)$~MHz, and decay rate $\lambda = 0.0107(7)$~\unit{\per\us}\mccorrect{XXX change all units to siunitx}. 
             }
         \label{fig:Long Flop}
     \end{figure}
@@ -96,10 +102,10 @@
     Figure~\ref{fig:Long Flop} shows one such ``flop'' with 1~mW of power-stabilised light, with a beam radius of $\sim 15 ~\mu$m at the ion. A Rabi frequency of $\Omega/2\pi = 0.0716(1)$~MHz and
     decay rate $\lambda = 0.0107(7)~1/\mu$s is found. From this a $\pi/2$ time of 1.7~$\mu$s can be estimated (note, this is on the $4S_{1/2},~m_j = -1/2 \leftrightarrow 3D_{5/2},~m_j = -3/2$ transition, which was used prior to optimising the 729-nm polarisation, see section~\ref{sec:Transitions} for more details).\\
     The damping is likely due to a combination of out-of-Lamb-Dicke effects, and laser phase noise. The out-of-Lamb-Dicke effects are due to on-resonant terms proportional to $O(\eta^2 n)$ in the full Lamb-Dicke expansion, which may not be negligible when all modes are not cooled to their ground state. As we have not yet measured all the mode temperatures after Doppler cooling, and we have not yet characterised the laser phase noise, we do not know their relative contributions to the observed decay.\\
-    To further improve the estimate for the $\pi/2$ pulse length, the ramping time due to electronic control and AOM rise times must be accounted for. This is done by applying odd multiples of the roughly calibrated $\pi/2$ pulses consecutively, and optimising pulse durations such that the final population measurement corresponds to the Z-basis superposition state, $P_{\downarrow}= 0.5$, with $P_\downarrow = |\langle \downarrow | \psi_s \rangle|^2$, and $\psi_s$ is the qubit state. \\
+    \mccorrect{XXX this section is unclear, either remove or reformat.} To further improve the estimate for the $\pi/2$ pulse length, the ramping time due to electronic control and AOM rise times must be accounted for. This is done by applying odd multiples of the roughly calibrated $\pi/2$ pulses consecutively, and optimising pulse durations such that the final population measurement corresponds to the Z-basis superposition state, $P_{\downarrow}= 0.5$, with $P_\downarrow = |\langle \downarrow | \psi_s \rangle|^2$, and $\psi_s$ is the qubit state. \\
     To measure the detuning of the 729-nm laser, Ramsey scans are performed.
-    The qubit is first prepared in $P_\downarrow = 1$, next a $\pi/2|_y$-pulse is applied to prepare the $|+\rangle$ superposition. There is some delay for time $t$, and then a second
-    $\pi/2|_y$-pulse is applied. If the 729-nm is on resonance with the qubit transition, then effectively a $\pi$-pulse is performed, and the final population in $P_\downarrow$ will be 0. If the 729-nm is off-resonance, then the final population will be given by,
+    The qubit is first prepared in $|\downarrow\rangle = 1$, next a $\pi/2|_y$-pulse is applied to prepare the $|+\rangle$ superposition. There is some delay for time $t$, and then a second
+    $\pi/2|_y$-pulse is applied. If the 729-nm is on resonance with the qubit transition, then effectively a $\pi$-pulse is performed, and the final population in $P_\downarrow$ will be 0. If the 729-nm is off-resonant, then the final population will be given by,
     \begin{equation}
         P_{\downarrow} = \frac{1+\cos(\Delta t)}{2},
     \end{equation}
@@ -124,16 +130,14 @@
 
     Individual gate fidelities are ultimately limited by the loss of coherence
     between the the two qubit states. This can be caused either by dephasing or
-    the natural lifetime of the upper level. By the choice of ion and qubit
-    levels, defined between the ground $4S_{1/2}$ state and the metastable
-    $3D_{5/2}$ state, a lifetime limited coherence time of $\tau =
+    the natural lifetime of the $3D_{5/2}$ level. For our qubit, a lifetime limited coherence time of $\tau =
     1.1$~s~\cite{barton_measurement_2000} is expected. 
     In practise coherence times are dominated by dephasing, due to imperfect
     tracking of laser frequency and magnetic field drifts.  In characterising
     the spin coherence times, we hope to explore both the efficacy of the
     magnetic shielding surrounding the ion trap, as well as the stability of the
     729-nm laser. \\
-    Practically the spin coherence times are measured by performing Ramsey experiments.
+    The spin coherence times are measured by performing Ramsey experiments.
     Contrary to the Ramsey experiments described in section~\ref{sec:Rabi and Ramsey
     Scans}, we are not interested in measuring phase accumulated over time, $t$.
     Instead, the decay in Ramsey contrast over increasing delay time is measured. As such, the phase $\phi$ of the final
@@ -160,6 +164,8 @@
     % 729 system
     % Available transitions
     % pi-pulses
+
+% XXX See Machej section on state prep. Mention if we are pulsed or coninuous.
     \begin{figure}
         \begin{center}
         \noindent\includegraphics[width=0.75\linewidth]{
@@ -203,13 +209,15 @@
             }
         \label{tab:397_parameters}
     \end{table}
-    To measure the qubit state of the ion, the 397-nm and 866-nm lasers
-    are applied for some readout duration, and the scattered 397-nm photons are counted using a camera. From the level diagram shown in
+    To measure the qubit state, the 397-nm and 866-nm lasers
+    are applied for 100~\unit{us}, and the scattered 397-nm photons are counted using a camera (see section~\ref{sec:Imaging System}). From the level diagram shown in
     figure~\ref{fig:ion}, it can be seen that upon turning on the 397-nm
     laser, if the qubit is in $|\downarrow\rangle$, photons will be scattered, and if the qubit is in
-    $|\uparrow\rangle$, then no photons will be scattered. To optimise the fidelity of
+    $|\uparrow\rangle$, then no photons will be scattered. 
+    \mccorrect{XXX rephrase next line:} To optimise the fidelity of
     measurement, it is ensured that the signal is discernible with low error from any
-    background counts on the camera. In general, improving the number of signal
+    background counts.
+     In general, improving the number of signal
     counts can be achieved by tuning the 397-nm laser near to the transition
     resonance, by increasing the readout duration, or by increasing the
     percentage of scattered photons captured by the imaging system. Practically
@@ -218,9 +226,9 @@
     (see section~\ref{sec:Cooling}). The parameters used for readout are
     summarised in table~\ref{tab:397_parameters}, and a typical histogram of
     readout counts for one ion can be seen in
-    figure~\ref{fig:readout_histogram}. The readout threshold is calibrated by taking bright counts with the 397-nm and 866-nm lasers on, and dark counts with the 397-nm laser on and the 866-nm laser off --- breaking the cycling fluorescence condition. This takes the assumption that our dark counts are predominanly due to the 397-nm scattering off of nearby trap electrodes, and the 866-nm laser having a negligible contribution. 
+    figure~\ref{fig:readout_histogram}. The readout threshold is calibrated by taking bright counts with the 397-nm and 866-nm lasers on, and dark counts with the 397-nm laser on and the 866-nm laser off. This takes the assumption that our dark counts are predominanly due to the 397-nm scattering off of nearby trap electrodes, and the 866-nm laser having a negligible contribution. 
     With statistics from 100,000 bright and dark measurements, an expected
-    statistical readout error of $6\times10^{-9}$ is found, given a threshold of
+    statistical readout error of $6\times10^{-9}$ \mccorrect{XXX change to $\epsilon_\downarrow$ and $\epsilon_\uparrow$} is found, given a threshold of
     137 counts and Gaussian fitted distributions. This ignores errors due to the
     finite lifetime of the metastable $3D_{5/2}$ level in reading out the qubit
     state, which will dominate measurement infidelity. The expected error due
@@ -285,10 +293,10 @@
     performs the identity operation. The state is then measured in the same
     basis to find any deviations from the identity being performed due to gate
     errors. This is repeated with the same preparation and sequence multiple
-    times to calculate the probability that the identity was performed - thus
+    times to calculate the probability that the identity was performed --- thus
     giving the sequence fidelity. These steps are repeated for many different
     random sequences with a range of sequence lengths. The decay model used to find 
-    the fidelity versus number of Clifford gates is given by,
+    the fidelity versus number of Clifford gates is given by\cite{hughes_benchmarking_2021},
 
     \begin{equation}
     \label{eq:RBM_decay}
@@ -315,7 +323,7 @@
     % Motivation for control of motion of ion
     % Trap RF DC
     % Laser systems
-    \mccorrect{XXX want a short introduction to the motion of the ion, and why we want to control it here.}
+    \mccorrect{XXX want a short introduction to the motion of the ion, and why we want to control it here. Describe what oscillators we have access to (like with quadrupole transitions).}
 
 \subsection{Cooling}
 \label{sec:Cooling}
@@ -333,8 +341,7 @@
     entangling gates, and the creation of squeezed states, which we 
     consider in this thesis (although as yet unwritten), it is assumed that the motional state is prepared in Fock state $|0\rangle$. The initially trapped ions will
     be in some unknown high temperature thermal state. To motionally prepare these ions, first Doppler cooling is applied, and then
-    subsequently, pulsed sideband cooling. We give a brief description of these two
-    cooling processes here.\\
+    subsequently, pulsed sideband cooling. \\
 
 \subsubsection{Doppler Cooling}
 % Main points:
@@ -343,8 +350,9 @@
 % Pre reqs:
     % Motional mode and beam geometry
     % Laser systems 
+    %XXX make more succinct.
 
-    Doppler cooling exploits the fact that light incident on a moving ion will
+    Doppler cooling relies on the fact that light incident on a moving ion will
     appear frequency shifted in the rest frame of the ion. For Doppler cooling
     of $^{40}$Ca$^+$, both the 397-nm and 866-nm lasers are applied. Initially the 397-nm laser is red
     detuned by $\sim$17.5~MHz. This results in the preferential
@@ -353,14 +361,14 @@
     excited $4P_{1/2}$ state and spontaneously decay to either $4S_{1/2}$,
     or $3D_{3/2}$ emitting a photon of either 397-nm or of 866-nm,
     respectively, into a random direction. The 397/866 decay paths have a branching
-    ratio of 14.5~\cite{ramm_precision_2013}. As many photon kicks are required to cool the ions, the fluorescence cycle must be ``closed''. To prevent the electron from becomming trapped in the metastable $3D_{3/2}$ level, the 866-nm laser is applied on resonance.  The absorption and sequential emission of this 397-nm photon
+    ratio of 14.5~\cite{ramm_precision_2013}. As many photon kicks are required to cool the ions, the fluorescence cycle must be ``closed''. To prevent the electron from becoming trapped in the metastable $3D_{3/2}$ level, the 866-nm laser is applied on resonance.  The absorption and sequential emission of this 397-nm photon
     will lead to a net reduction in the motional energy of the ion if the emitted photon
     is higher energy than the photon absorbed. The equilibrium
     temperature is given by the condition where the Doppler cooling rate is
     equal to photon recoil heating of the ion. Assuming a Lorentzian absorption
     profile, the minimum temperature is given by,
     \begin{equation}
-    T_{Doppler} \approx \frac{\hbar\gamma}{2k_B},
+    T_{\rm Doppler} \approx \frac{\hbar\gamma}{2k_B},
     \end{equation}
     where $\hbar$ is the reduced Planck constant, $\gamma$ is the natural
     linewidth of the transition, and $k_B$ is Boltzmann's constant~\cite{}.\\ For
@@ -371,7 +379,7 @@
         \bar{n} = \frac{1}{e^{\hbar\omega/k_B T}-1},
     \end{equation}
     the final thermal distribution is expected to have average phonon number $\bar{n} = 2.3$.
-    Using parameters summarised in table~\ref{tab:397_parameters}, we find practically the final temperature after Doppler cooling to be $\bar{n} \sim 5$, although further exploration into this discrepancy is needed.\\
+    %Using parameters summarised in table~\ref{tab:397_parameters}, we find practically the final temperature after Doppler cooling to be $\bar{n} \sim 5$, although further exploration into this discrepancy is needed.\\
 
 \subsubsection{Sideband Cooling}
 % Main points:
@@ -474,8 +482,8 @@
     figure~\ref{fig:heating rates}. The heating rate of the system
     was found to be $33(3)$~quanta per second on the upper radial 4~MHz mode on
     one ion.\\
-    It is expected that the heating rate will be larger for lower frequency
-    motional modes if electric field noise is assumed to be uniform over its spectrum~\cite{}. 
+    %It is expected that the heating rate will be larger for lower frequency
+    %motional modes if electric field noise is assumed to be uniform over its spectrum~\cite{}. 
     
     %We also verify
     %this by looking at heating rate on the radial mode while varying the axial
@@ -603,7 +611,7 @@
     frequency, $\delta \approx \omega_{m}$. The resulting interaction, when
     ignoring off resonant and higher order couplings, is given by,
     \begin{equation}
-        \hat{H}_{MS} = \hbar \eta\Omega~\hat{\sigma}_\phi\cos(\delta t) \left( a e^{-i\omega_{m} t} + a^\dagger e^{i\omega_{m} t} \right),
+        \hat{H}_{MS} = \hbar \eta\Omega~\hat{\sigma}_\phi\cos(\delta t) \left( \hat{a} e^{-i\omega_{m} t} + \hat{a}^\dagger e^{i\omega_{m} t} \right),
     \end{equation}
     where $\eta$ is the Lamb-Dicke parameter, $\Omega$ is the carrier Rabi
     frequency, $a(a^\dagger)$ is the lowering (raising) operator, and

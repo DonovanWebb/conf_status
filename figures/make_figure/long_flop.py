@@ -46,7 +46,7 @@ print(
     f"Omega = 2pi * { p_fit[2] / (2 * np.pi*1e6):.4f} +/- {p_err[2] / (2 * np.pi*1e6):.4f} MHz"
 )
 print(f"Initial Amp = {p_fit[0]:.2f} +/- {p_err[0]:.2f}")
-print(f"Decay rate = {p_fit[1]/1e6:.4f} +/- {p_err[1]/1e6:.4f} 1/us")
+print(f"Decay rate = {p_fit[1]/1e6:.4f} +/- {p_err[1]/1e6:.4f} 1/$\\mu$ s")
 
 fig = plt.figure()
 
@@ -69,6 +69,6 @@ plt.plot(
     alpha=graph_style.get_alpha(),
     label="Fit: A=%.2f, lambda=%.2f, W=%.2f" % tuple(p_fit),
 )
-plt.xlabel("Duration $t$ (us)")
-plt.ylabel("Pop. $P_\\downarrow$")
+plt.xlabel("Duration $t$ ($\mu$s)")
+plt.ylabel("$P_\\downarrow$")
 plt.savefig("long_flop.pdf")
