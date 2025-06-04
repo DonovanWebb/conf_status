@@ -2,14 +2,30 @@
 \label{ch:Characterisation}
 \minitoc
 
-
     Before we can proceed with our planned experiments involving the motion and
     spin of the atoms, the apparatus must be characterised. This characterisation
     serves two purposes: it allows us to benchmark the performance of our system
     against state-of-the-art results, and it reveals any current limitations
-    that must be addressed before we can successfully carry out the experiments.
+    that must be addressed before we can successfully carry out the experiments.\\
+    As discussed above, we are interested in two paradigms: discrete variable quantum computing (DVQC), that concerns the manipulation of qubits (or spins), and continuous variable quantum computing (CVQC), that concerns the manipulation of qumodes (or harmonic motion).\\
+    For DVQC, we must have access to the following elementary operations:
+    \begin{itemize}
+        \item Qubit state preparation, here via optically pumping the electronic state of the ion into the $4S_{1/2}$ manifold --- the lower level of our qubit, section~\ref{sec:Stateprep}.
+        \item Measurement of the qubit state, here via state dependent fluorescence, section~\ref{sec:Measurement}.
+        \item Single qubit rotations, here via interaction with the 729-nm laser, section~\ref{sec:Single Qubit Gates}
+        \item Two qubit entangling-gates, here via interaction with the 729-nm laser and the motional modes of the ion, section~\ref{sec:Two-Qubit Entangling Gates}.
+    \end{itemize}
+     For CVQC, we need:
+    \begin{itemize}
+        \item Motional state preparation, here via Doppler cooling and sideband cooling, section~\ref{sec:Cooling}.
+        \item Measurement of the motional state, which is not yet implemented on our system but will follow~\cite{fluhmann_direct_2020}.
+        \item Single and two qumode gates, which is also not yet implemented, but will utilise spin-dependent forces (SDFs), following~\cite{sutherland_universal_2021}, section~\ref{sec:Spin-Dependent Forces}.
+    \end{itemize}
+    We split this chapter into interactions involving the spin only, then those involving the motion only, and finally we describe spin-motion interactions.
+    First, however, we describe the ion, its level structure, and the relevant lasers to manipulate its state.
 
-\section{Quadrupole Transitions}
+
+\section{The Ion}
 \label{sec:Transitions}
 % Main points:
     % All visible motional modes on large detuning scan at $5$~G. 
@@ -56,6 +72,8 @@
     $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = +3/2$.
     It is worth noting that access to transition $4S_{1/2},~m = +1/2 \leftrightarrow 3D_{5/2},~m' = -3/2$ is useful for state preparation, as it allows us to optically pump from $m = +1/2$ into $m = -1/2$ ground-state. \\
     If polarisation $\gamma = \pi/2$ is selected, now there are only two choices for qubit transition. This choice is simple as $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = -5/2$ has both the larger Rabi frequency, and the lower magnetic field sensitivity, $-2.80$~MHz/G, compared to the $4S_{1/2},~m = -1/2 \leftrightarrow 3D_{5/2},~m' = +3/2$ transition, which has a magnetic field sensitivity of $+3.92$~MHz/G.\\
+
+    The 397-nm and 866-nm lasers are used to form a closed cycle for fluorescence. The 854-nm laser is used to deshelve the ion from the $3D_{5/2}$ level for qubit state preparation. Details on these lasers can be found in section~\ref{sec:Laser systems}.
     
 
 \section{Spin}
@@ -67,8 +85,162 @@
     XXX We are interested in state prep, gates, measurement.
     Tools are Rabi, Ramsey.
 
-\subsection{Rabi and Ramsey Scans}
-\label{sec:Rabi and Ramsey Scans}
+\subsection{State Preparation}
+\label{sec:Stateprep}
+% Main points:
+    % Method of preparation via optical pumping
+    % Quote state prep error (back this from RBM + measurement histograms)
+% Pre reqs:
+    % Laser systems powers
+    % 729 system
+    % Available transitions
+    % pi-pulses
+
+% XXX See Machej section on state prep. Mention if we are pulsed or coninuous.
+    To utilise two levels of the ion as a qubit, the ion must be able to be 
+    selectively prepared into one of the Zeeman levels of the ground
+    state. As mentioned in section~\ref{sec:Magnetic Field}, the fixed B-field is 5.4~G, leading to a splitting between the Zeeman
+    levels of less than 21~MHz, the natural linewidth of the 397-nm transition.
+    This means the state cannot be optically pumped using the 397-nm frequency selectivly.
+    Further, due to the constraint of beam geometry from the in vacuum optics, see section~\ref{sec:Vacuum System},
+    the state cannot be prepared using polarisation selectivity of the 397-nm transition. Instead,
+    the narrow line width 729-nm laser may be used on resonance with the $4S_{1/2},~ m_j = +1/2 \leftrightarrow 3D_{5/2},~m_j = -3/2$ transition, and the 854-nm
+    deshelving laser on resonance, to optically pump into the $m_j = -1/2$
+    Zeeman level defined as the qubit ground state. \\
+
+\subsection{Measurement}
+\label{sec:Measurement}
+% Main points:
+    % Readout characterisation with NA 0.6 lens
+    % Compare readout histograms of fast 30 us readout to Doppler cold 100 us readout
+    \begin{figure}
+        \begin{center}
+        \noindent\includegraphics[width=0.75\linewidth]{
+            figures/pdf_figure/readout_hist.pdf
+            }
+        \end{center}
+        \caption{
+            Readout histogram with 100,000 individual measurements for bright (red) and dark (blue) populations. The camera counts are presented as a histogram and fitted to Gaussian distributions to calibrate a threshold for discerning if the ion is bright or dark with the lowest probability for false measurement. Dark counts are mainly due to 397-nm light scattered from the nearest trap electrodes. With 100~$\mu$s readout time, and laser parameters set to Doppler cooling parameters, a threshold count of 137 photons is found, giving an expected statistical error of $6\times 10^{-9}$ given the fitted Gaussians. %Gaussian dark: mean = 62, $\sigma$ = 13. Gaussian bright: mean = 341, $\sigma$ = 36.
+            }
+        \label{fig:readout_histogram}
+    \end{figure}
+
+    \begin{table}
+        \begin{center}
+        \begin{tabular}{|c|l|}
+            \hline
+            Parameter & Value \\
+            \hline
+            397-nm laser power & 3~$\mu$W, $1\times I_{\rm SAT}$ \\
+            397-nm laser detuning & -17.5~MHz\\
+            866-nm laser power & 15~$\mu$W, $\sim 70\times I_{\rm SAT}$\\
+            866-nm laser detuning & 0~MHz \\
+            Doppler cooling duration & 1~ms\\
+            Readout duration & 100~$\mu$s \\
+            Camera threshold & 137 counts \\
+            \hline
+        \end{tabular}
+        \end{center}
+        \caption{
+            Experimental parameters used for Doppler cooling and state-selective fluorescence of the ion. 
+            }
+        \label{tab:397_parameters}
+    \end{table}
+
+    To measure the qubit state, the 397-nm and 866-nm lasers
+    are applied for 100~\unit{us}, and the scattered 397-nm photons are counted using a camera (see section~\ref{sec:Imaging System}). From the level diagram shown in
+    figure~\ref{fig:ion}, it can be seen that upon turning on the 397-nm
+    laser, if the qubit is in $|\downarrow\rangle$, photons will be scattered, and if the qubit is in
+    $|\uparrow\rangle$, then no photons will be scattered. 
+    \mccorrect{XXX rephrase next line:} To optimise the fidelity of
+    measurement, it is ensured that the signal is discernible with low error from any
+    background counts.
+     In general, improving the number of signal
+    counts can be achieved by tuning the 397-nm laser near to the transition
+    resonance, by increasing the readout duration, or by increasing the
+    percentage of scattered photons captured by the imaging system. Practically
+    it is desirable that the readout step does not heat the motion of the ion and so
+    the 397-nm laser is red detuned to the same setting as for Doppler cooling
+    (see section~\ref{sec:Cooling}). The parameters used for readout are
+    summarised in table~\ref{tab:397_parameters}, and a typical histogram of
+    readout counts for one ion can be seen in
+    figure~\ref{fig:readout_histogram}. The readout threshold is calibrated by taking bright counts with the 397-nm and 866-nm lasers on, and dark counts with the 397-nm laser on and the 866-nm laser off. This takes the assumption that our dark counts are predominanly due to the 397-nm scattering off of nearby trap electrodes, and the 866-nm laser having a negligible contribution. 
+    With statistics from 100,000 bright and dark measurements, an expected
+    statistical readout error of $6\times10^{-9}$ \mccorrect{XXX change to $\epsilon_\downarrow$ and $\epsilon_\uparrow$} is found, given a threshold of
+    137 counts and Gaussian fitted distributions. This ignores errors due to the
+    finite lifetime of the metastable $3D_{5/2}$ level in reading out the qubit
+    state, which will dominate measurement infidelity. The expected error due
+    to the finite lifetime is given by $\epsilon_{\rm decay} = 1 - e^{-t/\tau}$,
+    which for \ca, $\tau \sim 1.1$~s, is $\epsilon_{\rm decay} \approx 1\times
+    10^{-4}$. The assumption that the metastable lifetime is limited by
+    spontaneous decay also neglects the possibility of deshelve beam (854-nm)
+    leakage, which is often a limiting error source~\cite{Abaqus SPAM}. \\
+    %This readout error is well below the measured state-preparation and
+    %measurement (SPAM) error of $\epsilon_{SPAM} = 1.46(6) \times 10^{-3}$,
+    %which is measured in section~\ref{sec:Randomised Benchmarking}, suggesting
+    %that this error is dominated by state preparation or the prior mentioned 854-nm leakage.
+\subsection{Spin Coherence Times}
+\label{sec:Coherence}
+% Main points:
+    % Quote coherence times comparing:
+        % Mumetal box panels
+        % Transitions with diff mag sensitivity
+        % FNC/ no-FNC
+% Pre reqs:
+    % MuMetal box
+    % Available transitions
+    % 729 laser system
+\subsubsection{Ramsey Sequence}
+    To measure the detuning of the 729-nm laser, Ramsey scans are performed.
+    The qubit is first prepared in $|\downarrow\rangle = 1$, next a $\pi/2|_y$-pulse is applied to prepare the $|+\rangle$ superposition. There is some delay for time $t$, and then a second
+    $\pi/2|_y$-pulse is applied. If the 729-nm is on resonance with the qubit transition, then effectively a $\pi$-pulse is performed, and the final population in $P_\downarrow$ will be 0. If the 729-nm is off-resonant, then the final population will be given by,
+    \begin{equation}
+        P_{\downarrow} = \frac{1+\cos(\Delta t)}{2},
+    \end{equation}
+    where $\Delta$ is the detuning of the laser from resonance.
+    The time $t$ can be varied to increase the sensitivity to frequency offsets, and the $\Delta$ offset can be fed back to calibrate the set laser frequency. \\
+
+\subsubsection{Coherence Times}
+    Individual gate fidelities are ultimately limited by the loss of coherence
+    between the the two qubit states. This can be caused either by dephasing or
+    the natural lifetime of the $3D_{5/2}$ level. For our qubit, a lifetime limited coherence time of $\tau =
+    1.1$~s~\cite{barton_measurement_2000} is expected. 
+    In practise coherence times are dominated by dephasing, due to imperfect
+    tracking of laser frequency and magnetic field drifts.  In characterising
+    the spin coherence times, we hope to explore both the efficacy of the
+    magnetic shielding surrounding the ion trap, as well as the stability of the
+    729-nm laser. \\
+    The spin coherence times are measured by performing Ramsey experiments.
+    Contrary to the Ramsey experiments described in section~\ref{sec:Rabi and Ramsey
+    Scans}, we are not interested in measuring phase accumulated over time, $t$.
+    Instead, the decay in Ramsey contrast over increasing delay time is measured. As such, the phase $\phi$ of the final
+    $\pi/2|_\phi$-pulse is scanned, and the contrast of the resulting fringe is measured.
+    Figures~\ref{fig:coherence_times} show examples of such a scan. \mccorrect{XXX Figures not added yet.}\\
+    To find the cause of the decaying contrast, the laser and
+    magnetic field noise contributions can be isolated. This is done by redefining the quadrupole qubit with
+    varying magnetic field sensitivity transitions. Any difference in coherence
+    times measured between these transitions will be due to magnetic field
+    sensitivity differences exclusively. \\
+    Figure~\ref{fig:coherence_times} shows the suppression of magnetic field noise due to the MuMetal shielding. \\
+    \mccorrect{XXX I dont have the data I want for this story yet.}
+
+
+\subsection{Single Qubit Rotations}
+\label{sec:Single Qubit Gates}
+% Main points:
+    % Here is a characterisation of single qubit gates.
+    % Explain RBM method
+    % Quote values measured
+    % What is likely error source
+    % Are we limited by this error?
+    % What is state of the art (for optical quadrupole transition)
+    % What contribution is the spin coherence time?
+% Pre reqs:
+    % Spin coherence times
+    % Possible transitions
+    % Calibrating gate times
+
+\subsubsection{Gate Time Calibration}
 % Main points:
     % The ion is a sensor!
     % Method for Rabi and Ramsey scans
@@ -103,159 +275,8 @@
     decay rate $\lambda = 0.0107(7)~1/\mu$s is found. From this a $\pi/2$ time of 1.7~$\mu$s can be estimated (note, this is on the $4S_{1/2},~m_j = -1/2 \leftrightarrow 3D_{5/2},~m_j = -3/2$ transition, which was used prior to optimising the 729-nm polarisation, see section~\ref{sec:Transitions} for more details).\\
     The damping is likely due to a combination of out-of-Lamb-Dicke effects, and laser phase noise. The out-of-Lamb-Dicke effects are due to on-resonant terms proportional to $O(\eta^2 n)$ in the full Lamb-Dicke expansion, which may not be negligible when all modes are not cooled to their ground state. As we have not yet measured all the mode temperatures after Doppler cooling, and we have not yet characterised the laser phase noise, we do not know their relative contributions to the observed decay.\\
     \mccorrect{XXX this section is unclear, either remove or reformat.} To further improve the estimate for the $\pi/2$ pulse length, the ramping time due to electronic control and AOM rise times must be accounted for. This is done by applying odd multiples of the roughly calibrated $\pi/2$ pulses consecutively, and optimising pulse durations such that the final population measurement corresponds to the Z-basis superposition state, $P_{\downarrow}= 0.5$, with $P_\downarrow = |\langle \downarrow | \psi_s \rangle|^2$, and $\psi_s$ is the qubit state. \\
-    To measure the detuning of the 729-nm laser, Ramsey scans are performed.
-    The qubit is first prepared in $|\downarrow\rangle = 1$, next a $\pi/2|_y$-pulse is applied to prepare the $|+\rangle$ superposition. There is some delay for time $t$, and then a second
-    $\pi/2|_y$-pulse is applied. If the 729-nm is on resonance with the qubit transition, then effectively a $\pi$-pulse is performed, and the final population in $P_\downarrow$ will be 0. If the 729-nm is off-resonant, then the final population will be given by,
-    \begin{equation}
-        P_{\downarrow} = \frac{1+\cos(\Delta t)}{2},
-    \end{equation}
-    where $\Delta$ is the detuning of the laser from resonance.
-    The time $t$ can be varied to increase the sensitivity to frequency offsets, and the $\Delta$ offset can be fed back to calibrate the set laser frequency. \\
 
-
-    % 1 mW 729-nm laser -> Fit out pi/2, pi, 2pi pulses. We are using square pulses.
-
-
-\subsection{Spin Coherence Times}
-\label{sec:Coherence}
-% Main points:
-    % Quote coherence times comparing:
-        % Mumetal box panels
-        % Transitions with diff mag sensitivity
-        % FNC/ no-FNC
-% Pre reqs:
-    % MuMetal box
-    % Available transitions
-    % 729 laser system
-
-    Individual gate fidelities are ultimately limited by the loss of coherence
-    between the the two qubit states. This can be caused either by dephasing or
-    the natural lifetime of the $3D_{5/2}$ level. For our qubit, a lifetime limited coherence time of $\tau =
-    1.1$~s~\cite{barton_measurement_2000} is expected. 
-    In practise coherence times are dominated by dephasing, due to imperfect
-    tracking of laser frequency and magnetic field drifts.  In characterising
-    the spin coherence times, we hope to explore both the efficacy of the
-    magnetic shielding surrounding the ion trap, as well as the stability of the
-    729-nm laser. \\
-    The spin coherence times are measured by performing Ramsey experiments.
-    Contrary to the Ramsey experiments described in section~\ref{sec:Rabi and Ramsey
-    Scans}, we are not interested in measuring phase accumulated over time, $t$.
-    Instead, the decay in Ramsey contrast over increasing delay time is measured. As such, the phase $\phi$ of the final
-    $\pi/2|_\phi$-pulse is scanned, and the contrast of the resulting fringe is measured.
-    Figures~\ref{fig:coherence_times} show examples of such a scan. \mccorrect{XXX Figures not added yet.}\\
-    To find the cause of the decaying contrast, the laser and
-    magnetic field noise contributions can be isolated. This is done by redefining the quadrupole qubit with
-    varying magnetic field sensitivity transitions. Any difference in coherence
-    times measured between these transitions will be due to magnetic field
-    sensitivity differences exclusively. \\
-    Figure~\ref{fig:coherence_times} shows the suppression of magnetic field noise due to the MuMetal shielding. \\
-    \mccorrect{XXX I dont have the data I want for this story yet.}
-
-
-\subsection{State Preparation and Measurement}
-\label{sec:SPAM}
-% Main points:
-    % Method of preparation via optical pumping
-    % Readout characterisation with NA 0.6 lens
-    % Compare readout histograms of fast 30 us readout to Doppler cold 100 us readout
-    % Quote state prep error (back this from RBM + measurement histograms)
-% Pre reqs:
-    % Laser systems powers
-    % 729 system
-    % Available transitions
-    % pi-pulses
-
-% XXX See Machej section on state prep. Mention if we are pulsed or coninuous.
-    \begin{figure}
-        \begin{center}
-        \noindent\includegraphics[width=0.75\linewidth]{
-            figures/pdf_figure/readout_hist.pdf
-            }
-        \end{center}
-        \caption{
-            Readout histogram with 100,000 individual measurements for bright (red) and dark (blue) populations. The camera counts are presented as a histogram and fitted to Gaussian distributions to calibrate a threshold for discerning if the ion is bright or dark with the lowest probability for false measurement. Dark counts are mainly due to 397-nm light scattered from the nearest trap electrodes. With 100~$\mu$s readout time, and laser parameters set to Doppler cooling parameters, a threshold count of 137 photons is found, giving an expected statistical error of $6\times 10^{-9}$ given the fitted Gaussians. %Gaussian dark: mean = 62, $\sigma$ = 13. Gaussian bright: mean = 341, $\sigma$ = 36.
-            }
-        \label{fig:readout_histogram}
-    \end{figure}
-
-    To utilise two levels of the ion as a qubit, the ion must be able to be 
-    selectively prepared into one of the Zeeman levels of the ground
-    state. As mentioned in section~\ref{sec:Magnetic Field}, the fixed B-field is 5.4~G, leading to a splitting between the Zeeman
-    levels of less than 21~MHz, the natural linewidth of the 397-nm transition.
-    This means the state cannot be optically pumped using the 397-nm frequency selectivly.
-    Further, due to the constraint of beam geometry from the in vacuum optics, see section~\ref{sec:Vacuum System},
-    the state cannot be prepared using polarisation selectivity of the 397-nm transition. Instead,
-    the narrow line width 729-nm laser may be used on resonance with the $4S_{1/2},~ m_j = +1/2 \leftrightarrow 3D_{5/2},~m_j = -3/2$ transition, and the 854-nm
-    deshelving laser on resonance, to optically pump into the $m_j = -1/2$
-    Zeeman level defined as the qubit ground state. \\
-    \begin{table}
-        \begin{center}
-        \begin{tabular}{|c|l|}
-            \hline
-            Parameter & Value \\
-            \hline
-            397-nm laser power & 3~$\mu$W, $1\times I_{\rm SAT}$ \\
-            397-nm laser detuning & -17.5~MHz\\
-            866-nm laser power & 15~$\mu$W, $\sim 70\times I_{\rm SAT}$\\
-            866-nm laser detuning & 0~MHz \\
-            Doppler cooling duration & 1~ms\\
-            Readout duration & 100~$\mu$s \\
-            Camera threshold & 137 counts \\
-            \hline
-        \end{tabular}
-        \end{center}
-        \caption{
-            Experimental parameters used for Doppler cooling and state-selective fluorescence of the ion. 
-            }
-        \label{tab:397_parameters}
-    \end{table}
-    To measure the qubit state, the 397-nm and 866-nm lasers
-    are applied for 100~\unit{us}, and the scattered 397-nm photons are counted using a camera (see section~\ref{sec:Imaging System}). From the level diagram shown in
-    figure~\ref{fig:ion}, it can be seen that upon turning on the 397-nm
-    laser, if the qubit is in $|\downarrow\rangle$, photons will be scattered, and if the qubit is in
-    $|\uparrow\rangle$, then no photons will be scattered. 
-    \mccorrect{XXX rephrase next line:} To optimise the fidelity of
-    measurement, it is ensured that the signal is discernible with low error from any
-    background counts.
-     In general, improving the number of signal
-    counts can be achieved by tuning the 397-nm laser near to the transition
-    resonance, by increasing the readout duration, or by increasing the
-    percentage of scattered photons captured by the imaging system. Practically
-    it is desirable that the readout step does not heat the motion of the ion and so
-    the 397-nm laser is red detuned to the same setting as for Doppler cooling
-    (see section~\ref{sec:Cooling}). The parameters used for readout are
-    summarised in table~\ref{tab:397_parameters}, and a typical histogram of
-    readout counts for one ion can be seen in
-    figure~\ref{fig:readout_histogram}. The readout threshold is calibrated by taking bright counts with the 397-nm and 866-nm lasers on, and dark counts with the 397-nm laser on and the 866-nm laser off. This takes the assumption that our dark counts are predominanly due to the 397-nm scattering off of nearby trap electrodes, and the 866-nm laser having a negligible contribution. 
-    With statistics from 100,000 bright and dark measurements, an expected
-    statistical readout error of $6\times10^{-9}$ \mccorrect{XXX change to $\epsilon_\downarrow$ and $\epsilon_\uparrow$} is found, given a threshold of
-    137 counts and Gaussian fitted distributions. This ignores errors due to the
-    finite lifetime of the metastable $3D_{5/2}$ level in reading out the qubit
-    state, which will dominate measurement infidelity. The expected error due
-    to the finite lifetime is given by $\epsilon_{\rm decay} = 1 - e^{-t/\tau}$,
-    which for \ca, $\tau \sim 1.1$~s, is $\epsilon_{\rm decay} \approx 1\times
-    10^{-4}$. The assumption that the metastable lifetime is limited by
-    spontaneous decay also neglects the possibility of deshelve beam (854-nm)
-    leakage, which is often a limiting error source~\cite{Abaqus SPAM}. \\
-    %This readout error is well below the measured state-preparation and
-    %measurement (SPAM) error of $\epsilon_{SPAM} = 1.46(6) \times 10^{-3}$,
-    %which is measured in section~\ref{sec:Randomised Benchmarking}, suggesting
-    %that this error is dominated by state preparation or the prior mentioned 854-nm leakage.
-    
-\subsection{Randomised Benchmarking}
-\label{sec:Randomised Benchmarking}
-% Main points:
-    % Here is a characterisation of single qubit gates.
-    % Explain RBM method
-    % Quote values measured
-    % What is likely error source
-    % Are we limited by this error?
-    % What is state of the art (for optical quadrupole transition)
-    % What contribution is the spin coherence time?
-% Pre reqs:
-    % Spin coherence times
-    % Possible transitions
-    % Calibrating gate times
+\subsubsection{Randomised Benchmarking}
 
     \begin{figure}
         \begin{center}
@@ -580,7 +601,8 @@
     %These improvements are described in section~\ref{sec:Trap RF Chain}.\\
 
 
-\section{Spin-Dependent Forces}
+\section{Spin-Motion}
+\subsection{Spin-Dependent Forces}
 \label{sec:Spin-Dependent Forces}
 % Main points:
     % This is a primitive for motional control
@@ -629,7 +651,7 @@
     This control is exploited in both two-qubit entangling gate experiments, as well as
     in the creation of squeezed states.\\
 
-\subsection{Calibrating the SDF}
+\subsubsection{Calibrating the SDF}
 % Main points:
     % Here describe what error sources "look like"
     % Describe detuning and duration scans
@@ -706,7 +728,7 @@
     % find $\Omega_{SDF} = 2\pi\times 6.3(2)$~kHz, fitted with $\bar{n} = 0.03$.
 
 
-\section{Two-Qubit Entangling Gates}
+\subsection{Two-Qubit Entangling Gates}
 \label{sec:Two-Qubit Entangling Gates}
 % Main points:
     % Intro/brief outline of goal of two-qubit gate. Truth table? Preparing in Bell state. This is tool kit for spin control of our system.
