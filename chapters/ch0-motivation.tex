@@ -32,31 +32,31 @@
     The first is the demonstration of fast and high-fidelity two-qubit
     entangling gates between trapped ions. High fidelity entangling gates are
     critical for developing a quantum computer which can perform useful
-    calculations with high success probability~\cite{}. Gate errors associated with
+    calculations with high success probability~\cite{steane2003overhead}. Gate errors associated with
     decoherence of the quantum state are often dominated by incoherent
     processes, such as spontaneous emission, or interactions between the qubit
-    and the environment~\cite{wineland_experimental_1998}\mccorrect{XXX check relevance of citation}. These errors accumulate with time, and so may be
+    and the environment~\cite{wineland1998experimental}. These errors accumulate with time, and so may be
     mitigated by increasing the algorithm ``clock-speed'', hence our desire for
-    fast entanglement~\cite{}. Typically in ion traps, local two-qubit gates are
+    fast entanglement~\cite{steane2000speed,schafer2018fast}. Typically in ion traps, local two-qubit gates are
     performed via the ion's shared motion, which may be excited by interaction
-    with a laser~\cite{sorensen_entanglement_2000}. As the effective gate frequency approaches that of the
+    with a laser~\cite{cirac1995quantum, sorensen2000entanglement}. As the effective gate frequency approaches that of the
     frequency separation of the motional modes, the dynamics between spin and
-    motion become complicated by multiple simultaneous mode excitations~\cite{schafer_fast_2018}. Our
+    motion become complicated by multiple simultaneous mode excitations~\cite{schafer2018fast}. Our
     apparatus is designed to provide the required laser intensities and mode
     frequencies such that we can explore this regime, and demonstrate the
     required control to tame these multiple mode excitations and perform
     high-fidelity entangling gates.\\
     The second direction is the use of the motion of the ion directly as a
-    quantum resource~\cite{}\mccorrect{XXX cite review papers here, zheng 2021}. This falls into the continuous variable quantum computing
+    quantum resource~\cite{liu2024hybrid,chen2021quantum}. This falls into the continuous variable quantum computing
     paradigm (CVQC), where instead of discrete qubits, the quantum state is
-    described by bosonic ``qumodes''~\cite{}. CVQC reduces the
+    described by bosonic ``qumodes''~\cite{lloyd1999quantum}. CVQC reduces the
     technical overhead of scaling discrete systems, as larger Hilbert spaces are
     easily accessed due to the many level nature of the individual qumodes.
     We want to demonstrate a
     universal set of gates for CVQC, which includes, single-mode Gaussian and
-    non-Gaussian gates (demonstrated in~\cite{bazavan_squeezing_2024}), and two-mode entangling gates. Further, we want to demonstrate the ability to simultaneously leverage both
+    non-Gaussian gates (demonstrated in~\cite{bazavan2024squeezing}), and two-mode entangling gates. Further, we want to demonstrate the ability to simultaneously leverage both
     bosonic and spin degrees of freedom of our ions to efficiently encode
-    problems in the full hybrid system we have access to~\cite{varona_towards_2024, brenner_factoring_2025}. Our apparatus has both
+    problems in the full hybrid system we have access to~\cite{varona2024towards, brenner2024factoring}. Our apparatus has both
     precise motional control and stability through our trap choice, and the
     selective addressing system that is required when interacting with many-ion
     chains.\\
@@ -73,9 +73,9 @@
         chain, and the ability to perform motional interactions on selected modes.
     \item \textbf{Standing wave addressing:} The system is designed to provide
         standing optical waves at the ion position. Standing waves are required for
-        some fast gate schemes~\cite{saner_breaking_2023}. 
+        some fast gate schemes~\cite{saner2023breaking}. 
     \item \textbf{Motional control:} The Paul trap used in the system, produced
-        by \emph{National Physical Laboratory} in the UK, has low heating rates (section~\ref{sec:Trap Heating Rates}),
+        by \emph{National Physical Laboratory} in the UK, has low heating rates (section~\ref{sec:Heating}),
         deep trapping potentials relative to surface style ion traps, and flexible
         control over DC confinement (section~\ref{sec:The Ion Trap}). These features ensure that we have modes
         with long coherence times (section~\ref{sec:Motional Mode Stability}), making them suitable for encoding quantum
@@ -84,13 +84,13 @@
 
     Here, the characterisation of the spin qubits is in the context of discrete
     variable quantum computing. We are interested in the fidelity of qubit
-    state-preparation, measurement (section~\ref{sec:SPAM}), single- (section~\ref{sec:Randomised Benchmarking}) and two-qubit gates (section~\ref{sec:Two-Qubit Entangling Gates}). These
+    state-preparation, measurement (sections~\ref{sec:Stateprep,sec:Measurement}), single- (section~\ref{sec:Single Qubit Gates}) and two-qubit gates (section~\ref{sec:Two-Qubit Entangling Gates}). These
     individual elements comprise longer circuits, and so all contribute to the
     overall fidelity of any chosen algorithm.\\
     The motional characterisation is currently focused on the stability of the
     modes (section~\ref{sec:Motional Mode Stability}), and the ability to perform spin-dependent forces, SDFs (section~\ref{sec:Spin-Dependent Forces}). SDFs are the
     base interaction on which many of the desired CVQC gates are
-    comprised~\cite{sutherland_universal_2021}, and so these must be well
+    comprised~\cite{sutherland2021universal}, and so these must be well
     characterised and understood in our system.\\
 
     To push the system forwards, in the next 6~months, we will focus on
@@ -98,7 +98,7 @@
     the motional state of the ion.\\
     As described above, the single addressing system is a critical component for
     many of our planned experiments. Section~\ref{sec:Single Addressing System},
-    and~\cite{oevergaard_thesis} describe the system in detail. The next
+    and~\cite{oevergaard2024limiting} describe the system in detail. The next
     immediate steps are to align the constructed optical system to the ion
     chain, and to implement the logical and RF control system required to drive
     the acousto-optic deflectors. Once this is complete, we will characterise
@@ -107,12 +107,12 @@
     fast entangling gates between ions in a chain, and the ability to perform
     motional interactions on selected modes.\\
     Squeezing of the motional mode via the method outlined
-    in~\cite{sutherland_universal_2021}, is a significant step towards
+    in~\cite{sutherland2021universal}, is a significant step towards
     demonstrating the universal set of gates for CVQC. This is due to
     the constituent interactions of the effective squeezing gate (two SDFs), are
-    the same interactions needed for trisqueezing~\cite{braunstein_generalised_1987, bazavan_squeezing_2024} --- a non-Gaussian gate, and
-    for two-mode squeezing~\cite{lvovsky_squeezed_2016}\mccorrect{XXX tempt fate and cite Lvovsky} --- an entangling gate. Furthermore, once we have
+    the same interactions needed for trisqueezing~\cite{braunstein1987generalised, bazavan2024squeezing} --- a non-Gaussian gate, and
+    for two-mode squeezing~\cite{lvovsky2015squeezed} --- an entangling gate. Furthermore, once we have
     demonstrated generating squeezing characteristic functions, there is a clear
     path to experimentally demonstrating the extraction of Feynman diagram terms
     with the hybrid system being used as a quantum
-    simulator~\cite{varona_towards_2024}.\\
+    simulator~\cite{varona2024towards}.\\
