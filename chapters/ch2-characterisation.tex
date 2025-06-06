@@ -113,7 +113,6 @@
     % Available transitions
     % pi-pulses
 
-% XXX See Machej section on state prep. Mention if we are pulsed or coninuous.
     \begin{figure}
         \begin{center}
         \noindent\includegraphics[width=0.75\linewidth]{
@@ -244,8 +243,6 @@
     % 729 system
     % Available Quadrupole transitions
 
-% XXX read Christa's description here. Use equations, bullet points, and pulse sequence diagrams to simplify the descriptions.
-
     \begin{figure}
         \begin{center}
         \noindent\includegraphics[width=\linewidth]{
@@ -371,8 +368,8 @@
     % Trap RF DC
     % Laser systems
 
-    Motion of ions trapped in the same potential can be described by a set of normal modes~\cite{james_quantum_1998}. These modes are labelled with respect to the ion chain geometry: axial modes oscillate parallel with the chain, and radial modes oscillate perpendicular to the chain. Due to the geometry of the 729-nm beam access with respect to the ion chain (see section~\ref{sec:Vacuum System}), only the radial modes can be addressed in our system. For the \emph{NPL} trap (see section~\ref{sec:The Ion Trap}), the radial modes are non degenerate. In our system, for a single ion, the radial mode frequencies are $\omega_{\rm upper}/2\pi = 4.0$~\unit{\MHz}, and $\omega_{\rm lower}/2\pi = 2.5$~\unit{\MHz}, and the axial mode frequency is $\omega_{\rm axial}/2\pi = 1.6$~\unit{\MHz}. All work here is using the upper radial mode. \\
-    The motional mode, $i$, leads to sidebands in the 729-nm spectrum at $\omega_0 \pm \omega_{i}$~\cite{ozeri_tutorial_2011}, where $\omega_0$, the carrier, is the frequency of the 729-nm laser when on resonance with the qubit transition. The $+\omega_i$ sideband is referred to as the blue sideband (BSB), and the $-\omega_i$ is the red sideband (RSB).
+    Motion of ions trapped in the same potential can be described by a set of normal modes~\cite{james1998quantum}. These modes are labelled with respect to the ion chain geometry: axial modes oscillate parallel with the chain, and radial modes oscillate perpendicular to the chain. Due to the geometry of the 729-nm beam access with respect to the ion chain (see section~\ref{sec:Vacuum System}), only the radial modes can be addressed in our system. For the \emph{NPL} trap (see section~\ref{sec:The Ion Trap}), the radial modes are non degenerate. In our system, for a single ion, the radial mode frequencies are $\omega_{\rm upper}/2\pi = 4.0$~\unit{\MHz}, and $\omega_{\rm lower}/2\pi = 2.5$~\unit{\MHz}, and the axial mode frequency is $\omega_{\rm axial}/2\pi = 1.6$~\unit{\MHz}. All work here is using the upper radial mode. \\
+    The motional mode, $i$, leads to sidebands in the 729-nm spectrum at $\omega_0 \pm \omega_{i}$~\cite{ozeri2011tutorial}, where $\omega_0$, the carrier, is the frequency of the 729-nm laser when on resonance with the qubit transition. The $+\omega_i$ sideband is referred to as the blue sideband (BSB), and the $-\omega_i$ is the red sideband (RSB).
     The RSB, BSB, and RF fields near to resonance with the motional modes, are the tools used in this section to manipulatie the motion of the ion.\\
     The motional state preparation, heating rate, frequency stabilities, and coherence times are characterised in this section.
 
@@ -412,7 +409,7 @@
     excited $4P_{1/2}$ state and spontaneously decay to either $4S_{1/2}$,
     or $3D_{3/2}$ emitting a photon of either 397-nm or of 866-nm,
     respectively, into a random direction. The 397/866 decay paths have a branching
-    ratio of 14.5~\cite{ramm_precision_2013}. As many photon kicks are required to cool the ions, the fluorescence cycle must be ``closed''. To prevent the electron from becoming trapped in the metastable $3D_{3/2}$ level, the 866-nm laser is applied on resonance.  The absorption and sequential emission of this 397-nm photon
+    ratio of 14.5~\cite{ramm2013precision}. As many photon kicks are required to cool the ions, the fluorescence cycle must be ``closed''. To prevent the electron from becoming trapped in the metastable $3D_{3/2}$ level, the 866-nm laser is applied on resonance.  The absorption and sequential emission of this 397-nm photon
     will lead to a net reduction in the motional energy of the ion if the emitted photon
     is higher energy than the photon absorbed. The equilibrium
     temperature is given by the condition where the Doppler cooling rate is
@@ -422,7 +419,7 @@
     T_{\rm Doppler} \approx \frac{\hbar\gamma}{2k_B},
     \end{equation}
     where $\hbar$ is the reduced Planck constant, $\gamma$ is the natural
-    linewidth of the transition, and $k_B$ is Boltzmann's constant~\cite{}.\\ For
+    linewidth of the transition, and $k_B$ is Boltzmann's constant~\cite{wineland1979laser}.\\ For
     $^{40}$Ca$^+$, the natural linewidth of the 397-nm transition is $\frac{\gamma}{2\pi} =
     21$~\unit{\MHz}, leading to a Doppler temperature of approximately 0.5~mK. Given a radial mode frequency of $\frac{\omega}{2\pi} = 4$~\unit{\MHz}, and the mean occupation number of the oscillator being given by,
     %[ref NIST https://www.physics.nist.gov/PhysRefData/Handbook/Tables/calciumtable4.htm] 
@@ -493,8 +490,8 @@
     comparable, or lead to prohibitive data acquisition times.\\
     To mitigate this issue, other sub-Doppler cooling techniques with larger
     accepted mode frequency bandwidths may be employed. Examples are dark-resonance
-    cooling~\cite{}, electromagnetically induced transparency (EIT) cooling~\cite{}, and
-    Sisyphus cooling~\cite{}. These techniques are not yet implemented in our system,
+    cooling~\cite{reis1996cooling,allcock2016dark-resonance}, electromagnetically induced transparency (EIT) cooling~\cite{roos2000experimental}, and
+    Sisyphus cooling~\cite{cirac1992laser}. These techniques are not yet implemented in our system,
     but will be likely additions once we move to larger ion crystals.\\
 
 \subsection{Heating Rates}
@@ -801,7 +798,7 @@
     interaction~\cite{}. This interaction is the same described SDF from the
     previous section, but applied globally to two ions. The MS interaction
     relies on the spin dependent geometric phase accumulated during the motional
-    displacement~\cite{ozeri_tutorial_2011}. To create a two-qubit entangled state, a differential
+    displacement~\cite{ozeri2011tutorial}. To create a two-qubit entangled state, a differential
     geometric phase of $\pi/2$ must be accumulated between the two-qubit basis
     states. To ensure there is no residual motional entanglement, the final
     motional state must return to the initial state. In practise, using an SDF
