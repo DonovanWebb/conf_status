@@ -339,7 +339,12 @@
     % Describe the imaging optics and their properties
 % Pre reqs:
     % High NA
-    \mccorrect{XXX This section is not yet written. It will be a description of the imaging system, which is used to image the ion chain and collect fluorescence light for readout. It will include details on the camera, its properties, and the imaging optics.}
+
+    The imaging system is used to collect fluorescence light from the ion chain
+    for readout, and to image the ion chain for characterisation.
+    We aim for a separation of 5~\unit{\um} between ions, and require adequate distinguishability of ions in the imaged plane.
+    The system
+    consists of a high quantum-efficiency camera\footnote{Hamamatsu Orca-Fusion BT}, a f=200~\unit{\mm} relay lens, and the f=33~\unit{\mm} NA=0.6 objective. This gives a magnification of 6x, and considering the pixel size of 6.5~\unit{\um}, leads to a separation of 5 pixels between ions. The objective is on a 5-axis alignment stage with the z-axis focus controlled by a piezo micrometer for fine adjustment of the ion focus.
 
 \section{Ca$^+$ Laser Systems}	
 \label{sec:Laser systems}
@@ -352,21 +357,6 @@
 % Pre reqs:
     % Calcium level structure
     % 5 G field
-    \begin{figure}[ht]
-        \begin{center}
-        \noindent\includegraphics[width=0.4\linewidth]{figures/pdf_figure/Ca40.pdf}
-        \end{center}
-        \caption{
-        Electronic energy levels of \textsuperscript{40}Ca\textsuperscript{+},
-        which will be used in this thesis. The levels are
-        split by the Zeeman effect due to a $5.4$~G external magnetic field (they are shown explicitely only for the ground state). The
-        transitions marked are required for cooling and control over the
-        ion. We shall use the optical-qubit with a quadrupole transition at
-        729-nm. \mccorrect{XXX add zeeman sublevels for D5/2 and move this figure to characterisation section!}.
-        }
-
-    \label{fig:ion}
-    \end{figure}
 
     Singly-charged group 2 elements are popular in ion trap
     experiments due to their single outer electron resulting in Hydrogen-like

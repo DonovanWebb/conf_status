@@ -15,7 +15,7 @@ def get_fig_width():
     """
     line_width_pt = 421.10046  # latex linewidth in points
     line_width_in = 1 / 72.27 * line_width_pt  # latex linewidth in points
-    fig_width = line_width_in
+    fig_width = line_width_in  # 5.827 in
     return fig_width
 
 

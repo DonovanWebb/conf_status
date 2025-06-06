@@ -6,7 +6,7 @@ from matplotlib.ticker import FormatStrFormatter
 
 
 def decaying_sine(t, A, lambda_, W):
-    return 1 / 2 + A * np.exp(-lambda_ * t) * np.cos(2 * W * t) / 2
+    return 1 / 2 + A * np.exp(-lambda_ * t) * np.cos(W * t / 2) / 2
 
 
 graph_style.set_graph_style(1.0)
@@ -71,4 +71,5 @@ plt.plot(
 )
 plt.xlabel("Duration $t$ ($\mu$s)")
 plt.ylabel("$P_\\downarrow$")
+# plt.show()
 plt.savefig("long_flop.pdf")

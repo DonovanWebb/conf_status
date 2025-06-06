@@ -120,6 +120,16 @@ def plot_QP_transition_spectrum(gamma, label=""):
     box = ax.get_position()
     ax.set_position([box.x0, box.y0 - box.height * 0.05, box.width, box.height * 0.55])
     plt.text(-0.15, 1.01, label, transform=ax.transAxes, size=16, fontweight="bold")
+    # put text top center of the chosen gamma angle
+    ax.text(
+        0,
+        0.86,
+        r"$\gamma = \frac{\pi}{%d}$" % (np.pi / gamma),
+        transform=ax.transData,
+        size=12,
+        horizontalalignment="center",
+        verticalalignment="bottom",
+    )
 
     # Put a legend below current axis
     """
@@ -139,8 +149,8 @@ def plot_QP_transition_spectrum(gamma, label=""):
     return
 
 
-plot_QP_transition_spectrum(gamma=np.pi / 2, label="c")
-plot_QP_transition_spectrum(gamma=np.pi / 4, label="b")
+plot_QP_transition_spectrum(gamma=np.pi / 2, label="b")
+plot_QP_transition_spectrum(gamma=np.pi / 4, label="c")
 
 width = 0.65 * graph_style.get_fig_width()
 figsize = (width, width * 0.75)
@@ -190,6 +200,19 @@ for M_l_sign in [-1]:
             ls=ls,
             label="S({:.0f}/2)$\leftrightarrow$D({:.0f}/2)".format(2 * M_l, 2 * M_u),
         )
+# plot pi/2 dashed line
+ax.axvline(
+    np.pi / 2,
+    color="black",
+    ls="dashed",
+    label="Chosen polarisation",
+)
+axu.axvline(
+    np.pi / 2,
+    color="black",
+    ls="dashed",
+    label="Chosen $\gamma$",
+)
 
 
 # Shrink current axis's height by 20% on the bottom
