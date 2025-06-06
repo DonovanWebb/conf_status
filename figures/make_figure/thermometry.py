@@ -46,7 +46,7 @@ def thermal_dist(n_bar, n_max=100):
     return weights
 
 
-graph_style.set_graph_style(0.75)
+graph_style.set_graph_style(0.85)
 
 date = "2025-04-29"
 rid = 22922
@@ -111,8 +111,8 @@ n_bar = p_fit[1]
 
 fock_state = thermal_dist(n_bar, n_max=10)
 
-fig_width = graph_style.get_fig_width() * 0.75
-fig_height = 1.5 * fig_width / graph_style.get_phi()
+fig_width = graph_style.get_fig_width() * 0.85
+fig_height = 1.3 * fig_width / graph_style.get_phi()
 fig, ax = plt.subplots(2, 1, sharex=True, figsize=(fig_width, fig_height))
 cb = graph_style.get_color(0)
 cr = graph_style.get_color(2)
@@ -136,7 +136,7 @@ ax[0].errorbar(
     color=cb,
     zorder=11,
 )
-ax[0].set_ylabel("Pop. $P_\downarrow$ $\pi$-RSB-$\pi$")
+ax[0].set_ylabel("$P_\downarrow$ $\pi$-RSB-$\pi$")
 ax[0].set_ylim([0, 1.0])
 ax[0].set_xlim([0, np.max(duration)])
 ax[1].set_ylim([0.92, 1.0])
@@ -162,10 +162,27 @@ ax[1].errorbar(
     color=cr,
 )
 ax[1].set_xlabel("Duration $t$ ($\mu$s)")
-ax[1].set_ylabel("Pop. $P_\downarrow$ RSB")
+ax[1].set_ylabel("$P_\downarrow$ RSB")
 
 ax[0].yaxis.set_major_formatter(FormatStrFormatter("%.2f"))
 ax[1].yaxis.set_major_formatter(FormatStrFormatter("%.2f"))
+# add label "b" and "c" to the top left corner
+ax[0].text(
+    -0.22,
+    0.95,
+    "b",
+    transform=ax[0].transAxes,
+    fontweight="bold",
+    fontsize=14,
+)
+ax[1].text(
+    -0.22,
+    0.95,
+    "c",
+    transform=ax[1].transAxes,
+    fontweight="bold",
+    fontsize=14,
+)
 plt.savefig("sideband_thermometry.pdf")
 
 fig1, ax1 = plt.subplots(1, 1)
@@ -178,4 +195,5 @@ ax1.bar(
 ax1.set_xlabel("Fock state")
 ax1.set_ylabel("Probability")
 # ax1.set_yscale("log")
+
 plt.savefig("fock_state_distribution.pdf")

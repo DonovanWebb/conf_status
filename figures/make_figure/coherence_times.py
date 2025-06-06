@@ -74,7 +74,7 @@ for rid in rid_dict.keys():
 
 
 plt.ylabel("Contrast")
-plt.xlabel("Ramsey delay ($\mu$s)")
+plt.xlabel("Ramsey delay $t_{\\rm RAM}$ ($\mu$s)")
 plt.xlim(0, np.max(delays))
 plt.ylim(0, 1)
 plt.grid()
@@ -161,7 +161,7 @@ for rid in rid_dict.keys():
 
 
 ax1.set_ylabel("Contrast")
-ax1.set_xlabel("Ramsey delay ($\mu$s)")
+ax1.set_xlabel("Ramsey delay $t_{\\rm RAM}$ ($\mu$s)")
 ax1.set_xlim(0, np.max(delays) + 2000)
 ax1.set_ylim(0, 1)
 ax1.grid()

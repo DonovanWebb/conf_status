@@ -58,7 +58,7 @@ ax.text(
     horizontalalignment="left",
     fontsize=12,
 )
-ax.set_xlabel("Delay (ms)")
+ax.set_xlabel("Delay $t_{\\rm delay}$ (ms)")
 ax.set_ylabel("Avg. Fock state $\\bar{n}$")
 
 plt.savefig("heating_rate.pdf")

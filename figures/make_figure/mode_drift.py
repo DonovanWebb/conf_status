@@ -40,17 +40,17 @@ def format_with_uncertainty(value, error):
     return f"{value_rounded:.{precision}f}({error_display})"
 
 
-path = r"../make_figure/Tickle mode frequency-data-2025-05-15 19_19_54.csv"
-date_reference = "2025-05-10"
-t_scale = 15
+# path = r"../make_figure/Tickle mode frequency-data-2025-05-15 19_19_54.csv"
+# date_reference = "2025-05-10"
+# t_scale = 15
 
-# path = r"../make_figure/Tickle mode frequency-data-2025-05-28 21_01_20.csv"
-# date_reference = "2025-05-28"
-# t_scale = 10
+path = r"../make_figure/Tickle mode frequency-data-2025-05-28 21_01_20.csv"
+date_reference = "2025-05-28"
+t_scale = 10
 
 t, f = unpack_data(path)
-# t = t[50:]
-# f = f[50:]
+t = t[50:] - 50 * t_scale
+f = f[50:]
 
 
 """Each point takes t_scale seconds. Assume we calibrate every 10 minutes"""
@@ -92,11 +92,20 @@ ax2 = plt.subplot2grid(shape=(100, 100), loc=(56, 57), colspan=40, rowspan=40)
 ax = [ax0, ax1, ax2]
 
 ax[0].plot(t, f * 1e-6, label="Data", alpha=0.9, ls="-")
-ax[0].plot(t, f_lowpass * 1e-6, label="Low passed", alpha=graph_style.get_alpha())
+ax[0].plot(
+    t[10:-10],
+    f_lowpass[10:-10] * 1e-6,
+    label="Low passed",
+    alpha=graph_style.get_alpha(),
+)
 ax[0].plot(t, pfit * 1e-6, alpha=graph_style.get_alpha(), label="10 min calibration")
 ax[0].set_xlabel("Time stamp (s)")
 ax[0].set_ylabel("Frequency (MHz)")
+ax[0].set_xlim(0, t[-1])
 ax[0].legend(fontsize=8, loc="upper left")
+
+green = graph_style.get_color(1)
+red = graph_style.get_color(2)
 
 
 #  residues
@@ -118,6 +127,8 @@ def get_residue(residue, axis):
     x = np.linspace(rang[0], rang[1], 1000)
     y = gaussian(x, A, mu, sigma)
 
+    color = green if axis == 2 else red
+
     nbins = 40
     ax[axis].hist(
         residue,
@@ -127,39 +138,27 @@ def get_residue(residue, axis):
         alpha=0.8,
         label=f"Residuals \nnbins={nbins}\n",
     )
-    if axis == 2:
-        plt.plot(0, 0, alpha=0)
     ax[axis].plot(
         x,
         y,
         alpha=0.7,
         label=f"Gaussian fit\n$\mu$={mu_formatted} Hz\n$\sigma$={sigma_formatted} Hz",
+        color=color,
     )
     # ax[axis].ticklabel_format(axis="y", style="sci", scilimits=(0, 0))
     ax[axis].set_xlabel("Residual (kHz)")
 
 
 ax2.yaxis.tick_right()
-ax[1].set_ylabel("Density")
+ax[1].set_ylabel("Frequency Density")
 
 residue_calib = f - pfit
 residue_thermal = f - f_lowpass
 
-ax2.set_title("Calibration every 10 min")
-ax1.set_title("Thermal drift (10 min cutoff)")
+ax1.set_title("Calibration every 10 min", fontsize=10)
+ax2.set_title("Thermal drift (10 min cutoff)", fontsize=10)
 # add text to the top right corner with residual width
 textstr = f"$\sigma =$ {format_with_uncertainty(np.std(residue_calib), np.std(residue_calib) / np.sqrt(len(residue_calib)))} Hz"
-ax2.text(
-    0.95,
-    0.95,
-    textstr,
-    transform=ax2.transAxes,
-    verticalalignment="top",
-    horizontalalignment="right",
-    fontsize=12,
-)
-
-textstr = f"$\sigma =$ {format_with_uncertainty(np.std(residue_thermal), np.std(residue_thermal) / np.sqrt(len(residue_thermal)))} Hz"
 ax1.text(
     0.95,
     0.95,
@@ -170,11 +169,48 @@ ax1.text(
     fontsize=12,
 )
 
+textstr = f"$\sigma =$ {format_with_uncertainty(np.std(residue_thermal), np.std(residue_thermal) / np.sqrt(len(residue_thermal)))} Hz"
+ax2.text(
+    0.95,
+    0.95,
+    textstr,
+    transform=ax2.transAxes,
+    verticalalignment="top",
+    horizontalalignment="right",
+    fontsize=12,
+)
 
-print("Thermal mode residuals:")
-get_residue(residue_thermal, 1)
+
 print("Calibration mode residuals:")
-get_residue(residue_calib, 2)
+get_residue(residue_calib, 1)
+print("Thermal mode residuals:")
+get_residue(residue_thermal, 2)
 
-plt.show()
-# plt.savefig("mode_drift.pdf")
+# label top left corner with "a", "b", "c"
+ax[0].text(
+    -0.10,
+    1.05,
+    "a",
+    transform=ax[0].transAxes,
+    fontweight="bold",
+    fontsize=14,
+)
+ax[1].text(
+    -0.19,
+    1.05,
+    "b",
+    transform=ax[1].transAxes,
+    fontweight="bold",
+    fontsize=14,
+)
+ax[2].text(
+    -0.08,
+    1.05,
+    "c",
+    transform=ax[2].transAxes,
+    fontweight="bold",
+    fontsize=14,
+)
+
+# plt.show()
+plt.savefig("mode_drift.pdf")
