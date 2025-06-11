@@ -30,9 +30,9 @@ def detune_sdf(x, W):
 graph_style.set_graph_style(1.0)
 
 date = "2025-05-03"
-rid_det = 23502  # detune
+rid_det = 23502  # detune LS 3.5 kHz
 rid_dur = 23503  # duration
-rid_tb = 23484  # tone balance
+rid_tb = 23501  # LS 4 kHz
 
 det_dict = graph_style.load_data(rid_det, date)
 dur_dict = graph_style.load_data(rid_dur, date)

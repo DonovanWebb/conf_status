@@ -686,12 +686,19 @@
     \omega_{m}$, the interaction Hamiltonian can be approximated
     to,
     \begin{equation}
-        \hat{H}_{MS} \approx \frac{\hbar \eta\Omega}{2}~\hat{\sigma}_\phi \left( a e^{-i\delta_g t} + a^\dagger e^{i\delta_g t} \right).
+        \label{eqn:MS}
+        \hat{H}_{MS} \approx \frac{\hbar \eta\Omega}{2}~\hat{\sigma}_\phi \left( \hat{a} e^{-i\delta_g t} + \hat{a}^\dagger e^{i\delta_g t} \right).
     \end{equation}
     The trajectory of this displacement can be controlled by varying $\delta_g$: on
     resonance, $\delta_g = 0$, corresponds to linear trajectories, whilst off resonance,
     $\delta_g \neq 0$, corresponds to cyclic trajectories where after some time $t =
     2\pi/\delta_g$, the motion returns to the initial state (with perhaps some phase shift~\cite{haljan2005spin-dependent}). 
+    The dynamics of the SDF may be measured by projective spin measurements, the population in $\ket{\downarrow}$, $P_\downarrow$, after applying the SDF for time $t$ is described by~\cite{burd2020squeezing},
+    \begin{equation}
+        \label{eqn:sdf_pop}
+        P_{\downarrow,\mathrm{th}} = \frac{1}{2} \left[ 1 + e^{-4\left( \bar{n} + \frac{1}{2} \right) |\alpha(t, \delta_g)|^2} \right],
+    \end{equation}
+    where $\bar{n}$ is the initial thermal phonon occupation, and $|\alpha(t, \delta_g)| = \Omega_{\rm SDF} \sin(\delta_g t/2)/\delta_g$, is the absoltue displacement of the initial state.
     This control is utilised in both two-qubit entangling gate experiments, as well as
     in the creation of squeezed states.\\
 
@@ -713,7 +720,10 @@
             }
         \end{center}
         \caption{
-            SDF traces. \mccorrect{XXX need to update figure with legend and add caption.}
+            Detuning and duration scans of the spin-dependent force applied to an initial thermal state with $\bar{n} = 0.03(1)$. 
+            \textbf{a)} Detuning scan, where the detuning, $\delta_g$, is varied, and the duration is fixed at $t=100$~\unit{\us}. The green line is a fit to the expected behaviour given by equation~\ref{eqn:sdf_pop}. 
+            \textbf{b)} Detuning scan with a misset qubit frequency of $0.5$~\unit{\kHz}. The green line is the same fit as in $a$ to guide the eye. 
+            \textbf{c)} Duration scan, where the duration, $t$, is varied, and the detuning is fixed at $\delta_g = 0$. The dashed line is a fit to the expected behaviour given by equation~\ref{eqn:sdf_pop} with only $\Omega_{\rm SDF}$ as a free parameter.
             }
         \label{fig:SDF}
     \end{figure}
@@ -744,29 +754,19 @@
     ``detuning'' and ``duration'' scans are used. The ``detuning'' scan is performed by
     varying the detuning, $\delta_g$, of the interaction, whilst keeping the
     SDF duration, $t$, constant, and vice-versa for the ``duration'' scan. \\
-    Figure~\ref{fig:SDF} $c$ shows the measured duration scan with a fit~\cite{burd2020squeezing} given by,
-    \begin{equation}
-        P_{\downarrow,\mathrm{th}} = \frac{1}{2} \left[ 1 + e^{-4\left( \bar{n} + \frac{1}{2} \right) |\alpha(t)|^2} \right],
-    \end{equation}
-    where it is assumed that the motional state is thermal with average Fock state $\bar{n}
-    = 0.03(1)$ which is found previously from thermometry measurements. Here the
-    displacement, $|\alpha(t)| = \Omega_{\rm SDF} t/2$, where $\Omega_{\rm SDF}$ is the
-    SDF amplitude. 
-    \mccorrect{XXX need to populate the following experimental values.}These measurements were performed with a duration of XX~ms, total power of xx~mW, $\delta_{\rm LS}=2\pi\times XX$~\unit{\kHz}.
-    We find $\Omega_{\rm SDF} = 2\pi\times 6.6(2)$~\unit{\kHz}, from the
-    measured fit, which is in good agreement with the expected value of
-    $\Omega_{\rm SDF} = \eta\Omega_{\rm CAR}$, where Lamb-Dicke parameter $\eta =
-    0.05$XXX and $\Omega_{\rm CAR} = 2\pi \times 132$~\unit{\kHz} XXX measured from Rabi
-    flopping at 15XXX mW.\\
-    The detuning scan, shown in figure~\ref{fig:SDF} $a$, is fitted by taking the
-    displacement to be $|\alpha(t)| = \Omega_{\rm SDF} \sin(\delta t/2)/\delta$. Here,
+    Figure~\ref{fig:SDF} $c$ shows the measured duration scan described by equation~\ref{eqn:sdf_pop}, with $\delta_g = 0$ and the the motional state assumed to be thermal with average Fock state $\bar{n}
+    = 0.03(1)$ which was found previously from thermometry measurements.
+    Here the displacement, $|\alpha(t)| = \Omega_{\rm SDF} t/2$, where $\Omega_{\rm SDF}$ is the
+    SDF amplitude. The dashed line fit is given by floating $\Omega_{\rm SDF}$ only, and finds $\Omega_{\rm SDF}/(2\pi) = 6.6(2)$~\unit{kHz}.
+    These measurements were performed with total 729-nm power of 2~mW and $\delta_{\rm LS}/(2\pi) = 3.5$~\unit{\kHz}, the light shift due to the 729-nm laser relative to the unperturbed qubit frequency. \\
+    The detuning scan, shown in figure~\ref{fig:SDF} $a$, has the same experimental parameters, but with fixed duration $t=100$~\unit{us}. The fit in green is taking the 
+    displacement to be $|\alpha(t)| = \Omega_{\rm SDF} \sin(\delta_g t/2)/\delta_g$, given the value for $\Omega_{\rm SDF}$ measured from the duration scan. Here,
     a qualitatively good agreement between the measured data and the
     expected behaviour is seen, with the main features being the ``closure''
-    at $\delta = 2\pi/t$ where the motional state returns to the initial state,
+    at $\delta_g = 2\pi/t$ where the motional state returns to the initial state,
     and the central flat region around $P_{\downarrow, \mathrm{th}} =0.5$ where
     the two motional wave packets are non-overlapping.\\
-    \mccorrect{XXX need to add description of detuning scan $b$, where tone balance is inccorect.}
-    % find $\Omega_{SDF} = 2\pi\times 6.3(2)$~kHz, fitted with $\bar{n} = 0.03$.
+    Figure $b$ shows an example detuning scan when the qubit frequency is misset by $0.5$~\unit{\kHz}. The central region now displays a clear assymmetry around $\delta_g = 0$. The green line here is the fit from $a$ to guide the eye.
 
 
 \subsection{Two-Qubit Entangling Gates}
@@ -809,12 +809,12 @@
     \end{figure}
 
     We perform two-qubit entangling gates using the Mølmer-Sørensen (MS)
-    interaction~\cite{}. This interaction is the same described SDF from the
+    interaction~\cite{sorensen2000entanglement}. This interaction is the same described SDF from the
     previous section, but applied globally to two ions. The MS interaction
     relies on the spin dependent geometric phase accumulated during the motional
     displacement~\cite{ozeri2011tutorial}. To create a two-qubit entangled state, a differential
     geometric phase of $\pi/2$ must be accumulated between the two-qubit basis
-    states. To ensure there is no residual motional entanglement, the final
+    states~\cite{ozeri2011tutorial}. To ensure there is no residual motional entanglement, the final
     motional state must return to the initial state. In practise, using an SDF
     detuned by $\delta_g$, this is achieved by applying the MS interaction for a
     time $t = 2\pi/\delta_g$. The MS gate is a universal two-qubit gate, and
@@ -822,17 +822,25 @@
     discrete quantum algorithms.\\  
     Here we quote the current fidelity of experimentally demonstrated two-qubit gates on
     our system. The fidelity serves to quantify the similarity of
-    two density matrices~\cite{}.  For the use case of quantum information processing, what we
-    care about is that the experimental unitary applied in the gate sequence closely resembles the unitary we desire theoretically. In general this
-    means that the fidelity of the applied unitary should be measured in an input
-    state agnostic way. Unfortunately, this is often not practical as the input
-    state space can be unwieldly, and the act of preparing the input state can
-    also be error prone. As a compromise, the unitary is tested with either
-    one, or a set of input states, and the fidelity of the output state
-    is measured with respect to the known target state. If the error mechansisms of the 
-    unitary are well understood, arguments can be made that this measured
-    fidelity for a set of input state is representative (or not representative)
-    of the average fidelity over the input state space~\cite{}.\\
+    two density matrices. 
+    %---------------
+    %For the use case of quantum information processing, what we
+    %care about is that the experimental unitary applied in the gate sequence closely resembles the unitary we desire theoretically. In general this
+    %means that the fidelity of the applied unitary should be measured in an input
+    %state agnostic way. Unfortunately, this is often not practical as the input
+    %state space can be unwieldly, and the act of preparing the input state can
+    %also be error prone. As a compromise, the unitary is tested with either
+    %one, or a set of input states, and the fidelity of the output state
+    %is measured with respect to the known target state. 
+    %---------------
+    %Gate performance, quantified by the fidelity, can be measured by tomography~\cite{}.
+    %While full quantum process tomography provides an input-independent measure of fidelity, it is often impractical due to the size of the state space and preparation errors. Instead, the unitary is typically tested on one or a few input states, with fidelity evaluated against the expected output.
+    %---------------
+    %If the error mechansisms of the 
+    %unitary are well understood, arguments can be made that this measured
+    %fidelity for a set of input state is representative (or not representative)
+    %of the average fidelity over the input state space~\cite{}.\\
+    %---------------
     Here for a two-qubit entangling gate, we target the creation of the Bell
     state $\ket{\Phi^+} = 1/\sqrt{2} \left( \ket{00} +
     e^{i\phi_0}\ket{11} \right)$, from an initial state of $\ket{00}$.
@@ -842,22 +850,22 @@
         \mathcal{F} = \bra{\Phi^+} \rho \ket{\Phi^+} = \frac{1}{2} \left( \rho_{00,00} + \rho_{11,11} \right) + \frac{1}{2}\left( e^{i\phi_0}\rho_{11,00}+e^{-i\phi_0}\rho_{00,11}\right),
         \label{eq:Fidelity}
     \end{equation}
-    To extract the fidelity experimentally, the popular
-    protocol~\cite{}, is followed where the first bracketted term of
+    To extract the fidelity experimentally, a reduced tomography 
+    protocol is used~\cite{sackett2000experimental}, where the first bracketted term of
     equation~\ref{eq:Fidelity} is measured by performing projective measurements
     of the two ions after the gate sequence to extract populations, and the second bracketted term,
     known as the coherence terms, are measured by applying a global analysis
-    $\pi/2|_\phi$ pulse to the two ions and applying parity measurements. \mccorrect{XXX define parity measurements.} The
+    $R_\phi(\pi/2)$ pulse to the two ions and applying parity measurements. \mccorrect{XXX define parity measurements.} The
     contrast of the parity oscillations when varying the phase $\phi$ of the
-    $\pi/2$ pulse yields the desired coherence term magnitude and phase. The creation of a Bell state is required for two qubit entangling, however, it does not matter what basis this Bell state is in, as long as it is consistent between experiments, and so the target Bell state phase may be floated. Practically this is equivalent to taking only the magnitude of the fitted parity oscillations for calculating the final fidelity, and ignoring the phase offset.\\
+    $\pi/2$-pulse yields the desired coherence term magnitude and phase. 
+    Creating a Bell state is essential for two-qubit entanglement, but its basis can vary as long as it is consistent across experiments. This allows the Bell state phase to float, which in practice means using only the amplitude of the fitted parity oscillations to compute fidelity, ignoring any phase offset.\\
     The best two-qubit entangling gate fidelity currently achieved on our system is $\mathcal{F}=92(2)\%$. As shown in figure~\ref{fig:ms_gate}, the magnitude of the parity scan was measured to be 0.90(2), while the populations $\left( \rho_{00,00} + \rho_{11,11} \right) = 0.95(2)$. Each population point in these figures are found by taking the average of 200 shots of the gate sequence.\\
-
     These results serve as both a proof of principle for full spin control on
     our system, but also as a benchmark to which we can compare future system
     improvements.  For future work, we will require the use of this entangling
     gate either as Bell state preparation for input to analogue simulation
-    experiments~\cite{}, or as a primitive gate for the spin component of hybrid
-    algorithms~\cite{}.  In both these cases, especially any use that requires
+    experiments~\cite{bazavan2023synthetic}, or as a primitive gate for the spin component of hybrid
+    algorithms~\cite{varona2024towards,brenner2024factoring}.  In both these cases, especially any use that requires
     multiple concatenated entangling gates, we will likely require improved gate
     fidelities. We suspect the current fidelities are limited by nearby hot
     motional modes, and the lack of pulse shaping in the gate sequence. The addition of pulse shaping will greatly suppress 
