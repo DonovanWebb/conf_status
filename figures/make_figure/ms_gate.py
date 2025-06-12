@@ -108,7 +108,7 @@ ax0.errorbar(
 )
 ax0.legend(loc="upper right", fontsize=8)
 ax0.set_ylabel("Populations")
-ax0.set_xlabel("Duration $t$ (us)")
+ax0.set_xlabel("Duration $t_g$ (us)")
 ax0.set_ylim(0.0, 1.0)
 ax0.set_xlim(0.0, 300.0)
 

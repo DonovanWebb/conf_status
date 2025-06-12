@@ -21,7 +21,7 @@ rid = 36458
 fig = plt.figure()
 dict = graph_style.load_data(rid, date)
 delays = (
-    np.array(dict["datasets"][f"ndscan.rid_{rid}.points.axis_0"]) * 1e6
+    np.array(dict["datasets"][f"ndscan.rid_{rid}.points.axis_0"]) * 1e3
 )  # convert to us
 contrast = np.array(
     dict["datasets"][f"ndscan.rid_{rid}.points.channel_scan_ion_phase_contrast"]
@@ -35,12 +35,12 @@ contrast = contrast[argsort]
 contrast_err = contrast_err[argsort]
 
 c = graph_style.get_color(0)
-plt.errorbar(delays, contrast, yerr=contrast_err, fmt="x", color=c)
+plt.errorbar(delays, contrast, yerr=contrast_err, fmt="^", color=c, elinewidth=1.0)
 
 
 # ----------- exp_func func
 def exp_plot():
-    initial_guess = [1, 2000]
+    initial_guess = [1, 2]
 
     popt_ramsey, pcov_ramsey = curve_fit(
         exp_func, delays, contrast, sigma=contrast_err, p0=initial_guess
@@ -64,7 +64,7 @@ def exp_plot():
         height,
         color=c,
         linestyle=":",
-        label=f"$\\tau$ = {popt_ramsey[1]/1000:.1f}({p_err[1]/100:.0f}) $\mu$s",
+        label=f"$\\tau$ = {popt_ramsey[1]:.1f}({p_err[1]*10:.0f}) ms",
         alpha=0.75,
     )
     # horizontal line at 1/e that ends at the fit line
@@ -84,7 +84,7 @@ def exp_plot():
 
 
 def gauss_plot():
-    initial_guess = [1, 2000]
+    initial_guess = [1, 2]
 
     popt_ramsey, pcov_ramsey = curve_fit(
         gaussian_func, delays, contrast, sigma=contrast_err, p0=initial_guess
@@ -112,8 +112,8 @@ print(f"Exponential residuals: {exp_plot()}")
 
 
 plt.ylabel("Contrast")
-plt.xlabel("Ramsey delay $t_{\\rm RAM}$ ($\mu$s)")
-plt.xlim(0, np.max(delays))
+plt.xlabel("Ramsey delay $t_{\\rm RAM}$ (ms)")
+plt.xlim(-0.1, np.max(delays) + 0.1)
 plt.ylim(0, 1)
 plt.grid()
 plt.legend()

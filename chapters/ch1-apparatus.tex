@@ -60,7 +60,7 @@
             \textbf{a)} A front view of the trap chip. Axial confinement is provided by a subset of the segmented DC electrodes. Radial confinement is provided by the RF rails. 
             \textbf{b)} A slice view of the trap. The red point here represents the ions, the gold are the RF and DC electrodes, and the grey is the silica substrate. It can be seen that the ion is $\sim 250 \mu$m away from the nearest electrode. The numerical aperture of the ion due to the electrodes is $\sim 0.71$.
             \textbf{c)} A schematic of the electrode geometries and labelling for the front-face of the trap chip. A similar arrangement exists for the back-face. 
-            Figures from~\cite{choonee_silicon_2017}.
+            Figures from~\cite{choonee2017silicon}.
         \label{fig:trap}}
     \end{figure}
 
@@ -69,26 +69,26 @@
     using only static electric potentials, $V$, as if the potential is confining
     in two dimensions, it will be anticonfining in the third. Therefore, to
     achieve stable trapping, either an oscillating electric field (Paul
-    trap~\cite{paul_electromagnetic_1990}), or a static magnetic field (Penning trap~\cite{}) is
+    trap~\cite{paul1990electromagnetic}), or a static magnetic field (Penning trap) is
     used.\\
     Recently, the microfabricated surface style linear Paul trap has gained
     popularity due to the maturity of chip fabrication
-    technologies~\cite{allcock_surface-electrode_2011} and the potential route
-    to scalability this offers~\cite{kielpinski_architecture_2002}. In the surface trap, the 3D radial and axial
+    technologies~\cite{allcock2011surface-electrode} and the potential route
+    to scalability this offers~\cite{kielpinski2002architecture}. In the surface trap, the 3D radial and axial
     electrodes of a ``macro'' trap are effectively projected onto a 2D surface.
     The stable confining point of such a trap is typically on the order of $50-100$ $\mu$m
     above the chip surface. The ease of fabrication of surface traps has allowed
     the creation of complex multizone devices with many DC electrodes.  These
     multizone traps enable the shuttling of ions, a requirement for Quantum CCD
-    type architectures~\cite{kielpinski_architecture_2002}. However, this
+    type architectures~\cite{kielpinski2002architecture}. However, this
     surface style geometry typically comes with two costs: the depth of the
     trapping potential is often greatly reduced, and the close proximity of the
     surface to the ion can be a large contributor to motional heating
-    rates~\cite{turchette_heating_2000}. \\
+    rates~\cite{wineland1998experimental, turchette2000heating}. \\
     Our trap is provided by the \emph{National Physical Laboratory} in the UK. This is a microfabricated 3D trap, which brings together the
     advantages of chip fabrication as well as the low heating rates and high
-    trapping depths of a 3D style trap with greater ion-surface distances. Details on its design and characterisations can be found in~\cite{see_fabrication_2013,
-    wilpers_monolithic_2012}. Figure~\ref{fig:trap} shows the electrode geometry of the trap and the relevant length scales.
+    trapping depths of a 3D style trap with greater ion-surface distances. Details on its design and characterisations can be found in~\cite{see2013fabrication,
+    wilpers2012monolithic}. Figure~\ref{fig:trap} shows the electrode geometry of the trap and the relevant length scales.
     The ion-surface distance is now of the order $250$ $\mu$m and we have
     demonstrated heating rates of $ 33(3)$~q/s on a 4~MHz radial mode (see
     section~\ref{sec:Heating}).\\
@@ -178,12 +178,12 @@
     electrodes. Here we describe the elements of the ``RF chain'' that supplies
     this voltage. \\
     Our frequency source is a DDS-based synthesiser, named \emph{Urukul}, part
-    of the \emph{Artiq Sinara}~\cite{} hardware ecosystem. The
+    of the \emph{Artiq Sinara}~\cite{kasprowicz2020artiq} hardware ecosystem. The
     \emph{Urukul} is operated at maximum output power, +10~dBm, and with a frequency $\sim 27.8$~MHz. This
     signal is then fed to an ``ultra-low noise limiting amplifier'' named
-    \emph{Squareatron}~\cite{}. The purpose of \emph{Squareatron} is to
+    \emph{Squareatron}. The purpose of \emph{Squareatron} is to
     greatly reduce the amplitude noise of the RF signal, $V_{\rm RF}$, which is
-    key to low radial mode frequency drifts, as radial mode frequency $\omega_{x,y} \propto V_{\rm RF}$~\cite{}. The \emph{Squareatron} outputs +17.4~dBm,
+    key to low radial mode frequency drifts, as radial mode frequency $\omega_{x,y} \propto V_{\rm RF}$~\cite{wineland1998experimental}. The \emph{Squareatron} outputs +17.4~dBm,
     which is subsequently attenuated by 19.5~dB. The signal is then amplified by a
     further 33.7~dB using a \emph{Mini-Circuits ZHL-1-2W-S+}, high power
     amplifier. The signal is now +32 dBm RF power, enough to drive the trap
@@ -201,7 +201,7 @@
     stability are discussed in section~\ref{sec:Motional Mode Stability}. We are
     still yet to fully quantify and debug the motional stability against thermal
     and mechanical noise, however it should be noted that other groups do opt
-    for active stabilisation of RF amplitude through closed feedback loops~\cite{}.\\
+    for active stabilisation of RF amplitude through closed feedback loops~\cite{milne2021construction}.\\
     % Milne sydney trap RF chain 
 
 \subsection{Trap DC Voltages}
@@ -212,7 +212,7 @@
     % NPL trap geometry
     Voltage is supplied to the 40 DC electrodes using \emph{Fastino}, a
     multi-channel DAC part of the \emph{Artiq Sinara} hardware
-    ecosystem~\cite{}.\\
+    ecosystem.\\
     The ion is confined in the ``operation'' zone, seen in
     figure~\ref{fig:trap} c. The axial trapping is provided by electrodes
     DC-b5 and DC-f5, where b and f correspond to the back and front plane of the trap. 
@@ -254,7 +254,9 @@
    \noindent\includegraphics[width=0.9\linewidth]{figures/pdf_figure/vacuum_can-crop.pdf}
   \end{center}
   \caption{
-    \textbf{a)} \mccorrect{XXX place holder figure. I would like to replace with a solidworks render.} A schematic of the vacuum chamber.
+    \textbf{a)} 
+    %\mccorrect{XXX place holder figure. I would like to replace with a solidworks render.} 
+    A schematic of the vacuum chamber.
     Wavelengths apart from 729-nm enter through the side CF40 viewports and are
     directed onto the ions by in vacuum prisms. The 729-nm light enters through
     the larger CF100 viewports.  \textbf{b)} A photograph of the assembled
@@ -268,7 +270,9 @@
   \begin{center}
    \noindent\includegraphics[width=\linewidth]{figures/pdf_figure/vac_can_AOD_small.pdf}
   \end{center}
-  \caption{\mccorrect{XXX Place holder figure.} The standing wave single addressing system. Dual high NA
+  \caption{
+    %\mccorrect{XXX Place holder figure.} 
+    The standing wave single addressing system. Dual high NA
     objectives focus the light to a tight waist at the ions
     location. AODs are used to steer the light to only selected
     ions. The left hand side of the figure shows the Gaussian profile
@@ -289,7 +293,7 @@
     requirement, care must be taken in selecting in-vacuum materials, and 
     thorough cleaning and baking procedures must be followed. A summary of tactics that were
     useful in the construction of the vacuum system can be found
-    in~\cite{birnbaum_ultra-high_2005, wolf_cryogenic_2019}.\\
+    in~\cite{birnbaum2005ultra-high, wolf2019cryogenic}.\\
     A schematic and photograph of the vacuum system can be seen in
     Figure~\ref{fig:can}. The system consists of a 6" spherical-octagonal
     experimental chamber\footnote{Kimball MCF600-SphOct-F2C8} connected to a
@@ -309,7 +313,7 @@
     objectives\footnote{Photon Gear custom Atom Imager}. These custom objectives
     have an effective focal length of 33~mm, a working distance of 24.4~mm, and
     a numerical aperture, NA, of 0.6. They are coated for 397-nm and 729-nm.
-    The consideration for dual high NA objectives is relatively unique in ion trap experiments, and was mainly motivated by previous work on fast entangling gates via standing waves~\cite{saner_breaking_2023}. \\
+    The consideration for dual high NA objectives is relatively unique in ion trap experiments, and was mainly motivated by previous work on fast entangling gates via standing waves~\cite{saner2023breaking}. \\
     There is further optical access via
     two CF40 side viewports\footnote{LewVac ZFSVP-DUV-40CF-OUM} coated
     for 397-nm, 422-nm, 729-nm, 854-nm and 866-nm, seen in figure~\ref{fig:can}.  Due to the spatial
@@ -371,10 +375,12 @@
     hyperfine splitting lead to more decay paths and therefore greater
     complications in both cooling and gate schemes. However, due to the lack of hyperfine structure, there are no available magnetic field insensitive transitions, which are
     often used in ion trap experiments to further decouple the ion from a noisy
-    environment~\cite{}. \\
+    environment~\cite{brewer201927al}. \\
     We define our qubit by the quadrupole transition at 729-nm, which we describe in section~\ref{sec:Transitions}.\\
-    Access to other excited levels, outside of our defined two level system, are crucial for ion trap quantum logic to enable qubit readout via state selective fluorescence (397-nm, and 866-nm transitions), and state preparation via optical pumping (397-nm, 866-nm, and 854-nm transitions). Details on these schemes are given in chapter~\ref{ch:Characterisation}. Access to two additional transitions in neutral calcium for isotope selective ionisation, 422-nm and 372-nm, is also required~\cite{}.\\
-    These transitions (apart from the 729-nm) are all driven by diode lasers\footnote{All Toptica diodes. Red lasers: MDL DL pro; Blue lasers: MDL DL pro HP; 372-nm: iBEAM-SMART-375-S}, which are frequency stabilised to a reference cavity\footnote{Stable Laser Systems SLS-6010 4-Bore Cylindrical Cavity} via Pound-Drever-Hall (PDH) locking. \mccorrect{XXX should quote finesse and FSR values here.} PDH locking is used to ensure that laser frequencies are stable to <1~MHz level, well below the natural line widths of all the dipole transitions listed above. The laser frequencies are continuosly monitored with a wavemeter\footnote{HighFinesse WS7}.\\
+    Access to other excited levels, outside of our defined two level system, are crucial for ion trap quantum logic to enable qubit readout via state selective fluorescence (397-nm, and 866-nm transitions), and state preparation via optical pumping (397-nm, 866-nm, and 854-nm transitions). Details on these schemes are given in chapter~\ref{ch:Characterisation}. Access to two additional transitions in neutral calcium for isotope selective ionisation, 422-nm and 372-nm, is also required~\cite{lucas2004isotope-selective}.\\
+    These transitions (apart from the 729-nm) are all driven by diode lasers\footnote{All Toptica diodes. Red lasers: MDL DL pro; Blue lasers: MDL DL pro HP; 372-nm: iBEAM-SMART-375-S}, which are frequency stabilised to a reference cavity\footnote{Stable Laser Systems SLS-6010 4-Bore Cylindrical Cavity} via Pound-Drever-Hall (PDH) locking. 
+    %\mccorrect{XXX should quote finesse and FSR values here.}
+    PDH locking is used to ensure that laser frequencies are stable to <1~MHz level, well below the natural line widths of all the dipole transitions listed above. The laser frequencies are continuosly monitored with a wavemeter\footnote{HighFinesse WS7}.\\
     Frequency and amplitude control for all lasers is achieved via acousto-optic modulators (AOMs) which are driven by Artiq integrated DDS chips, \emph{Urukuls}. The AOMs are used in a double pass configuration to allow shifts of the laser frequency by $\pm \sim 100$~MHz, with no signicant angular shifts or loss of fibre coupling. 
     
     
@@ -407,10 +413,10 @@
     two-qubit gate sections, but here it is sufficient to say we require >100 mW
     of light at the ion plane.  Here we describe the 729-nm system 
     consisting of a Ti:Sapph laser system pumped with by an Nd:YAG 532-nm laser.\\
-    An \emph{M2 Solstis} Ti:Sapph~\cite{} is pumped via 18 W of 532-nm light
-    from a \emph{Coherent Verdi-V} system~\cite{} to produce around 5W of
+    An \emph{M2 Solstis} Ti:Sapph is pumped via 18 W of 532-nm light
+    from a \emph{Coherent Verdi-V} system to produce around 5W of
     729-nm light.  The Ti:Sapph is engineered to operate with a stable $<50$~kHz
-    linewidth~\cite{}. Ti:Sapph crystals have broadband gain profiles~\cite{}, which
+    linewidth. Ti:Sapph crystals have broadband gain profiles, which
     are often exploited in research environments to create frequency tunable
     laser systems. We however want a narrow linewidth, single frequency laser.
     The \emph{Solstis} has multiple intracavity frequency selective
@@ -449,7 +455,9 @@
     As mentioned, the \emph{Solstis} alone can operate with linewidths of
     $<50$~kHz, however this linewidth is pushed down further by referencing the Ti:Sapph output
     to an ulta high finesse cavity by \emph{Stable Laser Systems} and applying
-    a Pound-Drever-Hall (PDH) lock~\cite{}. \mccorrect{XXX should quote finesse and FSR values here.} A schematic of the 729-nm system is
+    a Pound-Drever-Hall (PDH) lock~\cite{drever1983laser}. 
+    %\mccorrect{XXX should quote finesse and FSR values here.} 
+    A schematic of the 729-nm system is
     shown in Figure~\ref{fig:729}.  PDH locking requires applying two sidebands
     via an electro-optical modulator (EOM) to the light and directing it onto
     the stable cavity. The light reflected from the cavity is then directed onto
@@ -484,13 +492,10 @@
     introduce phase noise due to mechanical and thermal effects along the 10~m
     length. To remove this introduced noise, passive stabilisation in
     the form of thick foam tubing along the fibre length, as well as active
-    stabilisation by a fibre-noise-cancellation (FNC) technique~\cite{}, is used. This
-    topic has been discussed extensively in multiple PhD and Masters
-    theses~\cite{}, and so here we only quote the relevant control aspects of
-    our arrangement. We use the \emph{Sinara Stabilizer}~\cite{} board, a
+    stabilisation by a fibre-noise-cancellation (FNC) technique~\cite{ma1994delivering}, is used. We use the \emph{Sinara Stabilizer}~\cite{} board, a
     dual channel PID microcontroller, with the \emph{Pounder}~\cite{}
     mezzanine board, a dual channel PDH lock generator. The FNC PID software was
-    developed by A. Agrawal ~\cite{}. A comparison of spin coherence times
+    developed by A. Agrawal. A comparison of spin coherence times
     is shown in section~\ref{sec:Coherence} with and without fibre noise
     cancellation enabled. \\
 
@@ -520,9 +525,9 @@
     collimated 729-nm beam with an objective lens of NA = 0.6 is $\omega_0 = 386$~nm.  Abberations present in real optical
     components will cause the addressed spot to be increasingly non-Gaussian and
     lead to unfavourable cross talk at the neighbouring ions. Therefore care was
-    taken in the optical design. See I. {\O}vergaard Master thesis~\cite{} for relevant design considerations and rationale.\\
+    taken in the optical design. See I. {\O}vergaard Master thesis~\cite{oevergaard2024limiting} for relevant design considerations and rationale.\\
     To produce more than one addressed spot and to steer the spots along the ion
     crystal, Acousto-Optical-Deflectors\footnote{ISOMET OAD1343-XY-T70S}
-    (AODs)~\cite{nagourney_quantum_2014, li_low-crosstalk_2023,
-    pogorelov_compact_2021} are used. The beam deflection angle is proportional to the
-    drive frequency supplied to the AOD. \mccorrect{XXX could extend this section substantially.} \\
+    (AODs)~\cite{nagourney2014quantum, li2023low-crosstalk} are used. The beam deflection angle is proportional to the
+    drive frequency supplied to the AOD. \\
+    %\mccorrect{XXX could extend this section substantially.} \\

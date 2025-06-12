@@ -19,12 +19,12 @@
 % generating a PDF to send to the printer!
 
 % This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
-\fancyfoot[C]{\emph{DRAFT Printed on \today}}  
+% \fancyfoot[C]{\emph{DRAFT Printed on \today}}  
 
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
 % paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
 % your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
-\correctionstrue
+% \correctionstrue
 
 
 %%%%% BIBLIOGRAPHY SETUP
@@ -35,7 +35,10 @@
 % Either way, you'll have to choose and configure an appropriate bibliography format...
 
 % The science-type option: numerical in-text citation with references in order of appearance.
-\usepackage[style=numeric-comp, sorting=none, backend=biber, doi=false, isbn=false]{biblatex}
+\usepackage[style=numeric-comp, sorting=none, backend=biber, doi=false, isbn=false, url=false, date=year]{biblatex}
+\AtEveryBibitem{\clearfield{issue}}
+\AtEveryBibitem{\clearfield{pages}}
+\AtEveryBibitem{\clearfield{language}}
 \newcommand*{\bibtitle}{References}
 
 % The humanities-type option: author-year in-text citation with an alphabetical works cited.
@@ -54,7 +57,7 @@
 
 
 %%%%% THESIS / TITLE PAGE INFORMATION
-\title{Experimental apparatus for universal spin-motion control in trapped multi-ion crystals}
+\title{Experimental apparatus for universal spin-motion control in multi-ion registers}
 \author{Donovan Webb}
 \college{St Peter's College}
 

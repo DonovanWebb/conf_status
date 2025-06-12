@@ -49,19 +49,21 @@ p_err = np.sqrt(np.diag(p_cov))
 fig = plt.figure()
 
 c = graph_style.get_color(0)
-plt.errorbar(num_pulses, pop_log, yerr=pop_err_log, fmt="^", color=c, zorder=11)
+plt.errorbar(
+    num_pulses, pop_log, yerr=pop_err_log, fmt="^", color=c, zorder=11, elinewidth=1.0
+)
 linrange = np.linspace(
     0,
     np.max(num_pulses),
     5000,
 )
-plt.plot(
-    num_pulses,
-    linear_fit(num_pulses, *p_fit),
-    color=c,
-    zorder=10,
-    alpha=graph_style.get_alpha(),
-)
+# plt.plot(
+# num_pulses,
+# linear_fit(num_pulses, *p_fit),
+# color=c,
+# zorder=10,
+# alpha=graph_style.get_alpha(),
+# )
 plt.xlabel("Repeats $N$")
 plt.ylabel("State preparation error")
 # relabel y-axis ticks

@@ -26,11 +26,11 @@
     extensive contributions to bringing the system online. \\
 
     There are two research directions that we are pursuing with this apparatus.
-    Both involve the study and interplay between the ``spin'' electronic degree
-    of freedom and the motion of the ion which we describe by a quantum harmonic
-    oscillator.\\
-    The first is the demonstration of fast and high-fidelity two-qubit
-    entangling gates between trapped ions. High fidelity entangling gates are
+    Both involve the interplay between the ``spin'' electronic degrees
+    of freedom and the motion of the ions which we describe by quantum harmonic
+    oscillators.\\
+    The first is the demonstration of fast, high-fidelity two-qubit
+    entangling gates between trapped ions. High-fidelity entangling gates are
     critical for developing a quantum computer which can perform useful
     calculations with high success probability~\cite{steane2003overhead}. Gate errors associated with
     decoherence of the quantum state are often dominated by incoherent
@@ -39,7 +39,7 @@
     mitigated by increasing the algorithm ``clock-speed'', hence our desire for
     fast entanglement~\cite{steane2000speed,schafer2018fast}. Typically in ion traps, local two-qubit gates are
     performed via the ion's shared motion, which may be excited by interaction
-    with a laser~\cite{cirac1995quantum, sorensen2000entanglement}. As the effective gate frequency approaches that of the
+    with a laser~\cite{cirac1995quantum, sorensen2000entanglement}. As the effective Rabi frequency approaches that of the
     frequency separation of the motional modes, the dynamics between spin and
     motion become complicated by multiple simultaneous mode excitations~\cite{schafer2018fast}. Our
     apparatus is designed to provide the required laser intensities and mode
@@ -58,7 +58,7 @@
     bosonic and spin degrees of freedom of our ions to efficiently encode
     problems in the full hybrid system we have access to~\cite{varona2024towards, brenner2024factoring}. Our apparatus has both
     precise motional control and stability through our trap choice, and the
-    selective addressing system that is required when interacting with many-ion
+    individual addressing system that is required when interacting with many-ion
     chains.\\
     
     Details of the apparatus are presented in the Appendices. Summarised here are the unique aspects enabling the desired experiments:
@@ -77,14 +77,13 @@
     \item \textbf{Motional control:} The Paul trap used in the system, produced
         by \emph{National Physical Laboratory} in the UK, has low heating rates (section~\ref{sec:Heating}),
         deep trapping potentials relative to surface style ion traps, and flexible
-        control over DC confinement (section~\ref{sec:The Ion Trap}). These features ensure that we have modes
-        with long coherence times (section~\ref{sec:Motional Mode Stability}), making them suitable for encoding quantum
-        information.
+        control over DC confinement (section~\ref{sec:The Ion Trap}) (e.g. ion shuttling). Low heating rates are required for long motional
+        coherence times (section~\ref{sec:Motional Mode Stability}).
     \end{itemize}
 
     Here, the characterisation of the spin qubits is in the context of discrete
     variable quantum computing. We are interested in the fidelity of qubit
-    state-preparation, measurement (sections~\ref{sec:Stateprep,sec:Measurement}), single- (section~\ref{sec:Single Qubit Gates}) and two-qubit gates (section~\ref{sec:Two-Qubit Entangling Gates}). These
+    state-preparation (section~\ref{sec:Stateprep}), measurement (section~\ref{sec:Measurement}), single- (section~\ref{sec:Single Qubit Gates}) and two-qubit gates (section~\ref{sec:Two-Qubit Entangling Gates}). These
     individual elements comprise longer circuits, and so all contribute to the
     overall fidelity of any chosen algorithm.\\
     The motional characterisation is currently focused on the stability of the
@@ -98,18 +97,18 @@
     the motional state of the ion.\\
     As described above, the single addressing system is a critical component for
     many of our planned experiments. Section~\ref{sec:Single Addressing System},
-    and~\cite{oevergaard2024limiting} describe the system in detail. The next
-    immediate steps are to align the constructed optical system to the ion
+    and~\cite{oevergaard2024limiting} describe the system in detail. The 
+    immediate next steps are to align the constructed optical system to the ion
     chain, and to implement the logical and RF control system required to drive
     the acousto-optic deflectors. Once this is complete, we will characterise
-    the cross-talk of the system by performing single addressing of ions in a
+    the crosstalk of the system by performing single addressing of ions in a
     chain and measuring spin populations. We will then be able to demonstrate
     fast entangling gates between ions in a chain, and the ability to perform
     motional interactions on selected modes.\\
     Squeezing of the motional mode via the method outlined
     in~\cite{sutherland2021universal}, is a significant step towards
-    demonstrating the universal set of gates for CVQC. This is due to
-    the constituent interactions of the effective squeezing gate (two SDFs), are
+    demonstrating the universal set of gates for CVQC. 
+    The constituent interactions of the effective squeezing gate (two SDFs), are
     the same interactions needed for trisqueezing~\cite{braunstein1987generalised, bazavan2024squeezing} --- a non-Gaussian gate, and
     for two-mode squeezing~\cite{lvovsky2015squeezed} --- an entangling gate. Furthermore, once we have
     demonstrated generating squeezing characteristic functions, there is a clear

@@ -99,7 +99,15 @@ popt, pcov = curve_fit(
 )
 fit_errs = np.sqrt(np.diag(pcov))
 
-ax.errorbar(num_cliff, survivals, yerr=survivals_err, fmt="^", color=c, zorder=11)
+ax.errorbar(
+    num_cliff,
+    survivals,
+    yerr=survivals_err,
+    fmt="^",
+    color=c,
+    zorder=11,
+    elinewidth=1.0,
+)
 ax.plot(
     num_cliff,
     rbm_fit(num_cliff, popt[0], popt[1]),

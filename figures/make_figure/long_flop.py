@@ -55,7 +55,9 @@ fig_height = fig_width / graph_style.get_phi() / 2
 fig.set_size_inches(fig_width, fig_height)
 
 c = graph_style.get_color(0)
-plt.errorbar(duration * 1e6, pop, yerr=pop_err, fmt="^", color=c, zorder=11)
+plt.errorbar(
+    duration * 1e6, pop, yerr=pop_err, fmt="^", color=c, zorder=11, elinewidth=1.0
+)
 linrange = np.linspace(
     0,
     np.max(duration * 1e6),
@@ -66,10 +68,10 @@ plt.plot(
     decaying_sine(duration, *p_fit),
     color=c,
     zorder=10,
-    alpha=graph_style.get_alpha(),
+    alpha=0.5,
     label="Fit: A=%.2f, lambda=%.2f, W=%.2f" % tuple(p_fit),
 )
-plt.xlabel("Duration $t$ ($\mu$s)")
+plt.xlabel("729-nm Pulse Duration $t$ ($\mu$s)")
 plt.ylabel("$P_\\downarrow$")
 # plt.show()
 plt.savefig("long_flop.pdf")
