@@ -1,0 +1,53 @@
+% Boiler plate intro for latex documents
+\documentclass[12pt]{article}
+
+\begin{document}
+\title{Thesis Completion Plan}
+\author{Donovan Webb}
+\date{\today}
+\maketitle
+\noindent The proposed thesis submission date is September 2026, corresponding to 12 terms from the start of the programme in October 2022.
+
+\section{Experimental work plan}
+\noindent \textbf{Year III} (second half): \\
+Work will continue on demonstrating squeezing in the new setup, and, should we decide to pursue it, will likely lead to a publication on measuring Feynman diagrams via squeezing characteristic functions, as described in [5]. We aim for this experimental work to take between 1 and 3 months. 
+Once squeezing has been demonstrated, access to the full suite of single- and two-mode CVQC interactions can be explored. These are all based on the same core interaction, and the control code has been written for the previous apparatus. As such, it is predicted that this step will not take considerable time.\\
+The single-ion addressing system, alongside the coherent motional control, will allow us to demonstrate addressing and readout of individual motional modes -- an important prerequisite for CVQC with trapped ions. This experimental work, and writing up the results for publication is predicted to take between 2-4 months.\\
+
+\noindent \textbf{Year IV} (first half): \\
+With established control over both spin and motional degrees of freedom, the system is well-suited for implementing analogue simulations and algorithms that require interactions between spins and bosons. Experimental demonstrations of gauge theories [6] or fundamental operations from the quantum factoring algorithm [7] would be particularly interesting. 
+Similarly, with this control, and the laser intensities we can supply to the ions, a demonstration of fast-entangling gates on a multi-ion ($>5$) crystal would be both in reach and highly impactful. \\
+It is highly unlikely these will both be explored in my thesis, however they are included for completeness.
+
+\noindent Should the last two projects prove unreasonable in the time remaining, possible other options are:
+\begin{itemize}
+\item Further demonstrations of the full CVQC gate set, and demonstrations of short algorithms consisting of concatenated elementary gates.
+\item Expand the study of motional mode readout, which is a critical requirement for scaling CVQC systems in trapped ions.
+\end{itemize}
+\noindent 5. Varona, S. et al. Towards quantum computing Feynman diagrams in hybrid qubit-oscillator devices. Preprint at https://doi.org/10.48550/arXiv.2411.05092 (2024).\\
+\noindent 6. B\u{a}z\u{a}van, O. et al. Synthetic Z2 gauge theories based on parametric excitations of trapped ions. Preprint at http://arxiv.org/abs/2305.08700 (2023).\\
+\noindent 7. Brenner, L. et al. Factoring an integer with three oscillators and a qubit. Preprint at https://doi.org/10.48550/arXiv.2412.13164 (2024).\\
+
+\section{Writing plan}
+\noindent \textbf{Year IV} (second half): \\
+Thesis writing is expected to take approximately 4-5 months, with the transition from experimental work to writing anticipated around April 2026.\\
+\subsection*{Proposed thesis structure}
+\begin{enumerate}
+    \item \textbf{Introduction/Theory} -- Overview of spin/motion/spin-motion interactions. Quantum computing with continuous variables. 
+    \item \textbf{Experimental Apparatus} -- Description of the new experimental apparatus. Outlined in appendix of submitted chapter for confirmation of status.
+    \item \textbf{Experimental Characterisation} -- spin/motion/spin-motion elementary interactions that are used throughout the thesis. This is the chapter submitted for confirmation of status.
+    \item \textbf{CVQC Gate Set} -- Presentation of the experimental results demonstrating all required gates, state preparation and measurements for CVQC with trapped ions.
+    \item \textbf{Feynman Diagrams from Characteristic Functions} -- Presentation of the experimental results generating Feynman diagrams from characteristic functions of squeezed states.
+    \item \textbf{Potential Future Project} -- This chapter is dependent on the choice and success of the final project (see Year IV (first half) above).
+    \item \textbf{Conclusion and Outlook} 
+\end{enumerate}
+
+
+\section{Impact if successful}
+\noindent The construction and commissioning of the new apparatus is impactful in itself as it enables both my research, but also that of future members of the FastGates group.\\
+
+\noindent Fast-entangling gates will be required for realising a scaled ion-trap quantum computer. We are focussing on laser driven gates, however the techniques and motional mode control required for these fast gates will be of general interest in any ion entangling scheme via shared motional modes.\\
+
+\noindent Demonstrations of CVQC state preparation, gates, and readout with trapped ions both validates the direct use of the ion's motion for quantum information, but also may offer more efficient implementations of quantum algorithms due to the large Hilbert space of the motional modes. This is of interest to the wider quantum computing community, as CVQC as a paradigm is not nearly as well explored as qubit-based quantum computing.\\
+
+\end{document}
