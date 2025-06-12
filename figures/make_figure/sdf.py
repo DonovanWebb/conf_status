@@ -140,6 +140,7 @@ ax0.errorbar(
     label="Detuning",
     zorder=11,
     alpha=graph_style.get_alpha(),
+    elinewidth=1.0,
 )
 ax0.set_xlabel("Detuning $\\delta_g$ (kHz)")
 ax0.set_xlim(-20, 20)
@@ -167,6 +168,7 @@ ax1.errorbar(
     zorder=11,
     label="Detuning Tone Balance",
     alpha=graph_style.get_alpha(),
+    elinewidth=1.0,
 )
 ax1.plot(
     detuning / 1000,
@@ -197,6 +199,7 @@ ax2.errorbar(
     label="Duration",
     alpha=graph_style.get_alpha(),
     color=c,
+    elinewidth=1.0,
 )
 ax2.set_ylim(0.25, 1.0)
 ax2.set_yticks(

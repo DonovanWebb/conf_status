@@ -38,7 +38,7 @@ print(ndot_err)
 
 fig, ax = plt.subplots()
 c = graph_style.get_color(0)
-ax.errorbar(delays0, nbar, yerr=nbar_err, zorder=11, fmt="^", color=c)
+ax.errorbar(delays0, nbar, yerr=nbar_err, zorder=11, fmt="^", color=c, elinewidth=1.0)
 ax.plot(
     delays0,
     graph_style.linear_func(delays0, *p_fit),

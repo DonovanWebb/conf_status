@@ -23,11 +23,11 @@
     and capabilities of our system.\\
     As a map for this section we state the landmark features of an ``ion trap''
     experiment. First, to confine the ions, static and dynamic electric fields
-    are used which, due to ions possesing non-zero electric charge, can provide
+    are used which, due to ions possessing non-zero electric charge, can provide
     trapping potentials, section~\ref{sec:The Ion Trap}. Due to the fragility of
     the internal states of the ion (these are state -of-the-art sensors after
     all), we must take great care in isolating the ion from any noisy
-    environment. This neccesitates the use of ultra-high vacuum (UHV) systems,
+    environment. This necessitates the use of ultra-high vacuum (UHV) systems,
     section~\ref{sec:Vacuum System}, vibration isolation, and magnetic
     shielding, section~\ref{sec:Magnetic Field}. To manipulate the internal
     electronic states of the ion, local electric and magnetic fields
@@ -67,25 +67,25 @@
     From Earnshaw's theorem,
     $\nabla^2 V = 0,$ a stable stationary point in 3D cannot be realised
     using only static electric potentials, $V$, as if the potential is confining
-    in two dimensions, it will be anticonfining in the third. Therefore, to
+    in two dimensions, it will be anti-confining in the third. Therefore, to
     achieve stable trapping, either an oscillating electric field (Paul
     trap~\cite{paul1990electromagnetic}), or a static magnetic field (Penning trap) is
     used.\\
-    Recently, the microfabricated surface style linear Paul trap has gained
+    Recently, the micro-fabricated surface style linear Paul trap has gained
     popularity due to the maturity of chip fabrication
     technologies~\cite{allcock2011surface-electrode} and the potential route
     to scalability this offers~\cite{kielpinski2002architecture}. In the surface trap, the 3D radial and axial
     electrodes of a ``macro'' trap are effectively projected onto a 2D surface.
     The stable confining point of such a trap is typically on the order of $50-100$ $\mu$m
     above the chip surface. The ease of fabrication of surface traps has allowed
-    the creation of complex multizone devices with many DC electrodes.  These
-    multizone traps enable the shuttling of ions, a requirement for Quantum CCD
+    the creation of complex multi-zone devices with many DC electrodes.  These
+    multi-zone traps enable the shuttling of ions, a requirement for Quantum CCD
     type architectures~\cite{kielpinski2002architecture}. However, this
     surface style geometry typically comes with two costs: the depth of the
     trapping potential is often greatly reduced, and the close proximity of the
     surface to the ion can be a large contributor to motional heating
     rates~\cite{wineland1998experimental, turchette2000heating}. \\
-    Our trap is provided by the \emph{National Physical Laboratory} in the UK. This is a microfabricated 3D trap, which brings together the
+    Our trap is provided by the \emph{National Physical Laboratory} in the UK. This is a micro-fabricated 3D trap, which brings together the
     advantages of chip fabrication as well as the low heating rates and high
     trapping depths of a 3D style trap with greater ion-surface distances. Details on its design and characterisations can be found in~\cite{see2013fabrication,
     wilpers2012monolithic}. Figure~\ref{fig:trap} shows the electrode geometry of the trap and the relevant length scales.
@@ -381,7 +381,7 @@
     These transitions (apart from the 729-nm) are all driven by diode lasers\footnote{All Toptica diodes. Red lasers: MDL DL pro; Blue lasers: MDL DL pro HP; 372-nm: iBEAM-SMART-375-S}, which are frequency stabilised to a reference cavity\footnote{Stable Laser Systems SLS-6010 4-Bore Cylindrical Cavity} via Pound-Drever-Hall (PDH) locking. 
     %\mccorrect{XXX should quote finesse and FSR values here.}
     PDH locking is used to ensure that laser frequencies are stable to <1~MHz level, well below the natural line widths of all the dipole transitions listed above. The laser frequencies are continuosly monitored with a wavemeter\footnote{HighFinesse WS7}.\\
-    Frequency and amplitude control for all lasers is achieved via acousto-optic modulators (AOMs) which are driven by Artiq integrated DDS chips, \emph{Urukuls}. The AOMs are used in a double pass configuration to allow shifts of the laser frequency by $\pm \sim 100$~MHz, with no signicant angular shifts or loss of fibre coupling. 
+    Frequency and amplitude control for all lasers is achieved via acousto-optic modulators (AOMs) which are driven by Artiq integrated DDS chips, \emph{Urukuls}. The AOMs are used in a double pass configuration to allow shifts of the laser frequency by $\pm \sim 100$~MHz, with no significant angular shifts or loss of fibre coupling. 
     
     
 \subsection{Narrow Line Width 729 Laser}
@@ -402,11 +402,11 @@
     manifolds define the qubit. This is an electric quadrupole transition as
     $\Delta l = 2$.  For the Calcium ion this transition is at 729-nm, and so 
     a near resonance 729-nm laser is used to implement single- and multi-qubit gates
-    (sections~\ref{sec:Randomised Benchmarking} and~\ref{sec:Two-Qubit
+    (sections~\ref{sec:Single Qubit Gates} and~\ref{sec:Two-Qubit
     Entangling Gates}). This transition is also used after Doppler cooling for
     resolved sideband cooling to prepare the motional mode close to its ground
     state (as discussed in section~\ref{sec:Cooling}).
-    This transition is narrrow linewidth due the the long lived
+    This transition is narrow linewidth due the the long lived
     3D\textsubscript{5/2} level, and so, for power efficiency, a
     narrow linewidth laser must be used. For the ``fast entangling gates'' use-case, high intensity electric-fields are required at the ion to drive sideband
     transitions, this will be discussed further in the single-addressing and
@@ -480,10 +480,9 @@
     $30.6^\circ$C, and is further isolated by being housed in a vacuum system
     at $<1e-7$~mbar. Long term cavity drifts of 309(1) Hz/hr are measured over
     125 days, seen in figure~\ref{fig:Cavity Drift}. This measurement uses the ion as a
-    frequency reference to probe the cavity frequency and is discussed in
-    section~\ref{sec:Laser Offset}.\\
+    frequency reference to probe the cavity frequency.\\
     Figure~\ref{fig:729} displays the other beam paths for our 729-nm system.
-    Some light is picked off and sent to a wavemeter to continuosly monitor the
+    Some light is picked off and sent to a wavemeter to continuously monitor the
     frequency. However, the majority is coupled to two output fibres for our
     experiment and another within the group. The 729-nm light is transported from
     a dedicated laser lab to a the trap apparatus lab by a 10~m
@@ -492,8 +491,8 @@
     introduce phase noise due to mechanical and thermal effects along the 10~m
     length. To remove this introduced noise, passive stabilisation in
     the form of thick foam tubing along the fibre length, as well as active
-    stabilisation by a fibre-noise-cancellation (FNC) technique~\cite{ma1994delivering}, is used. We use the \emph{Sinara Stabilizer}~\cite{} board, a
-    dual channel PID microcontroller, with the \emph{Pounder}~\cite{}
+    stabilisation by a fibre-noise-cancellation (FNC) technique~\cite{ma1994delivering}, is used. We use the \emph{Sinara Stabilizer} board, a
+    dual channel PID microcontroller, with the \emph{Pounder}
     mezzanine board, a dual channel PDH lock generator. The FNC PID software was
     developed by A. Agrawal. A comparison of spin coherence times
     is shown in section~\ref{sec:Coherence} with and without fibre noise
@@ -522,7 +521,7 @@
     is the increased intensity of light due to the tight waist at the ion
     location. \\
     Our ions are separated by a distance $d\approx 5~\mu$m.  The diffraction limited radius for a
-    collimated 729-nm beam with an objective lens of NA = 0.6 is $\omega_0 = 386$~nm.  Abberations present in real optical
+    collimated 729-nm beam with an objective lens of NA = 0.6 is $\omega_0 = 386$~nm.  Aberrations present in real optical
     components will cause the addressed spot to be increasingly non-Gaussian and
     lead to unfavourable cross talk at the neighbouring ions. Therefore care was
     taken in the optical design. See I. {\O}vergaard Master thesis~\cite{oevergaard2024limiting} for relevant design considerations and rationale.\\

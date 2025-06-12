@@ -39,7 +39,7 @@
         \caption{
         Electronic energy levels of \textsuperscript{40}Ca\textsuperscript{+},
         which will be used in this thesis. The levels are
-        split by the Zeeman effect due to a $5.4$~G external magnetic field (they are shown explicitely only for the qubit manifolds). The
+        split by the Zeeman effect due to a $5.4$~G external magnetic field (they are shown explicitly only for the qubit manifolds). The
         transitions marked are required for cooling and control over the
         ion. The chosen qubit levels are labelled with $\ket{\downarrow}$, $\ket{\uparrow}$.
         }
@@ -72,7 +72,7 @@
         \label{fig:quadrupole}
     \end{figure}
 
-    The \ca ion has a rich level structure, shown in figure~\ref{fig:ion}, with many accessible quadrupole transitions $4S_{1/2}\leftrightarrow 3D_{5/2}$. The quadrupole transition is ideal for use as a qubit due to the long-lived metastable level ($\tau=1.1$~\unit{\s})~\cite{barton2000measurement}, and the ability to optically couple the transition via a laser. As mentioned in section~\ref{sec:Narrow Line Width 729 Laser}, the 729-nm beam is used for this purpose. By selecting the appropriate frequency of the 729-nm beam, qubit operations such as state preparation (section~\ref{sec:Stateprep}) and single qubit gates (section~\ref{sec:Single Qubit Gates}) may be driven, or by setting the detuning such that a motional sideband is near resonance, to couple the spin and motional degrees of freedom (section~\ref{sec:Spin-Dependent Forces}). Here, we discuss which quadrupole transitions are used, and the rationale behind their choice.\\ 
+    The \ca~ion has a rich level structure, shown in figure~\ref{fig:ion}, with many accessible quadrupole transitions $4S_{1/2}\leftrightarrow 3D_{5/2}$. The quadrupole transition is ideal for use as a qubit due to the long-lived metastable level ($\tau=1.1$~\unit{\s})~\cite{barton2000measurement}, and the ability to optically couple the transition via a laser. As mentioned in section~\ref{sec:Narrow Line Width 729 Laser}, the 729-nm beam is used for this purpose. By selecting the appropriate frequency of the 729-nm beam, qubit operations such as state preparation (section~\ref{sec:Stateprep}) and single qubit gates (section~\ref{sec:Single Qubit Gates}) may be driven, or by setting the detuning such that a motional sideband is near resonance, to couple the spin and motional degrees of freedom (section~\ref{sec:Spin-Dependent Forces}). Here, we discuss which quadrupole transitions are used, and the rationale behind their choice.\\ 
     Zeeman splitting of the $4S_{1/2}$ and $3D_{5/2}$ states leads to 2 and 6
     non-degenerate sublevels, respectively. Due to the magnetic field strength of 5.4~G (section~\ref{sec:Magnetic Field}),
     the $S$-levels are split by $\sim$15~\unit{\MHz}, and the $D$-levels by $\sim$9~\unit{\MHz}.
@@ -86,7 +86,7 @@
     \item To reduce the effects of off-resonant interactions due to nearby transitions, it is desirable to limit the number of accessible transitions near to the qubit transition. This is done by selecting a polarisation, $\gamma$, such that unwanted transitions are suppressed.
     \end{itemize}
     Given these criteria, we use the transition $\ket{4S_{1/2},~m_j = -1/2} \leftrightarrow \ket{3D_{5/2},~m_j = -5/2}$ with magnetic field sensitivity 
-    $-0.446$~\unit{\MHz\per\gauss}. Closed-cycle sideband cooling is possible with this same transtion, and state preparation via optical pumping is done via $\ket{4S_{1/2},~m_j = +1/2} \leftrightarrow \ket{3D_{5/2},~m_j = -3/2}$ with magnetic field sensitivity $-0.624$~\unit{\MHz\per\gauss}. \\
+    $-0.446$~\unit{\MHz\per\gauss}. Closed-cycle sideband cooling is possible with this same transition, and state preparation via optical pumping is done via $\ket{4S_{1/2},~m_j = +1/2} \leftrightarrow \ket{3D_{5/2},~m_j = -3/2}$ with magnetic field sensitivity $-0.624$~\unit{\MHz\per\gauss}. \\
     Figure~\ref{fig:quadrupole} $a$, shows the normalised Rabi frequencies of each transition as the angle $\gamma$ between polarisation vector and B-field is varied. Here only linearly-polarised light with k-vector perpendicular to the B-field direction is considered.
     The polarisation of the 729-nm laser is set to $\gamma = \pi/2$ (black dashed line), which maximises the Rabi frequency of the qubit transition, while suppressing nearby transitions apart from that needed for state preparation. 
     Figure~\ref{fig:quadrupole} $b$, shows the relevant frequency splitting of the transitions at $\gamma = \pi/2$, which is the set polarisation for all experiments apart from initial quadrupole characterisation.
@@ -98,7 +98,7 @@
 \label{sec:Spin}
     Discrete variable quantum computing consists of manipulating many two-level
     systems, which we refer to either as spins, or qubits. In this section 
-    the methods used to maniplate these spins are described, and their
+    the methods used to manipulate these spins are described, and their
     performances are benchmarked.\\
 
 \subsection{State Preparation}
@@ -170,7 +170,7 @@
             }
         \end{center}
         \caption{
-            Readout histogram with 100,000 individual measurements for bright (red) and dark (blue) populations. The camera counts are presented as a histogram and fitted to Poissonian distributions to calibrate a threshold for discerning if the ion is bright or dark with the lowest probability for false measurement. Dark counts are mainly due to 397-nm light scattered from the nearest trap electrodes. With 100~\unit{\us} readout duration, and laser parameters set to Doppler cooling parameters, a threshold count of 137 photons is found, giving an expected statistical error of $6\times 10^{-9}$ given the fitted Gaussians. %Gaussian dark: mean = 62, $\sigma$ = 13. Gaussian bright: mean = 341, $\sigma$ = 36.
+            Readout histogram with 100,000 individual measurements for bright (red) and dark (blue) populations. The camera counts are presented as a histogram and fitted to Poissonian distributions to calibrate a threshold for discerning if the ion is bright or dark with the lowest probability for false measurement. Dark counts are mainly due to 397-nm light scattered from the nearest trap electrodes. With 100~\unit{\us} readout duration, and laser parameters set to Doppler cooling parameters, a threshold count of 137 photons is found, giving an expected statistical error of $6\times 10^{-9}$ given the fitted Poissonians. %Gaussian dark: mean = 62, $\sigma$ = 13. Gaussian bright: mean = 341, $\sigma$ = 36.
             }
         \label{fig:readout_histogram}
     \end{figure}
@@ -208,7 +208,7 @@
     figure~\ref{fig:readout_histogram}. The readout threshold is calibrated by taking bright counts with the 397-nm and 866-nm lasers on, and dark counts with the 397-nm laser on and the 866-nm laser off. This assumes dark counts are due to 397-nm scattering from the trap electrodes. 
     Fitting Poissonian distributions to the bright and dark measurements, an optimal count threshold of
     137 is found, shown by black dashed line. This threshold gives an expected
-    statistical readout error of $\epsilon_\downarrow = \epsilon_\uparrow = 6\times10^{-9}$, where $\epsilon_{\downarrow,\uparrow}$ are the expected error associated with measuring bright or dark. This measurment ignores errors due to the
+    statistical readout error of $\epsilon_\downarrow = \epsilon_\uparrow = 6\times10^{-9}$, where $\epsilon_{\downarrow,\uparrow}$ are the expected error associated with measuring bright or dark. This measurement ignores errors due to the
     finite lifetime of the metastable $3D_{5/2}$ level, which dominate $\epsilon_\uparrow$. The expected error due
     to the finite lifetime, $\tau$, is $\epsilon_{\rm decay} = 1 - e^{-t/\tau}$, where $t$ is the readout duration. For \ca, $\tau \sim 1.1$~s, $\epsilon_\uparrow \approx \epsilon_{\rm decay}  = 
     10^{-4}$. 
@@ -349,7 +349,7 @@
         \item Apply a second $R_\phi(\pi/2)$-pulse, with a variable axis of rotation, $\phi$. 
         \item Measure the population in $\ket{\downarrow}$, $P_\downarrow$, via state-selective fluorescence, section~\ref{sec:Measurement}.
         \item Repeat steps 1-5 for different values of $\phi$ and fit the resulting fringe to find the contrast.
-        \item Repeat steps 1-6 for different values of $t_{\rm RAM}$ to find the decay in contast with time. The coherence time is defined as the time at which the contrast has decayed to $1/e$ of its initial value.
+        \item Repeat steps 1-6 for different values of $t_{\rm RAM}$ to find the decay in contrast with time. The coherence time is defined as the time at which the contrast has decayed to $1/e$ of its initial value.
     \end{enumerate}
     With this tool, the efficacy of the fibre noise cancellation (FNC, see section~\ref{sec:Narrow Line Width 729 Laser}) can be measured. Figure~\ref{fig:coherence_times} $a$ shows the coherence time of the $\ket{4S_{1/2},~m_j=-1/2}\leftrightarrow\ket{3D_{5/2},~m_j=-3/2}$  transition with and without FNC. The coherence time is increased from 1.9(1)~\unit{\ms} to 6.2(3)~\unit{\ms} with FNC, showing that without FNC, the coherence times are limited by laser phase noise. \\
     With FNC enabled, to see if the coherence time is now limited by magnetic field noise, transitions with varying magnetic field sensitivities are compared. Figure~\ref{fig:coherence_times} $b$ shows the coherence time of three quadrupole transitions with varying $D_{5/2}$, $m_j$ numbers: $\ket{4S_{1/2},~m_j=-1/2} \leftrightarrow \ket{3D_{5/2},~m_j=\lbrace -5/2, -3/2, +3/2}$. These transitions have magnetic field sensitivities $-0.446$, $-0.178$, $+0.624$~\unit{\MHz\per\gauss} respectively. The contrast decays for all three qubits are shown in the figure. The inset plot shows a well correlated linear fit between the coherence time and the magnetic field sensitivity, suggesting that the coherence time is limited by magnetic field noise. For both $\ket{4S_{1/2},~m_j=-1/2} \leftrightarrow \ket{3D_{5/2},~m_j=-5/2}$ and $\ket{4S_{1/2},~m_j=-1/2} \leftrightarrow \ket{3D_{5/2},~m_j=+3/2}$, revivals in contrast can be seen which suggest that the dominant noise source is oscillatory and coherent over the Ramsey scan duration.\\
@@ -369,7 +369,7 @@
 
     Motion of ions trapped in the same potential can be described by a set of normal modes~\cite{james1998quantum}. These modes are labelled with respect to the ion chain geometry: axial modes oscillate parallel with the chain, and radial modes oscillate perpendicular to the chain. Due to the geometry of the 729-nm beam access with respect to the ion chain (see section~\ref{sec:Vacuum System}), only the radial modes can be addressed in our system. For the \emph{NPL} trap (see section~\ref{sec:The Ion Trap}), the radial modes frequencies are non-degenerate. In our system, for a single ion, the radial mode frequencies are $\omega_{\rm upper}/2\pi = 4.0$~\unit{\MHz}, and $\omega_{\rm lower}/2\pi = 2.5$~\unit{\MHz}, and the axial mode frequency is $\omega_{\rm axial}/2\pi = 1.6$~\unit{\MHz}. All work here is using the upper radial mode. \\
     The motional mode, $i$, leads to sidebands in the 729-nm spectrum at $\omega_0 \pm \omega_{i}$~\cite{ozeri2011tutorial}, where $\omega_0$, the carrier, is the frequency of the 729-nm laser when on resonance with the qubit transition. The $+\omega_i$ sideband is referred to as the blue sideband (BSB), and the $-\omega_i$ is the red sideband (RSB).
-    The RSB, BSB, and RF fields near to resonance with the motional modes, are the tools used in this section to manipulatie the motion of the ion.\\
+    The RSB, BSB, and RF fields near to resonance with the motional modes, are the tools used in this section to manipulate the motion of the ion.\\
     The motional state preparation, heating rate, frequency stabilities, and coherence times are characterised in this section.
 
 \subsection{Cooling}
@@ -561,7 +561,7 @@
         \end{center}
         \caption{
             \textbf{a)} Motional mode frequency drift over time. The radial motional mode frequency is measured by exciting motion using an RF field in resonance with the motional frequency, and looking at increased fluorescence. The resulting frequency trace is shown in blue. The green line shows a low pass filter of the data, with cut-off frequency of 1.67~\unit{\mHz}, corresponding to an assumed 10 minutes slow thermal drift. The motional mode frequency is typically calibrated every 10 minutes, which is indicated by the red line. 
-            \textbf{b)} Residuals from the measured data and expected calibrated mode frequencies. The standard deviation of these residuals suggests the typical misset detuning of the mode frequency in current experiments with automated mode frequency calibrations every 10 minutes.
+            \textbf{b)} Residuals from the measured data and expected calibrated mode frequencies. The standard deviation of these residuals suggests the typical mis-set detuning of the mode frequency in current experiments with automated mode frequency calibrations every 10 minutes.
             \textbf{c)} Residuals from the measured data and the low passed trace. The standard deviation of these residuals are due to noise with period less than 10 minutes. 
             }
         \label{fig:mode drift}
@@ -632,7 +632,7 @@
     $\sigma_{\omega}/(2\pi) = 94(4)$~\unit{\Hz}, the expected motional coherence times of $\tau_{\rm
     HEAT} \approx 20$~ms and $\tau_{\rm DEPH} \approx 2.3$~ms respectively, are found. From these auxiliary characterisations of the motional modes, it is expected that the coherence time will be limited by motional dephasing. \\
     Figure~\ref{fig:motional_coherence} shows the decaying coherence when probed by the above sequence. It can be seen that the contrast has a good fit assuming an exponential decay (green dashed line),
-    defined by $C(t_{\rm RAM}) = C(0) e^{-t_{\rm RAM}/\tau},$ where $C(t_{\rm RAM})$ is the contrast at time $t_{\rm RAM}$, and $\tau$ is the coherence time. The fit yields a motional coherence time of $\tau = 4.6(4)$~\unit{\ms}, defined as the time at which the contrast decays to $1/e$ of its intitial value. 
+    defined by $C(t_{\rm RAM}) = C(0) e^{-t_{\rm RAM}/\tau},$ where $C(t_{\rm RAM})$ is the contrast at time $t_{\rm RAM}$, and $\tau$ is the coherence time. The fit yields a motional coherence time of $\tau = 4.6(4)$~\unit{\ms}, defined as the time at which the contrast decays to $1/e$ of its initial value. 
     An exponential decay suggests that the noise source causing the dephasing is correlated only for durations much shorter than the Ramsey delay times~\cite{omalley2015qubit}.
     The Gaussian decay, (red dashed line), which was appropriate for the previous spin coherence time measurements in section~\ref{sec:Coherence}, is a poor fit here. \\
     
@@ -696,7 +696,7 @@
         \label{eqn:sdf_pop}
         P_{\downarrow,\mathrm{th}} = \frac{1}{2} \left[ 1 + e^{-4\left( \bar{n} + \frac{1}{2} \right) |\alpha(t, \delta_g)|^2} \right],
     \end{equation}
-    where $\bar{n}$ is the initial thermal phonon occupation, and $|\alpha(t, \delta_g)| = \Omega_{\rm SDF} \sin(\delta_g t/2)/\delta_g$, is the absoltue displacement of the initial state.
+    where $\bar{n}$ is the initial thermal phonon occupation, and $|\alpha(t, \delta_g)| = \Omega_{\rm SDF} \sin(\delta_g t/2)/\delta_g$, is the absolute displacement of the initial state.
     This control is utilised in both two-qubit entangling gate experiments, as well as
     in the creation of squeezed states.\\
 
@@ -720,16 +720,16 @@
         \caption{
             Detuning and duration scans of the spin-dependent force applied to an initial thermal state with $\bar{n} = 0.03(1)$. 
             \textbf{a)} Detuning scan, where the detuning, $\delta_g$, is varied, and the duration is fixed at $t=100$~\unit{\us}. The green line is a fit to the expected behaviour given by equation~\ref{eqn:sdf_pop}. 
-            \textbf{b)} Detuning scan with a misset qubit frequency of $0.5$~\unit{\kHz}. The green line is the same fit as in $a$ to guide the eye. 
+            \textbf{b)} Detuning scan with a mis-set qubit frequency of $0.5$~\unit{\kHz}. The green line is the same fit as in $a$ to guide the eye. 
             \textbf{c)} Duration scan, where the duration, $t$, is varied, and the detuning is fixed at $\delta_g = 0$. The dashed line is a fit to the expected behaviour given by equation~\ref{eqn:sdf_pop} with only $\Omega_{\rm SDF}$ as a free parameter.
             }
         \label{fig:SDF}
     \end{figure}
 
     Geometric phase gates, such as the MS interaction, are widely employed in ion trap experiments due to their robustness against variations in initial motional state. However, the SDF is sensitive to various frequency and power miscalibrations and drifts of these between calibrations.  Here, we describe the workflow for calibrating and optimising the SDF behaviour.\\
-    In practice, the SDF interaction involves relatively few degrees of freedom: the central qubit frequency, the motional mode frequency, the power in each tone, and the durations of the pulses must all be calibrated. The complexity comes from the fact that the ion is a multi-level system, posseses multiple motional modes, and that each experimental parameter can only be controlled with finite precision.\\
+    In practice, the SDF interaction involves relatively few degrees of freedom: the central qubit frequency, the motional mode frequency, the power in each tone, and the durations of the pulses must all be calibrated. The complexity comes from the fact that the ion is a multi-level system, possesses multiple motional modes, and that each experimental parameter can only be controlled with finite precision.\\
     The effect of nearby motional modes is negated by either selecting the
-    interaction mode to be well seperated from the others either in frequency, by beam geometry, by
+    interaction mode to be well separated from the others either in frequency, by beam geometry, by
     operating the SDF near to resonance of the desired mode, or by using amplitude shaping of the pulse.
     Smoothing a square pulse through amplitude shaping narrows the pulse frequency bandwidth, and thus reduces unwanted off-resonant
     excitation of other modes.  \\
@@ -764,7 +764,7 @@
     at $\delta_g = 2\pi/t$ where the motional state returns to the initial state,
     and the central flat region around $P_{\downarrow, \mathrm{th}} =0.5$ where
     the two motional wave packets are non-overlapping.\\
-    Figure $b$ shows an example detuning scan when the qubit frequency is misset by $0.5$~\unit{\kHz}. The central region now displays a clear assymmetry around $\delta_g = 0$. The green line here is the fit from $a$ to guide the eye.
+    Figure $b$ shows an example detuning scan when the qubit frequency is mis-set by $0.5$~\unit{\kHz}. The central region now displays a clear asymmetry around $\delta_g = 0$. The green line here is the fit from $a$ to guide the eye.
 
 
 \subsection{Two-Qubit Entangling Gates}
@@ -849,9 +849,9 @@
         \label{eq:Fidelity}
     \end{equation}
     where $\rho_{ij,kl} = \braket{ij|\rho|kl}$. To extract the fidelity experimentally, a partial state tomography 
-    protocol is used~\cite{sackett2000experimental}, where the first bracketted term of
+    protocol is used~\cite{sackett2000experimental}, where the first bracketed term of
     equation~\ref{eq:Fidelity} is measured by performing projective measurements
-    of the two ions after the gate sequence to extract populations, and the second bracketted term,
+    of the two ions after the gate sequence to extract populations, and the second bracketed term,
     known as the coherence terms, are measured by applying a global analysis
     $R_\phi(\pi/2)$ pulse to the two ions and applying parity measurements. 
     Parity measurements are defined as $P = P_{00} + P_{11} - P_{01} - P_{10}$, where $P_{ij}$ is the population of the two ions in state $\ket{i}\ket{j}$ after the gate sequence and variable $\pi/2$-pulse. 
@@ -865,7 +865,7 @@
     algorithms~\cite{varona2024towards,brenner2024factoring}.  In both these cases, especially any use that requires
     multiple concatenated entangling gates, we will likely require improved gate
     fidelities. 
-    Current gate fidelities are limited by the motional dephasing. The gate error due to motional dephasing follows (see section 4.4.6~\cite{ballance2017high-fidelity})
+    Current gate fidelities are limited by the motional dephasing. The gate error due to motional dephasing follows (see section 4.4.6 in~\cite{ballance2017high-fidelity})
     \begin{equation}
         \epsilon_{\rm DEPH} = 0.686 \frac{t_g}{\tau_{\rm DEPH}},
     \end{equation}

@@ -91,6 +91,7 @@ ax0.errorbar(
     label="$P_{00}$",
     fmt="^",
     yerr=p_err_00,
+    elinewidth=1.0,
 )
 ax0.errorbar(
     duration,
@@ -98,6 +99,7 @@ ax0.errorbar(
     label="$P_{11}$",
     fmt="^",
     yerr=p_err_11,
+    elinewidth=1.0,
 )
 ax0.errorbar(
     duration,
@@ -105,6 +107,7 @@ ax0.errorbar(
     label="$(P_{01} + P_{10})/2$",
     fmt="^",
     yerr=p_err_0110,
+    elinewidth=1.0,
 )
 ax0.legend(loc="upper right", fontsize=8)
 ax0.set_ylabel("Populations")
@@ -114,12 +117,34 @@ ax0.set_xlim(0.0, 300.0)
 
 ofs = 0.01
 ax2.errorbar(
-    70 - ofs, p00f, label="p00 final", fmt="^", yerr=p_err_00f, alpha=0.8, capsize=3
+    70 - ofs,
+    p00f,
+    label="p00 final",
+    fmt="^",
+    yerr=p_err_00f,
+    alpha=0.8,
+    capsize=3,
+    elinewidth=1.0,
 )
 ax2.errorbar(
-    70 + ofs, p11f, label="p11 final", fmt="^", yerr=p_err_11f, alpha=0.8, capsize=3
+    70 + ofs,
+    p11f,
+    label="p11 final",
+    fmt="^",
+    yerr=p_err_11f,
+    alpha=0.8,
+    capsize=3,
+    elinewidth=1.0,
 )
-ax2.errorbar(70, p0110f, label="p01_10 final", fmt="^", yerr=p_err_0110f, capsize=3)
+ax2.errorbar(
+    70,
+    p0110f,
+    label="p01_10 final",
+    fmt="^",
+    yerr=p_err_0110f,
+    capsize=3,
+    elinewidth=1.0,
+)
 ax2.set_ylabel("Populations")
 ax2.set_ylim(0.0, 0.5)
 ax2.set_xlim(70 - 2 * ofs, 70 + 2 * ofs)
@@ -135,6 +160,7 @@ ax1.errorbar(
     color=c,
     zorder=11,
     fmt="^",
+    elinewidth=1.0,
 )
 linrange = np.linspace(
     np.min(phase),

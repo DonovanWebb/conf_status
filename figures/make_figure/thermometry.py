@@ -135,6 +135,7 @@ ax[0].errorbar(
     label="pi_rsb_pi_p",
     color=cb,
     zorder=11,
+    elinewidth=1.0,
 )
 ax[0].set_ylabel("$P_\downarrow$ $\pi$-RSB-$\pi$")
 ax[0].set_ylim([0, 1.0])
@@ -160,6 +161,7 @@ ax[1].errorbar(
     label="rsb_p",
     zorder=11,
     color=cr,
+    elinewidth=1.0,
 )
 ax[1].set_xlabel("Duration $t$ ($\mu$s)")
 ax[1].set_ylabel("$P_\downarrow$ RSB")
